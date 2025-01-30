@@ -7,7 +7,7 @@ tags:
 ---
 # Accueil
 
-Page d’accueil.
+Page d’accueil modifiée
 
 {% for content in collections.allMyContent %}
 * {{content.url}}
