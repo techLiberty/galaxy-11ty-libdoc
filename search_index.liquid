@@ -1,0 +1,24 @@
+---
+permalink: bundles/search_index.json
+eleventyExcludeFromCollections: true
+---
+[
+    {% if movies.size > 0 %}
+        {% for movie in movies %}
+            {
+                "url": "{{ movie.url }}/",
+                "title": "{{ movie.title }}",
+                "content": "{{ movie.year }} {{ movie.title }} {{ movie.genres|join: " " }}"
+            },
+        {% endfor %}
+    {% endif %}
+    {% if collections.all.size > 0 %}
+        {% for post in collections.all %}
+            {
+                "url": "{{ post.url }}",
+                "title": "{{ post.data.title }}",
+                "content": "{{ post.content | strip_newlines | strip_html }}"
+            }{% if forloop.last == false %},{% endif %}
+        {% endfor %}
+    {% endif %}
+]

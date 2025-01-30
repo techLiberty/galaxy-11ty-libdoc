@@ -1,0 +1,48 @@
+---
+layout: simple_page.liquid
+title: Le titre
+permalink: "page-{{ pagination.pageNumber | plus:1 }}/index.html"
+pagination:
+    data: stores
+    size: 60
+---
+
+<main>
+    <h1>Liste des stores</h1>
+    <p>{{ site.imgsrv }}</p>
+
+
+    <ul>
+        {%- for post in collections.all -%}
+            <li><a href="{{ post.url }}">{{ post.url }}</a></li>
+        {%- endfor -%}
+    </ul>
+    
+    
+    <ol>
+        {%- for item in pagination.items %}
+            <li>{{ item.webName }}</li>
+        {% endfor -%}
+    </ol>
+
+    <ol>
+        {%- for page in pagination.items %}
+            <li>{{ item.webName }}</li>
+        {% endfor -%}
+    </ol>
+
+    <nav aria-labelledby="my-pagination">
+        <h2 id="my-pagination">This is my Pagination</h2>
+        <ol>
+            {%- for pageEntry in pagination.pages %}
+                <li><a href="{{ pagination.hrefs[ forloop.index0 ] }}"{% if page.url == pagination.hrefs[ forloop.index0 ] %} aria-current="page"{% endif %}>Page {{ forloop.index }}</a></li>
+            {%- endfor %}
+        </ol>
+    </nav>
+
+    <ul>
+        {% for store in stores %}
+            <li><a href="./{{ store.url }}/">{{ store.webName }}</a></li>
+        {% endfor %}
+    </ul>
+</main>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/bundles/bundle.css">
+    <style>
+        @view-transition {
+            navigation: auto;
+        }
+    </style>
+<title>{{ title }}{% if pagination.pageNumber > 0 %} - Page {{ pagination.pageNumber|plus:1 }}{% endif %}</title>
+</head>
+<body>
+    <form action="/search/">
+        <label for="searchInput">Rechercher</label>
+        <input id="searchInput"
+            type="search"
+            name="search"
+            value="">
+    </form>
+    <menu>
+        {% for tag in collections.myTags %}
+            <li><a href="#">{{ tag }}</a></li>
+        {% endfor %}
+
+        {%- for post in collections.all -%}
+            <li>
+                <a href="{{ post.url }}">{{ post.data.title }} {{ post.url }}</a>
+            </li>
+        {%- endfor -%}
+    </menu>
+    {% block content %}{{ content }}{% endblock %}
+    <script src="/bundles/bundle.js"></script>
+</body>
+</html>

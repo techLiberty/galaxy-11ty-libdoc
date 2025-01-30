@@ -1,0 +1,40 @@
+---
+pagination:
+    data: movies
+    size: 1
+    alias: movie
+permalink: "{{ movie.url }}/index.html"
+---
+<!doctype html>
+<html lang="en">
+<head>
+    <!-- COMMON METADATA -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ movie.title }}</title>
+    <meta name="msapplication-starturl" content="{{ page.url }}">
+    <meta property="og:url" content="{{ page.url }}">
+    <meta name="twitter:url" content="{{ page.url }}">
+    {% assign current_env_ui_root_url = envlocal.ui_root_url | default: env.ui_root_url %}
+</head>
+
+<body>
+    <h1>{{ movie.title }}</h1>
+    {% comment %} {% for data in cms_page.stack -%}
+        {%- if cms_sections[model_id].model_ui != 'model_page_metadata' and cms_sections[model_id].model_ui != 'model_site_metadata' -%}
+            {%- assign tpl = cms_sections[model_id].model_ui | append: ".liquid" -%}
+            {%-     render '{{ tpl }}',
+                    cms_model: cms_sections[model_id].model_data,
+                    cms_site: cms_site,
+                    cms_sections: cms_sections,
+                    cms_pages: cms_pages,
+                    cms_page: cms_page,
+                    cms_links: cms_links,
+                    env: env,
+                    envlocal: envlocal
+            -%}
+        {%- endif -%}
+    {%- endfor %} {% endcomment %}
+</body>
+
+</html>
