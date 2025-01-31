@@ -12,3 +12,8 @@ Page d’accueil modifiée
 {% for content in collections.allMyContent %}
 * {{content.url}}
 {% endfor %}
+
+<textarea>
+mon premier
+mon deuxième
+</textarea>

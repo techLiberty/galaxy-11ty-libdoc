@@ -1,3 +1,5 @@
+import { EleventyRenderPlugin } from "@11ty/eleventy";
+
 export default function(eleventyConfig) {
     // Shortcodes added in this way are available in:
     // * Markdown
@@ -33,6 +35,16 @@ export default function(eleventyConfig) {
     //     let data = await resp.text();
     //     return `<pre><code>${data}</code></pre><iframe src="${path}"></iframe>`;;
     // });
+
+    eleventyConfig.addPlugin(EleventyRenderPlugin, {
+		tagName: "renderTemplate", // Change the renderTemplate shortcode name
+		tagNameFile: "renderFile", // Change the renderFile shortcode name
+		filterName: "renderContent", // Change the renderContent filter name
+
+		// Only available in Liquid right now
+		accessGlobalData: false,   // Does rendered content has access to the data cascade?
+	});
+
     eleventyConfig.addCollection("myTags", function (collectionsApi) {
         const allData = collectionsApi.getAll();
         let finalData = [];
@@ -45,8 +57,9 @@ export default function(eleventyConfig) {
         });
 		return finalData;
 	});
-    eleventyConfig.addPairedShortcode("sandbox", function(content) {
-        function HTMLEncode(str) {
+
+    const utils = {
+        HTMLEncode: function(str) {
             // https://stackoverflow.com/a/784765
             str = [...str];
             //    ^ es20XX spread to Array: keeps surrogate pairs
@@ -62,8 +75,20 @@ export default function(eleventyConfig) {
             }
             return aRet.join('');
         }
-        const contentNew = HTMLEncode(content);
-        return `<pre><code class="language-html">${contentNew}</code></pre><iframe style="width:100%; height:500px" srcdoc="${contentNew}"></iframe>`;
+    }
+
+    eleventyConfig.addPairedShortcode("sandbox", async function(content, permalink) {
+        let markup = '';
+        if (typeof permalink == 'string') {
+            // Case file iframe src
+            const contentNew = utils.HTMLEncode(content);
+            markup = `<pre><code class="language-html">${contentNew}</code></pre><iframe src="${permalink}"></iframe>`;
+        } else {
+            // Case attribute srcdoc
+            const contentNew = utils.HTMLEncode(content);
+            markup = `<pre><code class="language-html">${contentNew}</code></pre><iframe style="width:100%; height:500px" srcdoc="${contentNew}"></iframe>`;
+        }
+        return markup;
     });
 
 };
