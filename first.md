@@ -1,9 +1,11 @@
 ---
 title: Coucou
-layout: sandbox.liquid
+layout: simple_page.liquid
 tags: first
 ---
 # coucou
+
+{% render 'sandbox', path: '/sandboxes/1' %}
 
 {% sandbox %}
 <nav c-scrollsyncbar="">

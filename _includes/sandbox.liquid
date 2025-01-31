@@ -1,4 +1,8 @@
-{% layout "simple_page.liquid" %}
-{% block content %}<hr>
-{{ content }}<hr>
-{% endblock %}
+
+{% assign permalink = path | append: "/index.html" %}
+{% assign filePath = "." | append: path | append: ".html" %}
+{{ permalink }}<br>
+{{ filePath }}
+{% sandbox permalink %}
+    {% renderFile filePath %}
+{% endsandbox %}
