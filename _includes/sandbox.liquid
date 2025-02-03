@@ -1,8 +1,5 @@
 
-{% assign permalink = path | append: "/index.html" %}
-{% assign filePath = "." | append: path | append: ".html" %}
-{{ permalink }}<br>
-{{ filePath }}
-{% sandbox permalink %}
+{% assign filePath = "." | append: path %}
+{% sandbox path %}
     {% renderFile filePath %}
 {% endsandbox %}

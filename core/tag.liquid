@@ -1,0 +1,14 @@
+---
+layout: simple_page.liquid
+pagination:
+    data: collections.myTags
+    size: 1
+    alias: tag
+permalink: "tags/{{ tag }}/index.html"
+---
+<h1>{{ tag }}</h1>
+<ul>
+    {% for item in collections[tag] %}
+        <li><a href="{{item.page.url}}">{{item.data.title}}</a></li>
+    {% endfor %}
+</ul>

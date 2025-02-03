@@ -2,10 +2,11 @@
 title: Coucou
 layout: simple_page.liquid
 tags: first
+permalink: /first/index.html
 ---
 # coucou
 
-{% render 'sandbox', path: '/sandboxes/1' %}
+{% render 'sandbox', path: '/sandboxes/1/index.html' %}
 
 {% sandbox %}
 <nav c-scrollsyncbar="">
@@ -34,7 +35,7 @@ tags: first
 </nav>
 
 <!-- DEMO ONLY -->
-<link rel="stylesheet" href="/bundles/bundle.css">
+<link rel="stylesheet" href="https://ita-design-system.github.io/starter-template/ui/css/briks_css_variables.css">
 <style>
     * {
         box-sizing: border-box;
@@ -82,5 +83,5 @@ tags: first
         color: var(--ita-color-support-success-700);
     }
 </style>
-<script src="/bundles/bundle.js"></script>
+<script src="https://ita-design-system.github.io/c-scrollsyncbar.js/ui/js/c-scrollsyncbar.js"></script>
 {% endsandbox %}

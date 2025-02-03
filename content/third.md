@@ -1,6 +1,7 @@
 ---
-title: Second
+title: Third
 layout: simple_page.liquid
+permalink: third/index.html
 tags:
     - tag3
     - tag1

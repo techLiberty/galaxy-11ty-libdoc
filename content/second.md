@@ -1,6 +1,7 @@
 ---
 title: Second
 layout: simple_page.liquid
+permalink: second/index.html
 tags:
     - tag2
 ---

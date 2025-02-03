@@ -3,15 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/bundles/bundle.css">
-    <style>
-        @view-transition {
-            navigation: auto;
-        }
-    </style>
-<title>{{ title }}{% if pagination.pageNumber > 0 %} - Page {{ pagination.pageNumber|plus:1 }}{% endif %}</title>
+    <title>{{ title }}{% if pagination.pageNumber > 0 %} - Page {{ pagination.pageNumber|plus:1 }}{% endif %}</title>
+
+    {% block css_head %}
+        <link rel="stylesheet" href="/assets/css/ds__defaults.css">
+        <link rel="stylesheet" href="/assets/css/ds.css">
+        <link rel="stylesheet" href="/assets/css/ds__width-twelves.css">
+        <link rel="stylesheet" href="/assets/css/monokai-sublime.css">
+    {% endblock %}
+
 </head>
-<body>
+<body class="ff-1 m-0">
     <form action="/search/">
         <label for="searchInput">Rechercher</label>
         <input  id="searchInput"
@@ -21,7 +23,7 @@
     </form>
     <menu>
         {% for tag in collections.myTags %}
-            <li><a href="#">{{ tag }}</a></li>
+            <li><a href="/tags/{{ tag }}/">{{ tag }}</a></li>
         {% endfor %}
 
         {%- for post in collections.all -%}
@@ -31,6 +33,9 @@
         {%- endfor -%}
     </menu>
     {% block content %}{{ content }}{% endblock %}
-    <script src="/bundles/bundle.js"></script>
+    {% block js_body %}
+        <script src="/assets/js/highlight.min.js"></script>
+        <script>hljs.highlightAll();</script>
+    {% endblock %}
 </body>
 </html>

@@ -91,4 +91,9 @@ export default function(eleventyConfig) {
         return markup;
     });
 
+    // Copy `css/fonts/` to `_site/css/fonts`
+	// Keeps the same directory structure.
+	eleventyConfig.addPassthroughCopy("sandboxes");
+    eleventyConfig.addPassthroughCopy("assets");
+
 };
