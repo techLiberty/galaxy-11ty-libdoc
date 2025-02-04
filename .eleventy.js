@@ -35,6 +35,64 @@ export default function(eleventyConfig) {
     //     let data = await resp.text();
     //     return `<pre><code>${data}</code></pre><iframe src="${path}"></iframe>`;;
     // });
+    const utils = {
+        HTMLEncode: function(str) {
+            // https://stackoverflow.com/a/784765
+            str = [...str];
+            //    ^ es20XX spread to Array: keeps surrogate pairs
+            let i = str.length, aRet = [];
+          
+            while (i--) {
+                var iC = str[i].codePointAt(0);
+                if (iC < 65 || iC > 127 || (iC>90 && iC<97)) {
+                    aRet[i] = '&#'+iC+';';
+                } else {
+                    aRet[i] = str[i];
+                }
+            }
+            return aRet.join('');
+        },
+        slugify: function(str) {
+            // https://dev.to/bybydev/how-to-slugify-a-string-in-javascript-4o9n
+            str = str.replace(/^\s+|\s+$/g, ''); // trim leading/trailing white space
+            str = str.toLowerCase(); // convert string to lowercase
+            str = str.replace(/[^a-z0-9 -]/g, '') // remove any non-alphanumeric characters
+                     .replace(/\s+/g, '-') // replace spaces with hyphens
+                     .replace(/-+/g, '-'); // remove consecutive hyphens
+            return str;
+        }
+    }
+
+    eleventyConfig.addAsyncFilter("addtoc", async function (content) {
+        // https://stackoverflow.com/a/65725198
+        const htmlTagsFound = [];
+        const filter = ['h1', 'h2', 'h3', 'h4', 'h5', 'h6'];
+        const modifiedContent = content.replace(/<([a-zA-Z][a-zA-Z0-9_-]*)\b[^>]*>(.*?)<\/\1>/g, function(m,m1,m2){
+            let newM = m;
+            if (filter.includes(m1)) {
+                // Add id to the specified html tags
+                const slugifiedId = utils.slugify(m2);
+                // write data to result object
+                htmlTagsFound.push({
+                    tagName: m1,
+                    value: m2,
+                    id: slugifiedId
+                });
+                newM = m.replace(`<${m1}>`, `<${m1} id="${slugifiedId}">`);
+            }
+            return newM;
+        });
+        let tocMarkup = '<ol class="d-flex fd-column | m-0 p-0 | ls-none">';
+        // Displaying the results
+        htmlTagsFound.forEach(function(htmlTag) {
+            tocMarkup += `
+                <li>
+                    <a href="#${htmlTag.id}" class="fs-2 lh-1">${htmlTag.value}</a>
+                </li>`;
+        });
+        tocMarkup += '</ol>';
+		return tocMarkup + modifiedContent;
+	});
 
     eleventyConfig.addPlugin(EleventyRenderPlugin, {
 		tagName: "renderTemplate", // Change the renderTemplate shortcode name
@@ -58,35 +116,35 @@ export default function(eleventyConfig) {
 		return finalData;
 	});
 
-    const utils = {
-        HTMLEncode: function(str) {
-            // https://stackoverflow.com/a/784765
-            str = [...str];
-            //    ^ es20XX spread to Array: keeps surrogate pairs
-            let i = str.length, aRet = [];
-          
-            while (i--) {
-                var iC = str[i].codePointAt(0);
-                if (iC < 65 || iC > 127 || (iC>90 && iC<97)) {
-                    aRet[i] = '&#'+iC+';';
-                } else {
-                    aRet[i] = str[i];
-                }
-            }
-            return aRet.join('');
-        }
-    }
-
     eleventyConfig.addPairedShortcode("sandbox", async function(content, permalink) {
         let markup = '';
         if (typeof permalink == 'string') {
             // Case file iframe src
             const contentNew = utils.HTMLEncode(content);
-            markup = `<pre><code class="language-html">${contentNew}</code></pre><iframe src="${permalink}"></iframe>`;
+            markup = `
+                <div class="d-flex | sandbox">
+                    <pre class="w-6t m-0 o-auto" style="height:500px">
+                        <code class="language-html fvs-mono-on fvs-casual-off fvs-cursive-off fvs-wght-300 fs-3 lh-6">
+                            ${contentNew}
+                        </code>
+                    </pre>
+                    <button class="resizer" style="width:20px">|||</button>
+                    <iframe src="${permalink}" class="w-6t b-0"></iframe>
+                </div>`;
         } else {
             // Case attribute srcdoc
             const contentNew = utils.HTMLEncode(content);
-            markup = `<pre><code class="language-html">${contentNew}</code></pre><iframe style="width:100%; height:500px" srcdoc="${contentNew}"></iframe>`;
+            markup = `
+                <div class="d-flex | sandbox">
+                    <pre class="w-6t m-0 o-auto" style="height:500px">
+                        <code class="language-html fvs-mono-on fvs-casual-off fvs-cursive-off fvs-wght-300 fs-3 lh-6">
+                            ${contentNew}
+                        </code>
+                    </pre>
+                    <button class="resizer" style="width:20px">|||</button>
+                    <iframe srcdoc="${contentNew}"
+                        class="w-6t b-0"></iframe>
+                </div>`;
         }
         return markup;
     });
@@ -95,5 +153,6 @@ export default function(eleventyConfig) {
 	// Keeps the same directory structure.
 	eleventyConfig.addPassthroughCopy("sandboxes");
     eleventyConfig.addPassthroughCopy("assets");
+    eleventyConfig.addPassthroughCopy("favicon.png");
 
 };

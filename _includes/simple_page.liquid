@@ -1,39 +1,108 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="{{ page.lang }}">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{{ title }}{% if pagination.pageNumber > 0 %} - Page {{ pagination.pageNumber|plus:1 }}{% endif %}</title>
 
-    {% block css_head %}
+    <meta itemprop="name" content="{{ title }}">
+    <meta name="description" itemprop="description" content="{{ description }}">
+    <meta name="application-name" content="{{ title }}">
+    <meta name="author" content="Olivier 3lanc">
+    <link rel="icon" type="image/png" href="/favicon.png">
+    <link rel="canonical" href="{{ page.url }}" />
+    
+    <meta name="msapplication-TileColor" content="#FFFFFF">
+    <meta name="theme-color" content="#FFFFFF">
+    
+    <!-- Microsoft -->
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="msapplication-starturl" content="{{ page.url }}">
+    <meta name="msapplication-tooltip" content="{{ title }}">
+    <meta name="msapplication-TileColor" content="#FFFFFF">
+    
+    <!-- Open Graph -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="{{ page.url }}">
+    <meta property="og:title" content="{{ title }}">
+    <meta property="og:description" content="{{ description }}">
+    <meta property="og:image" content="{{ image_url }}">
+    
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="{{ title }}">
+    <meta name="twitter:description" content="{{ description }}">
+    <meta name="twitter:url" content="{{ page.url }}">
+    <meta name="twitter:image" content="{{ image_url }}">
+    
+    <!-- iOS -->
+    <meta name="apple-mobile-web-app-title" content="{{ title }}">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="#FFFFFF">
+    
+    <!-- Android -->
+    <meta name="theme-color" content="#FFFFFF">
+    <meta name="color-scheme" content="light">
+    <meta name="mobile-web-app-capable" content="yes">
+
+    <meta name="generator" content="{{ eleventy.generator }}">
+    
+    {% block css_head %} 
         <link rel="stylesheet" href="/assets/css/ds__defaults.css">
         <link rel="stylesheet" href="/assets/css/ds.css">
         <link rel="stylesheet" href="/assets/css/ds__width-twelves.css">
-        <link rel="stylesheet" href="/assets/css/monokai-sublime.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.11.1/styles/night-owl.min.css">
+        {% comment %} <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.11.1/styles/nord.min.css"> {% endcomment %}
+        {% comment %} <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.11.1/styles/ir-black.min.css"> {% endcomment %}
+        {% comment %} <link rel="stylesheet" href="/assets/css/monokai-sublime.css"> {% endcomment %}
     {% endblock %}
 
 </head>
-<body class="ff-1 m-0">
-    <form action="/search/">
-        <label for="searchInput">Rechercher</label>
-        <input  id="searchInput"
-                type="search"
-                name="search"
-                value="">
-    </form>
-    <menu>
-        {% for tag in collections.myTags %}
-            <li><a href="/tags/{{ tag }}/">{{ tag }}</a></li>
-        {% endfor %}
+<body class="d-flex fd-column | m-0">
+    <nav class="d-flex jc-space-between | bc-neutral-100 bbwidth-1 bbstyle-dashed bcolor-neutral-500">
+        <div class="d-flex ai-center">
+            <a href="/" class="p-5 pl-10 | td-none | c-neutral-900">LOGO</a>
+            <form action="/search/"
+                class="d-flex fd-column">
+                <label for="searchInput">Rechercher</label>
+                <input  id="searchInput"
+                        type="search"
+                        name="search"
+                        value="">
+            </form>
+        </div>
+        <a href="#github" class="p-5 | td-none | c-neutral-900">Github</a>
+    </nav>
+    <div class="d-flex ai-start">
+        <div class="d-flex fd-column | w-300px pt-10 | pos-sticky top-0 | bc-neutral-100"
+            style="min-width: 300px; max-width: 300px">
+            <menu class="d-flex fd-column | m-0 p-0 | ls-none">
+        
+                {%- for post in collections.all -%}
+                    <li class="d-flex ai-center">
+                        <a href="{{ post.url }}" class="d-flex | pt-3 pb-3 pl-10 pr-6 | fs-2 tt-uppercase td-none tws-balance fvs-mono-on fvs-wght-400 | c-neutral-900">
+                            {{ post.data.title | default: post.inputPath }}
+                        </a>
+                    </li>
+                {%- endfor -%}
 
-        {%- for post in collections.all -%}
-            <li>
-                <a href="{{ post.url }}">{{ post.data.title }} {{ post.url }}</a>
-            </li>
-        {%- endfor -%}
-    </menu>
-    {% block content %}{{ content }}{% endblock %}
+                {% for tag in collections.myTags %}
+                    <li><a href="/tags/{{ tag }}/">{{ tag }}</a></li>
+                {% endfor %}
+            </menu>
+        </div>
+        <main class="pos-relative | w-100-300px pl-10 pr-10">
+            
+            {% block content %}{{ content | addtoc }}{% endblock %}
+            
+        </main>
+    </div>
+    <footer class="p-10">
+        <p class="m-0 | fs-2 | c-neutral-500">11ty LibDoc</p>
+    </footer>
+    
     {% block js_body %}
+        <script src="/assets/js/sandbox.js"></script>
         <script src="/assets/js/highlight.min.js"></script>
         <script>hljs.highlightAll();</script>
     {% endblock %}
