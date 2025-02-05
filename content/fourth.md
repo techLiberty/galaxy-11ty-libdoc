@@ -4,6 +4,9 @@ permalink: fourth/index.html
 tags:
     - tag2
     - tag1
+eleventyNavigation:
+  key: Quatrième
+  parent: Mammals
 ---
 # Dolor
 

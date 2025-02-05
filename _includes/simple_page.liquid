@@ -58,46 +58,85 @@
     {% endblock %}
 
 </head>
-<body class="d-flex fd-column | m-0">
-    <nav class="d-flex jc-space-between | bc-neutral-100 bbwidth-1 bbstyle-dashed bcolor-neutral-500">
-        <div class="d-flex ai-center">
-            <a href="/" class="p-5 pl-10 | td-none | c-neutral-900">LOGO</a>
-            <form action="/search/"
-                class="d-flex fd-column">
-                <label for="searchInput">Rechercher</label>
-                <input  id="searchInput"
-                        type="search"
-                        name="search"
-                        value="">
-            </form>
+<body class="d-flex fd-column gap-5 | m-0 p-5">
+    <nav class="">
+        <div class="d-flex jc-space-between | bc-neutral-100 brad-3 bwidth-1 bstyle-dashed bcolor-neutral-500">
+            <div class="d-flex ai-center">
+                <a href="/" class="p-5 | td-none | c-neutral-900">LOGO</a>
+                <form action="/search/"
+                    class="d-flex fd-column">
+                    <label for="searchInput">Rechercher</label>
+                    <input  id="searchInput"
+                            type="search"
+                            name="search"
+                            value="">
+                </form>
+            </div>
+            <a href="#github" class="p-5 | td-none | c-neutral-900">Github</a>
         </div>
-        <a href="#github" class="p-5 | td-none | c-neutral-900">Github</a>
     </nav>
     <div class="d-flex ai-start">
-        <div class="d-flex fd-column | w-300px pt-10 | pos-sticky top-0 | bc-neutral-100"
-            style="min-width: 300px; max-width: 300px">
-            <menu class="d-flex fd-column | m-0 p-0 | ls-none">
-        
-                {%- for post in collections.all -%}
-                    <li class="d-flex ai-center">
-                        <a href="{{ post.url }}" class="d-flex | pt-3 pb-3 pl-10 pr-6 | fs-2 tt-uppercase td-none tws-balance fvs-mono-on fvs-wght-400 | c-neutral-900">
-                            {{ post.data.title | default: post.inputPath }}
-                        </a>
-                    </li>
-                {%- endfor -%}
-
-                {% for tag in collections.myTags %}
-                    <li><a href="/tags/{{ tag }}/">{{ tag }}</a></li>
-                {% endfor %}
-            </menu>
-        </div>
+        <nav class="d-flex fd-column | pos-sticky top-0 | w-300px">
+            <div class="bc-neutral-100 brad-3 bwidth-1 bstyle-dashed bcolor-neutral-500">
+                {{ collections.all | eleventyNavigation | eleventyNavigationToHtml: site.navigationOptions }}
+                <menu class="d-flex fd-column | m-0 p-0 | ls-none">
+                    {%- for post in collections.all -%}
+                        <li class="d-flex fd-column | bbwidth-1 bbstyle-dashed bcolor-neutral-500">
+                            {% assign tocContent = post.content | toc %}
+                            <a href="{{ post.url }}" class="d-flex | pt-3 pb-{% if post.inputPath == page.inputPath and tocContent != '' %}1{% else %}3{% endif %} pl-6 pr-6 | fs-3 td-none lh-5 tws-balance fvs-wght-500 | c-neutral-900">
+                                {{ post.data.title | default: post.inputPath }}
+                            </a>
+                            {% if post.inputPath == page.inputPath %}
+                                {{ tocContent }}
+                            {% endif %}
+                        </li>
+                    {%- endfor -%}
+    
+                    {% for tag in collections.myTags %}
+                        <li><a href="/tags/{{ tag }}/">{{ tag }}</a></li>
+                    {% endfor %}
+                </menu>
+            </div>
+        </nav>
         <main class="pos-relative | w-100-300px pl-10 pr-10">
             
-            {% block content %}{{ content | addtoc }}{% endblock %}
+            {% block content %}
+                {% assign breadcrumbMarkup = '' %}
+                {% if eleventyNavigation.key %}
+                    {% assign breadcrumb = collections.all | eleventyNavigationBreadcrumb: eleventyNavigation.key, site.navigationOptions %}
+                    {% capture breadcrumbMarkup %}
+                        <ul class="d-flex ai-baseline gap-2 | p-0 m-0 | fs-2 | ls-none">
+                            <li><a href="/" class="c-neutral-800">Home</a> /</li>
+                            {% if breadcrumb.size > 0 %}
+                                {% for item in breadcrumb %}
+                                    <li>
+                                        <a href="{{ item.url }}" class="c-neutral-800">
+                                            {{ item.key }}
+                                        </a> /
+                                    </li>
+                                {% endfor %}
+                            {% endif %}
+                            <li class="c-neutral-800">{% if title %}{{ title }}{% else %}{{ page.inputPath }}{% endif %}</li>
+                        </ul>
+                    {% endcapture %}
+                {% endif  %}
+                {% if title or description %}
+                    <header class="d-flex fd-column gap-2 | pb-5 | bbwidth-2 bbstyle-dashed bcolor-neutral-500">
+                        <h1 class="m-0 | lsp-5 fvs-wght-700 fs-10 tws-balance">{% if title %}{{ title }}{% else %}{{ page.inputPath }}{% endif %}</h1>
+                        {{ breadcrumbMarkup }}
+                        {% if description %}
+                            <p class="m-0 | fvs-wght-300 tws-balance fs-7 lsp-3">{{ description }}</p>
+                        {% endif %}
+                    </header>
+                {% else %}
+                    {{ breadcrumbMarkup }}
+                {% endif %}
+                {{ content | autoids }}
+            {% endblock %}
             
         </main>
     </div>
-    <footer class="p-10">
+    <footer class="">
         <p class="m-0 | fs-2 | c-neutral-500">11ty LibDoc</p>
     </footer>
     

@@ -48,7 +48,7 @@
 }
 
 body {
-    background: center / 20px 20px radial-gradient(#71B9F7 0.5px,#f9fcff 1px);
+    background: 10px / 20px 20px radial-gradient(#71B9F7 0.5px,#f9fcff 1px);
     font-family: "Recursive", sans-serif;
     font-optical-sizing: auto;
     font-weight: 300;
@@ -59,7 +59,7 @@ body {
 main {
     &>*:not(.sandbox) {
         width: 100%;
-        max-width: 600px;
+        max-width: 700px;
         margin-left: auto;
         margin-right: auto;
     }

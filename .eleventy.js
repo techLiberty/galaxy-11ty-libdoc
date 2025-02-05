@@ -1,41 +1,16 @@
 import { EleventyRenderPlugin } from "@11ty/eleventy";
+import eleventyNavigationPlugin from "@11ty/eleventy-navigation";
 
 export default function(eleventyConfig) {
-    // Shortcodes added in this way are available in:
-    // * Markdown
-    // * Liquid
-    // * Nunjucks
-    // * Handlebars (not async)
-    // * JavaScript
-    // eleventyConfig.addShortcode("user", function(firstName, lastName) { … });
-  
-    // Async support for `addShortcode` is new in Eleventy v2.0.0
-    // eleventyConfig.addPairedShortcode("model_ui", async function(section) {
-
-    //     return section.data
-    //  });
-    // eleventyConfig.addShortcode("link_it", async function(cms_site, lang, permalink) {
-
-    //     return `${env.url}/${env.baseurl}/${lang}/${permalink}`
-    // });
-  
-    // Universal Shortcodes (Adds to Liquid, Nunjucks, 11ty.js)
-    // eleventyConfig.addPairedShortcode("sandbox", function(path) {
-    //     return `<iframe src="${path}"></iframe>`;
-    // });
-    // Universal filters (Adds to Liquid, Nunjucks, 11ty.js)
-    // eleventyConfig.addAsyncFilter("sandbox", async function(path) {
-    //     const response = await fetch(path);
-    //     const code = await response.text();
-    //     return `<pre><code>${code}</code></pre><iframe src="${path}"></iframe>`;;
-    // });
-
-    // eleventyConfig.addShortcode("fetch", async function(path) {
-    //     let resp = await fetch(path);
-    //     let data = await resp.text();
-    //     return `<pre><code>${data}</code></pre><iframe src="${path}"></iframe>`;;
-    // });
-    const utils = {
+    eleventyConfig.addPlugin(eleventyNavigationPlugin);
+    
+    const libdocParams = {
+        toc: {
+            htmlTags: ['h1', 'h2', 'h3', 'h4', 'h5', 'h6'],
+            minTags: 1
+        }
+    }
+    const libdocUtils = {
         HTMLEncode: function(str) {
             // https://stackoverflow.com/a/784765
             str = [...str];
@@ -60,38 +35,54 @@ export default function(eleventyConfig) {
                      .replace(/\s+/g, '-') // replace spaces with hyphens
                      .replace(/-+/g, '-'); // remove consecutive hyphens
             return str;
+        },
+        extractHtmlTagsFromString: function(string, htmlTagsListArray) {
+            // https://stackoverflow.com/a/65725198
+            const htmlTagsFound = [];
+            string.replace(/<([a-zA-Z][a-zA-Z0-9_-]*)\b[^>]*>(.*?)<\/\1>/g, function(m,m1,m2) {
+                if (htmlTagsListArray.includes(m1)) {
+                    // write data to result object
+                    htmlTagsFound.push({
+                        tagName: m1,
+                        value: m2
+                    });
+                }
+            });
+            return htmlTagsFound
         }
     }
 
-    eleventyConfig.addAsyncFilter("addtoc", async function (content) {
-        // https://stackoverflow.com/a/65725198
-        const htmlTagsFound = [];
-        const filter = ['h1', 'h2', 'h3', 'h4', 'h5', 'h6'];
-        const modifiedContent = content.replace(/<([a-zA-Z][a-zA-Z0-9_-]*)\b[^>]*>(.*?)<\/\1>/g, function(m,m1,m2){
+    eleventyConfig.addAsyncFilter("autoids", async function (content) {
+        content = content.replace(/<([a-zA-Z][a-zA-Z0-9_-]*)\b[^>]*>(.*?)<\/\1>/g, function(m,m1,m2){
             let newM = m;
-            if (filter.includes(m1)) {
+            if (libdocParams.toc.htmlTags.includes(m1)) {
                 // Add id to the specified html tags
-                const slugifiedId = utils.slugify(m2);
-                // write data to result object
-                htmlTagsFound.push({
-                    tagName: m1,
-                    value: m2,
-                    id: slugifiedId
-                });
+                const slugifiedId = libdocUtils.slugify(m2);
                 newM = m.replace(`<${m1}>`, `<${m1} id="${slugifiedId}">`);
             }
             return newM;
         });
-        let tocMarkup = '<ol class="d-flex fd-column | m-0 p-0 | ls-none">';
-        // Displaying the results
-        htmlTagsFound.forEach(function(htmlTag) {
-            tocMarkup += `
-                <li>
-                    <a href="#${htmlTag.id}" class="fs-2 lh-1">${htmlTag.value}</a>
-                </li>`;
-        });
-        tocMarkup += '</ol>';
-		return tocMarkup + modifiedContent;
+		return content;
+	});
+
+    eleventyConfig.addAsyncFilter("toc", async function (content) {
+        const htmlTagsFound = libdocUtils.extractHtmlTagsFromString(content, libdocParams.toc.htmlTags);
+        let tocMarkup = '';
+        if (htmlTagsFound.length > libdocParams.toc.minTags) {
+            tocMarkup = '<ol class="d-flex fd-column | m-0 pl-6 | ls-none">';
+            // Displaying the results
+            htmlTagsFound.forEach(function(htmlTag) {
+                tocMarkup += `
+                    <li>
+                        <a  href="#${libdocUtils.slugify(htmlTag.value)}"
+                            class="d-flex | ml-1 pt-1 pb-1 pl-${htmlTag.tagName.replace(`h`, ``)} | fs-2 lh-5 fvs-wght-400 | c-neutral-800">
+                            ${htmlTag.value}
+                        </a>
+                    </li>`;
+            });
+            tocMarkup += '</ol>';
+        }
+		return tocMarkup;
 	});
 
     eleventyConfig.addPlugin(EleventyRenderPlugin, {
@@ -120,7 +111,7 @@ export default function(eleventyConfig) {
         let markup = '';
         if (typeof permalink == 'string') {
             // Case file iframe src
-            const contentNew = utils.HTMLEncode(content);
+            const contentNew = libdocUtils.HTMLEncode(content);
             markup = `
                 <div class="d-flex | sandbox">
                     <pre class="w-6t m-0 o-auto" style="height:500px">
@@ -133,7 +124,7 @@ export default function(eleventyConfig) {
                 </div>`;
         } else {
             // Case attribute srcdoc
-            const contentNew = utils.HTMLEncode(content);
+            const contentNew = libdocUtils.HTMLEncode(content);
             markup = `
                 <div class="d-flex | sandbox">
                     <pre class="w-6t m-0 o-auto" style="height:500px">

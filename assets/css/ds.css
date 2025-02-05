@@ -1002,6 +1002,36 @@
 .tt-lowercase {
   text-transform: lowercase;
 }
+.lsp-1 {
+  letter-spacing: -0.01em;
+}
+.lsp-2 {
+  letter-spacing: -0.02em;
+}
+.lsp-3 {
+  letter-spacing: -0.03em;
+}
+.lsp-4 {
+  letter-spacing: -0.04em;
+}
+.lsp-5 {
+  letter-spacing: -0.05em;
+}
+.lsp-6 {
+  letter-spacing: -0.06em;
+}
+.lsp-7 {
+  letter-spacing: -0.07em;
+}
+.lsp-8 {
+  letter-spacing: -0.08em;
+}
+.lsp-9 {
+  letter-spacing: -0.09em;
+}
+.lsp-10 {
+  letter-spacing: -0.1em;
+}
 .c-neutral-100 {
   color: var(--ita-colors-neutral-100, #FFFFFF);
 }

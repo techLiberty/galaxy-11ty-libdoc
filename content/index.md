@@ -1,5 +1,6 @@
 ---
-title: Accueil
+title: Eleventy LibDoc
+description: Just and Eleventy SSG starter project to create documentation website
 layout: simple_page.liquid
 permalink: index.html
 tags:
