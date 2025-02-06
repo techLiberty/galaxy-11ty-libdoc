@@ -1,11 +1,10 @@
 ---
-# title: Eleventy LibDoc
-description: Just and Eleventy SSG starter project to create documentation website
+title: Markdown Samples
+description: All available markdown tags into a single page with examples
 layout: simple_page.liquid
-permalink: index.html
 eleventyNavigation:
-    key: Eleventy LibDoc
-    order: 0
+    key: Samples
+    order: 20
 tags:
     - tag1
     - tag2

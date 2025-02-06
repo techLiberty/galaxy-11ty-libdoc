@@ -1,13 +1,35 @@
-<!DOCTYPE html>
+{% assign breadcrumbMarkup = '' %}
+{% assign finalTitle = title | default: page.inputPath %}
+{% if eleventyNavigation.key %}
+    {% assign breadcrumb = collections.all | eleventyNavigationBreadcrumb: eleventyNavigation.key, site.navigationOptions %}
+    {% if finalTitle == page.inputPath %}
+        {% assign finalTitle = eleventyNavigation.key %}
+    {% endif %}
+    {% capture breadcrumbMarkup %}
+        <ul class="d-flex ai-center gap-2 | p-0 m-0 | fs-2 lh-3 | ls-none">
+            <li class="d-flex gap-2"><a href="/" class="c-neutral-800">Home</a>/</li>
+            {% if breadcrumb.size > 0 %}
+                {% for item in breadcrumb %}
+                    <li class="d-flex ai-baseline gap-2">
+                        <a href="{{ item.url }}" class="ws-nowrap | c-neutral-800">
+                            {{ item.key }}
+                        </a> /
+                    </li>
+                {% endfor %}
+            {% endif %}
+            <li class="c-neutral-800">{{ finalTitle }}</li>
+        </ul>
+    {% endcapture %}
+{% endif  %}<!DOCTYPE html>
 <html lang="{{ page.lang }}">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{{ title }}{% if pagination.pageNumber > 0 %} - Page {{ pagination.pageNumber|plus:1 }}{% endif %}</title>
+    <title>{{ finalTitle }}{% if pagination.pageNumber > 0 %} - Page {{ pagination.pageNumber|plus:1 }}{% endif %}</title>
 
-    <meta itemprop="name" content="{{ title }}">
+    <meta itemprop="name" content="{{ finalTitle }}">
     <meta name="description" itemprop="description" content="{{ description }}">
-    <meta name="application-name" content="{{ title }}">
+    <meta name="application-name" content="{{ finalTitle }}">
     <meta name="author" content="Olivier 3lanc">
     <link rel="icon" type="image/png" href="/favicon.png">
     <link rel="canonical" href="{{ page.url }}" />
@@ -18,25 +40,25 @@
     <!-- Microsoft -->
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <meta name="msapplication-starturl" content="{{ page.url }}">
-    <meta name="msapplication-tooltip" content="{{ title }}">
+    <meta name="msapplication-tooltip" content="{{ finalTitle }}">
     <meta name="msapplication-TileColor" content="#FFFFFF">
     
     <!-- Open Graph -->
     <meta property="og:type" content="website">
     <meta property="og:url" content="{{ page.url }}">
-    <meta property="og:title" content="{{ title }}">
+    <meta property="og:title" content="{{ finalTitle }}">
     <meta property="og:description" content="{{ description }}">
     <meta property="og:image" content="{{ image_url }}">
     
     <!-- Twitter -->
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="{{ title }}">
+    <meta name="twitter:title" content="{{ finalTitle }}">
     <meta name="twitter:description" content="{{ description }}">
     <meta name="twitter:url" content="{{ page.url }}">
     <meta name="twitter:image" content="{{ image_url }}">
     
     <!-- iOS -->
-    <meta name="apple-mobile-web-app-title" content="{{ title }}">
+    <meta name="apple-mobile-web-app-title" content="{{ finalTitle }}">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="#FFFFFF">
     
@@ -77,60 +99,36 @@
     </nav>
     <div class="d-flex ai-start">
         <nav class="d-flex fd-column | pos-sticky top-0 | w-300px">
-            <div class="bc-neutral-100 brad-3 bwidth-1 bstyle-dashed bcolor-neutral-500">
-                {{ collections.all | eleventyNavigation | eleventyNavigationToHtml: site.navigationOptions }}
-                <menu class="d-flex fd-column | m-0 p-0 | ls-none">
-                    {%- for post in collections.all -%}
-                        <li class="d-flex fd-column | bbwidth-1 bbstyle-dashed bcolor-neutral-500">
-                            {% assign tocContent = post.content | toc %}
-                            <a href="{{ post.url }}" class="d-flex | pt-3 pb-{% if post.inputPath == page.inputPath and tocContent != '' %}1{% else %}3{% endif %} pl-6 pr-6 | fs-3 td-none lh-5 tws-balance fvs-wght-500 | c-neutral-900">
-                                {{ post.data.title | default: post.inputPath }}
-                            </a>
-                            {% if post.inputPath == page.inputPath %}
-                                {{ tocContent }}
-                            {% endif %}
-                        </li>
-                    {%- endfor -%}
-    
-                    {% for tag in collections.myTags %}
-                        <li><a href="/tags/{{ tag }}/">{{ tag }}</a></li>
-                    {% endfor %}
-                </menu>
+            <div class="o-auto | bc-neutral-100 brad-3 bwidth-1 bstyle-dashed bcolor-neutral-500"
+                style="max-height: calc(100vh - 60px - 3 * var(--ita-spacings-5))">
+                {% assign menu = collections.all | eleventyNavigation | eleventyNavigationToHtml: site.navigationOptions %}
+                {% capture currentPageHrefAttribute %}href="{{ page.url }}"{% endcapture %}
+                {% capture currentPageReplacementAttribute %}{{ currentPageHrefAttribute }} aria-current="page"{% endcapture %}
+                {% assign menu = menu | replace: currentPageHrefAttribute, currentPageReplacementAttribute %}
+                {% assign menu = menu | replace: '<menu>', '<menu class="d-flex fd-column fg-1 | m-0 pl-5 | ls-none">' %}
+                {{ menu }}
+                <div class="pos-sticky bottom-0 p-10 pe-none" style="background: linear-gradient(0deg, white 0%, transparent 100%)"></div>
             </div>
         </nav>
         <main class="pos-relative | w-100-300px pl-10 pr-10">
             
             {% block content %}
-                {% assign breadcrumbMarkup = '' %}
-                {% if eleventyNavigation.key %}
-                    {% assign breadcrumb = collections.all | eleventyNavigationBreadcrumb: eleventyNavigation.key, site.navigationOptions %}
-                    {% capture breadcrumbMarkup %}
-                        <ul class="d-flex ai-baseline gap-2 | p-0 m-0 | fs-2 | ls-none">
-                            <li><a href="/" class="c-neutral-800">Home</a> /</li>
-                            {% if breadcrumb.size > 0 %}
-                                {% for item in breadcrumb %}
-                                    <li>
-                                        <a href="{{ item.url }}" class="c-neutral-800">
-                                            {{ item.key }}
-                                        </a> /
-                                    </li>
-                                {% endfor %}
-                            {% endif %}
-                            <li class="c-neutral-800">{% if title %}{{ title }}{% else %}{{ page.inputPath }}{% endif %}</li>
-                        </ul>
-                    {% endcapture %}
-                {% endif  %}
-                {% if title or description %}
-                    <header class="d-flex fd-column gap-2 | pb-5 | bbwidth-2 bbstyle-dashed bcolor-neutral-500">
-                        <h1 class="m-0 | lsp-5 fvs-wght-700 fs-10 tws-balance">{% if title %}{{ title }}{% else %}{{ page.inputPath }}{% endif %}</h1>
-                        {{ breadcrumbMarkup }}
-                        {% if description %}
-                            <p class="m-0 | fvs-wght-300 tws-balance fs-7 lsp-3">{{ description }}</p>
-                        {% endif %}
-                    </header>
-                {% else %}
+                <header class="d-flex fd-column gap-2 | pb-5 | bbwidth-2 bbstyle-dashed bcolor-neutral-500">
+                    <h1 class="m-0 | lsp-5 fvs-wght-700 fs-10 tws-balance">
+                        {{ finalTitle }}
+                    </h1>
                     {{ breadcrumbMarkup }}
-                {% endif %}
+                    {% if description %}
+                        <p class="m-0 | fvs-wght-400 tws-balance fs-7 lsp-3">{{ description }}</p>
+                    {% endif %}
+                    {% assign toc = content | toc %}
+                    {% if toc != '' %}
+                        <details>
+                            <summary>Table of content</summary>
+                            {{ content | toc }}
+                        </details>
+                    {% endif %}
+                </header>
                 {{ content | autoids }}
             {% endblock %}
             
@@ -143,6 +141,7 @@
     {% block js_body %}
         <script src="/assets/js/sandbox.js"></script>
         <script src="/assets/js/highlight.min.js"></script>
+        <script src="/assets/js/liquid.min.js"></script>
         <script>hljs.highlightAll();</script>
     {% endblock %}
 </body>

@@ -120,7 +120,9 @@ export default function(eleventyConfig) {
                         </code>
                     </pre>
                     <button class="resizer" style="width:20px">|||</button>
-                    <iframe src="${permalink}" class="w-6t b-0"></iframe>
+                    <iframe src="${permalink}"
+                        loading="lazy"
+                        class="w-6t b-0"></iframe>
                 </div>`;
         } else {
             // Case attribute srcdoc
@@ -134,6 +136,7 @@ export default function(eleventyConfig) {
                     </pre>
                     <button class="resizer" style="width:20px">|||</button>
                     <iframe srcdoc="${contentNew}"
+                        loading="lazy"
                         class="w-6t b-0"></iframe>
                 </div>`;
         }

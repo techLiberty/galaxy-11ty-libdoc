@@ -1,16 +1,17 @@
 ---
-title: Coucou
+title: Sandbox from srcdoc
+description: Include a sandbox without a file, input code directly into your page
 layout: simple_page.liquid
+eleventyNavigation:
+    key: Sandbox from srcdoc
+    parent: Samples
 tags: first
-permalink: /first/index.html
 ---
-# coucou
-
-Dolor aliquyam duo ea et at, elitr sed sea voluptua sit lorem lorem at tempor, lorem no et consetetur et. At et lorem consetetur at rebum eirmod sea diam vero, nonumy sed erat sit at. Diam takimata magna sed ipsum et invidunt sit sanctus, gubergren aliquyam rebum elitr sed tempor.
-
-{% render 'sandbox', path: '/sandboxes/1/index.html' %}
-
-Caught soils save few name the, yet eros to of womans. Deigned festal monastic than nor. Flow his like domestic for passion bade thee. Moths or charms wandered by none. Delight him from once alas shell almost but made bliss. They he they bower his calm, for hill then none one of him to rhyme any, him he tis pollution whom sad satiety longdeserted her loved. Atonement yet than in aisle muse for birth night. Lowly if superstition in relief. Cheer and caught his on in along. Ah of he aught bacchanals a not might for near, did childe was.
+```liquid
+{% raw %}{% sandbox %}
+<!-- your HTML -->
+{% endsandbox %}{% endraw %}
+```
 
 {% sandbox %}
 <nav c-scrollsyncbar="">

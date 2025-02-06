@@ -56,6 +56,12 @@ body {
     font-variation-settings: "slnt" 0, "CASL" 1, "CRSV" 0.0, "MONO" 0, "wght" 300;
 }
 
+html,
+.o-auto {
+    scrollbar-color: var(--ita-colors-neutral-700) transparent;
+    scrollbar-width: 10px;
+}
+
 main {
     &>*:not(.sandbox) {
         width: 100%;
@@ -75,6 +81,21 @@ code {
     font-variation-settings: "slnt" 0, "CASL" 0, "CRSV" 0.0, "MONO" 1, "wght" 300;
     line-height: 1.6em;
     font-size: var(--ita-fontSizes-3);
+}
+
+menu {
+    [aria-current="page"] {
+        opacity: 0.5;
+    }
+    .__anchor::before {
+        content: '';
+        display: flex;
+        position: absolute;
+        top: 50%;
+        right: 100%;
+        border-top: 1px dashed var(--ita-colors-neutral-500);
+        width: 200px;
+    }
 }
 
 /* FANCY */
