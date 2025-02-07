@@ -1,16 +1,13 @@
 ---
-# title: Eleventy LibDoc
+title: Eleventy LibDoc
 description: Just and Eleventy SSG starter project to create documentation website
 layout: simple_page.liquid
 permalink: index.html
-eleventyNavigation:
-    key: Eleventy LibDoc
-    order: 0
 tags:
     - tag1
     - tag2
 ---
-
+{{ site.name | json }}
 ## Headers
 
 # H1

@@ -16,8 +16,8 @@ eleventyExcludeFromCollections: true
         {% for post in collections.all %}
             {
                 "url": "{{ post.url }}",
-                "title": "{{ post.data.title }}",
-                "content": "{{ post.content | strip_newlines | strip_html }}"
+                "title": "{% if post.data.eleventyNavigation.key %}{{ post.data.eleventyNavigation.key }}{% else %}{{ post.data.title | default: post.inputPath }}{% endif %}",
+                "content": "{{ post.data.description | strip_newlines | strip_html }}{{ post.content | strip_newlines | strip_html }}"
             }{% if forloop.last == false %},{% endif %}
         {% endfor %}
     {% endif %}

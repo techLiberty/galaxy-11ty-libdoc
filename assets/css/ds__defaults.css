@@ -48,7 +48,7 @@
 }
 
 body {
-    background: 10px / 20px 20px radial-gradient(#71B9F7 0.5px,#f9fcff 1px);
+    background: 0px 0px / 20px 20px radial-gradient(#71B9F7 0.5px,#f9fcff 1px);
     font-family: "Recursive", sans-serif;
     font-optical-sizing: auto;
     font-weight: 300;
@@ -74,6 +74,10 @@ main {
     ol {
         line-height: 1.6em;
     }
+    /* language not supported in highlight js */
+    pre:not(:has(.hljs)) {
+        overflow: auto;
+    }
 }
 
 code {
@@ -81,6 +85,10 @@ code {
     font-variation-settings: "slnt" 0, "CASL" 0, "CRSV" 0.0, "MONO" 1, "wght" 300;
     line-height: 1.6em;
     font-size: var(--ita-fontSizes-3);
+}
+
+input {
+    font-family: "Recursive", monospace;
 }
 
 menu {
@@ -91,10 +99,21 @@ menu {
         content: '';
         display: flex;
         position: absolute;
-        top: 50%;
+        top: calc(50% - 0.5px);
         right: 100%;
         border-top: 1px dashed var(--ita-colors-neutral-500);
         width: 200px;
+    }
+    .__anchor::after {
+        content: '';
+        display: flex;
+        position: absolute;
+        top: calc(50% - 2.5px);
+        left: 0%;
+        border-radius: 100%;
+        background-color: var(--ita-colors-neutral-600);
+        width: 5px;
+        height: 5px;
     }
 }
 

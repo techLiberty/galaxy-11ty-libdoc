@@ -6,7 +6,7 @@
         {% assign finalTitle = eleventyNavigation.key %}
     {% endif %}
     {% capture breadcrumbMarkup %}
-        <ul class="d-flex ai-center gap-2 | p-0 m-0 | fs-2 lh-3 | ls-none">
+        <ul class="d-flex ai-center gap-2 | p-0 m-0 o-auto | fs-2 lh-3 | ls-none">
             <li class="d-flex gap-2"><a href="/" class="c-neutral-800">Home</a>/</li>
             {% if breadcrumb.size > 0 %}
                 {% for item in breadcrumb %}
@@ -17,7 +17,7 @@
                     </li>
                 {% endfor %}
             {% endif %}
-            <li class="c-neutral-800">{{ finalTitle }}</li>
+            <li class="c-neutral-800 ws-nowrap">{{ finalTitle }}</li>
         </ul>
     {% endcapture %}
 {% endif  %}<!DOCTYPE html>
@@ -80,41 +80,87 @@
     {% endblock %}
 
 </head>
-<body class="d-flex fd-column gap-5 | m-0 p-5">
-    <nav class="">
-        <div class="d-flex jc-space-between | bc-neutral-100 brad-3 bwidth-1 bstyle-dashed bcolor-neutral-500">
-            <div class="d-flex ai-center">
-                <a href="/" class="p-5 | td-none | c-neutral-900">LOGO</a>
-                <form action="/search/"
-                    class="d-flex fd-column">
-                    <label for="searchInput">Rechercher</label>
-                    <input  id="searchInput"
-                            type="search"
-                            name="search"
-                            value="">
-                </form>
-            </div>
-            <a href="#github" class="p-5 | td-none | c-neutral-900">Github</a>
-        </div>
-    </nav>
-    <div class="d-flex ai-start">
-        <nav class="d-flex fd-column | pos-sticky top-0 | w-300px">
-            <div class="o-auto | bc-neutral-100 brad-3 bwidth-1 bstyle-dashed bcolor-neutral-500"
-                style="max-height: calc(100vh - 60px - 3 * var(--ita-spacings-5))">
+<body class="d-flex fd-column | m-0">
+    <div class="d-flex"
+        fd-column="xs,sm"
+        ai-start="md"
+        ai-center="xs,sm"
+        pl-5="md">
+        <div class="d-flex fd-column | pos-sticky top-0 z-1"
+            ai-center="xs,sm"
+            w-100="xs,sm"
+            w-300px="md">
+            <nav class="d-flex | pos-sticky top-0 z-1 | w-100 p-5"
+                d-none="md">
+                <div class="d-flex jc-space-between ai-center gap-5 | w-100 | bc-neutral-100 brad-3 bwidth-1 bstyle-dashed bcolor-neutral-500">
+                    <p class="m-0 pl-5 | o-hidden | fvs-wght-400 fs-3 to-ellipsis ws-nowrap">{{ finalTitle }}</p>
+                    <button type="button"
+                        class="d-flex | p-5 | cur-pointer bc-neutral-200 b-0 brad-3"
+                        c-toggle="nav_primary"
+                        data-dismiss="true">
+                        menu
+                    </button>
+                </div>
+            </nav>
+            <nav class="d-flex d-none--xs d-none--sm fd-column | bc-neutral-100 brad-3 bwidth-1 bstyle-dashed bcolor-neutral-500"
+                style="max-height: calc(100vh - 2 * var(--ita-spacings-5));max-width: calc(100vw - 2 * var(--ita-spacings-5))"
+                mt-5="md"
+                c-toggle-name="nav_primary"
+                data-opened-state-class="d-flex fd-column | bc-neutral-100 brad-3 bwidth-1 bstyle-dashed bcolor-neutral-500">
+                <menu class="d-flex fd-column | pos-sticky top-0 z-1 | m-0 p-0 | ls-none bc-neutral-100 bradtl-3 bradtr-3 bbwidth-1 bbstyle-dashed bcolor-neutral-500">
+                    <li class="d-flex ai-center">
+                        <a  href="/"
+                            class="p-5 | td-none fvs-wght-700 lsp-5 fs-8 tws-balance | c-neutral-900">
+                            Documentation Title or Logo
+                        </a>
+                    </li>
+                    <li>
+                        <form action="/search/"
+                            class="d-flex fd-column | pos-relative | pl-5 pr-5">
+                            <label for="searchInput"
+                                class="pos-absolute | ml-5 t-tY-50 | fvs-wght-400 fs-1 tt-uppercase | bc-neutral-100">
+                                Search
+                            </label>
+                            <input  id="searchInput"
+                                    type="search"
+                                    name="search"
+                                    class="pl-5 pr-5 pt-3 pb-3 | fs-3 | brad-4 bwidth-1 bstyle-dashed bcolor-neutral-500"
+                                    placeholder="Search"
+                                    value="">
+                        </form>
+                    </li>
+                    <li class="d-flex ai-center gap-5 | pl-5 pr-5">
+                        <a  href="#github"
+                            class="d-flex ai-center | pt-5 pb-5 | fvs-wght-400 fs-2 lh-1 tt-uppercase | c-neutral-900">
+                            GitHub
+                        </a>
+                    </li>
+                </menu>
                 {% assign menu = collections.all | eleventyNavigation | eleventyNavigationToHtml: site.navigationOptions %}
                 {% capture currentPageHrefAttribute %}href="{{ page.url }}"{% endcapture %}
                 {% capture currentPageReplacementAttribute %}{{ currentPageHrefAttribute }} aria-current="page"{% endcapture %}
                 {% assign menu = menu | replace: currentPageHrefAttribute, currentPageReplacementAttribute %}
                 {% assign menu = menu | replace: '<menu>', '<menu class="d-flex fd-column fg-1 | m-0 pl-5 | ls-none">' %}
-                {{ menu }}
-                <div class="pos-sticky bottom-0 p-10 pe-none" style="background: linear-gradient(0deg, white 0%, transparent 100%)"></div>
-            </div>
-        </nav>
-        <main class="pos-relative | w-100-300px pl-10 pr-10">
+                <div class="h-100 o-auto">
+                    {{ menu }}
+
+                </div>
+                {% comment %} <div class="pos-sticky bottom-0 p-10 pe-none" style="background: linear-gradient(0deg, white 0%, transparent 100%)"></div> {% endcomment %}
+            </nav>
+        </div>
+        <main class="pos-relative"
+            w-100-300px="md"
+            w-100="xs,sm"
+            pl-5="xs,sm"
+            pr-5="xs,sm"
+            pl-10="md"
+            pr-10="md">
             
             {% block content %}
                 <header class="d-flex fd-column gap-2 | pb-5 | bbwidth-2 bbstyle-dashed bcolor-neutral-500">
-                    <h1 class="m-0 | lsp-5 fvs-wght-700 fs-10 tws-balance">
+                    <h1 class="m-0 | lsp-5 fvs-wght-700 tws-balance"
+                        fs-10="md"
+                        fs-9="xs,sm">
                         {{ finalTitle }}
                     </h1>
                     {{ breadcrumbMarkup }}
@@ -134,11 +180,12 @@
             
         </main>
     </div>
-    <footer class="">
+    <footer class="pl-5 pr-5 pt-11 pb-11">
         <p class="m-0 | fs-2 | c-neutral-500">11ty LibDoc</p>
     </footer>
     
     {% block js_body %}
+        <script src="/assets/js/c-toggle.js"></script>
         <script src="/assets/js/sandbox.js"></script>
         <script src="/assets/js/highlight.min.js"></script>
         <script src="/assets/js/liquid.min.js"></script>
