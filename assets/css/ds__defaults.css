@@ -1,3 +1,7 @@
+:root {
+    --libdoc-container-width: var(--ita-widths-content);
+    --libdoc-font-family: "Recursive", sans-serif;
+}
 /* FONTS */
 /* cyrillic-ext */
 @font-face {
@@ -47,9 +51,15 @@
     box-sizing: border-box;
 }
 
+body,
+input,
+code,
+button {
+    font-family: var(--libdoc-font-family);
+}
+
 body {
     background: 0px 0px / 20px 20px radial-gradient(#71B9F7 0.5px,#f9fcff 1px);
-    font-family: "Recursive", sans-serif;
     font-optical-sizing: auto;
     font-weight: 300;
     font-style: normal;
@@ -65,9 +75,11 @@ html,
 main {
     &>*:not(.sandbox) {
         width: 100%;
-        max-width: 700px;
+        max-width: calc(var(--libdoc-container-width) + 2 * var(--ita-spacings-9));
         margin-left: auto;
         margin-right: auto;
+        padding-left: var(--ita-spacings-9);
+        padding-right: var(--ita-spacings-9);
     }
     p,
     ul,
@@ -79,16 +91,20 @@ main {
         overflow: auto;
     }
 }
+@media (max-width: 959px) {
+    main {
+        &>*:not(.sandbox) {
+            max-width: calc(var(--libdoc-container-width) + 2 * var(--ita-spacings-5));
+            padding-left: var(--ita-spacings-5);
+            padding-right: var(--ita-spacings-5);
+        }
+    }
+}
 
 code {
-    font-family: "Recursive", monospace;
     font-variation-settings: "slnt" 0, "CASL" 0, "CRSV" 0.0, "MONO" 1, "wght" 300;
     line-height: 1.6em;
     font-size: var(--ita-fontSizes-3);
-}
-
-input {
-    font-family: "Recursive", monospace;
 }
 
 menu {
@@ -115,6 +131,11 @@ menu {
         width: 5px;
         height: 5px;
     }
+}
+
+/* SANDBOX */
+.sandbox__resizer:active {
+    cursor: col-resize;
 }
 
 /* FANCY */

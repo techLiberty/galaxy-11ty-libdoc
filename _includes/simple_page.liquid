@@ -1,4 +1,5 @@
 {% assign breadcrumbMarkup = '' %}
+{% assign tocMarkup = content | toc %}
 {% assign finalTitle = title | default: page.inputPath %}
 {% if eleventyNavigation.key %}
     {% assign breadcrumb = collections.all | eleventyNavigationBreadcrumb: eleventyNavigation.key, site.navigationOptions %}
@@ -72,7 +73,7 @@
     {% block css_head %} 
         <link rel="stylesheet" href="/assets/css/ds__defaults.css">
         <link rel="stylesheet" href="/assets/css/ds.css">
-        <link rel="stylesheet" href="/assets/css/ds__width-twelves.css">
+        {% comment %} <link rel="stylesheet" href="/assets/css/ds__width-twelves.css"> {% endcomment %}
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.11.1/styles/night-owl.min.css">
         {% comment %} <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.11.1/styles/nord.min.css"> {% endcomment %}
         {% comment %} <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.11.1/styles/ir-black.min.css"> {% endcomment %}
@@ -89,10 +90,10 @@
         <div class="d-flex fd-column | pos-sticky top-0 z-1"
             ai-center="xs,sm"
             w-100="xs,sm"
-            w-300px="md">
-            <nav class="d-flex | pos-sticky top-0 z-1 | w-100 p-5"
+            w-sidebar="md">
+            <nav class="d-flex | pos-fixed bottom-0 left-0 z-1 | w-100"
                 d-none="md">
-                <div class="d-flex jc-space-between ai-center gap-5 | w-100 | bc-neutral-100 brad-3 bwidth-1 bstyle-dashed bcolor-neutral-500">
+                <div class="d-flex jc-space-between ai-center gap-5 | w-100 | bc-neutral-100 btwidth-1 btstyle-dashed bcolor-neutral-500">
                     <p class="m-0 pl-5 | o-hidden | fvs-wght-400 fs-3 to-ellipsis ws-nowrap">{{ finalTitle }}</p>
                     <button type="button"
                         class="d-flex | p-5 | cur-pointer bc-neutral-200 b-0 brad-3"
@@ -102,8 +103,7 @@
                     </button>
                 </div>
             </nav>
-            <nav class="d-flex d-none--xs d-none--sm fd-column | bc-neutral-100 brad-3 bwidth-1 bstyle-dashed bcolor-neutral-500"
-                style="max-height: calc(100vh - 2 * var(--ita-spacings-5));max-width: calc(100vw - 2 * var(--ita-spacings-5))"
+            <nav class="d-flex d-none--xs d-none--sm fd-column | maxw-sidebar maxh-sidebar | bc-neutral-100 brad-3 bwidth-1 bstyle-dashed bcolor-neutral-500"
                 mt-5="md"
                 c-toggle-name="nav_primary"
                 data-opened-state-class="d-flex fd-column | bc-neutral-100 brad-3 bwidth-1 bstyle-dashed bcolor-neutral-500">
@@ -137,10 +137,10 @@
                     </li>
                 </menu>
                 {% assign menu = collections.all | eleventyNavigation | eleventyNavigationToHtml: site.navigationOptions %}
-                {% capture currentPageHrefAttribute %}href="{{ page.url }}"{% endcapture %}
-                {% capture currentPageReplacementAttribute %}{{ currentPageHrefAttribute }} aria-current="page"{% endcapture %}
+                {% assign currentPageHrefAttribute = '<a href="' | append: page.url | append: '"' %}
+                {% capture currentPageReplacementAttribute %}<div class="order-1 | w-100 pl-2">{{ tocMarkup }}</div>{{ currentPageHrefAttribute }} aria-current="page"{% endcapture %}
                 {% assign menu = menu | replace: currentPageHrefAttribute, currentPageReplacementAttribute %}
-                {% assign menu = menu | replace: '<menu>', '<menu class="d-flex fd-column fg-1 | m-0 pl-5 | ls-none">' %}
+                {% assign menu = menu | replace: '<menu>', '<menu class="d-flex fd-column fg-1 order-1 | m-0 pl-5 | ls-none">' %}
                 <div class="h-100 o-auto">
                     {{ menu }}
 
@@ -148,16 +148,12 @@
                 {% comment %} <div class="pos-sticky bottom-0 p-10 pe-none" style="background: linear-gradient(0deg, white 0%, transparent 100%)"></div> {% endcomment %}
             </nav>
         </div>
-        <main class="pos-relative"
-            w-100-300px="md"
-            w-100="xs,sm"
-            pl-5="xs,sm"
-            pr-5="xs,sm"
-            pl-10="md"
-            pr-10="md">
+        <main class="pos-relative | pl-5 pr-5"
+            w-100-minus-sidebar="md"
+            w-100="xs,sm">
             
             {% block content %}
-                <header class="d-flex fd-column gap-2 | pb-5 | bbwidth-2 bbstyle-dashed bcolor-neutral-500">
+                <header class="d-flex fd-column gap-2 | mt-5 pt-7 pb-7 | bc-neutral-100 bwidth-1 bstyle-dashed bcolor-neutral-500 brad-3">
                     <h1 class="m-0 | lsp-5 fvs-wght-700 tws-balance"
                         fs-10="md"
                         fs-9="xs,sm">
@@ -167,22 +163,25 @@
                     {% if description %}
                         <p class="m-0 | fvs-wght-400 tws-balance fs-7 lsp-3">{{ description }}</p>
                     {% endif %}
-                    {% assign toc = content | toc %}
-                    {% if toc != '' %}
+                    {% if tocMarkup != '' %}
                         <details>
-                            <summary>Table of content</summary>
-                            {{ content | toc }}
+                            <summary class="fvs-wght-400 fs-3">
+                                Table of content
+                            </summary>
+                            <div class="mt-5 p-3 | bc-neutral-100 bwidth-1 bstyle-dashed bcolor-neutral-500 brad-3">
+                                {{ tocMarkup }}
+                            </div>
                         </details>
                     {% endif %}
                 </header>
-                {{ content | autoids }}
+                {{ content | cleanup | autoids }}
+                <footer class="pt-11 pb-11">
+                    <p class="m-0 | fs-2 | c-neutral-700">11ty LibDoc</p>
+                </footer>
             {% endblock %}
             
         </main>
     </div>
-    <footer class="pl-5 pr-5 pt-11 pb-11">
-        <p class="m-0 | fs-2 | c-neutral-500">11ty LibDoc</p>
-    </footer>
     
     {% block js_body %}
         <script src="/assets/js/c-toggle.js"></script>

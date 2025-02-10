@@ -49,6 +49,48 @@ export default function(eleventyConfig) {
                 }
             });
             return htmlTagsFound
+        },
+        templates: {
+            sandbox: function({iframeAttribute, iframeCommands, title, code}) {
+                return `
+                    <aside class="d-flex | sandbox"
+                        fd-column="xs,sm">
+                        <div class="d-flex | bc-neutral-900 c-neutral-200 bradtr-3 bradtl-3 bwidth-1 bstyle-dashed bcolor-neutral-200"
+                            d-none="md">
+                            <button type="button"
+                                class="d-flex | p-5 | fvs-wght-400 fs-2 tt-uppercase | c-neutral-300 bc-0 b-0 cur-pointer | sandbox__tab"
+                                data-name="code">
+                                Code
+                            </button>
+                            <button type="button"
+                                class="d-flex | p-5 | fvs-wght-400 fs-2 tt-uppercase | c-neutral-300 bc-0 b-0 cur-pointer | sandbox__tab"
+                                data-name="iframe">
+                                Iframe
+                            </button>
+                        </div>
+                        <div class="d-flex fd-column d-none--xs d-none--sm | pb-5 | bc-neutral-900 c-neutral-200 brad-3 bwidth-1 bstyle-dashed bcolor-neutral-700 | sandbox__code"
+                            w-50="md"
+                            w-100="xs,sm">
+                            <div class="d-flex jc-space-between ai-center">
+                                <h2 class="m-0 pl-5 | fvs-wght-400 fs-3 | c-neutral-600">${title}</h2>
+                                <button type="button" class="d-flex | p-5 | fvs-wght-400 fs-2 tt-uppercase | c-neutral-300 bc-0 b-0 cur-pointer">Copy</button>
+                            </div>
+                            <div class="pl-5">
+                                <pre class="m-0 h-500px o-auto | brad-3">
+                                    <code class="language-html fvs-mono-on fvs-wght-300 fs-3 lh-6">
+                                        ${code}
+                                    </code>
+                                </pre>
+                            </div>
+                        </div>
+                        <button class="p-0 | bc-0 b-0 | sandbox__resizer" style="width:20px" d-none="xs,sm">||</button>
+                        <div class="d-flex fd-column | pb-5 | bc-neutral-900 c-neutral-200 brad-3 bwidth-1 bstyle-dashed bcolor-neutral-700 | sandbox__iframe"
+                            w-50="md"
+                            w-100="xs,sm">${iframeCommands}
+                            <iframe ${iframeAttribute} loading="lazy" class="w-100 h-500px | b-0"></iframe>
+                        </div>
+                    </aside>`;
+            }
         }
     }
 
@@ -65,11 +107,19 @@ export default function(eleventyConfig) {
 		return content;
 	});
 
+    eleventyConfig.addAsyncFilter("cleanup", async function (content) {
+        content = content.replace(`<p><div`, `<div`);
+        content = content.replace(`</div></p>`, `</div>`);
+        content = content.replace(`<p><aside`, `<aside`);
+        content = content.replace(`</aside></p>`, `</aside>`);
+		return content;
+	});
+
     eleventyConfig.addAsyncFilter("toc", async function (content) {
         const htmlTagsFound = libdocUtils.extractHtmlTagsFromString(content, libdocParams.toc.htmlTags);
         let tocMarkup = '';
         if (htmlTagsFound.length > libdocParams.toc.minTags) {
-            tocMarkup = '<ol class="d-flex fd-column | m-0 pl-6 | ls-none">';
+            tocMarkup = '<ol class="d-flex fd-column | m-0 pl-0 | ls-none">';
             // Displaying the results
             htmlTagsFound.forEach(function(htmlTag) {
                 tocMarkup += `
@@ -107,40 +157,29 @@ export default function(eleventyConfig) {
 		return finalData;
 	});
 
-    eleventyConfig.addPairedShortcode("sandbox", async function(content, permalink) {
-        let markup = '';
-        if (typeof permalink == 'string') {
-            // Case file iframe src
-            const contentNew = libdocUtils.HTMLEncode(content);
-            markup = `
-                <div class="d-flex | sandbox">
-                    <pre class="w-6t m-0 o-auto" style="height:500px">
-                        <code class="language-html fvs-mono-on fvs-casual-off fvs-cursive-off fvs-wght-300 fs-3 lh-6">
-                            ${contentNew}
-                        </code>
-                    </pre>
-                    <button class="resizer" style="width:20px">|||</button>
-                    <iframe src="${permalink}"
-                        loading="lazy"
-                        class="w-6t b-0"></iframe>
+
+    eleventyConfig.addPairedShortcode("sandbox", async function(content, permalink, sandboxTitle) {
+        const   code = libdocUtils.HTMLEncode(content),
+                isFile = typeof permalink == `string`,
+                iframeAttribute = isFile ? `src="${permalink}"` : `srcdoc="${code}"`,
+                title = typeof sandboxTitle == `string` ? sandboxTitle : `Sandbox`;
+        let     iframeCommands = '';
+        if (isFile) {
+            iframeCommands = `<div class="d-flex jc-space-between ai-center gap-5">
+                    <a  href="${permalink}"
+                        target="_blank"
+                        class="d-flex | p-5 | fvs-wght-400 fs-3 | c-neutral-500 bc-0 b-0 cur-pointer">
+                        ${permalink}
+                    </a>
+                    <button type="button" class="d-flex | p-5 | fvs-wght-400 fs-2 tt-uppercase | c-neutral-300 bc-0 b-0 cur-pointer">Copy URL</button>
                 </div>`;
         } else {
-            // Case attribute srcdoc
-            const contentNew = libdocUtils.HTMLEncode(content);
-            markup = `
-                <div class="d-flex | sandbox">
-                    <pre class="w-6t m-0 o-auto" style="height:500px">
-                        <code class="language-html fvs-mono-on fvs-casual-off fvs-cursive-off fvs-wght-300 fs-3 lh-6">
-                            ${contentNew}
-                        </code>
-                    </pre>
-                    <button class="resizer" style="width:20px">|||</button>
-                    <iframe srcdoc="${contentNew}"
-                        loading="lazy"
-                        class="w-6t b-0"></iframe>
+            iframeCommands = `<div class="d-flex jc-space-between ai-center gap-5">
+                    <div class="d-flex | p-5 | fvs-wght-400 fs-3 | c-neutral-600">srcdoc</div>
+                    <button type="button" class="d-flex | p-5 | fvs-wght-400 fs-2 tt-uppercase | c-neutral-700 bc-0 b-0 pe-none" disabled>Copy URL</button>
                 </div>`;
         }
-        return markup;
+        return libdocUtils.templates.sandbox({iframeAttribute, iframeCommands, title, code});
     });
 
     // Copy `css/fonts/` to `_site/css/fonts`
