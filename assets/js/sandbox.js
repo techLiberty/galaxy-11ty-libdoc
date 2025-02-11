@@ -11,7 +11,27 @@ const sandbox = {
         pre: null,
         iframe: null,
         tabCode: null,
-        tabIframe: null
+        tabIframe: null,
+        monitorIframeWidth: null,
+        monitorIframeHeight: null
+    },
+    _selectors: {
+        sandbox: '.sandbox',
+        resizer: '.sandbox__resizer',
+        codeWrapper: '.sandbox__code_wrapper',
+        iframeWrapper: '.sandbox__iframe_wrapper',
+        tabBtn: '.sandbox__tab',
+        monitorIframeWidth: '.sandbox__monitor__iframe_width',
+        monitorIframeHeight: '.sandbox__monitor__iframe_height',
+        copyCode: '.sandbox__copy_code',
+        copyUrl: '.sandbox__copy_url',
+        permalink: '.sandbox__permalink'
+    },
+    _params: {
+        tabBtn: {
+            defaultClass: 'd-flex | pt-2 pb-2 pl-5 pr-5 | fvs-wght-400 fs-2 tt-uppercase | c-neutral-100 bc-0 b-0 cur-pointer',
+            activeClass: 'd-flex | pt-2 pb-2 pl-5 pr-5 | fvs-wght-400 fs-2 tt-uppercase | c-neutral-900 bc-neutral-100 b-0 brad-1 cur-pointer'
+        }
     },
     disableIframes: function() {
         document.querySelectorAll('iframe').forEach(function(el) {
@@ -27,20 +47,44 @@ const sandbox = {
         const   delta = sandbox._pointerX - sandbox._pointerXReference,
                 preWidth = sandbox._preInitialWidth + delta,
                 iframeWidth = sandbox._iframeInitialWidth - delta;
-        sandbox._resizerEls.pre.style.width = `${preWidth}px`;
-        sandbox._resizerEls.iframe.style.width = `${iframeWidth}px`;
+        if (preWidth > 0 && iframeWidth > 0) {
+            sandbox._resizerEls.pre.style.width = `${preWidth}px`;
+            sandbox._resizerEls.iframe.style.width = `${iframeWidth}px`;
+            sandbox._resizerEls.monitorIframeWidth.innerHTML = iframeWidth;
+            sandbox._resizerEls.monitorIframeHeight.innerHTML = sandbox._resizerEls.iframe.querySelector('iframe').clientHeight;
+        }
+    },
+    reset: function() {
+        document.querySelectorAll(`${sandbox._selectors.codeWrapper}, ${sandbox._selectors.iframeWrapper}`).forEach(function(el) {
+            el.style.width = null;
+        });
+        sandbox.updateMonitor();
+    },
+    updateMonitor: function() {
+        document.querySelectorAll(sandbox._selectors.sandbox).forEach(function(elSandbox) {
+            elSandbox.querySelectorAll(`${sandbox._selectors.codeWrapper}, ${sandbox._selectors.iframeWrapper}`).forEach(function(el) {
+                el.style.width = null;
+            });
+            const elIframe = elSandbox.querySelector('iframe');
+            elSandbox.querySelector(sandbox._selectors.monitorIframeWidth).innerHTML = elIframe.offsetWidth;
+            elSandbox.querySelector(sandbox._selectors.monitorIframeHeight).innerHTML = elIframe.offsetHeight;
+        });
     },
     handlers: {
         _mousedownResizer: function(evt) {
             sandbox._pointerXReference = evt.clientX;
-            sandbox._resizerEls.btn = evt.target.closest('.sandbox__resizer');
-            sandbox._resizerEls.sandboxWrapper = evt.target.closest('.sandbox');
-            sandbox._resizerEls.pre = sandbox._resizerEls.sandboxWrapper.querySelector('.sandbox__code');
-            sandbox._resizerEls.iframe = sandbox._resizerEls.sandboxWrapper.querySelector('.sandbox__iframe');
+            sandbox._resizerEls.btn = evt.target.closest(sandbox._selectors.resizer);
+            sandbox._resizerEls.sandboxWrapper = evt.target.closest(sandbox._selectors.sandbox);
+            sandbox._resizerEls.pre = sandbox._resizerEls.sandboxWrapper.querySelector(sandbox._selectors.codeWrapper);
+            sandbox._resizerEls.iframe = sandbox._resizerEls.sandboxWrapper.querySelector(sandbox._selectors.iframeWrapper);
+            sandbox._resizerEls.monitorIframeWidth = sandbox._resizerEls.sandboxWrapper.querySelector(sandbox._selectors.monitorIframeWidth);
+            sandbox._resizerEls.monitorIframeHeight = sandbox._resizerEls.sandboxWrapper.querySelector(sandbox._selectors.monitorIframeHeight);
             if (typeof sandbox._resizerEls.btn == 'object'
                 && typeof sandbox._resizerEls.sandboxWrapper == 'object'
                 && typeof sandbox._resizerEls.pre == 'object'
-                && typeof sandbox._resizerEls.iframe == 'object') {
+                && typeof sandbox._resizerEls.iframe == 'object'
+                && typeof sandbox._resizerEls.monitorIframeWidth == 'object'
+                && typeof sandbox._resizerEls.monitorIframeHeight == 'object') {
                 sandbox._iframeInitialWidth = sandbox._resizerEls.iframe.clientWidth;
                 sandbox._preInitialWidth = sandbox._resizerEls.pre.clientWidth;
                 // To be able to detect mouse position
@@ -62,19 +106,16 @@ const sandbox = {
             // console.log(delta);
             sandbox.resize();
         },
-        _windowResize: function() {
-            if (sandbox._resizerEls.pre !== null && sandbox._resizerEls.iframe !== null) {
-                sandbox._resizerEls.pre.style.width = null;
-                sandbox._resizerEls.iframe.style.width = null;
-            }
-        },
         _tab: function(evt) {
             
-            const elBtn = evt.target.closest('.sandbox__tab'),
-                elSandbox = evt.target.closest('.sandbox'),
-                elPre = elSandbox.querySelector('.sandbox__code'),
-                elIframe = elSandbox.querySelector('.sandbox__iframe'),
-                tabName = elBtn.dataset.name;
+            const elBtn = evt.target.closest(sandbox._selectors.tabBtn),
+                elSandbox = evt.target.closest(sandbox._selectors.sandbox),
+                elsBtns = elSandbox.querySelectorAll(sandbox._selectors.tabBtn),
+                elPre = elSandbox.querySelector(sandbox._selectors.codeWrapper),
+                elIframe = elSandbox.querySelector(sandbox._selectors.iframeWrapper),
+                tabName = elBtn.dataset.name,
+                defaultClass = `${sandbox._params.tabBtn.defaultClass} | ${sandbox._selectors.tabBtn.replace(`.`, ``)}`,
+                activeClass = `${sandbox._params.tabBtn.activeClass} | ${sandbox._selectors.tabBtn.replace(`.`, ``)}`;
             switch (tabName) {
                 case 'code':
                     elPre.classList.remove('d-none--xs', 'd-none--sm');
@@ -86,17 +127,46 @@ const sandbox = {
                     elPre.classList.add('d-none--xs', 'd-none--sm');
                     break;
             }
+            elsBtns.forEach(function(el) {
+                el.setAttribute('class', defaultClass);
+            });
+            elBtn.setAttribute('class', activeClass);
+        },
+        _clickCopyCode: function(evt) {
+            const elLabel = evt.target.closest('button');
+            const code = evt.target.closest(sandbox._selectors.sandbox).querySelector('pre > code').innerText;
+            libdocUi.copyToClipboard(code);
+            elLabel.innerHTML = 'Copied!';
+            setTimeout(function() {
+                elLabel.innerHTML = 'Copy';
+            }, 3000);
+        },
+        _clickCopyUrl: function(evt) {
+            const elLabel = evt.target.closest('button');
+            const permalink = evt.target.closest(sandbox._selectors.sandbox).querySelector(sandbox._selectors.permalink).href;
+            libdocUi.copyToClipboard(permalink);
+            elLabel.innerHTML = 'Copied!';
+            setTimeout(function() {
+                elLabel.innerHTML = 'Copy URL';
+            }, 3000);
         }
     },
     update: function() {
-        document.querySelectorAll('.sandbox__resizer').forEach(function(el) {
+        document.querySelectorAll(sandbox._selectors.resizer).forEach(function(el) {
             el.addEventListener('mousedown', sandbox.handlers._mousedownResizer);
         });
-        document.querySelectorAll('.sandbox__tab').forEach(function(el) {
+        document.querySelectorAll(sandbox._selectors.tabBtn).forEach(function(el) {
             el.addEventListener('click', sandbox.handlers._tab);
         });
+        document.querySelectorAll(sandbox._selectors.copyCode).forEach(function(el) {
+            el.addEventListener('click', sandbox.handlers._clickCopyCode);
+        });
+        document.querySelectorAll(sandbox._selectors.copyUrl).forEach(function(el) {
+            el.addEventListener('click', sandbox.handlers._clickCopyUrl);
+        });
         window.addEventListener('mouseup', sandbox.handlers._stopResizer);
-        window.addEventListener('resize', sandbox.handlers._windowResize);
+        window.addEventListener('resize', sandbox.reset);
+        sandbox.updateMonitor();
     }
 }
 document.addEventListener('DOMContentLoaded', sandbox.update);

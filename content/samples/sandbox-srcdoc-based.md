@@ -13,6 +13,17 @@ tags: first
 {% endsandbox %}{% endraw %}
 ```
 
+# Example 1
+
+{% sandbox %}
+<h1>Hello</h1>
+<script>
+    document.querySelector('h1').innerHTML += ' World!';
+</script>
+{% endsandbox %}
+
+# Example 2
+
 {% sandbox %}
 <nav c-scrollsyncbar="">
     <a href="#">c-scrollsyncbar.js</a>

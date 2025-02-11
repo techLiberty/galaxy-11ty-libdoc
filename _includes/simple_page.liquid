@@ -161,7 +161,10 @@
                     </h1>
                     {{ breadcrumbMarkup }}
                     {% if description %}
-                        <p class="m-0 | fvs-wght-400 tws-balance fs-7 lsp-3">{{ description }}</p>
+                        <p class="m-0 | fvs-wght-400 tws-balance fs-7 lsp-3 lh-5"
+                            fs-6="xs,sm">
+                            {{ description }}
+                        </p>
                     {% endif %}
                     {% if tocMarkup != '' %}
                         <details>
@@ -188,6 +191,7 @@
         <script src="/assets/js/sandbox.js"></script>
         <script src="/assets/js/highlight.min.js"></script>
         <script src="/assets/js/liquid.min.js"></script>
+        <script src="/assets/js/ui.js"></script>
         <script>hljs.highlightAll();</script>
     {% endblock %}
 </body>

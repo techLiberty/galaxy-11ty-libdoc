@@ -1,3 +1,2 @@
-
 {% assign filePath = "." | append: path %}
-{% sandbox path %}{% renderFile filePath %}{% endsandbox %}
+{% sandbox path, title %}{% renderFile filePath %}{% endsandbox %}

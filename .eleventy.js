@@ -54,40 +54,64 @@ export default function(eleventyConfig) {
             sandbox: function({iframeAttribute, iframeCommands, title, code}) {
                 return `
                     <aside class="d-flex | sandbox"
-                        fd-column="xs,sm">
-                        <div class="d-flex | bc-neutral-900 c-neutral-200 bradtr-3 bradtl-3 bwidth-1 bstyle-dashed bcolor-neutral-200"
+                        fd-column="xs,sm"
+                        gap-2="xs,sm"
+                        ai-start="xs,sm"
+                        o-hidden="md">
+                        <div class="d-flex | p-1 | bc-neutral-900 c-neutral-200 brad-2"
                             d-none="md">
                             <button type="button"
-                                class="d-flex | p-5 | fvs-wght-400 fs-2 tt-uppercase | c-neutral-300 bc-0 b-0 cur-pointer | sandbox__tab"
+                                class="d-flex | pt-2 pb-2 pl-5 pr-5 | fvs-wght-400 fs-2 tt-uppercase | c-neutral-300 bc-0 b-0 cur-pointer | sandbox__tab"
                                 data-name="code">
                                 Code
                             </button>
                             <button type="button"
-                                class="d-flex | p-5 | fvs-wght-400 fs-2 tt-uppercase | c-neutral-300 bc-0 b-0 cur-pointer | sandbox__tab"
+                                class="d-flex | pt-2 pb-2 pl-5 pr-5 | fvs-wght-400 fs-2 tt-uppercase | c-neutral-900 bc-neutral-100 b-0 brad-1 cur-pointer | sandbox__tab"
                                 data-name="iframe">
-                                Iframe
+                                Result
                             </button>
                         </div>
-                        <div class="d-flex fd-column d-none--xs d-none--sm | pb-5 | bc-neutral-900 c-neutral-200 brad-3 bwidth-1 bstyle-dashed bcolor-neutral-700 | sandbox__code"
+                        <div class="d-flex fd-column d-none--xs d-none--sm | bc-neutral-900 c-neutral-200 brad-3 bwidth-1 bstyle-solid bcolor-neutral-900 | sandbox__code_wrapper"
                             w-50="md"
-                            w-100="xs,sm">
+                            w-100="xs,sm"
+                            bradtr-0="md"
+                            bradbr-0="md">
                             <div class="d-flex jc-space-between ai-center">
-                                <h2 class="m-0 pl-5 | fvs-wght-400 fs-3 | c-neutral-600">${title}</h2>
-                                <button type="button" class="d-flex | p-5 | fvs-wght-400 fs-2 tt-uppercase | c-neutral-300 bc-0 b-0 cur-pointer">Copy</button>
+                                <p class="m-0 pl-5 | fvs-wght-400 fs-3 | c-neutral-600">${title}</p>
+                                <button type="button"
+                                    class="d-flex | p-5 | fvs-wght-400 fs-2 tt-uppercase | c-neutral-300 bc-0 b-0 cur-pointer | sandbox__copy_code">
+                                    Copy
+                                </button>
                             </div>
                             <div class="pl-5">
                                 <pre class="m-0 h-500px o-auto | brad-3">
-                                    <code class="language-html fvs-mono-on fvs-wght-300 fs-3 lh-6">
+                                    <code class="language-html fvs-mono-on fvs-wght-300 fs-3 lh-6 | sandbox__code">
                                         ${code}
                                     </code>
                                 </pre>
                             </div>
+                            <div class="d-flex gap-2 | m-0 pt-1 pb-1 pl-0 | fvs-wght-400 fs-2 lh-1 | c-neutral-500 ls-none"
+                                pl-2="xs,sm">
+                                &nbsp;
+                            </div>
                         </div>
-                        <button class="p-0 | bc-0 b-0 | sandbox__resizer" style="width:20px" d-none="xs,sm">||</button>
-                        <div class="d-flex fd-column | pb-5 | bc-neutral-900 c-neutral-200 brad-3 bwidth-1 bstyle-dashed bcolor-neutral-700 | sandbox__iframe"
+                        <button class="p-0 | bc-neutral-900 c-neutral-300 b-0 | sandbox__resizer"
+                            title="Click and drag to resize code and result"
+                            d-none="xs,sm">
+                            ||
+                        </button>
+                        <div class="d-flex fd-column | bc-neutral-900 c-neutral-200 brad-3 bwidth-1 bstyle-solid bcolor-neutral-900 | sandbox__iframe_wrapper"
                             w-50="md"
-                            w-100="xs,sm">${iframeCommands}
-                            <iframe ${iframeAttribute} loading="lazy" class="w-100 h-500px | b-0"></iframe>
+                            w-100="xs,sm"
+                            bradtl-0="md"
+                            bradbl-0="md"
+                            style="box-sizing: content-box">${iframeCommands}
+                            <iframe ${iframeAttribute} loading="lazy" class="w-100 h-500px | b-0 bc-neutral-100 | sandbox__iframe"></iframe>
+                            <ul class="d-flex gap-2 | m-0 pt-1 pb-1 pl-0 | fvs-wght-400 fs-2 lh-1 | c-neutral-500 ls-none"
+                                pl-2="xs,sm">
+                                <li>Width: <span class="sandbox__monitor__iframe_width">-</span>px</li>
+                                <li>Height: <span class="sandbox__monitor__iframe_height">-</span>px</li>
+                            </ul>
                         </div>
                     </aside>`;
             }
@@ -159,24 +183,32 @@ export default function(eleventyConfig) {
 
 
     eleventyConfig.addPairedShortcode("sandbox", async function(content, permalink, sandboxTitle) {
-        const   code = libdocUtils.HTMLEncode(content),
-                isFile = typeof permalink == `string`,
+        const   isFile = typeof permalink == `string`,
+                code = isFile ? libdocUtils.HTMLEncode(content) : libdocUtils.HTMLEncode(content.replace(/[\n\r]/, '')),
                 iframeAttribute = isFile ? `src="${permalink}"` : `srcdoc="${code}"`,
                 title = typeof sandboxTitle == `string` ? sandboxTitle : `Sandbox`;
         let     iframeCommands = '';
         if (isFile) {
-            iframeCommands = `<div class="d-flex jc-space-between ai-center gap-5">
+            iframeCommands = `<div class="d-flex jc-space-between ai-center">
                     <a  href="${permalink}"
                         target="_blank"
-                        class="d-flex | p-5 | fvs-wght-400 fs-3 | c-neutral-500 bc-0 b-0 cur-pointer">
+                        class="p-5 pr-0 o-hidden | fvs-wght-400 fs-3 to-ellipsis ws-nowrap | c-neutral-500 bc-0 b-0 cur-pointer | sandbox__permalink">
                         ${permalink}
                     </a>
-                    <button type="button" class="d-flex | p-5 | fvs-wght-400 fs-2 tt-uppercase | c-neutral-300 bc-0 b-0 cur-pointer">Copy URL</button>
+                    <button type="button"
+                        class="d-flex | p-5 o-hidden | fvs-wght-400 fs-2 tt-uppercase to-ellipsis ws-nowrap | c-neutral-300 bc-0 b-0 cur-pointer | sandbox__copy_url">
+                        Copy URL
+                    </button>
                 </div>`;
         } else {
             iframeCommands = `<div class="d-flex jc-space-between ai-center gap-5">
-                    <div class="d-flex | p-5 | fvs-wght-400 fs-3 | c-neutral-600">srcdoc</div>
-                    <button type="button" class="d-flex | p-5 | fvs-wght-400 fs-2 tt-uppercase | c-neutral-700 bc-0 b-0 pe-none" disabled>Copy URL</button>
+                    <div class="d-flex | p-5 pr-0 o-hidden | fvs-wght-400 fs-3 to-ellipsis ws-nowrap | c-neutral-600">
+                        srcdoc
+                    </div>
+                    <button type="button"
+                        class="p-5 o-hidden | fvs-wght-400 fs-2 tt-uppercase to-ellipsis ws-nowrap | c-neutral-700 bc-0 b-0 pe-none" disabled>
+                        Copy URL
+                    </button>
                 </div>`;
         }
         return libdocUtils.templates.sandbox({iframeAttribute, iframeCommands, title, code});
