@@ -50,14 +50,30 @@ export default function(eleventyConfig) {
             });
             return htmlTagsFound
         },
+        generateRandomId: function(length) {
+            const charactersList = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+            let id = '';
+            if (typeof length != 'number') length = 8;
+            for (let index = 0; index < length; index++) {
+                const randomIndex = Math.floor(Math.random() * charactersList.length);
+                id += charactersList[randomIndex];
+            }
+            return id;
+        },
         templates: {
             sandbox: function({iframeAttribute, iframeCommands, title, code}) {
+                const   enableSwitchIdCode = libdocUtils.generateRandomId(),
+                        enableSwitchIdIframe = libdocUtils.generateRandomId();
                 return `
                     <aside class="d-flex | sandbox"
                         fd-column="xs,sm"
                         gap-2="xs,sm"
                         ai-start="xs,sm"
-                        o-hidden="md">
+                        o-hidden="md"
+                        pl-9="md"
+                        pr-9="md"
+                        pl-5="xs,sm"
+                        pr-5="xs,sm">
                         <div class="d-flex | p-1 | bc-neutral-900 c-neutral-200 brad-2"
                             d-none="md">
                             <button type="button"
@@ -71,44 +87,70 @@ export default function(eleventyConfig) {
                                 Result
                             </button>
                         </div>
-                        <div class="d-flex fd-column d-none--xs d-none--sm | bc-neutral-900 c-neutral-200 brad-3 bwidth-1 bstyle-solid bcolor-neutral-900 | sandbox__code_wrapper"
+                        <div class="d-flex fd-column d-none--xs d-none--sm | o-hidden | bc-neutral-900 c-neutral-200 brad-3 bwidth-1 bstyle-solid bcolor-neutral-900 | sandbox__code_wrapper"
                             w-50="md"
                             w-100="xs,sm"
                             bradtr-0="md"
                             bradbr-0="md">
-                            <div class="d-flex jc-space-between ai-center">
-                                <p class="m-0 pl-5 | fvs-wght-400 fs-3 | c-neutral-600">${title}</p>
+                            <header class="d-flex jc-space-between | pl-5" style="height: 58px">
+                                <p class="d-flex ai-center | m-0 | fvs-wght-400 fs-3 lh-1 | c-neutral-600"
+                                    fs-2="xs">
+                                    ${title}
+                                </p>
                                 <button type="button"
-                                    class="d-flex | p-5 | fvs-wght-400 fs-2 tt-uppercase | c-neutral-300 bc-0 b-0 cur-pointer | sandbox__copy_code">
-                                    Copy
+                                    class="d-flex ai-center | pl-5 pr-5 | fvs-wght-400 fs-2 tt-uppercase | bc-0 c-neutral-300 b-0 cur-pointer | sandbox__copy_code"
+                                    title="Copy HTML">
+                                    <span class="o-hidden | to-ellipsis ws-nowrap">Copy</span>
                                 </button>
-                            </div>
-                            <div class="pl-5">
+                            </header>
+                            <div class="pos-relative"
+                                pl-5="md">
                                 <pre class="m-0 h-500px o-auto | brad-3">
-                                    <code class="language-html fvs-mono-on fvs-wght-300 fs-3 lh-6 | sandbox__code">
-                                        ${code}
-                                    </code>
+                                    <code class="language-html fvs-mono-on fvs-wght-300 fs-3 lh-6 | sandbox__code" fs-2="xs">${code}</code>
                                 </pre>
+                                <div class="d-flex jc-center ai-center | pos-absolute top-0 left-0 | w-100 h-100 | sandbox__enable_wrapper"
+                                    style="background-color: rgba(0,0,0,0.5)">
+                                    <input type="checkbox"
+                                        id="${enableSwitchIdCode}"
+                                        value=""
+                                        class="pos-absolute | opa-0 | sandbox__enable_switch">
+                                    <label for="${enableSwitchIdCode}"
+                                        class="p-5 | fvs-wght-500 tt-uppercase | bc-neutral-900 brad-2 cur-pointer">
+                                        ❭❱❭ Enable
+                                    </label>
+                                </div>
                             </div>
                             <div class="d-flex gap-2 | m-0 pt-1 pb-1 pl-0 | fvs-wght-400 fs-2 lh-1 | c-neutral-500 ls-none"
                                 pl-2="xs,sm">
                                 &nbsp;
                             </div>
                         </div>
-                        <button class="p-0 | bc-neutral-900 c-neutral-300 b-0 | sandbox__resizer"
+                        <button class="pos-relative | p-0 | bc-neutral-800 c-neutral-500 b-0 | sandbox__resizer"
                             title="Click and drag to resize code and result"
                             d-none="xs,sm">
                             ||
                         </button>
-                        <div class="d-flex fd-column | bc-neutral-900 c-neutral-200 brad-3 bwidth-1 bstyle-solid bcolor-neutral-900 | sandbox__iframe_wrapper"
+                        <div class="d-flex fd-column | pos-relative | o-hidden | bc-neutral-900 c-neutral-200 brad-3 bwidth-1 bstyle-solid bcolor-neutral-900 | sandbox__iframe_wrapper"
                             w-50="md"
                             w-100="xs,sm"
                             bradtl-0="md"
                             bradbl-0="md"
                             style="box-sizing: content-box">${iframeCommands}
-                            <iframe ${iframeAttribute} loading="lazy" class="w-100 h-500px | b-0 bc-neutral-100 | sandbox__iframe"></iframe>
-                            <ul class="d-flex gap-2 | m-0 pt-1 pb-1 pl-0 | fvs-wght-400 fs-2 lh-1 | c-neutral-500 ls-none"
-                                pl-2="xs,sm">
+                            <div class="d-flex | pos-relative">
+                                <iframe ${iframeAttribute} loading="lazy" class="w-100 h-500px | b-0 bc-neutral-100 | sandbox__iframe"></iframe>
+                                <div class="d-flex jc-center ai-center | pos-absolute top-0 left-0 | w-100 h-100 | sandbox__enable_wrapper"
+                                    style="background-color: rgba(0,0,0,0.5)">
+                                    <input type="checkbox"
+                                        id="${enableSwitchIdIframe}"
+                                        value=""
+                                        class="pos-absolute | opa-0 | sandbox__enable_switch">
+                                    <label for="${enableSwitchIdIframe}"
+                                        class="p-5 | fvs-wght-500 tt-uppercase | bc-neutral-900 brad-2 cur-pointer">
+                                        ❭❱❭ Enable
+                                    </label>
+                                </div>
+                            </div>
+                            <ul class="d-flex gap-2 | m-0 pt-1 pb-1 pl-2 | fvs-wght-400 fs-2 lh-1 | c-neutral-500 ls-none">
                                 <li>Width: <span class="sandbox__monitor__iframe_width">-</span>px</li>
                                 <li>Height: <span class="sandbox__monitor__iframe_height">-</span>px</li>
                             </ul>
@@ -182,35 +224,43 @@ export default function(eleventyConfig) {
 	});
 
 
-    eleventyConfig.addPairedShortcode("sandbox", async function(content, permalink, sandboxTitle) {
-        const   isFile = typeof permalink == `string`,
-                code = isFile ? libdocUtils.HTMLEncode(content) : libdocUtils.HTMLEncode(content.replace(/[\n\r]/, '')),
-                iframeAttribute = isFile ? `src="${permalink}"` : `srcdoc="${code}"`,
-                title = typeof sandboxTitle == `string` ? sandboxTitle : `Sandbox`;
-        let     iframeCommands = '';
-        if (isFile) {
-            iframeCommands = `<div class="d-flex jc-space-between ai-center">
-                    <a  href="${permalink}"
-                        target="_blank"
-                        class="p-5 pr-0 o-hidden | fvs-wght-400 fs-3 to-ellipsis ws-nowrap | c-neutral-500 bc-0 b-0 cur-pointer | sandbox__permalink">
-                        ${permalink}
-                    </a>
-                    <button type="button"
-                        class="d-flex | p-5 o-hidden | fvs-wght-400 fs-2 tt-uppercase to-ellipsis ws-nowrap | c-neutral-300 bc-0 b-0 cur-pointer | sandbox__copy_url">
-                        Copy URL
-                    </button>
-                </div>`;
-        } else {
-            iframeCommands = `<div class="d-flex jc-space-between ai-center gap-5">
-                    <div class="d-flex | p-5 pr-0 o-hidden | fvs-wght-400 fs-3 to-ellipsis ws-nowrap | c-neutral-600">
-                        srcdoc
-                    </div>
-                    <button type="button"
-                        class="p-5 o-hidden | fvs-wght-400 fs-2 tt-uppercase to-ellipsis ws-nowrap | c-neutral-700 bc-0 b-0 pe-none" disabled>
-                        Copy URL
-                    </button>
-                </div>`;
-        }
+    eleventyConfig.addPairedShortcode("sandbox", async function(content, sandboxTitle) {
+        const   code = libdocUtils.HTMLEncode(content.replace(/[\n\r]/, '')),
+                title = typeof sandboxTitle == `string` ? sandboxTitle : `Sandbox`,
+                iframeAttribute = `srcdoc="${code}"`,
+                iframeCommands = `<header class="d-flex jc-space-between | pl-5" style="height: 58px">
+                        <div class="d-flex ai-center | fvs-wght-400 fs-3 | c-neutral-500">
+                            srcdoc
+                        </div>
+                    </header>`;
+        return libdocUtils.templates.sandbox({iframeAttribute, iframeCommands, title, code});
+    });
+
+    eleventyConfig.addPairedShortcode("sandboxFile", async function(content, permalink, sandboxTitle) {
+        const   code = libdocUtils.HTMLEncode(content),
+                iframeAttribute = `src="${permalink}"`,
+                title = typeof sandboxTitle == `string` ? sandboxTitle : `Sandbox`,
+                iframeCommands = `<header class="d-flex jc-space-between gap-5" style="height: 58px">
+                        <a  href="${permalink}"
+                            target="_blank"
+                            title="Open in a new tab"
+                            class="d-flex ai-center gap-1 | pl-5 | fs-3 td-none | c-neutral-500 | sandbox__permalink"
+                            fs-2="xs">
+                            <span class="c-success-500">‖</span>
+                            <span class="fvs-wght-400 td-underline">${permalink}</span>
+                            <span class="c-neutral-500">→</span>
+                        </a>
+                        <div class="d-flex gap-5 | pr-5">
+                            <button type="button"
+                                class="d-flex ai-center | p-0 | fvs-wght-400 fs-2 tt-uppercase | bc-0 c-neutral-300 b-0 cur-pointer | sandbox__reload">
+                                <span class="o-hidden | to-ellipsis ws-nowrap">Reload</span>
+                            </button>
+                            <button type="button"
+                                class="d-flex ai-center | p-0 | fvs-wght-400 fs-2 tt-uppercase | bc-0 c-neutral-300 b-0 cur-pointer | sandbox__copy_url">
+                                <span class="o-hidden | to-ellipsis ws-nowrap">Copy URL</span>
+                            </button>
+                        </div>
+                    </header>`;
         return libdocUtils.templates.sandbox({iframeAttribute, iframeCommands, title, code});
     });
 

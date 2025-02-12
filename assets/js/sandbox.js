@@ -24,6 +24,7 @@ const sandbox = {
         monitorIframeWidth: '.sandbox__monitor__iframe_width',
         monitorIframeHeight: '.sandbox__monitor__iframe_height',
         copyCode: '.sandbox__copy_code',
+        reload: '.sandbox__reload',
         copyUrl: '.sandbox__copy_url',
         permalink: '.sandbox__permalink'
     },
@@ -136,7 +137,7 @@ const sandbox = {
             const elLabel = evt.target.closest('button');
             const code = evt.target.closest(sandbox._selectors.sandbox).querySelector('pre > code').innerText;
             libdocUi.copyToClipboard(code);
-            elLabel.innerHTML = 'Copied!';
+            elLabel.innerHTML = '<span class="c-success-500">Copied!</span>';
             setTimeout(function() {
                 elLabel.innerHTML = 'Copy';
             }, 3000);
@@ -145,9 +146,21 @@ const sandbox = {
             const elLabel = evt.target.closest('button');
             const permalink = evt.target.closest(sandbox._selectors.sandbox).querySelector(sandbox._selectors.permalink).href;
             libdocUi.copyToClipboard(permalink);
-            elLabel.innerHTML = 'Copied!';
+            elLabel.innerHTML = '<span class="c-success-500">Copied!</span>';
             setTimeout(function() {
                 elLabel.innerHTML = 'Copy URL';
+            }, 3000);
+        },
+        _clickReload: function(evt) {
+            const elLabel = evt.target.closest('button');
+            const elIframe = evt.target.closest(sandbox._selectors.sandbox).querySelector('iframe');
+            const elTargetDocument = elIframe.contentWindow.document;
+            const elTargetWindow = elIframe.contentWindow.window;
+            elTargetDocument.location.reload();
+            elTargetWindow.scroll(0,0);
+            elLabel.innerHTML = '<span class="c-success-500">Reloaded!</span>';
+            setTimeout(function() {
+                elLabel.innerHTML = 'Reload';
             }, 3000);
         }
     },
@@ -163,6 +176,9 @@ const sandbox = {
         });
         document.querySelectorAll(sandbox._selectors.copyUrl).forEach(function(el) {
             el.addEventListener('click', sandbox.handlers._clickCopyUrl);
+        });
+        document.querySelectorAll(sandbox._selectors.reload).forEach(function(el) {
+            el.addEventListener('click', sandbox.handlers._clickReload);
         });
         window.addEventListener('mouseup', sandbox.handlers._stopResizer);
         window.addEventListener('resize', sandbox.reset);

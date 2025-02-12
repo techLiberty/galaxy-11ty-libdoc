@@ -38,7 +38,7 @@ const search = {
                 if (highIndex > content.length - 1) highIndex = content.length - 1;
                 let summary = content.slice(lowIndex, highIndex);
                 summary = search.HTMLEncode(summary);
-                summary = summary.replaceAll(queryLoweredEncoded, `<strong>${query}</strong>`);
+                summary = summary.replaceAll(queryLoweredEncoded, ` <mark class="fvs-wght-600">${query}</mark> `);
                 // console.log(summary);
                 if (content.indexOf(queryLowered) > -1) {
 
@@ -55,9 +55,14 @@ const search = {
     },
     renderSearchResult: function({url, title, summary}) {
         return `
-            <li>
-                <a href="${url}">${title}</a><br>
-                ${summary}
+            <li class="d-flex fd-column">
+                <a  href="${url}"
+                    class="fvs-wght-600 fs-4">
+                    ${title}
+                </a>
+                <div>
+                    ${summary}
+                </div>
             </li>
         `;
     },

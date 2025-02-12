@@ -90,6 +90,39 @@ main {
     pre:not(:has(.hljs)) {
         overflow: auto;
     }
+    /* HIGHLIGHT JS */
+    &>pre code.hljs {
+        border-radius: 6px;
+        &::before {
+            content: attr(class);
+            display: block;
+            padding-bottom: var(--ita-spacings-2);
+            margin-bottom: var(--ita-spacings-2);
+            border-bottom: 1px dashed #385267;
+            font-size: var(--ita-fontSizes-2);
+            font-variation-settings: "wght" 400;
+        }
+    }
+    &>p,
+    &>h1,
+    &>h2,
+    &>h3,
+    &>h4,
+    &>h5,
+    &>h6,
+    &>ul>li,
+    &>ol>li {
+        --foo: #f9fcff;
+        text-shadow:
+            0.2em 0.2em 0.2em var(--foo), -0.2em 0.2em 0.2em var(--foo),
+            0.2em -0.2em 0.2em var(--foo), -0.2em -0.2em 0.2em var(--foo),
+            0.3em 0.3em 0.3em var(--foo), -0.3em 0.3em 0.3em var(--foo),
+            0.3em -0.3em 0.3em var(--foo), -0.3em -0.3em 0.3em var(--foo),
+            0.2em 0.2em 0.2em var(--foo), -0.2em 0.2em 0.2em var(--foo),
+            0.2em -0.2em 0.2em var(--foo), -0.2em -0.2em 0.2em var(--foo),
+            0.3em 0.3em 0.3em var(--foo), -0.3em 0.3em 0.3em var(--foo),
+            0.3em -0.3em 0.3em var(--foo), -0.3em -0.3em 0.3em var(--foo);
+    }
 }
 @media (max-width: 959px) {
     main {
@@ -140,7 +173,17 @@ menu {
 .sandbox__resizer:active,
 .sandbox__resizer:hover {
     cursor: col-resize;
-    background-color: var(--ita-colors-neutral-800);
+    background-color: var(--ita-colors-neutral-700);
+}
+.sandbox__enable_wrapper {
+    opacity: 0;
+    transition: opacity 300ms;
+}
+.sandbox__enable_wrapper:hover {
+    opacity: 1;
+}
+.sandbox:has(.sandbox__enable_switch:checked) .sandbox__enable_wrapper {
+    display: none;
 }
 
 /* FANCY */

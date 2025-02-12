@@ -7,8 +7,8 @@
   --ita-colors-neutral-400: #E5E5E5;
   --ita-colors-neutral-500: #BFBFBF;
   --ita-colors-neutral-600: #999999;
-  --ita-colors-neutral-700: #666666;
-  --ita-colors-neutral-800: #333333;
+  --ita-colors-neutral-700: #444444;
+  --ita-colors-neutral-800: #252525;
   --ita-colors-neutral-900: #000000;
   --ita-colors-success-100: #e4f1dd;
   --ita-colors-success-500: #78ba56;
@@ -1062,10 +1062,10 @@
   color: var(--ita-colors-neutral-600, #999999);
 }
 .c-neutral-700 {
-  color: var(--ita-colors-neutral-700, #666666);
+  color: var(--ita-colors-neutral-700, #444444);
 }
 .c-neutral-800 {
-  color: var(--ita-colors-neutral-800, #333333);
+  color: var(--ita-colors-neutral-800, #252525);
 }
 .c-neutral-900 {
   color: var(--ita-colors-neutral-900, #000000);
@@ -1122,10 +1122,10 @@
   background-color: var(--ita-colors-neutral-600, #999999);
 }
 .bc-neutral-700 {
-  background-color: var(--ita-colors-neutral-700, #666666);
+  background-color: var(--ita-colors-neutral-700, #444444);
 }
 .bc-neutral-800 {
-  background-color: var(--ita-colors-neutral-800, #333333);
+  background-color: var(--ita-colors-neutral-800, #252525);
 }
 .bc-neutral-900 {
   background-color: var(--ita-colors-neutral-900, #000000);
@@ -1185,10 +1185,10 @@
   border-color: var(--ita-colors-neutral-600, #999999);
 }
 .bcolor-neutral-700 {
-  border-color: var(--ita-colors-neutral-700, #666666);
+  border-color: var(--ita-colors-neutral-700, #444444);
 }
 .bcolor-neutral-800 {
-  border-color: var(--ita-colors-neutral-800, #333333);
+  border-color: var(--ita-colors-neutral-800, #252525);
 }
 .bcolor-neutral-900 {
   border-color: var(--ita-colors-neutral-900, #000000);

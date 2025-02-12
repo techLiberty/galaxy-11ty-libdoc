@@ -143,17 +143,16 @@
                 {% assign menu = menu | replace: '<menu>', '<menu class="d-flex fd-column fg-1 order-1 | m-0 pl-5 | ls-none">' %}
                 <div class="h-100 o-auto">
                     {{ menu }}
-
                 </div>
-                {% comment %} <div class="pos-sticky bottom-0 p-10 pe-none" style="background: linear-gradient(0deg, white 0%, transparent 100%)"></div> {% endcomment %}
             </nav>
         </div>
-        <main class="pos-relative | pl-5 pr-5"
+        <main class="pos-relative"
             w-100-minus-sidebar="md"
             w-100="xs,sm">
-            
             {% block content %}
-                <header class="d-flex fd-column gap-2 | mt-5 pt-7 pb-7 | bc-neutral-100 bwidth-1 bstyle-dashed bcolor-neutral-500 brad-3">
+                <header class="d-flex fd-column gap-2 | pt-7 pb-7 | bc-neutral-100 bwidth-1 bstyle-dashed bcolor-neutral-500 brad-3"
+                    mt-5="sm,md"
+                    brad-0="xs">
                     <h1 class="m-0 | lsp-5 fvs-wght-700 tws-balance"
                         fs-10="md"
                         fs-9="xs,sm">
@@ -171,7 +170,7 @@
                             <summary class="fvs-wght-400 fs-3">
                                 Table of content
                             </summary>
-                            <div class="mt-5 p-3 | bc-neutral-100 bwidth-1 bstyle-dashed bcolor-neutral-500 brad-3">
+                            <div class="pl-5 pt-3">
                                 {{ tocMarkup }}
                             </div>
                         </details>

@@ -24,7 +24,7 @@ tags: first
 
 # Example 2
 
-{% sandbox %}
+{% sandbox 'Custom title' %}
 <nav c-scrollsyncbar="">
     <a href="#">c-scrollsyncbar.js</a>
 </nav>

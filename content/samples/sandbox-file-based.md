@@ -11,6 +11,6 @@ tags: first
 {% raw %}{% render 'sandbox', path: '/path/to/file/index.html' %}{% endraw %}
 ```
 
-{% render 'sandbox', path: '/sandboxes/1/index.html', title: 'Mon titre spécial' %}
+{% render 'sandbox', path: '/sandboxes/1/index.html', title: 'Mon titre spécial très très long et beaucoup de texte' %}
 
 {% render 'sandbox', path: '/sandboxes/1/index.html' %}
