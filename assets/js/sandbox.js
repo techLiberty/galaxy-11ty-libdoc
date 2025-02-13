@@ -20,6 +20,8 @@ const sandbox = {
         resizer: '.sandbox__resizer',
         codeWrapper: '.sandbox__code_wrapper',
         iframeWrapper: '.sandbox__iframe_wrapper',
+        code: '.sandbox__code',
+        iframe: '.sandbox__iframe',
         tabBtn: '.sandbox__tab',
         monitorIframeWidth: '.sandbox__monitor__iframe_width',
         monitorIframeHeight: '.sandbox__monitor__iframe_height',
@@ -35,12 +37,12 @@ const sandbox = {
         }
     },
     disableIframes: function() {
-        document.querySelectorAll('iframe').forEach(function(el) {
+        document.querySelectorAll(sandbox._selectors.iframe).forEach(function(el) {
             el.classList.add('pe-none');
         });
     },
     enableIframes: function() {
-        document.querySelectorAll('iframe').forEach(function(el) {
+        document.querySelectorAll(sandbox._selectors.iframe).forEach(function(el) {
             el.classList.remove('pe-none');
         });
     },
@@ -92,7 +94,7 @@ const sandbox = {
                 sandbox.disableIframes();
                 // Enable mouse position monitoring
                 window.addEventListener('mousemove', sandbox.handlers._mousemoveWindow);
-                console.log('start sandbox__resizer', sandbox._preInitialWidth, sandbox._iframeInitialWidth);
+                // console.log('start sandbox__resizer', sandbox._preInitialWidth, sandbox._iframeInitialWidth);
             }
         },
         _stopResizer: function(evt) {
@@ -108,7 +110,6 @@ const sandbox = {
             sandbox.resize();
         },
         _tab: function(evt) {
-            
             const elBtn = evt.target.closest(sandbox._selectors.tabBtn),
                 elSandbox = evt.target.closest(sandbox._selectors.sandbox),
                 elsBtns = elSandbox.querySelectorAll(sandbox._selectors.tabBtn),
@@ -134,33 +135,42 @@ const sandbox = {
             elBtn.setAttribute('class', activeClass);
         },
         _clickCopyCode: function(evt) {
-            const elLabel = evt.target.closest('button');
-            const code = evt.target.closest(sandbox._selectors.sandbox).querySelector('pre > code').innerText;
-            libdocUi.copyToClipboard(code);
-            elLabel.innerHTML = '<span class="c-success-500">Copied!</span>';
+            const elBtn = evt.target.closest('button');
+            const code = evt.target.closest(sandbox._selectors.sandbox).querySelector(sandbox._selectors.code).innerText;
+            elBtn.classList.add('pe-none');
+            libdocUi.copyToClipboard(code, {notificationEnabled: false});
+            if (elBtn.dataset.originalText === undefined) elBtn.dataset.originalText = elBtn.innerText;
+            elBtn.innerHTML = '<span class="c-success-500">Copied!</span>';
             setTimeout(function() {
-                elLabel.innerHTML = 'Copy';
+                elBtn.innerHTML = elBtn.dataset.originalText;
+                elBtn.classList.remove('pe-none');
             }, 3000);
         },
         _clickCopyUrl: function(evt) {
-            const elLabel = evt.target.closest('button');
+            const elBtn = evt.target.closest('button');
             const permalink = evt.target.closest(sandbox._selectors.sandbox).querySelector(sandbox._selectors.permalink).href;
-            libdocUi.copyToClipboard(permalink);
-            elLabel.innerHTML = '<span class="c-success-500">Copied!</span>';
+            elBtn.classList.add('pe-none');
+            libdocUi.copyToClipboard(permalink, {notificationEnabled: false});
+            if (elBtn.dataset.originalText === undefined) elBtn.dataset.originalText = elBtn.innerText;
+            elBtn.innerHTML = '<span class="c-success-500">Copied!</span>';
             setTimeout(function() {
-                elLabel.innerHTML = 'Copy URL';
+                elBtn.innerHTML = elBtn.dataset.originalText;
+                elBtn.classList.remove('pe-none');
             }, 3000);
         },
         _clickReload: function(evt) {
-            const elLabel = evt.target.closest('button');
-            const elIframe = evt.target.closest(sandbox._selectors.sandbox).querySelector('iframe');
+            const elBtn = evt.target.closest('button');
+            const elIframe = evt.target.closest(sandbox._selectors.sandbox).querySelector(sandbox._selectors.iframe);
             const elTargetDocument = elIframe.contentWindow.document;
             const elTargetWindow = elIframe.contentWindow.window;
+            elBtn.classList.add('pe-none');
             elTargetDocument.location.reload();
             elTargetWindow.scroll(0,0);
-            elLabel.innerHTML = '<span class="c-success-500">Reloaded!</span>';
+            if (elBtn.dataset.originalText === undefined) elBtn.dataset.originalText = elBtn.innerText;
+            elBtn.innerHTML = '<span class="c-success-500">Reloaded!</span>';
             setTimeout(function() {
-                elLabel.innerHTML = 'Reload';
+                elBtn.innerHTML = elBtn.dataset.originalText;
+                elBtn.classList.remove('pe-none');
             }, 3000);
         }
     },

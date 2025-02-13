@@ -1,0 +1,9 @@
+{% if eleventyNavigation.key %}
+    {% assign breadcrumb = collections.all | eleventyNavigationBreadcrumb: eleventyNavigation.key, site.navigationOptions %}
+    {% if finalTitle == page.inputPath %}
+        {% assign finalTitle = eleventyNavigation.key %}
+    {% endif %}
+    {% capture breadcrumbMarkup %}
+        {% include 'breadcrumb' %}
+    {% endcapture %}
+{% endif  %}

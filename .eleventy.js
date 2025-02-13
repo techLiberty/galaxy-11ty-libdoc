@@ -185,13 +185,13 @@ export default function(eleventyConfig) {
         const htmlTagsFound = libdocUtils.extractHtmlTagsFromString(content, libdocParams.toc.htmlTags);
         let tocMarkup = '';
         if (htmlTagsFound.length > libdocParams.toc.minTags) {
-            tocMarkup = '<ol class="d-flex fd-column | m-0 pl-0 | ls-none">';
+            tocMarkup = '<ol class="m-0 pl-5 pb-5 | ls-none bwidth-1 bstyle-dashed bcolor-neutral-500 btwidth-0 brwidth-0" columns-3="md" columns-2="sm">';
             // Displaying the results
             htmlTagsFound.forEach(function(htmlTag) {
                 tocMarkup += `
                     <li>
                         <a  href="#${libdocUtils.slugify(htmlTag.value)}"
-                            class="d-flex | ml-1 pt-1 pb-1 pl-${htmlTag.tagName.replace(`h`, ``)} | fs-2 lh-5 fvs-wght-400 | c-neutral-800">
+                            class="fs-3 lh-5 fvs-wght-400">
                             ${htmlTag.value}
                         </a>
                     </li>`;

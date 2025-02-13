@@ -1,15 +1,34 @@
 window.libdocUi = {
-    copyToClipboard: function(textToCopy, displayCopiedTextToNotif = false, confirmText = 'Copied to clipboard') {
-        const notifText = displayCopiedTextToNotif ? `
-            <div class="d-flex fd-column gap-1">
-                <code class="fs-3 fs-2--xs">${textToCopy}</code>
-                <span class="fs-3 fs-2--xs">was copied to clipboard</span>
-            </div>` : `<div class="fs-3 fs-2--xs">${confirmText}</div>`;
+    copyToClipboard: function(textToCopy, options) {
+        const params = {
+            notificationEnabled: function(value) {
+                let result = typeof value == 'boolean' ? value : true;
+                if (typeof value == 'string') {
+                    if (value.toLocaleLowerCase() === 'false') result = false;
+                }
+                return result;
+            },
+            notificationContent: function(value) {
+                return typeof value == 'string' ? value : 'Copied to clipboard';
+            }
+        }
+        const userParams = {
+            notificationEnabled: params.notificationEnabled(),
+            notificationContent: params.notificationContent()
+        }
+        if (typeof options == 'object') {
+            Object.keys(options).forEach(function(optionName) {
+                if (typeof params[optionName] == 'function') {
+                    const optionValue = options[optionName];
+                    userParams[optionName] = params[optionName](optionValue);
+                }
+            });
+        }
         if (navigator.clipboard !== undefined) {
             navigator.clipboard.writeText(textToCopy).then(
                 function() {
                   /* clipboard successfully set */
-                  libdocUi.notifications.add(notifText);
+                  if (userParams.notificationEnabled) libdocUi.notifications.add(userParams.notificationContent);
                 }
             )
         } else {
@@ -26,7 +45,7 @@ window.libdocUi = {
             document.execCommand("copy");
             // Remove it from the body
             document.body.removeChild(aux);
-            libdocUi.notifications.add(notifText);
+            if (userParams.notificationEnabled) libdocUi.notifications.add(userParams.notificationContent);
         }
     },
     notifications: {

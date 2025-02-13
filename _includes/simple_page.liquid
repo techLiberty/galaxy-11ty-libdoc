@@ -1,27 +1,7 @@
-{% assign breadcrumbMarkup = '' %}
-{% assign tocMarkup = content | toc %}
-{% assign finalTitle = title | default: page.inputPath %}
-{% if eleventyNavigation.key %}
-    {% assign breadcrumb = collections.all | eleventyNavigationBreadcrumb: eleventyNavigation.key, site.navigationOptions %}
-    {% if finalTitle == page.inputPath %}
-        {% assign finalTitle = eleventyNavigation.key %}
-    {% endif %}
-    {% capture breadcrumbMarkup %}
-        <ul class="d-flex ai-center gap-2 | p-0 m-0 o-auto | fs-2 lh-3 | ls-none">
-            <li class="d-flex gap-2"><a href="/" class="c-neutral-800">Home</a>/</li>
-            {% if breadcrumb.size > 0 %}
-                {% for item in breadcrumb %}
-                    <li class="d-flex ai-baseline gap-2">
-                        <a href="{{ item.url }}" class="ws-nowrap | c-neutral-800">
-                            {{ item.key }}
-                        </a> /
-                    </li>
-                {% endfor %}
-            {% endif %}
-            <li class="c-neutral-800 ws-nowrap">{{ finalTitle }}</li>
-        </ul>
-    {% endcapture %}
-{% endif  %}<!DOCTYPE html>
+{%- assign breadcrumbMarkup = '' -%}
+{%- assign tocMarkup = content | toc -%}
+{%- assign finalTitle = title | default: page.inputPath -%}
+{%- include 'before_html' -%}<!DOCTYPE html>
 <html lang="{{ page.lang }}">
 <head>
     <meta charset="UTF-8">
@@ -73,8 +53,8 @@
     {% block css_head %} 
         <link rel="stylesheet" href="/assets/css/ds__defaults.css">
         <link rel="stylesheet" href="/assets/css/ds.css">
-        {% comment %} <link rel="stylesheet" href="/assets/css/ds__width-twelves.css"> {% endcomment %}
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.11.1/styles/night-owl.min.css">
+        <link rel="stylesheet" href="/assets/css/hljs/night-owl.css">
+        <link rel="stylesheet" href="/assets/fonts/icomoon/style.css">
         {% comment %} <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.11.1/styles/nord.min.css"> {% endcomment %}
         {% comment %} <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.11.1/styles/ir-black.min.css"> {% endcomment %}
         {% comment %} <link rel="stylesheet" href="/assets/css/monokai-sublime.css"> {% endcomment %}
@@ -137,11 +117,14 @@
                     </li>
                 </menu>
                 {% assign menu = collections.all | eleventyNavigation | eleventyNavigationToHtml: site.navigationOptions %}
-                {% assign currentPageHrefAttribute = '<a href="' | append: page.url | append: '"' %}
+                {% comment %} {% assign currentPageHrefAttribute = '<a href="' | append: page.url | append: '"' %}
                 {% capture currentPageReplacementAttribute %}<div class="order-1 | w-100 pl-2">{{ tocMarkup }}</div>{{ currentPageHrefAttribute }} aria-current="page"{% endcapture %}
-                {% assign menu = menu | replace: currentPageHrefAttribute, currentPageReplacementAttribute %}
-                {% assign menu = menu | replace: '<menu>', '<menu class="d-flex fd-column fg-1 order-1 | m-0 pl-5 | ls-none">' %}
-                <div class="h-100 o-auto">
+                {% assign menu = menu | replace: currentPageHrefAttribute, currentPageReplacementAttribute %} {% endcomment %}
+                {% assign tag_to_replace = '<' | append: site.navigationOptions.listElement | append: '>' %}
+                {% assign tag_replacement = '<' | append: site.navigationOptions.listElement | append: ' class="d-flex fd-column fg-1 order-1 | m-0 pl-5 | ls-none">' %}
+                {% assign menu = menu | replace: tag_to_replace, tag_replacement %}
+                <div id="nav_primary"
+                    class="h-100 o-auto">
                     {{ menu }}
                 </div>
             </nav>
@@ -150,29 +133,44 @@
             w-100-minus-sidebar="md"
             w-100="xs,sm">
             {% block content %}
-                <header class="d-flex fd-column gap-2 | pt-7 pb-7 | bc-neutral-100 bwidth-1 bstyle-dashed bcolor-neutral-500 brad-3"
-                    mt-5="sm,md"
-                    brad-0="xs">
+                <header class="d-flex fd-column | pt-7 pb-7"
+                    mt-5="sm,md">
+                    {{ breadcrumbMarkup }}
                     <h1 class="m-0 | lsp-5 fvs-wght-700 tws-balance"
                         fs-10="md"
                         fs-9="xs,sm">
                         {{ finalTitle }}
                     </h1>
-                    {{ breadcrumbMarkup }}
                     {% if description %}
-                        <p class="m-0 | fvs-wght-400 tws-balance fs-7 lsp-3 lh-5"
-                            fs-6="xs,sm">
-                            {{ description }}
+                        <p class="d-flex ai-center | pt-5 pl-5 m-0 | fvs-wght-400 tws-balance fs-7 lsp-3 lh-5 | blwidth-1 blstyle-dashed bcolor-neutral-500"
+                            pt-3="xs"
+                            pb-3="xs"
+                            fs-6="sm"
+                            fs-5="xs">
+                            {% comment %} <span class="pl-5 | bbwidth-1 bbstyle-dashed bcolor-neutral-500"></span> {% endcomment %}
+                            <span>{{ description }}</span>
                         </p>
                     {% endif %}
+                    <p class="d-flex ai-center | m-0 | blwidth-1 blstyle-dashed bcolor-neutral-500">
+                        <span class="w-100 | bbwidth-1 bbstyle-dashed bcolor-neutral-500"></span>
+                        <span class="d-flex ai-center gap-3">
+                            <span class="pos-relative | p-5 | brad-4 bc-neutral-100 bwidth-1 bstyle-dashed bcolor-neutral-500">
+                                <span class="icon-user | pos-absolute top-50 left-50 t-tY-50 t-tX-50"></span>
+                            </span>
+                            <span class="d-flex fd-column gap-1">
+                                <strong class="fvs-wght-400 fs-3 lsp-3 lh-1 ws-nowrap">Author name</strong>
+                                <span class="fvs-casual-on fs-2 lh-1 ws-nowrap">Occupation title</span>
+                            </span>
+                        </span>
+                    </p>
                     {% if tocMarkup != '' %}
-                        <details>
-                            <summary class="fvs-wght-400 fs-3">
+                        <details id="toc_main" open>
+                            <summary class="d-flex ai-center gap-1 | pl-5 pt-0 pb-5 | fvs-wght-500 fs-3 | bwidth-1 bstyle-dashed bcolor-neutral-500 btwidth-0 brwidth-0 cur-pointer">
+                                <span class="icon-minus-circle | fs-6 | c-primary-500"></span>
+                                <span class="icon-plus-circle | fs-6 | c-primary-500"></span>
                                 Table of content
                             </summary>
-                            <div class="pl-5 pt-3">
-                                {{ tocMarkup }}
-                            </div>
+                            {{ tocMarkup }}
                         </details>
                     {% endif %}
                 </header>

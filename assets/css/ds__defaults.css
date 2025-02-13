@@ -59,7 +59,7 @@ button {
 }
 
 body {
-    background: 0px 0px / 20px 20px radial-gradient(#71B9F7 0.5px,#f9fcff 1px);
+    background: 0px 0px / 20px 20px radial-gradient(var(--ita-colors-primary-300) 0.5px,var(--ita-colors-primary-100) 1px);
     font-optical-sizing: auto;
     font-weight: 300;
     font-style: normal;
@@ -68,18 +68,29 @@ body {
 
 html,
 .o-auto {
-    scrollbar-color: var(--ita-colors-neutral-700) transparent;
+    scrollbar-color: var(--ita-colors-primary-500) transparent;
     scrollbar-width: 10px;
 }
 
+button:disabled {
+    opacity: 0.5;
+    cursor: default;
+}
+
 main {
-    &>*:not(.sandbox) {
+    &>* {
+        display: block;
         width: 100%;
         max-width: calc(var(--libdoc-container-width) + 2 * var(--ita-spacings-9));
         margin-left: auto;
         margin-right: auto;
         padding-left: var(--ita-spacings-9);
         padding-right: var(--ita-spacings-9);
+    }
+    &>video {
+        background: var(--ita-colors-neutral-900);
+        padding: 0;
+        max-width: var(--libdoc-container-width);
     }
     p,
     ul,
@@ -112,21 +123,26 @@ main {
     &>h6,
     &>ul>li,
     &>ol>li {
-        --foo: #f9fcff;
+        --text-shadow-legibility: var(--ita-colors-primary-100);
         text-shadow:
-            0.2em 0.2em 0.2em var(--foo), -0.2em 0.2em 0.2em var(--foo),
-            0.2em -0.2em 0.2em var(--foo), -0.2em -0.2em 0.2em var(--foo),
-            0.3em 0.3em 0.3em var(--foo), -0.3em 0.3em 0.3em var(--foo),
-            0.3em -0.3em 0.3em var(--foo), -0.3em -0.3em 0.3em var(--foo),
-            0.2em 0.2em 0.2em var(--foo), -0.2em 0.2em 0.2em var(--foo),
-            0.2em -0.2em 0.2em var(--foo), -0.2em -0.2em 0.2em var(--foo),
-            0.3em 0.3em 0.3em var(--foo), -0.3em 0.3em 0.3em var(--foo),
-            0.3em -0.3em 0.3em var(--foo), -0.3em -0.3em 0.3em var(--foo);
+            0.2em 0.2em 0.2em var(--text-shadow-legibility), -0.2em 0.2em 0.2em var(--text-shadow-legibility),
+            0.2em -0.2em 0.2em var(--text-shadow-legibility), -0.2em -0.2em 0.2em var(--text-shadow-legibility),
+            0.3em 0.3em 0.3em var(--text-shadow-legibility), -0.3em 0.3em 0.3em var(--text-shadow-legibility),
+            0.3em -0.3em 0.3em var(--text-shadow-legibility), -0.3em -0.3em 0.3em var(--text-shadow-legibility),
+            0.2em 0.2em 0.2em var(--text-shadow-legibility), -0.2em 0.2em 0.2em var(--text-shadow-legibility),
+            0.2em -0.2em 0.2em var(--text-shadow-legibility), -0.2em -0.2em 0.2em var(--text-shadow-legibility),
+            0.3em 0.3em 0.3em var(--text-shadow-legibility), -0.3em 0.3em 0.3em var(--text-shadow-legibility),
+            0.3em -0.3em 0.3em var(--text-shadow-legibility), -0.3em -0.3em 0.3em var(--text-shadow-legibility);
+    }
+
+    a:link,
+    a:visited {
+        color: var(--ita-colors-primary-500);
     }
 }
 @media (max-width: 959px) {
     main {
-        &>*:not(.sandbox) {
+        &>* {
             max-width: calc(var(--libdoc-container-width) + 2 * var(--ita-spacings-5));
             padding-left: var(--ita-spacings-5);
             padding-right: var(--ita-spacings-5);
@@ -140,11 +156,11 @@ code {
     font-size: var(--ita-fontSizes-3);
 }
 
-menu {
+#nav_primary {
     [aria-current="page"] {
         opacity: 0.5;
     }
-    .__anchor::before {
+    .nav_primary__anchor::before {
         content: '';
         display: flex;
         position: absolute;
@@ -153,7 +169,7 @@ menu {
         border-top: 1px dashed var(--ita-colors-neutral-500);
         width: 200px;
     }
-    .__anchor::after {
+    .nav_primary__anchor::after {
         content: '';
         display: flex;
         position: absolute;
@@ -166,7 +182,28 @@ menu {
     }
 }
 
+#toc_main[open] {
+    &>summary {
+        border-bottom: none;
+        &>.icon-plus-circle {
+            display: none;
+        }
+    }
+}
+#toc_main:not([open]) {
+    &>summary {
+        &>.icon-minus-circle {
+            display: none;
+        }
+    }
+}
+
 /* SANDBOX */
+.sandbox {
+    max-width: 1440px;
+    margin-left: auto;
+    margin-right: auto;
+}
 .sandbox__resizer {
     width: 20px;
 }
