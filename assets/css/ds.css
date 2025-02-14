@@ -11,7 +11,7 @@
   --ita-colors-neutral-800: #252525;
   --ita-colors-neutral-900: #000000;
   --ita-colors-primary-100: #FAFCFF;
-  --ita-colors-primary-200: #BCDAFB;
+  --ita-colors-primary-200: #E0EEFE;
   --ita-colors-primary-300: #7DB8F7;
   --ita-colors-primary-400: #3F96F3;
   --ita-colors-primary-500: #0074EF;
@@ -1095,7 +1095,7 @@
   color: var(--ita-colors-primary-100, #FAFCFF);
 }
 .c-primary-200 {
-  color: var(--ita-colors-primary-200, #BCDAFB);
+  color: var(--ita-colors-primary-200, #E0EEFE);
 }
 .c-primary-300 {
   color: var(--ita-colors-primary-300, #7DB8F7);
@@ -1182,7 +1182,7 @@
   background-color: var(--ita-colors-primary-100, #FAFCFF);
 }
 .bc-primary-200 {
-  background-color: var(--ita-colors-primary-200, #BCDAFB);
+  background-color: var(--ita-colors-primary-200, #E0EEFE);
 }
 .bc-primary-300 {
   background-color: var(--ita-colors-primary-300, #7DB8F7);
@@ -1272,7 +1272,7 @@
   border-color: var(--ita-colors-primary-100, #FAFCFF);
 }
 .bcolor-primary-200 {
-  border-color: var(--ita-colors-primary-200, #BCDAFB);
+  border-color: var(--ita-colors-primary-200, #E0EEFE);
 }
 .bcolor-primary-300 {
   border-color: var(--ita-colors-primary-300, #7DB8F7);

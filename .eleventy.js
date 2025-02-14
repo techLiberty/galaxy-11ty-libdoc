@@ -174,10 +174,12 @@ export default function(eleventyConfig) {
 	});
 
     eleventyConfig.addAsyncFilter("cleanup", async function (content) {
-        content = content.replace(`<p><div`, `<div`);
-        content = content.replace(`</div></p>`, `</div>`);
-        content = content.replace(`<p><aside`, `<aside`);
-        content = content.replace(`</aside></p>`, `</aside>`);
+        content = content.replaceAll(`<table>`, `<div class="o-auto w-100"><table>`);
+        content = content.replaceAll(`</table>`, `</table></div>`);
+        content = content.replaceAll(`<p><div`, `<div`);
+        content = content.replaceAll(`</div></p>`, `</div>`);
+        content = content.replaceAll(`<p><aside`, `<aside`);
+        content = content.replaceAll(`</aside></p>`, `</aside>`);
 		return content;
 	});
 

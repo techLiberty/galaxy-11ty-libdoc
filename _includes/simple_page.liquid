@@ -117,9 +117,9 @@
                     </li>
                 </menu>
                 {% assign menu = collections.all | eleventyNavigation | eleventyNavigationToHtml: site.navigationOptions %}
-                {% comment %} {% assign currentPageHrefAttribute = '<a href="' | append: page.url | append: '"' %}
-                {% capture currentPageReplacementAttribute %}<div class="order-1 | w-100 pl-2">{{ tocMarkup }}</div>{{ currentPageHrefAttribute }} aria-current="page"{% endcapture %}
-                {% assign menu = menu | replace: currentPageHrefAttribute, currentPageReplacementAttribute %} {% endcomment %}
+                {% assign currentPageHrefAttribute = '<a href="' | append: page.url | append: '"' %}
+                {% capture currentPageReplacementAttribute %}{{ currentPageHrefAttribute }} aria-current="page"{% endcapture %}
+                {% assign menu = menu | replace: currentPageHrefAttribute, currentPageReplacementAttribute %}
                 {% assign tag_to_replace = '<' | append: site.navigationOptions.listElement | append: '>' %}
                 {% assign tag_replacement = '<' | append: site.navigationOptions.listElement | append: ' class="d-flex fd-column fg-1 order-1 | m-0 pl-5 | ls-none">' %}
                 {% assign menu = menu | replace: tag_to_replace, tag_replacement %}
@@ -151,8 +151,8 @@
                     {% endif %}
                     <div class="d-flex ai-center | m-0 | blwidth-1 blstyle-dashed bcolor-neutral-500">
                         <div class="pl-5 | bbwidth-1 bbstyle-dashed bcolor-neutral-500"></div>
-                        <p class="d-flex ai-center gap-2 | m-0 | fvs-wght-400 fs-2 lsp-3 lh-1">
-                            <span class="icon-calendar-dots fs-5"></span>
+                        <p class="d-flex ai-center gap-2 | m-0 pr-2 | fvs-wght-400 fs-2 lsp-3 lh-1 | c-neutral-700">
+                            <span class="icon-calendar-dots fs-6"></span>
                             <span ws-nowrap="sm,md">
                                 <span class="ws-nowrap">Last modified</span>
                                 {{ date | default: site.buildDate }}
@@ -161,11 +161,10 @@
                         <div class="pl-5 w-100 | bbwidth-1 bbstyle-dashed bcolor-neutral-500"></div>
                         <div class="d-flex ai-center gap-3">
                             <div class="pos-relative | p-5 | brad-4 bc-neutral-100 bwidth-1 bstyle-dashed bcolor-neutral-500">
-                                <div class="icon-user | pos-absolute top-50 left-50 t-tY-50 t-tX-50"></div>
+                                <div class="icon-user | pos-absolute top-50 left-50 t-tY-50 t-tX-50 | fs-6"></div>
                             </div>
-                            <p class="d-flex fd-column | m-0 | fvs-wght-400 fs-3 lsp-3 lh-1"
-                                ws-nowrap="sm,md"
-                                fs-2="xs">
+                            <p class="d-flex fd-column | m-0 | fvs-wght-400 fs-2 lsp-3 lh-1 | c-neutral-700"
+                                ws-nowrap="sm,md">
                                 Author name
                             </p>
                         </div>
@@ -173,10 +172,13 @@
                     </div>
                     {% if tocMarkup != '' %}
                         <details id="toc_main" open>
-                            <summary class="d-flex ai-center gap-1 | pl-5 pt-5 pb-5 | fvs-wght-500 fs-3 | bwidth-1 bstyle-dashed bcolor-neutral-500 btwidth-0 brwidth-0 cur-pointer">
-                                <span class="icon-minus-circle | fs-6 | c-primary-500"></span>
-                                <span class="icon-plus-circle | fs-6 | c-primary-500"></span>
-                                Table of content
+                            <summary class="d-flex ai-center | pt-5 pb-5 | fvs-wght-500 fs-3 | bwidth-1 bstyle-dashed bcolor-neutral-500 btwidth-0 brwidth-0 cur-pointer">
+                                <span class="pl-5 | bbwidth-1 bbstyle-dashed bcolor-neutral-500"></span>
+                                <span class="d-flex ai-center gap-1 | lsp-2">
+                                    <span class="icon-minus-circle | fs-6 | c-primary-500"></span>
+                                    <span class="icon-plus-circle | fs-6 | c-primary-500"></span>
+                                    Table of content
+                                </span>
                             </summary>
                             {{ tocMarkup }}
                         </details>

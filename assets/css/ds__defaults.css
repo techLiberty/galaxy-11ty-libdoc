@@ -1,6 +1,16 @@
 :root {
     --libdoc-container-width: var(--ita-widths-content);
     --libdoc-font-family: "Recursive", sans-serif;
+    --libdoc-tslegc: var(--ita-colors-primary-100);
+    --libdoc-text-shadow-legibility:
+        0.2em 0.2em 0.2em var(--libdoc-tslegc), -0.2em 0.2em 0.2em var(--libdoc-tslegc),
+        0.2em -0.2em 0.2em var(--libdoc-tslegc), -0.2em -0.2em 0.2em var(--libdoc-tslegc),
+        0.3em 0.3em 0.3em var(--libdoc-tslegc), -0.3em 0.3em 0.3em var(--libdoc-tslegc),
+        0.3em -0.3em 0.3em var(--libdoc-tslegc), -0.3em -0.3em 0.3em var(--libdoc-tslegc),
+        0.2em 0.2em 0.2em var(--libdoc-tslegc), -0.2em 0.2em 0.2em var(--libdoc-tslegc),
+        0.2em -0.2em 0.2em var(--libdoc-tslegc), -0.2em -0.2em 0.2em var(--libdoc-tslegc),
+        0.3em 0.3em 0.3em var(--libdoc-tslegc), -0.3em 0.3em 0.3em var(--libdoc-tslegc),
+        0.3em -0.3em 0.3em var(--libdoc-tslegc), -0.3em -0.3em 0.3em var(--libdoc-tslegc);
 }
 /* FONTS */
 /* cyrillic-ext */
@@ -87,15 +97,133 @@ main {
         padding-left: var(--ita-spacings-9);
         padding-right: var(--ita-spacings-9);
     }
-    &>video {
-        background: var(--ita-colors-neutral-900);
-        padding: 0;
-        max-width: var(--libdoc-container-width);
+    * {
+        &::selection {
+            text-shadow: none;
+            background-color: var(--ita-colors-primary-200);
+            color: var(--ita-colors-primary-900);
+        }
     }
-    p,
+    &>header {
+        p,
+        summary {
+            text-shadow: var(--libdoc-text-shadow-legibility);
+        }
+    }
+    p {
+        text-shadow: var(--libdoc-text-shadow-legibility);
+        line-height: 1.6em;
+    }
+    /* HEADINGS */
+    &>h1 {
+        font-variation-settings: "wght" 800;
+        font-size: var(--ita-fontSizes-10);
+        letter-spacing: -0.06em;
+    }
+    &>h2 {
+        font-variation-settings: "wght" 700;
+        font-size: var(--ita-fontSizes-10);
+        letter-spacing: -0.06em;
+    }
+    &>h3 {
+        font-variation-settings: "wght" 800;
+        font-size: var(--ita-fontSizes-9);
+        letter-spacing: -0.05em;
+    }
+    &>h4 {
+        font-variation-settings: "wght" 700;
+        font-size: var(--ita-fontSizes-9);
+        letter-spacing: -0.05em;
+    }
+    &>h5 {
+        font-variation-settings: "wght" 800;
+        font-size: var(--ita-fontSizes-8);
+        letter-spacing: -0.05em;
+    }
+    &>h6 {
+        font-variation-settings: "wght" 700;
+        font-size: var(--ita-fontSizes-8);
+        letter-spacing: -0.05em;
+    }
+    /* LINKS */
+    a:link,
+    a:visited {
+        color: var(--ita-colors-primary-500);
+        font-variation-settings: "wght" 500;
+        letter-spacing: -0.03em;
+        text-shadow: none;
+        text-underline-offset: 0.2em;
+        text-decoration-thickness: 0.1em;
+    }
+    /* EMPHASIS */
+    em {
+        font-variation-settings: "SLNT" 1, "wght" 400;
+    }
+    strong {
+        font-variation-settings: "wght" 700;
+    }
+    s {
+        text-decoration-color: var(--ita-colors-primary-500);
+        text-decoration-thickness: 0.15em;
+        text-decoration-style: dashed;
+    }
+    /* LISTS */
     ul,
     ol {
         line-height: 1.6em;
+    }
+
+    /* 
+    https://www.joshwcomeau.com/css/styling-ordered-lists-with-css-counters/
+    */
+    &>ol,
+    &>ol ol {
+        counter-reset: listItem;
+        list-style: none;
+        li {
+            counter-increment: listItem;
+            &:before {
+                content: counters(listItem, '.') '. ';
+                display: inline-block;
+                font-variation-settings: "wght" 400;
+                font-size: var(--ita-fontSizes-3);
+                padding-right: var(--ita-spacings-1);
+                color: var(--ita-colors-primary-600);
+                margin-left: var(--ita-spacings-2);
+                margin-right: var(--ita-spacings-3);
+            }
+        }
+    }
+    &>ul,
+    &>ul ul {
+        list-style: none;
+        li {
+            &:before {
+                content: '';
+                display: inline-block;
+                padding: var(--ita-spacings-1);
+                background-color: var(--ita-colors-primary-500);
+                border-radius: 100%;
+                margin-right: var(--ita-spacings-3);
+                margin-left: var(--ita-spacings-2);
+            }
+        }
+    }
+    li {
+        text-shadow: var(--libdoc-text-shadow-legibility);
+    }
+    /* CODE AND SYNTAX HIGHLIGHTING */
+    p > code {
+        background-color: var(--ita-colors-primary-200);
+        text-shadow: none;
+        display: inline-block;
+        margin-right: 0.3em;
+        margin-left: 0.3em;
+        padding-left: 0.3em;
+        padding-right: 0.3em;
+        border-radius: 0.3em;
+        font-variation-settings: "wght" 400;
+        color: var(--ita-colors-primary-800);
     }
     /* language not supported in highlight js */
     pre:not(:has(.hljs)) {
@@ -114,30 +242,63 @@ main {
             font-variation-settings: "wght" 400;
         }
     }
-    &>p,
-    &>h1,
-    &>h2,
-    &>h3,
-    &>h4,
-    &>h5,
-    &>h6,
-    &>ul>li,
-    &>ol>li {
-        --text-shadow-legibility: var(--ita-colors-primary-100);
-        text-shadow:
-            0.2em 0.2em 0.2em var(--text-shadow-legibility), -0.2em 0.2em 0.2em var(--text-shadow-legibility),
-            0.2em -0.2em 0.2em var(--text-shadow-legibility), -0.2em -0.2em 0.2em var(--text-shadow-legibility),
-            0.3em 0.3em 0.3em var(--text-shadow-legibility), -0.3em 0.3em 0.3em var(--text-shadow-legibility),
-            0.3em -0.3em 0.3em var(--text-shadow-legibility), -0.3em -0.3em 0.3em var(--text-shadow-legibility),
-            0.2em 0.2em 0.2em var(--text-shadow-legibility), -0.2em 0.2em 0.2em var(--text-shadow-legibility),
-            0.2em -0.2em 0.2em var(--text-shadow-legibility), -0.2em -0.2em 0.2em var(--text-shadow-legibility),
-            0.3em 0.3em 0.3em var(--text-shadow-legibility), -0.3em 0.3em 0.3em var(--text-shadow-legibility),
-            0.3em -0.3em 0.3em var(--text-shadow-legibility), -0.3em -0.3em 0.3em var(--text-shadow-legibility);
+    /* TABLES */
+    table {
+        display: table;
+        width: 100%;
+        border-collapse: collapse;
+        max-width: var(--libdoc-container-width);
+        thead {
+            th {
+                text-align: left;
+                font-variation-settings: "wght" 400;
+                font-size: var(--ita-fontSizes-3);
+                padding: var(--ita-spacings-3);
+                background-color: var(--ita-colors-primary-100);
+                border: 1px solid var(--ita-colors-primary-200);
+            }
+        }
+        tbody {
+            tr {
+                td {
+                    padding: var(--ita-spacings-3);
+                    font-size: var(--ita-fontSizes-3);
+                    border: 1px solid var(--ita-colors-primary-200);
+                    font-variation-settings: "wght" 400;
+                }
+                &:nth-child(odd) {
+                    td {
+                        background-color: var(--ita-colors-primary-200);
+                        color: var(--ita-colors-primary-900);
+                    }
+                }
+                &:nth-child(even) {
+                    td {
+                        background-color: var(--ita-colors-primary-100);
+                    }
+                }
+            }
+        }
     }
-
-    a:link,
-    a:visited {
-        color: var(--ita-colors-primary-500);
+    /* QUOTES */
+    blockquote {
+        background-color: var(--ita-colors-primary-100);
+        color: var(--ita-colors-primary-800);
+        padding: var(--ita-spacings-5) var(--ita-spacings-7);
+        max-width: var(--libdoc-container-width);
+        border-radius: 6px;
+        border: 1px solid var(--ita-colors-primary-200);
+        font-family: var(--libdoc-font-family);
+        font-size: var(--ita-fontSizes-5);
+        * {
+            font-variation-settings: "slnt" -15, "CASL" 1 , "CRSV" 1;
+            text-shadow: none;
+        }
+    }
+    &>video {
+        background: var(--ita-colors-neutral-900);
+        padding: 0;
+        max-width: var(--libdoc-container-width);
     }
 }
 @media (max-width: 959px) {
@@ -176,25 +337,31 @@ code {
         top: calc(50% - 2.5px);
         left: 0%;
         border-radius: 100%;
-        background-color: var(--ita-colors-neutral-600);
+        background-color: var(--ita-colors-primary-500);
         width: 5px;
         height: 5px;
     }
 }
 
-#toc_main[open] {
-    &>summary {
-        border-bottom: none;
-        &>.icon-plus-circle {
-            display: none;
+/* TABLE OF CONTENT */
+#toc_main {
+    &[open] {
+        &>summary {
+            border-bottom: none;
+            .icon-plus-circle {
+                display: none;
+            }
         }
     }
-}
-#toc_main:not([open]) {
-    &>summary {
-        &>.icon-minus-circle {
-            display: none;
+    &:not([open]) {
+        &>summary {
+            .icon-minus-circle {
+                display: none;
+            }
         }
+    }
+    li {
+        break-inside: avoid;
     }
 }
 

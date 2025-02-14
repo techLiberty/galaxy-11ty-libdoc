@@ -70,10 +70,26 @@ Strikethrough uses two tildes. ~~Scratch this.~~
 
 1. First ordered list item
 2. Another item
-⋅⋅* Unordered sub-list. 
-1. Actual numbers don't matter, just that it's a number
-⋅⋅1. Ordered sub-list
-4. And another item.
+    1. Sub First ordered list item
+    2. Sub Another item
+    3. Sub Unordered sub-list.
+        1. Sub Sub First ordered list item
+        2. Sub Sub Another item
+        3. Sub Sub Unordered sub-list. 
+        4. Sub Sub Actual numbers don't matter, just that it's a number
+        5. Sub Sub Ordered sub-list
+        6. Sub Sub And another item.
+    4. Sub Actual numbers don't matter, just that it's a number
+    5. Sub Ordered sub-list
+    6. Sub And another item.
+3. Unordered sub-list. 
+4. Actual numbers don't matter, just that it's a number
+5. Ordered sub-list
+6. And another item.
+7. And another item.
+8. And another item.
+9. And another item.
+10. And another item.
 
 ⋅⋅⋅You can have properly indented paragraphs within list items. Notice the blank line above, and the leading spaces (at least one, but we'll use three here to also align the raw Markdown).
 
@@ -82,8 +98,20 @@ Strikethrough uses two tildes. ~~Scratch this.~~
 ⋅⋅⋅(This is contrary to the typical GFM line break behaviour, where trailing spaces are not required.)
 
 * Unordered list can use asterisks
-- Or minuses
-+ Or pluses
+* Or minuses
+    * Sub Unordered list can use asterisks
+    * Sub Or minuses
+        * Sub sub Unordered list can use asterisks
+        * Sub sub Or minuses
+        * Sub sub Or pluses
+        * Sub sub And another item.
+        * Sub sub And another item.
+    * Sub Or pluses
+    * Sub And another item.
+    * Sub And another item.
+* Or pluses
+* And another item.
+* And another item.
 
 ```markdown
 1. First ordered list item
