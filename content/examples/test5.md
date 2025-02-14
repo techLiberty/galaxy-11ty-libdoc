@@ -1,6 +1,6 @@
 ---
 # title: Mon titre
-description: Lorem ipsum dolor 5
+# description: Lorem ipsum dolor 5
 layout: simple_page.liquid
 eleventyNavigation:
   key: Test 5

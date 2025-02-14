@@ -2,6 +2,8 @@
 # title: Mon titre
 description: Usage examples of Eleventy LibDoc
 layout: simple_page.liquid
+lang: fr
+date: "2020-01-01"
 tags:
     - tag2
     - tag1

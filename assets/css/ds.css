@@ -281,6 +281,9 @@
 .ar-square {
   aspect-ratio: 1;
 }
+.cgap-3em {
+  column-gap: 3em;
+}
 .gap-1 {
   gap: var(--ita-spacings-1, 4px);
 }
@@ -439,6 +442,12 @@
 }
 .maxh-50vh {
   max-height: 50vh;
+}
+.maxh-200px {
+  max-height: 200px;
+}
+.maxh-300px {
+  max-height: 300px;
 }
 .maxh-sidebar {
   max-height: calc(100vh - 2 * var(--ita-spacings-5));
@@ -1888,6 +1897,10 @@
 [ar-square*="xs"] {
   aspect-ratio: 1;
 }
+.cgap-3em--xs,
+[cgap-3em*="xs"] {
+  column-gap: 3em;
+}
 .gap-1--xs,
 [gap-1*="xs"] {
   gap: var(--ita-spacings-1, 4px);
@@ -2099,6 +2112,14 @@
 .maxh-50vh--xs,
 [maxh-50vh*="xs"] {
   max-height: 50vh;
+}
+.maxh-200px--xs,
+[maxh-200px*="xs"] {
+  max-height: 200px;
+}
+.maxh-300px--xs,
+[maxh-300px*="xs"] {
+  max-height: 300px;
 }
 .maxh-sidebar--xs,
 [maxh-sidebar*="xs"] {
@@ -2664,6 +2685,10 @@
 [ta-right*="xs"] {
   text-align: right;
 }
+.ws-nowrap--xs,
+[ws-nowrap*="xs"] {
+  white-space: nowrap;
+}
 .b-0--xs,
 [b-0*="xs"] {
   border: none;
@@ -3119,6 +3144,10 @@
 [ar-square*="sm"] {
   aspect-ratio: 1;
 }
+.cgap-3em--sm,
+[cgap-3em*="sm"] {
+  column-gap: 3em;
+}
 .gap-1--sm,
 [gap-1*="sm"] {
   gap: var(--ita-spacings-1, 4px);
@@ -3330,6 +3359,14 @@
 .maxh-50vh--sm,
 [maxh-50vh*="sm"] {
   max-height: 50vh;
+}
+.maxh-200px--sm,
+[maxh-200px*="sm"] {
+  max-height: 200px;
+}
+.maxh-300px--sm,
+[maxh-300px*="sm"] {
+  max-height: 300px;
 }
 .maxh-sidebar--sm,
 [maxh-sidebar*="sm"] {
@@ -3895,6 +3932,10 @@
 [ta-right*="sm"] {
   text-align: right;
 }
+.ws-nowrap--sm,
+[ws-nowrap*="sm"] {
+  white-space: nowrap;
+}
 .b-0--sm,
 [b-0*="sm"] {
   border: none;
@@ -4350,6 +4391,10 @@
 [ar-square*="md"] {
   aspect-ratio: 1;
 }
+.cgap-3em--md,
+[cgap-3em*="md"] {
+  column-gap: 3em;
+}
 .gap-1--md,
 [gap-1*="md"] {
   gap: var(--ita-spacings-1, 4px);
@@ -4561,6 +4606,14 @@
 .maxh-50vh--md,
 [maxh-50vh*="md"] {
   max-height: 50vh;
+}
+.maxh-200px--md,
+[maxh-200px*="md"] {
+  max-height: 200px;
+}
+.maxh-300px--md,
+[maxh-300px*="md"] {
+  max-height: 300px;
 }
 .maxh-sidebar--md,
 [maxh-sidebar*="md"] {
@@ -5125,6 +5178,10 @@
 .ta-right--md,
 [ta-right*="md"] {
   text-align: right;
+}
+.ws-nowrap--md,
+[ws-nowrap*="md"] {
+  white-space: nowrap;
 }
 .b-0--md,
 [b-0*="md"] {

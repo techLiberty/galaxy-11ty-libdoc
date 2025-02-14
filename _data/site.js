@@ -4,7 +4,20 @@ export default function () {
     return {
         environment: process.env.MY_ENVIRONMENT || "development",
         imgsrv: process.env.IMAGE_SERVER_ENDPOINT,
-        name: "pouet",
+        lang: "en",
+        buildDate: function() {
+            const jsDate = new Date();
+            let theDay = jsDate.getDate().toString();
+            if (theDay.length == 1) {
+                theDay = `0${theDay}`;
+            }
+            let theMonth = (jsDate.getMonth() + 1).toString();
+            if (theMonth.length == 1) {
+                theMonth = `0${theMonth}`;
+            }
+            const theYear = jsDate.getFullYear().toString();
+            return `${theYear}-${theMonth}-${theDay}`;
+        },
         navigationOptions: {
             listElement: "ol",            // Change the top level tag
             listItemElement: "li",        // Change the item tag

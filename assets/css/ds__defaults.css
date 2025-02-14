@@ -223,6 +223,34 @@ code {
     display: none;
 }
 
+/* BROWSERS DEFAULTS */
+
+/* <details> défaut style on iOS */
+details > summary::-webkit-details-marker {
+    display: none;
+}
+details:not([open]) > summary .icons span[class*="icon-"]:nth-child(2) {
+    display: none;
+}
+details[open] > summary .icons span[class*="icon-"]:nth-child(1) {
+    display: none;
+}
+/* <button> and <select> default style on iOS */
+select, button {
+    color: black
+}
+/* Opacity disabled input on iOS */
+input:disabled {
+    opacity: 1;
+}
+/* input type search reset */
+input[type="search"]::-webkit-search-decoration,
+input[type="search"]::-webkit-search-cancel-button,
+input[type="search"]::-webkit-search-results-button,
+input[type="search"]::-webkit-search-results-decoration {
+    -webkit-appearance:none;
+}
+
 /* FANCY */
 .anchored {
     transition: background-position 300ms;
