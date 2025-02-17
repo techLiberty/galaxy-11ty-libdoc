@@ -4,13 +4,13 @@ description: All available markdown tags into a single page with examples
 layout: simple_page.liquid
 eleventyNavigation:
     key: Samples
+    title: Markdown Samples
     order: 20
-tags:
-    - tag1
-    - tag2
 ---
 
-## Headers
+## Headings
+
+[MDN reference](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/Heading_Elements)
 
 # H1
 ## H2
@@ -19,7 +19,7 @@ tags:
 ##### H5
 ###### H6
 
-Alternatively, for H1 and H2, an underline-ish style:
+Alternative syntax
 
 Alt-H1
 ======
@@ -35,7 +35,7 @@ Alt-H2
 ##### H5
 ###### H6
 
-Alternatively, for H1 and H2, an underline-ish style:
+Alternative syntax
 
 Alt-H1
 ======
@@ -46,27 +46,26 @@ Alt-H2
 
 ## Emphasis
 
-Emphasis, aka italics, with *asterisks* or _underscores_.
 
-Strong emphasis, aka bold, with **asterisks** or __underscores__.
+Lightest emphasis is set with single *asterisks* or _underscores_.
 
-Combined emphasis with **asterisks and _underscores_**.
+Strong emphasis is set with double **asterisks** or __underscores__.
 
-Strikethrough uses two tildes. ~~Scratch this.~~
+It is possible to combined both emphasis with **asterisks and _underscores_**.
+
+Strikethrough using two tildes. ~~this text is scratched.~~
 
 ```markdown
-Emphasis, aka italics, with *asterisks* or _underscores_.
+Lightest emphasis is set with single *asterisks* or _underscores_.
 
-Strong emphasis, aka bold, with **asterisks** or __underscores__.
+Strong emphasis is set with double **asterisks** or __underscores__.
 
-Combined emphasis with **asterisks and _underscores_**.
+It is possible to combined both emphasis with **asterisks and _underscores_**.
 
-Strikethrough uses two tildes. ~~Scratch this.~~
+Strikethrough using two tildes. ~~this text is scratched.~~
 ```
 
 ## Lists
-
-(In this example, leading and trailing spaces are shown with with dots: ⋅)
 
 1. First ordered list item
 2. Another item
@@ -76,7 +75,7 @@ Strikethrough uses two tildes. ~~Scratch this.~~
         1. Sub Sub First ordered list item
         2. Sub Sub Another item
         3. Sub Sub Unordered sub-list. 
-        4. Sub Sub Actual numbers don't matter, just that it's a number
+        4. Sub Sub Actual numbers don't matter, just that it's a number sdjkhf qskdjgh dsqlkgjh qsldkggjh qskdjgh qskjldgh qljsgh qlkhsjdg lq
         5. Sub Sub Ordered sub-list
         6. Sub Sub And another item.
     4. Sub Actual numbers don't matter, just that it's a number
@@ -88,7 +87,7 @@ Strikethrough uses two tildes. ~~Scratch this.~~
 6. And another item.
 7. And another item.
 8. And another item.
-9. And another item.
+9. And another item.    
 10. And another item.
 
 ⋅⋅⋅You can have properly indented paragraphs within list items. Notice the blank line above, and the leading spaces (at least one, but we'll use three here to also align the raw Markdown).
@@ -103,7 +102,7 @@ Strikethrough uses two tildes. ~~Scratch this.~~
     * Sub Or minuses
         * Sub sub Unordered list can use asterisks
         * Sub sub Or minuses
-        * Sub sub Or pluses
+        * Sub sub Or pluses Et est est magna voluptua et ut. Eirmod kasd et sit invidunt. Justo et clita magna accusam ea kasd sadipscing et, est et dolor amet lorem no diam et sed diam, diam diam rebum dolor rebum, sea accusam dolores et sed diam sadipscing magna gubergren, rebum diam sit diam lorem.
         * Sub sub And another item.
         * Sub sub And another item.
     * Sub Or pluses
@@ -230,9 +229,9 @@ s = "Python syntax highlighting"
 print s
 ```
  
-```
-No language indicated, so no syntax highlighting. 
-But let's throw in a <b>tag</b>.
+```php
+$s = "PHP syntax highlighting";
+echo $s;
 ```
 
 ```markdown
@@ -363,6 +362,55 @@ You can also use raw HTML in your Markdown, and it'll mostly work pretty well.
   <dd>Does *not* work **very** well. Use HTML <em>tags</em>.</dd>
 </dl>
 ```
+<p>
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus nisi lacus, auctor sit amet purus vel, gravida
+    luctus lectus. Aenean rhoncus dapibus enim, sit amet faucibus leo ornare vitae. <br>
+    <span> span </span>
+    <b>Bold word</b>
+    <i>italic</i>
+    <em>emphasis</em>
+    <mark>mark</mark>
+    <small> small </small>
+    <sub> sub </sub>
+    <sup> sup </sup>
+    <u> Statements... </u>
+    <abbr title="National Aeronautics and Space Administration">NASA</abbr>
+    <strike> strikethrough </strike>
+    <span><del> deprecated info </del> <ins> new info </ins> </span>
+    <s> not relevant </s>
+    <a href="#link">link</a>
+    <time datetime="2020-08-17 08:00">Monday at 8:00 AM</time>
+    <ruby>
+        <rb>ruby base</rb><rt>annotation
+    </rt></ruby>
+    <br>
+    <kbd>CTRL</kbd>+<kbd>ALT</kbd>+<kbd>CANC</kbd>
+</p>
+
+<p>“You're late!”</p>
+<del>
+  <p>“I apologize for the delay.”</p>
+</del>
+<ins cite="../howtobeawizard.html" datetime="2018-05">
+  <p>“A wizard is never late …”</p>
+</ins>
+
+<p> This is a <q>short quote</q> </p>
+
+<details>
+    <summary>Summary of content below</summary>
+    <p>Content 1</p>
+    <p>Content 2</p>
+    <p>Content 3</p>
+    <p>Content 4</p>
+</details>
+
+<p>
+    <var> variable </var> = 1000;
+    <samp>Traceback (most recent call last):<br>NameError: name 'variabl' is not defined</samp>
+</p>
+
+<hr>
 
 ## Horizontal rule
 

@@ -96,6 +96,14 @@ main {
         margin-right: auto;
         padding-left: var(--ita-spacings-9);
         padding-right: var(--ita-spacings-9);
+        del {
+            background-color: var(--ita-colors-danger-100);
+            color: var(--ita-colors-danger-900);
+        }
+        ins {
+            background-color: var(--ita-colors-success-100);
+            color: var(--ita-colors-success-900);
+        }
     }
     * {
         &::selection {
@@ -159,13 +167,58 @@ main {
     em {
         font-variation-settings: "SLNT" 1, "wght" 400;
     }
-    strong {
+    strong,
+    b {
         font-variation-settings: "wght" 700;
     }
-    s {
+    i {
+        font-variation-settings: "slnt" -15;
+    }
+    mark {
+        text-shadow: none;
+        background-color: aqua; 
+        /* #ffe300 */
+    }
+    s,
+    strike {
         text-decoration-color: var(--ita-colors-primary-500);
         text-decoration-thickness: 0.15em;
         text-decoration-style: dashed;
+    }
+    del {
+        text-shadow: none;
+        * {
+            text-shadow: none;
+            background-color: var(--ita-colors-danger-100);
+            color: var(--ita-colors-danger-900);
+            max-width: var(--libdoc-container-width);
+        }
+    }
+    ins {
+        text-shadow: none;
+        * {
+            text-shadow: none;
+            background-color: var(--ita-colors-success-100);
+            color: var(--ita-colors-success-900);
+            max-width: var(--libdoc-container-width);
+        }
+    }
+    samp {
+        font-family: var(--libdoc-font-family);
+        font-variation-settings: "MONO" 1, "CASL" 1, "wght" 400;
+    }
+    q {
+        font-variation-settings: "slnt" -15, "CRSV" 1, "CASL" 1, "wght" 400;
+        text-shadow: none;
+        background-color: var(--ita-colors-primary-100);
+    }
+    kbd {
+        font-variation-settings: "MONO" 1, "wght" 400;
+        font-family: var(--libdoc-font-family);
+        text-shadow: none;
+        background-color: var(--ita-colors-primary-200);
+        padding: 0 0.4em;
+        border-radius: 4px;
     }
     /* LISTS */
     ul,
@@ -176,14 +229,20 @@ main {
     /* 
     https://www.joshwcomeau.com/css/styling-ordered-lists-with-css-counters/
     */
+    &>ol {
+        padding-left: var(--ita-spacings-11);
+    }
     &>ol,
     &>ol ol {
         counter-reset: listItem;
         list-style: none;
         li {
             counter-increment: listItem;
+            padding-left: var(--ita-spacings-2);
             &:before {
                 content: counters(listItem, '.') '. ';
+                position: absolute;
+                transform: translateX(calc(-100% - var(--ita-spacings-3)));
                 display: inline-block;
                 font-variation-settings: "wght" 400;
                 font-size: var(--ita-fontSizes-3);
@@ -194,18 +253,24 @@ main {
             }
         }
     }
+    &>ul {
+        padding-left: var(--ita-spacings-11);
+    }
     &>ul,
     &>ul ul {
         list-style: none;
         li {
             &:before {
                 content: '';
+                position: absolute;
+                transform: translateX(calc(-100% - var(--ita-spacings-5)));
                 display: inline-block;
                 padding: var(--ita-spacings-1);
                 background-color: var(--ita-colors-primary-500);
                 border-radius: 100%;
                 margin-right: var(--ita-spacings-3);
                 margin-left: var(--ita-spacings-2);
+                margin-top: var(--ita-spacings-2);
             }
         }
     }
@@ -293,6 +358,47 @@ main {
         * {
             font-variation-settings: "slnt" -15, "CASL" 1 , "CRSV" 1;
             text-shadow: none;
+        }
+    }
+    dl {
+        dt {
+            font-variation-settings: "wght" 400;
+            margin-bottom: 0.2em;
+        }
+        dd {
+            margin-left: var(--ita-spacings-5);
+            margin-bottom: 1em;
+            line-height: 1.6em;
+        }
+    }
+    &>details {
+        summary {
+            font-variation-settings: "wght" 400;
+            display: flex;
+            align-items: center;
+            gap: var(--ita-spacings-2);
+            &::before {
+                content: '\e914';
+                font-family: icomoon;
+                color: var(--ita-colors-primary-500);
+                font-size: var(--ita-fontSizes-6);
+            }
+        }
+        &[open] {
+            summary {
+                &::before {
+                    content: '\e913';
+                }
+            }
+        }
+    }
+    hr {
+        border: none;
+        &::before {
+            content: "";
+            display: block;
+            width: 100%;
+            border-bottom: 1px dashed var(--ita-colors-neutral-500);
         }
     }
     &>video {
