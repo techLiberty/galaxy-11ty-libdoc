@@ -1,4 +1,8 @@
 window.libdocUi = {
+    default: {
+        scrollThreshold: window.innerHeight / 2
+    },
+    el: {},
     copyToClipboard: function(textToCopy, options) {
         const params = {
             notificationEnabled: function(value) {
@@ -128,6 +132,108 @@ window.libdocUi = {
             const n_markup = this.templates[n_tpl]({message: message, id: n_id, duration: n_duration, skin: n_skin});
             document.body.insertAdjacentHTML('beforeend', n_markup);
         }
+    },
+    handlers: {
+        _clickCopyCodeBlock: function(evt) {
+            const elBtn = evt.target.closest('button');
+            const content = evt.target.closest('pre').querySelector('code').innerText;
+            libdocUi.copyToClipboard(content, {notificationEnabled: false});
+            if (elBtn.dataset.originalText === undefined) elBtn.dataset.originalText = elBtn.innerText;
+            elBtn.innerHTML = '<span class="c-success-500">Copied!</span>';
+            setTimeout(function() {
+                elBtn.innerHTML = elBtn.dataset.originalText;
+                elBtn.classList.remove('pe-none');
+            }, 3000);
+        },
+        _scrollWindow: function() {
+            if (window.scrollY > libdocUi.default.scrollThreshold) {
+                libdocUi.showGoToTop();
+            } else {
+                libdocUi.hideGoToTop();
+            }
+        },
+        _clickGTT: function(evt) {
+            window.scroll({top:0})
+        }
+    },
+    createFloatingToc: function() {
+        const elTocMain = document.querySelector('#toc_main > ol');
+        if (libdocUi.el.ftoc === undefined && elTocMain !== null) {
+            const elDetails = document.createElement('details');
+            elDetails.id = 'floating_toc';
+            const elSummary = document.createElement('summary');
+            elSummary.setAttribute('class', 'd-flex jc-end | pt-5 pr-5 | cur-pointer');
+            elSummary.ariaLabel = 'Table of content';
+            elSummary.innerHTML = `
+                <span class="d-flex ai-center gap-2 | pos-relative | pt-3 pb-3 pl-5 pr-5 | brad-4 c-primary-500 bc-neutral-100 bwidth-1 bstyle-dashed bcolor-neutral-500">
+                    <span class="icon-list-dashes fs-6"></span>
+                    <abbr class="fvs-wght-400 td-none fs-3" title="Table of content">TOC</abbr>
+                </span>`;
+            elDetails.appendChild(elSummary);
+            
+            let floatingTocMarkup = `
+                <div class="d-flex jc-end">
+                    <ul id="floating_toc__list"
+                        class="
+                        d-flex fd-column
+                        o-auto pl-0 pt-3 pb-3 mt-2 mb-0 mr-5
+                        brad-3 bwidth-1 bstyle-dashed bcolor-primary-300 ls-none">`;
+            elTocMain.querySelectorAll('a').forEach(function(el) {
+                floatingTocMarkup += `
+                <li>
+                    <a  href="${el.getAttribute(`href`)}"
+                        class="d-inline-flex | pl-5 pr-5 pt-1 pb-1 | fs-2 lh-5 fvs-wght-400 | c-primary-500">
+                        ${el.innerHTML}
+                    </a>
+                </li>`;
+            });
+            floatingTocMarkup += '</ul></div>';
+            elDetails.innerHTML += floatingTocMarkup;
+
+            libdocUi.el.ftoc = document.createElement('div');
+            libdocUi.el.ftoc.setAttribute('class', 'd-flex | pos-fixed top-0 right-0 z-1 | floating_toc');
+            libdocUi.el.ftoc.appendChild(elDetails);
+            document.body.appendChild(libdocUi.el.ftoc);
+        }
+    },
+    createGoToTop: function() {
+        if (libdocUi.el.gtt === undefined) {
+            libdocUi.el.gtt = document.createElement('button');
+            libdocUi.el.gtt.setAttribute('class', 'pos-fixed bottom-0 right-0 | p-5 mr-5 mb-5 | brad-4 bc-neutral-100 bwidth-1 bstyle-dashed bcolor-neutral-500 cur-pointer');
+            libdocUi.el.gtt.innerHTML = `<span class="icon-arrow-line-up | pos-absolute top-50 left-50 t-tY-50 t-tX-50 | c-primary-500"></span>`;
+            libdocUi.el.gtt.title = 'Go to top';
+            libdocUi.el.gtt.addEventListener('click', libdocUi.handlers._clickGTT);
+            if (window.scrollY < libdocUi.default.scrollThreshold) libdocUi.hideGoToTop();
+            document.body.appendChild(libdocUi.el.gtt);
+            window.addEventListener('scroll', libdocUi.handlers._scrollWindow);
+        }
+    },
+    showGoToTop: function() {
+        libdocUi.el.gtt.classList.remove('d-none');
+    },
+    hideGoToTop: function() {
+        libdocUi.el.gtt.classList.add('d-none');
+    },
+    update: function() {
+        hljs.highlightAll();
+        document.querySelectorAll('main>pre').forEach(function(elPre) {
+            elPre.style.paddingTop = '0';
+            const elCommands = elPre.querySelector('.copy_code_block');
+            if (elCommands === null) {
+                const commandBarMarkup = `<div class="d-flex jc-end"><button type="button" class="d-flex ai-center | pt-5 pb-5 fvs-wght-400 fs-2 tt-uppercase bc-0 c-primary-900 b-0 cur-pointer | copy_code_block">Copy code</button></div>`;
+                elPre.insertAdjacentHTML('afterbegin', commandBarMarkup);
+            }
+            const elCode = elPre.querySelector('code');
+            if (elCode !== null) {
+                if (!elCode.classList.contains('hljs')) elCode.classList.add('hljs');
+            }
+        });
+        document.querySelectorAll('.copy_code_block').forEach(function(el) {
+            el.addEventListener('click', libdocUi.handlers._clickCopyCodeBlock);
+        });
+        libdocUi.createGoToTop();
+        libdocUi.createFloatingToc();
     }
 }
+libdocUi.update();
 

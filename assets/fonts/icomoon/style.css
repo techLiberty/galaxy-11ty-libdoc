@@ -1,9 +1,9 @@
 @font-face {
   font-family: 'icomoon';
   src:
-    url('fonts/icomoon.ttf?nttxjy') format('truetype'),
-    url('fonts/icomoon.woff?nttxjy') format('woff'),
-    url('fonts/icomoon.svg?nttxjy#icomoon') format('svg');
+    url('fonts/icomoon.ttf?4waoul') format('truetype'),
+    url('fonts/icomoon.woff?4waoul') format('woff'),
+    url('fonts/icomoon.svg?4waoul#icomoon') format('svg');
   font-weight: normal;
   font-style: normal;
   font-display: block;
@@ -24,6 +24,9 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
+.icon-arrow-line-up:before {
+  content: "\e916";
+}
 .icon-calendar-dots:before {
   content: "\e915";
 }

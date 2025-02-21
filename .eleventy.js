@@ -105,7 +105,9 @@ export default function(eleventyConfig) {
                             </header>
                             <div class="pos-relative"
                                 pl-5="md">
-                                <pre class="m-0 h-500px o-auto | brad-3">
+                                <pre class="m-0 h-500px o-auto"
+                                    bradtl-3="md"
+                                    bradbl-3="md">
                                     <code class="language-html fvs-mono-on fvs-wght-300 fs-3 lh-6 | sandbox__code" fs-2="xs">${code}</code>
                                 </pre>
                                 <div class="d-flex jc-center ai-center | pos-absolute top-0 left-0 | w-100 h-100 | sandbox__enable_wrapper"
@@ -115,8 +117,8 @@ export default function(eleventyConfig) {
                                         value=""
                                         class="pos-absolute | opa-0 | sandbox__enable_switch">
                                     <label for="${enableSwitchIdCode}"
-                                        class="p-5 | fvs-wght-500 tt-uppercase | bc-neutral-900 brad-2 cur-pointer">
-                                        ❭❱❭ Enable
+                                        class="d-flex ai-center gap-1 | p-5 | fvs-wght-500 tt-uppercase | bc-neutral-900 brad-2 cur-pointer">
+                                        <span class="icon-play"></span> Enable
                                     </label>
                                 </div>
                             </div>
@@ -128,7 +130,7 @@ export default function(eleventyConfig) {
                         <button class="pos-relative | p-0 | bc-neutral-800 c-neutral-500 b-0 | sandbox__resizer"
                             title="Click and drag to resize code and result"
                             d-none="xs,sm">
-                            ||
+                            <span class="icon-dots-six-vertical fs-5"></span>
                         </button>
                         <div class="d-flex fd-column | pos-relative | o-hidden | bc-neutral-900 c-neutral-200 brad-3 bwidth-1 bstyle-solid bcolor-neutral-900 | sandbox__iframe_wrapper"
                             w-50="md"
@@ -145,8 +147,8 @@ export default function(eleventyConfig) {
                                         value=""
                                         class="pos-absolute | opa-0 | sandbox__enable_switch">
                                     <label for="${enableSwitchIdIframe}"
-                                        class="p-5 | fvs-wght-500 tt-uppercase | bc-neutral-900 brad-2 cur-pointer">
-                                        ❭❱❭ Enable
+                                        class="d-flex ai-center gap-1 | p-5 | fvs-wght-500 tt-uppercase | bc-neutral-900 brad-2 cur-pointer">
+                                        <span class="icon-play"></span> Enable
                                     </label>
                                 </div>
                             </div>
@@ -250,17 +252,16 @@ export default function(eleventyConfig) {
         const   code = libdocUtils.HTMLEncode(content),
                 iframeAttribute = `src="${permalink}"`,
                 title = typeof sandboxTitle == `string` ? sandboxTitle : `Sandbox`,
-                iframeCommands = `<header class="d-flex jc-space-between gap-5" style="height: 58px">
+                iframeCommands = `<header class="d-flex jc-space-between gap-5 | pl-5 pr-5" style="height: 58px">
                         <a  href="${permalink}"
                             target="_blank"
                             title="Open in a new tab"
-                            class="d-flex ai-center gap-1 | pl-5 | fs-3 td-none | c-neutral-500 | sandbox__permalink"
+                            class="d-flex ai-center gap-1 | p-0 | fvs-wght-400 fs-2 tt-uppercase td-none | sandbox__permalink"
                             fs-2="xs">
-                            <span class="c-success-500">‖</span>
-                            <span class="fvs-wght-400 td-underline">${permalink}</span>
-                            <span class="c-neutral-500">→</span>
+                            <span class="fvs-wght-400 | c-neutral-300">Open</span>
+                            <span class="icon-arrow-square-out c-neutral-500"></span>
                         </a>
-                        <div class="d-flex gap-5 | pr-5">
+                        <div class="d-flex gap-5">
                             <button type="button"
                                 class="d-flex ai-center | p-0 | fvs-wght-400 fs-2 tt-uppercase | bc-0 c-neutral-300 b-0 cur-pointer | sandbox__reload">
                                 <span class="o-hidden | to-ellipsis ws-nowrap">Reload</span>
