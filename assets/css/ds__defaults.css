@@ -426,30 +426,6 @@ main {
         max-width: var(--libdoc-container-width);
     }
 }
-@media (max-width: 959px) {
-    main {
-        &>* {
-            max-width: calc(var(--libdoc-container-width) + 2 * var(--ita-spacings-5));
-            padding-left: var(--ita-spacings-5);
-            padding-right: var(--ita-spacings-5);
-        }
-        /* LISTS */
-        &>ol,
-        &>ul {
-            padding-left: var(--ita-spacings-8);
-        }
-        li {
-            &>ol,
-            &>ul {
-                padding-left: var(--ita-spacings-7);
-            }
-        }
-        /* SYNTAX HIGHLIGHTING */
-        &>pre {
-            padding: var(--ita-spacings-5);
-        }
-    }
-}
 
 code {
     font-variation-settings: "slnt" 0, "CASL" 0, "CRSV" 0.0, "MONO" 1, "wght" 300;
@@ -546,11 +522,37 @@ code {
             }
         }
     }
+}
+
+
+@media (min-width: 960px) {
     #floating_toc__list {
         width: clamp(200px, calc(100vw - var(--ita-widths-content) - var(--ita-widths-sidebar) - 2 * var(--ita-spacings-5)), 25ch);
-        background-color: #FAFCFFDD;
-        backdrop-filter: blur(5px);
         max-height: calc(100vh - 160px);
+    }
+}
+@media (max-width: 959px) {
+    main {
+        &>* {
+            max-width: calc(var(--libdoc-container-width) + 2 * var(--ita-spacings-5));
+            padding-left: var(--ita-spacings-5);
+            padding-right: var(--ita-spacings-5);
+        }
+        /* LISTS */
+        &>ol,
+        &>ul {
+            padding-left: var(--ita-spacings-8);
+        }
+        li {
+            &>ol,
+            &>ul {
+                padding-left: var(--ita-spacings-7);
+            }
+        }
+        /* SYNTAX HIGHLIGHTING */
+        &>pre {
+            padding: var(--ita-spacings-5);
+        }
     }
 }
 

@@ -1,8 +1,11 @@
 window.libdocUi = {
-    default: {
-        scrollThreshold: window.innerHeight / 2
+    defaults: {
+        headingsSelector: `main > h1, main > h2, main > h3, main > h4, main > h5, main > h6`,
+        scrollThreshold: window.innerHeight / 2,
     },
-    el: {},
+    el: {
+        floatingToggleTocBtn: document.querySelector('#floating_toc_toggle_btn')
+    },
     copyToClipboard: function(textToCopy, options) {
         const params = {
             notificationEnabled: function(value) {
@@ -146,7 +149,7 @@ window.libdocUi = {
             }, 3000);
         },
         _scrollWindow: function() {
-            if (window.scrollY > libdocUi.default.scrollThreshold) {
+            if (window.scrollY > libdocUi.defaults.scrollThreshold) {
                 libdocUi.showGoToTop();
             } else {
                 libdocUi.hideGoToTop();
@@ -154,15 +157,36 @@ window.libdocUi = {
         },
         _clickGTT: function(evt) {
             window.scroll({top:0})
+        },
+        _clickFloatingToggleTocBtn: function(evt) {
+            if (libdocUi.el.ftocDetails.open) {
+                libdocUi.el.ftocDetails.open = false;
+            } else {
+                libdocUi.el.ftocDetails.open = true;
+            }
+        },
+        _scrollWindowForToc: function() {
+            libdocUi.el.ftocLinks.forEach(function(elLink, linkIndex) {
+                const headingRects = libdocUi.el.ftocHeadings[linkIndex].getBoundingClientRect();
+                if (headingRects.y >= -10 && headingRects.y < window.innerHeight - 50) {
+                    // console.log(elLink.getAttribute('href'))
+                    elLink.style.color = 'red';
+                } else {
+                    elLink.style.color = null;
+                }
+            });
         }
     },
     createFloatingToc: function() {
         const elTocMain = document.querySelector('#toc_main > ol');
         if (libdocUi.el.ftoc === undefined && elTocMain !== null) {
-            const elDetails = document.createElement('details');
+            libdocUi.el.ftocDetails = document.createElement('details');
+            const elDetails = libdocUi.el.ftocDetails;
+            elDetails.setAttribute('w-100', 'xs,sm');
             elDetails.id = 'floating_toc';
             const elSummary = document.createElement('summary');
             elSummary.setAttribute('class', 'd-flex jc-end | pt-5 pr-5 | cur-pointer');
+            elSummary.setAttribute('d-none', 'xs,sm');
             elSummary.ariaLabel = 'Table of content';
             elSummary.innerHTML = `
                 <span class="d-flex ai-center gap-2 | pos-relative | pt-3 pb-3 pl-5 pr-5 | brad-4 c-primary-500 bc-neutral-100 bwidth-1 bstyle-dashed bcolor-neutral-500">
@@ -172,17 +196,31 @@ window.libdocUi = {
             elDetails.appendChild(elSummary);
             
             let floatingTocMarkup = `
-                <div class="d-flex jc-end">
+                <div d-flex="md"
+                    jc-end="md">
                     <ul id="floating_toc__list"
                         class="
                         d-flex fd-column
-                        o-auto pl-0 pt-3 pb-3 mt-2 mb-0 mr-5
-                        brad-3 bwidth-1 bstyle-dashed bcolor-primary-300 ls-none">`;
+                        o-auto pl-0 mb-0 pt-3 pb-3
+                        lsp-3
+                        bc-primary-100 blwidth-0 bwidth-1 bstyle-dashed bcolor-primary-300 ls-none"
+                        fw-wrap="xs,sm"
+                        mt-2="md"
+                        mr-5="md"
+                        mt-0="xs,sm"
+                        maxh-200px="xs,sm"
+                        brad-3="md"
+                        bb-0="xs,sm"
+                        br-0="xs,sm">`;
             elTocMain.querySelectorAll('a').forEach(function(el) {
                 floatingTocMarkup += `
                 <li>
                     <a  href="${el.getAttribute(`href`)}"
-                        class="d-inline-flex | pl-5 pr-5 pt-1 pb-1 | fs-2 lh-5 fvs-wght-400 | c-primary-500">
+                        class="d-inline-flex | pl-5 pr-5 | fs-3 lh-5 fvs-wght-500 | c-primary-500 blwidth-1 blstyle-dashed bcolor-primary-300"
+                        pt-2="md"
+                        pb-2="md"
+                        pt-1="xs,sm"
+                        pb-1="xs,sm">
                         ${el.innerHTML}
                     </a>
                 </li>`;
@@ -191,9 +229,20 @@ window.libdocUi = {
             elDetails.innerHTML += floatingTocMarkup;
 
             libdocUi.el.ftoc = document.createElement('div');
-            libdocUi.el.ftoc.setAttribute('class', 'd-flex | pos-fixed top-0 right-0 z-1 | floating_toc');
+            libdocUi.el.ftoc.setAttribute('class', 'd-flex | pos-fixed z-1 | floating_toc');
+            libdocUi.el.ftoc.setAttribute('top-0', 'md');
+            libdocUi.el.ftoc.setAttribute('right-0', 'md');
+            libdocUi.el.ftoc.setAttribute('left-0', 'xs,sm');
+            libdocUi.el.ftoc.setAttribute('bottom-60px', 'xs,sm');
+            libdocUi.el.ftoc.setAttribute('o-auto', 'xs,sm');
+            libdocUi.el.ftoc.setAttribute('w-100', 'xs,sm');
             libdocUi.el.ftoc.appendChild(elDetails);
-            document.body.appendChild(libdocUi.el.ftoc);
+            document.body.prepend(libdocUi.el.ftoc);
+            libdocUi.el.floatingToggleTocBtn.addEventListener('click', libdocUi.handlers._clickFloatingToggleTocBtn);
+            window.addEventListener('scroll', libdocUi.handlers._scrollWindowForToc);
+            libdocUi.el.ftocLinks = libdocUi.el.ftoc.querySelectorAll('a');
+            libdocUi.el.ftocHeadings = document.querySelectorAll(libdocUi.defaults.headingsSelector);
+            
         }
     },
     createGoToTop: function() {
@@ -203,7 +252,7 @@ window.libdocUi = {
             libdocUi.el.gtt.innerHTML = `<span class="icon-arrow-line-up | pos-absolute top-50 left-50 t-tY-50 t-tX-50 | c-primary-500"></span>`;
             libdocUi.el.gtt.title = 'Go to top';
             libdocUi.el.gtt.addEventListener('click', libdocUi.handlers._clickGTT);
-            if (window.scrollY < libdocUi.default.scrollThreshold) libdocUi.hideGoToTop();
+            if (window.scrollY < libdocUi.defaults.scrollThreshold) libdocUi.hideGoToTop();
             document.body.appendChild(libdocUi.el.gtt);
             window.addEventListener('scroll', libdocUi.handlers._scrollWindow);
         }
