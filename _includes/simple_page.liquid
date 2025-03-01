@@ -71,7 +71,8 @@
             ai-center="xs,sm"
             w-100="xs,sm"
             w-sidebar="md">
-            <nav class="d-flex | pos-fixed bottom-0 left-0 z-1 | w-100 h-60px"
+            <nav id="nav_small_devices"
+                class="d-flex | pos-fixed bottom-0 left-0 z-1 | w-100 h-60px"
                 d-none="md">
                 <div class="d-flex jc-space-between | w-100 | bc-neutral-100 btwidth-1 btstyle-dashed bcolor-neutral-500">
                     <a  href="/"
@@ -96,8 +97,9 @@
             <nav class="d-flex d-none--xs d-none--sm fd-column | maxw-sidebar maxh-sidebar | bc-neutral-100 brad-3 bwidth-1 bstyle-dashed bcolor-neutral-500"
                 mt-5="md"
                 c-toggle-name="nav_primary"
-                data-opened-state-class="d-flex fd-column | bc-neutral-100 brad-3 bwidth-1 bstyle-dashed bcolor-neutral-500">
-                <menu class="d-flex fd-column | pos-sticky top-0 z-1 | m-0 p-0 | ls-none bc-neutral-100 bradtl-3 bradtr-3 bbwidth-1 bbstyle-dashed bcolor-neutral-500">
+                data-opened-state-class="d-flex fd-column | maxw-sidebar maxh-sidebar | bc-neutral-100 brad-3 bwidth-1 bstyle-dashed bcolor-neutral-500">
+                <menu id="nav_primary_header"
+                    class="d-flex fd-column | pos-sticky top-0 z-1 | m-0 p-0 | ls-none bc-neutral-100 bradtl-3 bradtr-3 bbwidth-1 bbstyle-dashed bcolor-neutral-500">
                     <li class="d-flex ai-center">
                         <a  href="/"
                             class="p-5 | td-none fvs-wght-700 lsp-5 fs-8 tws-balance | c-neutral-900">

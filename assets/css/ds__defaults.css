@@ -524,10 +524,15 @@ code {
     }
 }
 
+#floating_toc__list {
+    a {
+        transition: background-color 300ms;
+    }
+}
 
 @media (min-width: 960px) {
     #floating_toc__list {
-        width: clamp(200px, calc(100vw - var(--ita-widths-content) - var(--ita-widths-sidebar) - 2 * var(--ita-spacings-5)), 25ch);
+        width: 200px;
         max-height: calc(100vh - 160px);
     }
 }
@@ -553,6 +558,10 @@ code {
         &>pre {
             padding: var(--ita-spacings-5);
         }
+    }
+    #nav_primary {
+        height: calc(100vh - 150px);
+        padding-bottom: 200px;
     }
 }
 

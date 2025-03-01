@@ -1,10 +1,79 @@
-window.libdocUi = {
+const libdocUi = {
     defaults: {
         headingsSelector: `main > h1, main > h2, main > h3, main > h4, main > h5, main > h6`,
         scrollThreshold: window.innerHeight / 2,
+        localStorageIdentifier: 'eleventyLibdoc',
+        screenSizes: {
+            xs: [0, 599],
+            sm: [600, 959],
+            md: [960, Infinity]
+        },
+    },
+    userPreferences: {
+        fTocNormallyOpened: false
     },
     el: {
-        floatingToggleTocBtn: document.querySelector('#floating_toc_toggle_btn')
+        floatingToggleTocBtn: document.querySelector('#floating_toc_toggle_btn'),
+        mainHeader: document.querySelector('main > header'),
+        navPrimary: document.querySelector('#nav_primary'),
+        navPrimaryHeader: document.querySelector('#nav_primary_header'),
+        navSmallDevices: document.querySelector('#nav_small_devices')
+    },
+    getCurrentScreenSizeName: function() {
+        let response = '';
+        Object.keys(libdocUi.defaults.screenSizes).forEach(function(name) {
+            const currentSizeName = libdocUi.defaults.screenSizes[name];
+            if (window.innerWidth >= currentSizeName[0] && window.innerWidth <= currentSizeName[1]) {
+                response = name;
+            }
+        });
+        return response;
+    },
+    localStorageAvailable: function() {
+        let storage;
+        try {
+            storage = window['localStorage'];
+            const x = "__storage_test__";
+            storage.setItem(x, x);
+            storage.removeItem(x);
+            return true;
+        } catch (e) {
+            return (
+                e instanceof DOMException &&
+                // everything except Firefox
+                (e.code === 22 ||
+                    // Firefox
+                    e.code === 1014 ||
+                    // test name field too, because code might not be present
+                    // everything except Firefox
+                    e.name === "QuotaExceededError" ||
+                    // Firefox
+                    e.name === "NS_ERROR_DOM_QUOTA_REACHED") &&
+                // acknowledge QuotaExceededError only if there's something already stored
+                storage &&
+                storage.length !== 0
+            );
+        }
+    },
+    // Get local storage data from identifier
+    getLocalStorage: function(identifier) {
+        if (libdocUi.localStorageAvailable() && typeof identifier == 'string') {
+            return JSON.parse(localStorage.getItem(identifier));
+        }
+    },
+    // Store on localStorage
+    saveLocalStorage: function({identifier, backup}) {
+        if (libdocUi.localStorageAvailable()
+            && typeof identifier == 'string'
+            && typeof backup == 'object') {
+            localStorage.setItem(identifier, JSON.stringify(backup));
+        }
+    },
+    // Clear localStorage
+    clearLocalStorage: function(identifier) {
+        if (libdocUi.localStorageAvailable()) {
+            localStorage.removeItem(identifier);
+        }
     },
     copyToClipboard: function(textToCopy, options) {
         const params = {
@@ -166,16 +235,39 @@ window.libdocUi = {
             }
         },
         _scrollWindowForToc: function() {
+            libdocUi.updateFtocList();
+        },
+        _toggleFtoc: function() {
+            if (libdocUi.el.ftocDetails.open) {
+                libdocUi.updateUserPreferences({fTocNormallyOpened: true});
+                libdocUi.updateFtocList();
+            } else {
+                libdocUi.updateUserPreferences({fTocNormallyOpened: false});
+            }
+        },
+        _windowResize: function() {
+            libdocUi._currentScreenSizeName = libdocUi.getCurrentScreenSizeName();
+        }
+    },
+    getVisibleTocIndexes: function() {
+        const linkIndexesArray = [];
+        if (typeof libdocUi.el.ftocLinks == 'object') {
             libdocUi.el.ftocLinks.forEach(function(elLink, linkIndex) {
-                const headingRects = libdocUi.el.ftocHeadings[linkIndex].getBoundingClientRect();
-                if (headingRects.y >= -10 && headingRects.y < window.innerHeight - 50) {
-                    // console.log(elLink.getAttribute('href'))
-                    elLink.style.color = 'red';
+                const   headingRects = libdocUi.el.ftocHeadings[linkIndex].getBoundingClientRect(),
+                        nextIndex = linkIndex + 1,
+                        elNextHeading = libdocUi.el.ftocHeadings[nextIndex];
+                let nextHeadingRects = 0;
+                if (elNextHeading !== undefined) nextHeadingRects = elNextHeading.getBoundingClientRect();
+                if (headingRects.y >= -10 && headingRects.y < window.innerHeight - 50
+                    || headingRects.y <-10 && nextHeadingRects.y >= window.innerHeight - 50
+                    ) {
+                    linkIndexesArray.push(true);
                 } else {
-                    elLink.style.color = null;
+                    linkIndexesArray.push(false);
                 }
             });
         }
+        return linkIndexesArray;
     },
     createFloatingToc: function() {
         const elTocMain = document.querySelector('#toc_main > ol');
@@ -201,6 +293,7 @@ window.libdocUi = {
                     <ul id="floating_toc__list"
                         class="
                         d-flex fd-column
+                        pos-relative
                         o-auto pl-0 mb-0 pt-3 pb-3
                         lsp-3
                         bc-primary-100 blwidth-0 bwidth-1 bstyle-dashed bcolor-primary-300 ls-none"
@@ -216,7 +309,7 @@ window.libdocUi = {
                 floatingTocMarkup += `
                 <li>
                     <a  href="${el.getAttribute(`href`)}"
-                        class="d-inline-flex | pl-5 pr-5 | fs-3 lh-5 fvs-wght-500 | c-primary-500 blwidth-1 blstyle-dashed bcolor-primary-300"
+                        class="d-flex | pl-5 pr-5 | fs-2 lh-5 fvs-wght-500 | c-primary-500 blwidth-1 blstyle-dashed bcolor-primary-300"
                         pt-2="md"
                         pb-2="md"
                         pt-1="xs,sm"
@@ -236,13 +329,16 @@ window.libdocUi = {
             libdocUi.el.ftoc.setAttribute('bottom-60px', 'xs,sm');
             libdocUi.el.ftoc.setAttribute('o-auto', 'xs,sm');
             libdocUi.el.ftoc.setAttribute('w-100', 'xs,sm');
+            libdocUi.el.ftoc.style.display = 'none';
             libdocUi.el.ftoc.appendChild(elDetails);
             document.body.prepend(libdocUi.el.ftoc);
             libdocUi.el.floatingToggleTocBtn.addEventListener('click', libdocUi.handlers._clickFloatingToggleTocBtn);
             window.addEventListener('scroll', libdocUi.handlers._scrollWindowForToc);
             libdocUi.el.ftocLinks = libdocUi.el.ftoc.querySelectorAll('a');
+            libdocUi.el.ftocList = libdocUi.el.ftoc.querySelector('#floating_toc__list');
             libdocUi.el.ftocHeadings = document.querySelectorAll(libdocUi.defaults.headingsSelector);
-            
+            elDetails.addEventListener("toggle", libdocUi.handlers._toggleFtoc);
+            if (libdocUi.getUserPreferences().fTocNormallyOpened) elDetails.open = true;
         }
     },
     createGoToTop: function() {
@@ -263,7 +359,73 @@ window.libdocUi = {
     hideGoToTop: function() {
         libdocUi.el.gtt.classList.add('d-none');
     },
+    getUserPreferences: function() {
+        return libdocUi.getLocalStorage(libdocUi.defaults.localStorageIdentifier) || {};
+    },
+    updateUserPreferences: function(newPreferences) {
+        const   lsId = libdocUi.defaults.localStorageIdentifier,
+                currentUserPreference = libdocUi.getLocalStorage(lsId);
+        if (currentUserPreference === null) {
+            const up = {};
+            Object.keys(libdocUi.userPreferences).forEach(function(preference) {
+                up[preference] = libdocUi.userPreferences[preference];
+            });
+            libdocUi.saveLocalStorage({ identifier: lsId, backup: up});
+        } else if (typeof newPreferences == 'object') {
+            Object.keys(newPreferences).forEach(function(preference) {
+                if (typeof libdocUi.userPreferences[preference] === typeof newPreferences[preference]) {
+                    currentUserPreference[preference] = newPreferences[preference];
+                }
+            });
+            libdocUi.saveLocalStorage({ identifier: lsId, backup: currentUserPreference});
+        }
+    },
+    updateFtocList: function() {
+        if (window.scrollY > libdocUi.el.mainHeader.clientHeight) {
+            libdocUi.el.ftoc.style.display = null;
+            if (libdocUi.el.ftocDetails.open) {
+                const linkIndexesArray = libdocUi.getVisibleTocIndexes();
+                let firstTrueIndex = -1;
+                linkIndexesArray.forEach(function(isInViewport, linkIndex) {
+                    if (isInViewport) {
+                        libdocUi.el.ftocLinks[linkIndex].style.backgroundColor = 'var(--ita-colors-primary-200)';
+                        if (firstTrueIndex === -1) firstTrueIndex = linkIndex;
+                    } else {
+                        libdocUi.el.ftocLinks[linkIndex].style.backgroundColor = null;
+                    }
+                });
+                if (firstTrueIndex > -1) {
+                    const elFirstLink = libdocUi.el.ftocLinks[firstTrueIndex];
+                    if (libdocUi._currentScreenSizeName == 'md') {
+                        if (
+                            (elFirstLink.offsetTop + elFirstLink.clientHeight > libdocUi.el.ftocList.scrollTop)
+                            &&
+                            (elFirstLink.offsetTop + elFirstLink.clientHeight < libdocUi.el.ftocList.scrollTop + libdocUi.el.ftocList.clientHeight)
+                            ) {
+                            
+                        } else {
+                            libdocUi.el.ftocList.scroll({top: libdocUi.el.ftocLinks[firstTrueIndex].offsetTop - 80});
+                        }
+                    } else {
+                        if (
+                            (elFirstLink.offsetLeft + elFirstLink.clientWidth / 2 > libdocUi.el.ftocList.scrollLeft)
+                            &&
+                            (elFirstLink.offsetLeft + elFirstLink.clientWidth < libdocUi.el.ftocList.scrollLeft + libdocUi.el.ftocList.clientWidth)
+                            ) {
+                            
+                        } else {
+                            libdocUi.el.ftocList.scroll({left: libdocUi.el.ftocLinks[firstTrueIndex].offsetLeft - 10});
+                        }
+                    }
+                }
+                // console.log('done');
+            }
+        } else {
+            libdocUi.el.ftoc.style.display = 'none';
+        }
+    },
     update: function() {
+        libdocUi.updateUserPreferences();
         hljs.highlightAll();
         document.querySelectorAll('main>pre').forEach(function(elPre) {
             elPre.style.paddingTop = '0';
@@ -280,9 +442,12 @@ window.libdocUi = {
         document.querySelectorAll('.copy_code_block').forEach(function(el) {
             el.addEventListener('click', libdocUi.handlers._clickCopyCodeBlock);
         });
-        libdocUi.createGoToTop();
         libdocUi.createFloatingToc();
+        libdocUi.createGoToTop();
+        window.addEventListener('resize', libdocUi.handlers._windowResize);
+        libdocUi._currentScreenSizeName = libdocUi.getCurrentScreenSizeName();
     }
 }
 libdocUi.update();
 
+// window.libdocUi = libdocUi;
