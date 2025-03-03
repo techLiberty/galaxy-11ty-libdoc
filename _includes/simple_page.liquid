@@ -80,10 +80,17 @@
                         <span class="icon-house fs-6"></span>
                         <span class="fvs-wght-400 fs-1 tt-uppercase">Home</span>
                     </a>
-                    <button id="floating_toc_toggle_btn"
-                        type="button"
-                        class="d-flex fd-column jc-center gap-1 fg-1 | pl-5 pr-5 | cur-pointer c-primary-900 bc-neutral-100 b-0 brad-3">
-                        {{ finalTitle }}
+                    <button type="button"
+                        class="d-flex fd-column jc-center gap-1 | pl-5 pr-5 | ta-center | cur-pointer c-primary-900 bc-neutral-100 b-0 brad-3"
+                        onclick="libdocUi.toggleFtoc()">
+                        <span class="icon-list-dashes fs-6"></span>
+                        <span class="fvs-wght-400 fs-1 tt-uppercase">TOC</span>
+                    </button>
+                    <button type="button"
+                        class="d-flex fd-column jc-center gap-1 | pl-5 pr-5 | ta-center | cur-pointer c-primary-900 bc-neutral-100 b-0 brad-3"
+                        onclick="libdocUi.handlers._clickGTT()">
+                        <span class="icon-arrow-line-up fs-6"></span>
+                        <span class="fvs-wght-400 fs-1 tt-uppercase">Top</span>
                     </button>
                     <button type="button"
                         class="d-flex fd-column jc-center gap-1 | pl-5 pr-5 | ta-center | cur-pointer c-primary-900 bc-neutral-100 b-0 brad-3"

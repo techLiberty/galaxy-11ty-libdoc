@@ -238,15 +238,27 @@ const libdocUi = {
             libdocUi.updateFtocList();
         },
         _toggleFtoc: function() {
-            if (libdocUi.el.ftocDetails.open) {
-                libdocUi.updateUserPreferences({fTocNormallyOpened: true});
-                libdocUi.updateFtocList();
-            } else {
-                libdocUi.updateUserPreferences({fTocNormallyOpened: false});
+            if (libdocUi._currentScreenSizeName == 'md') {
+                if (libdocUi.el.ftocDetails.open) {
+                    libdocUi.updateUserPreferences({fTocNormallyOpened: true});
+                    libdocUi.updateFtocList();
+                } else {
+                    libdocUi.updateUserPreferences({fTocNormallyOpened: false});
+                }
             }
         },
         _windowResize: function() {
             libdocUi._currentScreenSizeName = libdocUi.getCurrentScreenSizeName();
+        }
+    },
+    toggleFtoc: function() {
+
+        if (libdocUi.el.ftocDetails.open) {
+            libdocUi.el.ftocDetails.open = false;
+        } else {
+            libdocUi.el.ftocDetails.open = true;
+            libdocUi.el.ftoc.style.display = null;
+            libdocUi.updateFtocList();
         }
     },
     getVisibleTocIndexes: function() {
@@ -281,9 +293,8 @@ const libdocUi = {
             elSummary.setAttribute('d-none', 'xs,sm');
             elSummary.ariaLabel = 'Table of content';
             elSummary.innerHTML = `
-                <span class="d-flex ai-center gap-2 | pos-relative | pt-3 pb-3 pl-5 pr-5 | brad-4 c-primary-500 bc-neutral-100 bwidth-1 bstyle-dashed bcolor-neutral-500">
+                <span class="d-flex ai-center gap-2 | pos-relative | h-60px pl-5 pr-5 | brad-4 c-primary-500 bc-neutral-100 bwidth-1 bstyle-dashed bcolor-neutral-500">
                     <span class="icon-list-dashes fs-6"></span>
-                    <abbr class="fvs-wght-400 td-none fs-3" title="Table of content">TOC</abbr>
                 </span>`;
             elDetails.appendChild(elSummary);
             
@@ -329,10 +340,9 @@ const libdocUi = {
             libdocUi.el.ftoc.setAttribute('bottom-60px', 'xs,sm');
             libdocUi.el.ftoc.setAttribute('o-auto', 'xs,sm');
             libdocUi.el.ftoc.setAttribute('w-100', 'xs,sm');
-            libdocUi.el.ftoc.style.display = 'none';
+            if (libdocUi._currentScreenSizeName == 'md') libdocUi.el.ftoc.style.display = 'none';
             libdocUi.el.ftoc.appendChild(elDetails);
             document.body.prepend(libdocUi.el.ftoc);
-            libdocUi.el.floatingToggleTocBtn.addEventListener('click', libdocUi.handlers._clickFloatingToggleTocBtn);
             window.addEventListener('scroll', libdocUi.handlers._scrollWindowForToc);
             libdocUi.el.ftocLinks = libdocUi.el.ftoc.querySelectorAll('a');
             libdocUi.el.ftocList = libdocUi.el.ftoc.querySelector('#floating_toc__list');
@@ -344,9 +354,10 @@ const libdocUi = {
     createGoToTop: function() {
         if (libdocUi.el.gtt === undefined) {
             libdocUi.el.gtt = document.createElement('button');
-            libdocUi.el.gtt.setAttribute('class', 'pos-fixed bottom-0 right-0 | p-5 mr-5 mb-5 | brad-4 bc-neutral-100 bwidth-1 bstyle-dashed bcolor-neutral-500 cur-pointer');
+            libdocUi.el.gtt.setAttribute('class', 'd-none--xs d-none--sm | fs-6 pos-fixed z-1 top-0 right-0 p-0 h-60px ar-square mt-5 | brad-4 bc-neutral-100 bwidth-1 bstyle-dashed bcolor-neutral-500 cur-pointer');
             libdocUi.el.gtt.innerHTML = `<span class="icon-arrow-line-up | pos-absolute top-50 left-50 t-tY-50 t-tX-50 | c-primary-500"></span>`;
             libdocUi.el.gtt.title = 'Go to top';
+            libdocUi.el.gtt.style.marginRight = '95px';
             libdocUi.el.gtt.addEventListener('click', libdocUi.handlers._clickGTT);
             if (window.scrollY < libdocUi.defaults.scrollThreshold) libdocUi.hideGoToTop();
             document.body.appendChild(libdocUi.el.gtt);
@@ -421,7 +432,7 @@ const libdocUi = {
                 // console.log('done');
             }
         } else {
-            libdocUi.el.ftoc.style.display = 'none';
+            if (libdocUi._currentScreenSizeName == 'md') libdocUi.el.ftoc.style.display = 'none';
         }
     },
     update: function() {
