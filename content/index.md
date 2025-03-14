@@ -10,35 +10,35 @@ tags:
 {{ site.name | json }}
 ## Headers
 
-# H1
-## H2
-### H3
-#### H4
-##### H5
-###### H6
+# This is a H1 heading
+## This is a H2 heading
+### This is a H3 heading
+#### This is a H4 heading
+##### This is a H5 heading
+###### This is a H6 heading
 
 Alternatively, for H1 and H2, an underline-ish style:
 
-Alt-H1
+This is a Alt-H1 heading
 ======
 
-Alt-H2
+This is a Alt-H2 heading
 ------
 
 ```markdown
-# H1
-## H2
-### H3
-#### H4
-##### H5
-###### H6
+# This is a H1 heading
+## This is a H2 heading
+### This is a H3 heading
+#### This is a H4 heading
+##### This is a H5 heading
+###### This is a H6 heading
 
 Alternatively, for H1 and H2, an underline-ish style:
 
-Alt-H1
+This is a Alt-H1 heading
 ======
 
-Alt-H2
+This is a Alt-H2 heading
 ------
 ```
 

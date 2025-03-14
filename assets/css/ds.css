@@ -36,8 +36,8 @@
   --ita-fontSizes-6: 20px;
   --ita-fontSizes-7: 24px;
   --ita-fontSizes-8: 28px;
-  --ita-fontSizes-9: 32px;
-  --ita-fontSizes-10: 48px;
+  --ita-fontSizes-9: 40px;
+  --ita-fontSizes-10: 56px;
   --ita-spacings-1: 4px;
   --ita-spacings-2: 8px;
   --ita-spacings-3: 12px;
@@ -436,6 +436,9 @@
 }
 .h-60px {
   height: 60px;
+}
+.h-50px {
+  height: 50px;
 }
 .maxh-100 {
   max-height: 100%;
@@ -942,10 +945,10 @@
   font-size: var(--ita-fontSizes-8, 28px);
 }
 .fs-9 {
-  font-size: var(--ita-fontSizes-9, 32px);
+  font-size: var(--ita-fontSizes-9, 40px);
 }
 .fs-10 {
-  font-size: var(--ita-fontSizes-10, 48px);
+  font-size: var(--ita-fontSizes-10, 56px);
 }
 .ta-left {
   text-align: left;
@@ -2111,6 +2114,10 @@
 [h-60px*="xs"] {
   height: 60px;
 }
+.h-50px--xs,
+[h-50px*="xs"] {
+  height: 50px;
+}
 .maxh-100--xs,
 [maxh-100*="xs"] {
   max-height: 100%;
@@ -2681,11 +2688,11 @@
 }
 .fs-9--xs,
 [fs-9*="xs"] {
-  font-size: var(--ita-fontSizes-9, 32px);
+  font-size: var(--ita-fontSizes-9, 40px);
 }
 .fs-10--xs,
 [fs-10*="xs"] {
-  font-size: var(--ita-fontSizes-10, 48px);
+  font-size: var(--ita-fontSizes-10, 56px);
 }
 .ta-left--xs,
 [ta-left*="xs"] {
@@ -3366,6 +3373,10 @@
 [h-60px*="sm"] {
   height: 60px;
 }
+.h-50px--sm,
+[h-50px*="sm"] {
+  height: 50px;
+}
 .maxh-100--sm,
 [maxh-100*="sm"] {
   max-height: 100%;
@@ -3936,11 +3947,11 @@
 }
 .fs-9--sm,
 [fs-9*="sm"] {
-  font-size: var(--ita-fontSizes-9, 32px);
+  font-size: var(--ita-fontSizes-9, 40px);
 }
 .fs-10--sm,
 [fs-10*="sm"] {
-  font-size: var(--ita-fontSizes-10, 48px);
+  font-size: var(--ita-fontSizes-10, 56px);
 }
 .ta-left--sm,
 [ta-left*="sm"] {
@@ -4621,6 +4632,10 @@
 [h-60px*="md"] {
   height: 60px;
 }
+.h-50px--md,
+[h-50px*="md"] {
+  height: 50px;
+}
 .maxh-100--md,
 [maxh-100*="md"] {
   max-height: 100%;
@@ -5191,11 +5206,11 @@
 }
 .fs-9--md,
 [fs-9*="md"] {
-  font-size: var(--ita-fontSizes-9, 32px);
+  font-size: var(--ita-fontSizes-9, 40px);
 }
 .fs-10--md,
 [fs-10*="md"] {
-  font-size: var(--ita-fontSizes-10, 48px);
+  font-size: var(--ita-fontSizes-10, 56px);
 }
 .ta-left--md,
 [ta-left*="md"] {

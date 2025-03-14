@@ -74,15 +74,15 @@ export default function(eleventyConfig) {
                         pr-9="md"
                         pl-5="xs,sm"
                         pr-5="xs,sm">
-                        <div class="d-flex | p-1 | bc-neutral-900 c-neutral-200 brad-2"
+                        <div class="d-flex | p-1 | bc-primary-200 brad-2"
                             d-none="md">
                             <button type="button"
-                                class="d-flex | pt-2 pb-2 pl-5 pr-5 | fvs-wght-400 fs-2 tt-uppercase | c-neutral-300 bc-0 b-0 cur-pointer | sandbox__tab"
+                                class="d-flex | pt-2 pb-2 pl-5 pr-5 | fvs-wght-400 fs-2 tt-uppercase | c-primary-900 bc-0 b-0 cur-pointer | sandbox__tab"
                                 data-name="code">
                                 Code
                             </button>
                             <button type="button"
-                                class="d-flex | pt-2 pb-2 pl-5 pr-5 | fvs-wght-400 fs-2 tt-uppercase | c-neutral-900 bc-neutral-100 b-0 brad-1 cur-pointer | sandbox__tab"
+                                class="d-flex | pt-2 pb-2 pl-5 pr-5 | fvs-wght-400 fs-2 tt-uppercase | c-primary-900 bc-neutral-100 b-0 brad-1 cur-pointer | sandbox__tab"
                                 data-name="iframe">
                                 Result
                             </button>
@@ -168,7 +168,16 @@ export default function(eleventyConfig) {
             if (libdocParams.toc.htmlTags.includes(m1)) {
                 // Add id to the specified html tags
                 const slugifiedId = libdocUtils.slugify(m2);
-                newM = m.replace(`<${m1}>`, `<${m1} id="${slugifiedId}">`);
+                const markup = `
+                    <${m1} id="${slugifiedId}" pl-9="xs,sm">
+                        <a  href="#${slugifiedId}"
+                            title="Link to this part: ${m2}"
+                            class="pos-absolute top-50 left-0 t-tY-50 | p-4 ml-3 | td-none | brad-4 bc-neutral-100 bwidth-1 bstyle-dashed bcolor-neutral-500 __hover-1"
+                            ml-3="xs,sm">
+                            <span class="icon-link-simple | pos-absolute top-50 left-50 t-tY-50 t-tX-50 | fs-4"></span>
+                        </a>
+                `;
+                newM = m.replace(`<${m1}>`, markup);
             }
             return newM;
         });

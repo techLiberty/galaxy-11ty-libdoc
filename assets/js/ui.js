@@ -1,7 +1,6 @@
 const libdocUi = {
     defaults: {
         headingsSelector: `main > h1, main > h2, main > h3, main > h4, main > h5, main > h6`,
-        scrollThreshold: window.innerHeight / 2,
         localStorageIdentifier: 'eleventyLibdoc',
         screenSizes: {
             xs: [0, 599],
@@ -10,14 +9,17 @@ const libdocUi = {
         },
     },
     userPreferences: {
-        fTocNormallyOpened: false
+        FTOCNormallyOpened: false
     },
     el: {
-        floatingToggleTocBtn: document.querySelector('#floating_toc_toggle_btn'),
+        tocMain: document.querySelector('#toc_main > ol'),
+        navSmallDevicesFTOCBtn: document.querySelector('#sd_floating_toc_toggle_btn'),
+        navSmallDevicesGTTBtn: document.querySelector('#sd_gtt_btn'),
         mainHeader: document.querySelector('main > header'),
         navPrimary: document.querySelector('#nav_primary'),
         navPrimaryHeader: document.querySelector('#nav_primary_header'),
         navSmallDevices: document.querySelector('#nav_small_devices')
+        
     },
     getCurrentScreenSizeName: function() {
         let response = '';
@@ -218,14 +220,11 @@ const libdocUi = {
             }, 3000);
         },
         _scrollWindow: function() {
-            if (window.scrollY > libdocUi.defaults.scrollThreshold) {
-                libdocUi.showGoToTop();
-            } else {
-                libdocUi.hideGoToTop();
-            }
+            libdocUi.updateGTTBtns();
         },
         _clickGTT: function(evt) {
-            window.scroll({top:0})
+            window.scroll({top:0});
+            location.hash = '';
         },
         _clickFloatingToggleTocBtn: function(evt) {
             if (libdocUi.el.ftocDetails.open) {
@@ -234,31 +233,44 @@ const libdocUi = {
                 libdocUi.el.ftocDetails.open = true;
             }
         },
-        _scrollWindowForToc: function() {
+        _scrollWindowForFTOC: function() {
             libdocUi.updateFtocList();
         },
-        _toggleFtoc: function() {
-            if (libdocUi._currentScreenSizeName == 'md') {
-                if (libdocUi.el.ftocDetails.open) {
-                    libdocUi.updateUserPreferences({fTocNormallyOpened: true});
+        _toggleFtocLargeDevices: function() {
+            if (libdocUi.el.ftocDetails.open) {
+                if (libdocUi._currentScreenSizeName == 'md') {
+                    libdocUi.updateUserPreferences({FTOCNormallyOpened: true});
                     libdocUi.updateFtocList();
                 } else {
-                    libdocUi.updateUserPreferences({fTocNormallyOpened: false});
+                    libdocUi.updateUserPreferences({FTOCNormallyOpened: false});
                 }
+            } else {
+                libdocUi.updateUserPreferences({FTOCNormallyOpened: false});
             }
+            libdocUi.updateFTOCBtns();
         },
         _windowResize: function() {
             libdocUi._currentScreenSizeName = libdocUi.getCurrentScreenSizeName();
+        },
+        _cToggle: function(evt) {
+            if (evt.detail.id == 'nav_primary') {
+                libdocUi.updateNavPrimaryScrollTop();
+                libdocUi.updateFTOCBtns();
+                libdocUi.updateGTTBtns();
+            }
         }
     },
-    toggleFtoc: function() {
-
+    toggleFtocSmallDevices: function() {
         if (libdocUi.el.ftocDetails.open) {
             libdocUi.el.ftocDetails.open = false;
+            libdocUi.el.navSmallDevicesFTOCBtn.classList.add('c-primary-900');
+            libdocUi.el.navSmallDevicesFTOCBtn.classList.remove('c-primary-500');
         } else {
             libdocUi.el.ftocDetails.open = true;
             libdocUi.el.ftoc.style.display = null;
             libdocUi.updateFtocList();
+            libdocUi.el.navSmallDevicesFTOCBtn.classList.remove('c-primary-900');
+            libdocUi.el.navSmallDevicesFTOCBtn.classList.add('c-primary-500');
         }
     },
     getVisibleTocIndexes: function() {
@@ -281,9 +293,8 @@ const libdocUi = {
         }
         return linkIndexesArray;
     },
-    createFloatingToc: function() {
-        const elTocMain = document.querySelector('#toc_main > ol');
-        if (libdocUi.el.ftoc === undefined && elTocMain !== null) {
+    createFloatingToc: function() {;
+        if (libdocUi.el.ftoc === undefined && libdocUi.el.tocMain !== null) {
             libdocUi.el.ftocDetails = document.createElement('details');
             const elDetails = libdocUi.el.ftocDetails;
             elDetails.setAttribute('w-100', 'xs,sm');
@@ -293,7 +304,7 @@ const libdocUi = {
             elSummary.setAttribute('d-none', 'xs,sm');
             elSummary.ariaLabel = 'Table of content';
             elSummary.innerHTML = `
-                <span class="d-flex ai-center gap-2 | pos-relative | h-60px pl-5 pr-5 | brad-4 c-primary-500 bc-neutral-100 bwidth-1 bstyle-dashed bcolor-neutral-500">
+                <span class="d-flex jc-center ai-center gap-2 | pos-relative ar-square | h-50px | brad-4 c-primary-500 bc-neutral-100 bwidth-1 bstyle-dashed bcolor-neutral-500 __hover-1">
                     <span class="icon-list-dashes fs-6"></span>
                 </span>`;
             elDetails.appendChild(elSummary);
@@ -316,7 +327,7 @@ const libdocUi = {
                         brad-3="md"
                         bb-0="xs,sm"
                         br-0="xs,sm">`;
-            elTocMain.querySelectorAll('a').forEach(function(el) {
+            libdocUi.el.tocMain.querySelectorAll('a').forEach(function(el) {
                 floatingTocMarkup += `
                 <li>
                     <a  href="${el.getAttribute(`href`)}"
@@ -343,32 +354,64 @@ const libdocUi = {
             if (libdocUi._currentScreenSizeName == 'md') libdocUi.el.ftoc.style.display = 'none';
             libdocUi.el.ftoc.appendChild(elDetails);
             document.body.prepend(libdocUi.el.ftoc);
-            window.addEventListener('scroll', libdocUi.handlers._scrollWindowForToc);
+            window.addEventListener('scroll', libdocUi.handlers._scrollWindowForFTOC);
             libdocUi.el.ftocLinks = libdocUi.el.ftoc.querySelectorAll('a');
             libdocUi.el.ftocList = libdocUi.el.ftoc.querySelector('#floating_toc__list');
             libdocUi.el.ftocHeadings = document.querySelectorAll(libdocUi.defaults.headingsSelector);
-            elDetails.addEventListener("toggle", libdocUi.handlers._toggleFtoc);
-            if (libdocUi.getUserPreferences().fTocNormallyOpened) elDetails.open = true;
+            libdocUi.el.navSmallDevicesFTOCBtn.disabled = false;
+            libdocUi.el.navSmallDevicesFTOCBtn.addEventListener('click', libdocUi.toggleFtocSmallDevices);
+            elDetails.addEventListener("toggle", libdocUi.handlers._toggleFtocLargeDevices);
+            if (libdocUi.getUserPreferences().FTOCNormallyOpened) elDetails.open = true;
         }
     },
     createGoToTop: function() {
         if (libdocUi.el.gtt === undefined) {
             libdocUi.el.gtt = document.createElement('button');
-            libdocUi.el.gtt.setAttribute('class', 'd-none--xs d-none--sm | fs-6 pos-fixed z-1 top-0 right-0 p-0 h-60px ar-square mt-5 | brad-4 bc-neutral-100 bwidth-1 bstyle-dashed bcolor-neutral-500 cur-pointer');
+            libdocUi.el.gtt.setAttribute('class', 'd-none--xs d-none--sm | pos-fixed z-1 top-0 right-0 | p-0 h-50px ar-square mt-5 mr-11 | fs-6 | brad-4 bc-neutral-100 bwidth-1 bstyle-dashed bcolor-neutral-500 cur-pointer __hover-1');
             libdocUi.el.gtt.innerHTML = `<span class="icon-arrow-line-up | pos-absolute top-50 left-50 t-tY-50 t-tX-50 | c-primary-500"></span>`;
             libdocUi.el.gtt.title = 'Go to top';
-            libdocUi.el.gtt.style.marginRight = '95px';
             libdocUi.el.gtt.addEventListener('click', libdocUi.handlers._clickGTT);
-            if (window.scrollY < libdocUi.defaults.scrollThreshold) libdocUi.hideGoToTop();
+            if (window.scrollY <= libdocUi.el.mainHeader.clientHeight) libdocUi.disableGTTLargeDevices();
             document.body.appendChild(libdocUi.el.gtt);
             window.addEventListener('scroll', libdocUi.handlers._scrollWindow);
         }
     },
-    showGoToTop: function() {
+    enableGTTLargeDevices: function() {
         libdocUi.el.gtt.classList.remove('d-none');
     },
-    hideGoToTop: function() {
+    disableGTTLargeDevices: function() {
         libdocUi.el.gtt.classList.add('d-none');
+    },
+    enableGTTSmallDevices: function() {
+        libdocUi.el.navSmallDevicesGTTBtn.disabled = false;
+    },
+    disableGTTSmallDevices: function() {
+        libdocUi.el.navSmallDevicesGTTBtn.disabled = true;
+    },
+    updateGTTBtns: function() {
+        if (window.scrollY > libdocUi.el.mainHeader.clientHeight) {
+            libdocUi.enableGTTLargeDevices();
+            if (cToggle.instances.nav_primary.opened) {
+                libdocUi.disableGTTSmallDevices();
+            } else {
+                libdocUi.enableGTTSmallDevices();
+            }
+        } else {
+            libdocUi.disableGTTLargeDevices();
+            libdocUi.disableGTTSmallDevices();
+        }
+    },
+    updateNavPrimaryScrollTop: function() {
+        const   elCurrentPageLink = libdocUi.el.navPrimary.querySelector('[aria-current="page"]'),
+                elNavP = libdocUi.el.navPrimary,
+                elNavPH = libdocUi.el.navPrimaryHeader;
+        if (elCurrentPageLink !== null && elNavP !== null) {
+            if (elCurrentPageLink.clientHeight + elCurrentPageLink.offsetTop - elNavPH.clientHeight > elNavP.clientHeight ) {
+                elNavP.scroll({
+                    top: (elCurrentPageLink.offsetTop - elNavPH.clientHeight - 2 * elCurrentPageLink.clientHeight)
+                });
+            }
+        }
     },
     getUserPreferences: function() {
         return libdocUi.getLocalStorage(libdocUi.defaults.localStorageIdentifier) || {};
@@ -390,6 +433,25 @@ const libdocUi = {
             });
             libdocUi.saveLocalStorage({ identifier: lsId, backup: currentUserPreference});
         }
+    },
+    updateFTOCBtns: function() {
+        if (libdocUi.el.tocMain !== null) {
+            if (cToggle.instances.nav_primary.opened) {
+                libdocUi.el.navSmallDevicesFTOCBtn.disabled = true;
+            } else {
+                libdocUi.el.navSmallDevicesFTOCBtn.disabled = false;
+            }
+            if (libdocUi.el.ftocDetails.open) {
+                libdocUi.el.navSmallDevicesFTOCBtn.classList.remove('c-primary-900');
+                libdocUi.el.navSmallDevicesFTOCBtn.classList.add('c-primary-500');
+            } else {
+                libdocUi.el.navSmallDevicesFTOCBtn.classList.add('c-primary-900');
+                libdocUi.el.navSmallDevicesFTOCBtn.classList.remove('c-primary-500');
+            }
+        }
+
+
+        
     },
     updateFtocList: function() {
         if (window.scrollY > libdocUi.el.mainHeader.clientHeight) {
@@ -432,10 +494,14 @@ const libdocUi = {
                 // console.log('done');
             }
         } else {
-            if (libdocUi._currentScreenSizeName == 'md') libdocUi.el.ftoc.style.display = 'none';
+            if (typeof libdocUi.el.ftoc == 'object') {
+                if (libdocUi._currentScreenSizeName == 'md') libdocUi.el.ftoc.style.display = 'none';
+            }
         }
     },
+    _currentScreenSizeName: '',
     update: function() {
+        libdocUi._currentScreenSizeName = libdocUi.getCurrentScreenSizeName();
         libdocUi.updateUserPreferences();
         hljs.highlightAll();
         document.querySelectorAll('main>pre').forEach(function(elPre) {
@@ -450,13 +516,16 @@ const libdocUi = {
                 if (!elCode.classList.contains('hljs')) elCode.classList.add('hljs');
             }
         });
+        libdocUi.createFloatingToc();
+        libdocUi.createGoToTop();
+        libdocUi.updateNavPrimaryScrollTop();
+        libdocUi.updateFtocList();
+        libdocUi.updateGTTBtns() 
+        document.addEventListener('cToggle_event', libdocUi.handlers._cToggle);
+        window.addEventListener('resize', libdocUi.handlers._windowResize);
         document.querySelectorAll('.copy_code_block').forEach(function(el) {
             el.addEventListener('click', libdocUi.handlers._clickCopyCodeBlock);
         });
-        libdocUi.createFloatingToc();
-        libdocUi.createGoToTop();
-        window.addEventListener('resize', libdocUi.handlers._windowResize);
-        libdocUi._currentScreenSizeName = libdocUi.getCurrentScreenSizeName();
     }
 }
 libdocUi.update();

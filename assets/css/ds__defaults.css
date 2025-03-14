@@ -82,9 +82,22 @@ html,
     scrollbar-width: 10px;
 }
 
-button:disabled {
-    opacity: 0.5;
-    cursor: default;
+button {
+    &:disabled {
+        opacity: 0.5;
+        cursor: default;
+    }
+}
+.__hover-1 {
+    transition: all 300ms;
+    &:hover {
+        background-color: var(--ita-colors-primary-500);
+        color: var(--ita-colors-primary-100);
+        border-color: var(--ita-colors-primary-100);
+        &>* {
+            color: var(--ita-colors-primary-100);
+        }
+    }
 }
 
 main {
@@ -109,8 +122,8 @@ main {
     * {
         &::selection {
             text-shadow: none;
-            background-color: var(--ita-colors-primary-200);
-            color: var(--ita-colors-primary-900);
+            background-color: var(--ita-colors-primary-500);
+            color: var(--ita-colors-primary-100);
         }
     }
     &>header {
@@ -131,46 +144,61 @@ main {
     h5,
     h6 {
         color: var(--ita-colors-primary-900);
+        position: relative;
+        &:target {
+            a {
+                background-color: var(--ita-colors-primary-500);
+                color: var(--ita-colors-primary-100);
+                border-color: var(--ita-colors-primary-100);
+            }
+        }
     }
     h1 {
         font-variation-settings: "wght" 800;
-        font-size: var(--ita-fontSizes-10);
+        font-size: var(--ita-fontSizes-9);
         letter-spacing: -0.06em;
     }
     h2 {
         font-variation-settings: "wght" 700;
-        font-size: var(--ita-fontSizes-10);
+        font-size: var(--ita-fontSizes-9);
         letter-spacing: -0.06em;
     }
     h3 {
         font-variation-settings: "wght" 800;
-        font-size: var(--ita-fontSizes-9);
+        font-size: var(--ita-fontSizes-8);
         letter-spacing: -0.05em;
     }
     h4 {
         font-variation-settings: "wght" 700;
-        font-size: var(--ita-fontSizes-9);
+        font-size: var(--ita-fontSizes-8);
         letter-spacing: -0.05em;
     }
     h5 {
         font-variation-settings: "wght" 800;
-        font-size: var(--ita-fontSizes-8);
+        font-size: var(--ita-fontSizes-7);
         letter-spacing: -0.05em;
     }
     h6 {
         font-variation-settings: "wght" 700;
-        font-size: var(--ita-fontSizes-8);
+        font-size: var(--ita-fontSizes-7);
         letter-spacing: -0.05em;
     }
     /* LINKS */
-    a:link,
-    a:visited {
-        color: var(--ita-colors-primary-500);
-        font-variation-settings: "wght" 500;
-        letter-spacing: -0.03em;
-        text-shadow: none;
-        text-underline-offset: 0.2em;
-        text-decoration-thickness: 0.1em;
+    a {
+        transition: all 300ms;
+        &:link,
+        &:visited {
+            color: var(--ita-colors-primary-500);
+            font-variation-settings: "wght" 500;
+            letter-spacing: -0.03em;
+            text-shadow: none;
+            text-underline-offset: 0.2em;
+            text-decoration-thickness: 0.1em;
+        }
+        &:hover {
+            color: var(--ita-colors-primary-700);
+            font-variation-settings: "wght" 700;
+        }
     }
     /* EMPHASIS */
     em {
@@ -309,6 +337,7 @@ main {
         background-color: var(--ita-colors-primary-200);
         border-radius: 12px;
         border: 1px solid var(--ita-colors-primary-300);
+        box-shadow: inset 0.3em 0.3em 2em #0B427C44;
         overflow: hidden;
 
         /* HIGHLIGHT JS */
@@ -522,11 +551,12 @@ code {
             }
         }
     }
-}
-
-#floating_toc__list {
     a {
-        transition: background-color 300ms;
+        transition: all 300ms;
+        &:hover {
+            color: var(--ita-colors-primary-700);
+            font-variation-settings: "wght" 700;
+        }
     }
 }
 
