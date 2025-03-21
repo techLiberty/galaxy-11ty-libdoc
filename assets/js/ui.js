@@ -252,6 +252,10 @@ const libdocUi = {
         _windowResize: function() {
             libdocUi._currentScreenSizeName = libdocUi.getCurrentScreenSizeName();
         },
+        _windowLoad: function() {
+            const textQuery = libdocUi._searchParams.get('search');
+            if (textQuery !== null) libdocUi.searchContent(textQuery);
+        },
         _cToggle: function(evt) {
             if (evt.detail.id == 'nav_primary') {
                 libdocUi.updateNavPrimaryScrollTop();
@@ -500,6 +504,46 @@ const libdocUi = {
         }
     },
     _currentScreenSizeName: '',
+    _searchParams:new URLSearchParams(location.search),
+    _searchContentQueryOccurrences: [],
+    _currentSearchContentQueryOccurrence: 0,
+    prevSearchOccurrence: function() {
+        if (libdocUi._currentSearchContentQueryOccurrence > 0) {
+            libdocUi._currentSearchContentQueryOccurrence--;
+            window.scroll({top: libdocUi._searchContentQueryOccurrences[libdocUi._currentSearchContentQueryOccurrence].offsetTop});
+        }
+    },
+    nextSearchOccurrence: function() {
+        if (libdocUi._currentSearchContentQueryOccurrence < libdocUi._searchContentQueryOccurrences.length - 1) {
+            libdocUi._currentSearchContentQueryOccurrence++;
+            window.scroll({top: libdocUi._searchContentQueryOccurrences[libdocUi._currentSearchContentQueryOccurrence].offsetTop});
+        }
+    },
+    
+    searchContent: function(query) {
+        libdocUi._searchContentQueryOccurrences = [];
+        const   queryLC = query.toLowerCase(),
+                tags = ['h1', 'h2', 'h3', 'h4', 'h5', 'h6',
+                        'p', 'ul li', 'ol li',
+                        'blockquote', 'table td', 'table th', 'dl dd', 'dl dt'];
+        let selector = '';
+        tags.forEach(function(tag, index) {
+            selector += `main>${tag}${index === tags.length - 1 ? `` : `,`}`;
+        });
+        selector = selector.toString();
+        document.querySelectorAll(selector).forEach(function(el) {
+            if (el.innerText.toLowerCase().includes(queryLC)) {
+                libdocUi._searchContentQueryOccurrences.push(el);
+                el.style.textShadow = 'none';
+                el.style.backgroundColor = 'var(--ita-colors-success-100)';
+                // el.innerText = el.innerText.replaceAll(query, `____${query}____`);
+            }
+        });
+
+        if (libdocUi._searchContentQueryOccurrences.length > 0) {
+            window.scroll({top: libdocUi._searchContentQueryOccurrences[0].offsetTop})
+        }
+    },
     update: function() {
         libdocUi._currentScreenSizeName = libdocUi.getCurrentScreenSizeName();
         libdocUi.updateUserPreferences();
@@ -523,6 +567,7 @@ const libdocUi = {
         libdocUi.updateGTTBtns() 
         document.addEventListener('cToggle_event', libdocUi.handlers._cToggle);
         window.addEventListener('resize', libdocUi.handlers._windowResize);
+        window.addEventListener('load', libdocUi.handlers._windowLoad);
         document.querySelectorAll('.copy_code_block').forEach(function(el) {
             el.addEventListener('click', libdocUi.handlers._clickCopyCodeBlock);
         });

@@ -31,7 +31,8 @@ const search = {
                         queryLowered = query.toLowerCase(),
                         queryLoweredEncoded = search.HTMLEncode(queryLowered),
                         occurrenceIndex = content.indexOf(queryLowered),
-                        range = 200;
+                        range = 200,
+                        resultUrl = `${item.url}?search=${encodeURIComponent(query)}`;
                 let lowIndex = occurrenceIndex - range,
                     highIndex = occurrenceIndex + query.length + range;
                 if (lowIndex < 0) lowIndex = 0;
@@ -39,16 +40,16 @@ const search = {
                 let summary = content.slice(lowIndex, highIndex);
                 summary = search.HTMLEncode(summary);
                 summary = summary.replaceAll(queryLoweredEncoded, ` <mark class="fvs-wght-600">${query}</mark> `);
-                // console.log(summary);
                 if (content.indexOf(queryLowered) > -1) {
-
-                    markup += search.renderSearchResult({url: item.url, title: item.title, summary: summary})
+                    markup += search.renderSearchResult({url: resultUrl, title: item.title, summary: summary})
                 }
             });
             if (markup == '') {
-                searchResults.innerHTML = "<li>Aucun résultat</li>";
+                searchResults.innerHTML = `<li>No result for <mark class="fvs-wght-600">${query}</mark></li>`;
             } else {
                 searchResults.innerHTML = markup;
+                const elTitle = document.querySelector('h1');
+                elTitle.innerHTML = `${elTitle.innerHTML} <mark class="fvs-wght-600">${query}</mark>`;
             }
             searchInput.value = query;
         }
@@ -57,10 +58,10 @@ const search = {
         return `
             <li class="d-flex fd-column">
                 <a  href="${url}"
-                    class="fvs-wght-600 fs-4">
+                    class="fvs-wght-600 fs-5">
                     ${title}
                 </a>
-                <div>
+                <div class="wb-break-all">
                     ${summary}
                 </div>
             </li>
