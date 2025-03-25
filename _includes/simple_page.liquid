@@ -215,20 +215,6 @@
                         </details>
                     {% endif %}
                 </header>
-                <nav class="d-flex fd-column ai-start | pos-sticky top-0 | mt-5">
-                    <button type="button"
-                        class="t-tX-100 h-50px ar-square | fs-5 | brad-4 bc-success-100 c-success-900 bwidth-1 bstyle-dashed bcolor-success-900 cur-pointer __hover-1"
-                        onclick="libdocUi.prevSearchOccurrence()"
-                        title="Previous query occurrence">
-                        ←
-                    </button>
-                    <button type="button"
-                        class="t-tX-100 h-50px ar-square | fs-5 | brad-4 bc-success-100 c-success-900 bwidth-1 bstyle-dashed bcolor-success-900 cur-pointer __hover-1"
-                        onclick="libdocUi.nextSearchOccurrence()"
-                        title="Next query occurrence">
-                        →
-                    </button>
-                </nav>
                 {{ content | cleanup | autoids }}
                 <footer class="pt-11 pb-11">
                     <p class="m-0 | fs-2 | c-neutral-700">11ty LibDoc</p>

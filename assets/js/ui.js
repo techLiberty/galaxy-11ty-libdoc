@@ -15,11 +15,11 @@ const libdocUi = {
         tocMain: document.querySelector('#toc_main > ol'),
         navSmallDevicesFTOCBtn: document.querySelector('#sd_floating_toc_toggle_btn'),
         navSmallDevicesGTTBtn: document.querySelector('#sd_gtt_btn'),
+        main: document.querySelector('main'),
         mainHeader: document.querySelector('main > header'),
         navPrimary: document.querySelector('#nav_primary'),
         navPrimaryHeader: document.querySelector('#nav_primary_header'),
         navSmallDevices: document.querySelector('#nav_small_devices')
-        
     },
     getCurrentScreenSizeName: function() {
         let response = '';
@@ -253,8 +253,10 @@ const libdocUi = {
             libdocUi._currentScreenSizeName = libdocUi.getCurrentScreenSizeName();
         },
         _windowLoad: function() {
-            const textQuery = libdocUi._searchParams.get('search');
-            if (textQuery !== null) libdocUi.searchContent(textQuery);
+            const textQuery = libdocUi._searchParams.get('text');
+            if (textQuery !== null) {
+                libdocUi.searchContent(textQuery);
+            }
         },
         _cToggle: function(evt) {
             if (evt.detail.id == 'nav_primary') {
@@ -348,7 +350,7 @@ const libdocUi = {
             elDetails.innerHTML += floatingTocMarkup;
 
             libdocUi.el.ftoc = document.createElement('div');
-            libdocUi.el.ftoc.setAttribute('class', 'd-flex | pos-fixed z-1 | floating_toc');
+            libdocUi.el.ftoc.setAttribute('class', 'd-flex | pos-fixed z-2 | floating_toc');
             libdocUi.el.ftoc.setAttribute('top-0', 'md');
             libdocUi.el.ftoc.setAttribute('right-0', 'md');
             libdocUi.el.ftoc.setAttribute('left-0', 'xs,sm');
@@ -371,7 +373,7 @@ const libdocUi = {
     createGoToTop: function() {
         if (libdocUi.el.gtt === undefined) {
             libdocUi.el.gtt = document.createElement('button');
-            libdocUi.el.gtt.setAttribute('class', 'd-none--xs d-none--sm | pos-fixed z-1 top-0 right-0 | p-0 h-50px ar-square mt-5 mr-11 | fs-6 | brad-4 bc-neutral-100 bwidth-1 bstyle-dashed bcolor-neutral-500 cur-pointer __hover-1');
+            libdocUi.el.gtt.setAttribute('class', 'd-none--xs d-none--sm | pos-fixed z-2 top-0 right-0 | p-0 h-50px ar-square mt-5 mr-11 | fs-6 | brad-4 bc-neutral-100 bwidth-1 bstyle-dashed bcolor-neutral-500 cur-pointer __hover-1');
             libdocUi.el.gtt.innerHTML = `<span class="icon-arrow-line-up | pos-absolute top-50 left-50 t-tY-50 t-tX-50 | c-primary-500"></span>`;
             libdocUi.el.gtt.title = 'Go to top';
             libdocUi.el.gtt.addEventListener('click', libdocUi.handlers._clickGTT);
@@ -453,9 +455,6 @@ const libdocUi = {
                 libdocUi.el.navSmallDevicesFTOCBtn.classList.remove('c-primary-500');
             }
         }
-
-
-        
     },
     updateFtocList: function() {
         if (window.scrollY > libdocUi.el.mainHeader.clientHeight) {
@@ -503,27 +502,94 @@ const libdocUi = {
             }
         }
     },
+    createSearchOccurencesCmd: function() {
+        if (typeof libdocUi.el.main == 'object'
+            && typeof libdocUi.el.searchOccurrencesCmd === 'undefined') {
+            libdocUi.el.searchOccurrencesCmd = document.createElement('nav');
+            libdocUi.el.searchOccurrencesCmd.id = 'query_occurrences_cmd';
+            libdocUi.el.searchOccurrencesCmd.setAttribute('class', 'd-flex gap-2 | pos-sticky top-0 z-1 | pt-5');
+            libdocUi.el.searchOccurrencesCmd.innerHTML = `
+                <div    class="pos-absolute top-0 left-0 | w-100 h-100 | "
+                        style="backdrop-filter: blur(4px); mask: linear-gradient(to bottom,rgba(0, 0, 0, 1) 50%, rgba(0, 0, 0, 0));"></div>
+                <button type="button"
+                    class="pos-relative | h-50px ar-square | fs-5 | brad-4 bc-success-100 c-success-900 bwidth-1 bstyle-dashed bcolor-success-900 cur-pointer __hover-2"
+                    onclick="libdocUi.prevSearchOccurrence()"
+                    title="Previous query occurrence">
+                    <span class="icon-caret-left | pos-absolute top-50 left-50 t-tY-50 t-tX-50 | c-success-900"></span>
+                </button>
+                <button type="button"
+                    class="pos-relative | h-50px ar-square | fs-2 | brad-4 bc-success-100 c-success-900 bwidth-1 bstyle-dashed bcolor-success-900 cur-pointer __hover-2"
+                    onclick="libdocUi.curSearchOccurrence()"
+                    title="Current query occurrence">
+                    <span id="current_query_occurrence_index_position" class="pos-absolute top-50 left-50 t-tY-50 t-tX-50 | c-success-900"></span>
+                </button>
+                <button type="button"
+                    class="pos-relative | h-50px ar-square | fs-5 | brad-4 bc-success-100 c-success-900 bwidth-1 bstyle-dashed bcolor-success-900 cur-pointer __hover-2"
+                    onclick="libdocUi.nextSearchOccurrence()"
+                    title="Next query occurrence">
+                    <span class="icon-caret-right | pos-absolute top-50 left-50 t-tY-50 t-tX-50 | c-success-900"></span>
+                </button>
+                <button type="button"
+                    class="pos-relative | h-50px ar-square | fs-2 | brad-4 bc-success-100 c-success-900 bwidth-1 bstyle-dashed bcolor-success-900 cur-pointer __hover-2"
+                    onclick="libdocUi.stopSearchOccurrence()"
+                    title="Stop query occurrence">
+                    <span class="icon-x | pos-absolute top-50 left-50 t-tY-50 t-tX-50 | c-success-900"></span>
+                </button>`;
+            libdocUi.el.main.prepend(libdocUi.el.searchOccurrencesCmd);
+            libdocUi.el.searchOccurrencesCurrentIndexPosition = document.querySelector('#current_query_occurrence_index_position');
+        }
+    },
     _currentScreenSizeName: '',
-    _searchParams:new URLSearchParams(location.search),
-    _searchContentQueryOccurrences: [],
-    _currentSearchContentQueryOccurrence: 0,
+    _searchParams: new URLSearchParams(location.search),
+    goToOccurrence: function(index) {
+        if (typeof index == 'number') {
+            if (index > -1 && index < libdocUi._so.els.length) {
+                const scrollTop = libdocUi._so.els[index].offsetTop - libdocUi.el.searchOccurrencesCmd.clientHeight - 20;
+                window.scroll({top: scrollTop});
+                libdocUi._so.curIndex = index;
+                libdocUi.el.searchOccurrencesCurrentIndexPosition.innerText = `${libdocUi._so.curIndex + 1}/${libdocUi._so.els.length}`;
+            }
+        }
+    },
     prevSearchOccurrence: function() {
-        if (libdocUi._currentSearchContentQueryOccurrence > 0) {
-            libdocUi._currentSearchContentQueryOccurrence--;
-            window.scroll({top: libdocUi._searchContentQueryOccurrences[libdocUi._currentSearchContentQueryOccurrence].offsetTop});
+        if (libdocUi._so.curIndex > 0) {
+            const newIndex = libdocUi._so.curIndex - 1;
+            libdocUi.goToOccurrence(newIndex);
+        } else if (libdocUi._so.curIndex === 0) {
+            libdocUi.goToOccurrence(libdocUi._so.els.length - 1);
         }
     },
     nextSearchOccurrence: function() {
-        if (libdocUi._currentSearchContentQueryOccurrence < libdocUi._searchContentQueryOccurrences.length - 1) {
-            libdocUi._currentSearchContentQueryOccurrence++;
-            window.scroll({top: libdocUi._searchContentQueryOccurrences[libdocUi._currentSearchContentQueryOccurrence].offsetTop});
+        if (libdocUi._so.curIndex < libdocUi._so.els.length - 1) {
+            const newIndex = libdocUi._so.curIndex + 1;
+            libdocUi.goToOccurrence(newIndex);
+        } else if (libdocUi._so.curIndex === libdocUi._so.els.length - 1) {
+            libdocUi.goToOccurrence(0);
         }
     },
-    
+    curSearchOccurrence: function() {
+        libdocUi.goToOccurrence(libdocUi._so.curIndex);
+    },
+    stopSearchOccurrence: function() {
+        libdocUi._so.els.forEach(function(el) {
+            el.style.textShadow = null;
+            el.style.backgroundColor = null;
+            libdocUi.el.searchOccurrencesCmd.classList.remove('d-flex');
+            libdocUi.el.searchOccurrencesCmd.classList.add('d-none');
+        });
+    },
+    // Search occurrences
+    _so: {
+        // elements containing query occurrence
+        els: [],
+        // Current occurrence index
+        curIndex: 0,
+    },
     searchContent: function(query) {
-        libdocUi._searchContentQueryOccurrences = [];
+        libdocUi._so.els = [];
         const   queryLC = query.toLowerCase(),
-                tags = ['h1', 'h2', 'h3', 'h4', 'h5', 'h6',
+                tags = ['header>h1', 'header>p',
+                        'h1', 'h2', 'h3', 'h4', 'h5', 'h6',
                         'p', 'ul li', 'ol li',
                         'blockquote', 'table td', 'table th', 'dl dd', 'dl dt'];
         let selector = '';
@@ -533,15 +599,16 @@ const libdocUi = {
         selector = selector.toString();
         document.querySelectorAll(selector).forEach(function(el) {
             if (el.innerText.toLowerCase().includes(queryLC)) {
-                libdocUi._searchContentQueryOccurrences.push(el);
+                libdocUi._so.els.push(el);
                 el.style.textShadow = 'none';
                 el.style.backgroundColor = 'var(--ita-colors-success-100)';
                 // el.innerText = el.innerText.replaceAll(query, `____${query}____`);
             }
         });
 
-        if (libdocUi._searchContentQueryOccurrences.length > 0) {
-            window.scroll({top: libdocUi._searchContentQueryOccurrences[0].offsetTop})
+        if (libdocUi._so.els.length > 0) {
+            libdocUi.createSearchOccurencesCmd();
+            libdocUi.goToOccurrence(0);
         }
     },
     update: function() {

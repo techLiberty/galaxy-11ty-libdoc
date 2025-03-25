@@ -222,7 +222,8 @@ main {
     }
     mark {
         text-shadow: none;
-        background-color: aqua; 
+        background-color: var(--ita-colors-success-100);
+        color: var(--ita-colors-success-900);
         /* #ffe300 */
     }
     s,

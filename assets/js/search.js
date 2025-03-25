@@ -32,7 +32,7 @@ const search = {
                         queryLoweredEncoded = search.HTMLEncode(queryLowered),
                         occurrenceIndex = content.indexOf(queryLowered),
                         range = 200,
-                        resultUrl = `${item.url}?search=${encodeURIComponent(query)}`;
+                        resultUrl = `${item.url}?text=${encodeURIComponent(query)}`;
                 let lowIndex = occurrenceIndex - range,
                     highIndex = occurrenceIndex + query.length + range;
                 if (lowIndex < 0) lowIndex = 0;
