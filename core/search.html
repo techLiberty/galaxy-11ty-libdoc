@@ -4,5 +4,26 @@ layout: simple_page.liquid
 eleventyExcludeFromCollections: true
 permalink: search/index.html
 ---
+<form action="/search/"
+    class="d-flex fd-column | pos-relative | pl-5 pr-5"
+    d-none="md">
+    <label for="searchInput"
+        class="pos-absolute | ml-5 t-tY-50 | fvs-wght-400 fs-1 tt-uppercase | bc-neutral-100">
+        Search
+    </label>
+    <input  id="searchInput"
+            type="search"
+            name="search"
+            class="pl-5 pr-5 pt-3 pb-3 | fs-3 | brad-4 bwidth-1 bstyle-dashed bcolor-neutral-500"
+            placeholder="Search"
+            value=""
+            autofocus>
+    <button type="submit"
+        class="pos-absolute top-0 right-0 | h-100 mr-5 ar-square | fs-5 | brad-4 bc-primary-100 c-primary-900 bwidth-1 bstyle-dashed bcolor-primary-900 cur-pointer __hover-1"
+        onclick="libdocUi.nextSearchOccurrence()"
+        title="Next query occurrence">
+        <span class="icon-magnifying-glass | pos-absolute top-50 left-50 t-tY-50 t-tX-50 | c-primary-900"></span>
+    </button>
+</form>
 <ul id="searchResults" class="d-flex fd-column gap-5"></ul>
 <script src="/assets/js/search.js"></script>
