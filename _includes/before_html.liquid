@@ -7,3 +7,6 @@
         {% include 'breadcrumb' %}
     {% endcapture %}
 {% endif  %}
+{% if page.url == '/search/' %}
+    {% assign finalTitle = site.messages[site.lang].pageSearchTitle %}
+{% endif  %}

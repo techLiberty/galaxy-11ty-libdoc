@@ -19,7 +19,10 @@ const libdocUi = {
         mainHeader: document.querySelector('main > header'),
         navPrimary: document.querySelector('#nav_primary'),
         navPrimaryHeader: document.querySelector('#nav_primary_header'),
-        navSmallDevices: document.querySelector('#nav_small_devices')
+        navSmallDevices: document.querySelector('#nav_small_devices'),
+        searchForms: document.querySelectorAll('.search_form'),
+        searchInputs: document.querySelectorAll('input[type="search"][name="search"]'),
+        searchClearBtns: document.querySelectorAll('.search_form__clear_btn')
     },
     getCurrentScreenSizeName: function() {
         let response = '';
@@ -253,10 +256,19 @@ const libdocUi = {
             libdocUi._currentScreenSizeName = libdocUi.getCurrentScreenSizeName();
         },
         _windowLoad: function() {
-            const textQuery = libdocUi._searchParams.get('text');
+            const textQuery = libdocUi._searchParams.get('text') || libdocUi._searchParams.get('search');
             if (textQuery !== null) {
-                libdocUi.searchContent(textQuery);
+                if (location.pathname == '/search/') {
+                    document.title += ` “${textQuery}“`;
+                    history.replaceState(null, '', `?search=${textQuery}`);
+                } else {
+                    libdocUi.searchContent(textQuery);
+                }
+                libdocUi.el.searchInputs.forEach(function(elInput) {
+                    elInput.value = textQuery;
+                });
             }
+            libdocUi.updateSearchInputClearBtns();
         },
         _cToggle: function(evt) {
             if (evt.detail.id == 'nav_primary') {
@@ -264,7 +276,41 @@ const libdocUi = {
                 libdocUi.updateFTOCBtns();
                 libdocUi.updateGTTBtns();
             }
+        },
+        _searchSubmit: function(evt) {
+            const elInput = evt.target.querySelector('input');
+            if (elInput !== null) {
+                const elLabel = document.querySelector(`label[for="${elInput.id}"]`);
+                if (elInput.value.length < 3) {
+                    evt.preventDefault();
+                    elLabel.innerText = '3 char. min.';
+                    elLabel.style.color = 'var(--ita-colors-warning-500)';
+                } else {
+                    elLabel.innerText = 'Search';
+                    elLabel.style.color = null;
+                }
+            }
+        },
+        _clickSearchInputClear: function(evt) {
+            const elClearBtn = evt.target.closest('button');
+            if (elClearBtn !== null) {
+                elClearBtn.form.reset();
+                elClearBtn.hidden = true;
+                elClearBtn.form.querySelector('input[type="search"][name="search"]').focus();
+            }
         }
+    },
+    updateSearchInputClearBtns: function() {
+        libdocUi.el.searchInputs.forEach(function(elInput) {
+            const elClearBtn = elInput.form.querySelector('.search_form__clear_btn');
+            if (elClearBtn !== null) {
+                if (elInput.value.length > 0) {
+                    elClearBtn.hidden = false;
+                } else {
+                    elClearBtn.hidden = true;
+                }
+            }
+        });
     },
     toggleFtocSmallDevices: function() {
         if (libdocUi.el.ftocDetails.open) {
@@ -572,11 +618,15 @@ const libdocUi = {
     },
     stopSearchOccurrence: function() {
         libdocUi._so.els.forEach(function(el) {
-            el.style.textShadow = null;
-            el.style.backgroundColor = null;
+            el.classList.remove('__search-occurrence');
             libdocUi.el.searchOccurrencesCmd.classList.remove('d-flex');
             libdocUi.el.searchOccurrencesCmd.classList.add('d-none');
         });
+        libdocUi.el.searchInputs.forEach(function(elInput) {
+            elInput.value = '';
+        });
+        libdocUi.updateSearchInputClearBtns();
+        history.pushState(null, '', location.pathname);
     },
     // Search occurrences
     _so: {
@@ -585,30 +635,41 @@ const libdocUi = {
         // Current occurrence index
         curIndex: 0,
     },
+    getTextContentWithoutChildNodes: function(el) {
+        if (typeof el == 'object') return [].reduce.call(el.childNodes, function(a, b) { return a + (b.nodeType === 3 ? b.textContent : ''); }, '');
+    },
     searchContent: function(query) {
         libdocUi._so.els = [];
-        const   queryLC = query.toLowerCase(),
-                tags = ['header>h1', 'header>p',
-                        'h1', 'h2', 'h3', 'h4', 'h5', 'h6',
-                        'p', 'ul li', 'ol li',
-                        'blockquote', 'table td', 'table th', 'dl dd', 'dl dt'];
-        let selector = '';
-        tags.forEach(function(tag, index) {
-            selector += `main>${tag}${index === tags.length - 1 ? `` : `,`}`;
-        });
-        selector = selector.toString();
-        document.querySelectorAll(selector).forEach(function(el) {
-            if (el.innerText.toLowerCase().includes(queryLC)) {
+        const   queryLC = query.toLowerCase();
+        //         tags = ['header>h1', 'header>p',
+        //                 'h1', 'h2', 'h3', 'h4', 'h5', 'h6',
+        //                 'p', 'ul li', 'ol li',
+        //                 'blockquote', 'table td', 'table th', 'dl dd', 'dl dt'];
+        // let selector = '';
+        // tags.forEach(function(tag, index) {
+        //     selector += `main>${tag}${index === tags.length - 1 ? `` : `,`}`;
+        // });
+        // selector = selector.toString();
+        // Every child of main excepting pre, aside and header
+        document.querySelectorAll('main>*:not(pre):not(aside):not(header) *').forEach(function(el) {
+            const textContentWoChildren = libdocUi.getTextContentWithoutChildNodes(el);
+            if (textContentWoChildren.toLowerCase().includes(queryLC)) {
                 libdocUi._so.els.push(el);
-                el.style.textShadow = 'none';
-                el.style.backgroundColor = 'var(--ita-colors-success-100)';
-                // el.innerText = el.innerText.replaceAll(query, `____${query}____`);
+                el.classList.add('__search-occurrence');
             }
         });
-
+        // For sandboxes and pre
+        document.querySelectorAll('main>pre, main>.sandbox').forEach(function(el) {
+            if (el.innerText.toLowerCase().includes(queryLC)) {
+                libdocUi._so.els.push(el);
+                el.classList.add('__search-occurrence');
+            }
+        });
         if (libdocUi._so.els.length > 0) {
             libdocUi.createSearchOccurencesCmd();
             libdocUi.goToOccurrence(0);
+            document.title += ` | “${query}“`;
+            history.replaceState(null, '', `?text=${query}`);
         }
     },
     update: function() {
@@ -637,6 +698,15 @@ const libdocUi = {
         window.addEventListener('load', libdocUi.handlers._windowLoad);
         document.querySelectorAll('.copy_code_block').forEach(function(el) {
             el.addEventListener('click', libdocUi.handlers._clickCopyCodeBlock);
+        });
+        libdocUi.el.searchForms.forEach(function(elForm) {
+            elForm.addEventListener('submit', libdocUi.handlers._searchSubmit);
+        });
+        libdocUi.el.searchInputs.forEach(function(elInput) {
+            elInput.addEventListener('input', libdocUi.updateSearchInputClearBtns);
+        });
+        libdocUi.el.searchClearBtns.forEach(function(elClearBtn) {
+            elClearBtn.addEventListener('click', libdocUi.handlers._clickSearchInputClear);
         });
     }
 }

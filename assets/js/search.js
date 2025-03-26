@@ -39,17 +39,17 @@ const search = {
                 if (highIndex > content.length - 1) highIndex = content.length - 1;
                 let summary = content.slice(lowIndex, highIndex);
                 summary = search.HTMLEncode(summary);
-                summary = summary.replaceAll(queryLoweredEncoded, ` <mark class="fvs-wght-600">${query}</mark> `);
+                summary = summary.replaceAll(queryLoweredEncoded, ` <mark class="fvs-wght-600 wb-break-all">${query}</mark> `);
                 if (content.indexOf(queryLowered) > -1) {
                     markup += search.renderSearchResult({url: resultUrl, title: item.title, summary: summary})
                 }
             });
+            const elTitle = document.querySelector('h1');
+            elTitle.innerHTML += `<mark class="fvs-wght-600 wb-break-all">${query}</mark>`;
             if (markup == '') {
-                searchResults.innerHTML = `<li>No result for <mark class="fvs-wght-600">${query}</mark></li>`;
+                searchResults.innerHTML = `<li>No result for <mark class="fvs-wght-600 wb-break-all">${query}</mark></li>`;
             } else {
                 searchResults.innerHTML = markup;
-                const elTitle = document.querySelector('h1');
-                elTitle.innerHTML = `${elTitle.innerHTML} <mark class="fvs-wght-600">${query}</mark>`;
             }
             searchInput.value = query;
         }
