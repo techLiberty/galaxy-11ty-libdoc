@@ -254,6 +254,7 @@ const libdocUi = {
         },
         _windowResize: function() {
             libdocUi._currentScreenSizeName = libdocUi.getCurrentScreenSizeName();
+            libdocUi.updateSearchOccurrenceCmdBottom();
         },
         _windowLoad: function() {
             const textQuery = libdocUi._searchParams.get('text') || libdocUi._searchParams.get('search');
@@ -412,6 +413,7 @@ const libdocUi = {
             libdocUi.el.ftocHeadings = document.querySelectorAll(libdocUi.defaults.headingsSelector);
             libdocUi.el.navSmallDevicesFTOCBtn.disabled = false;
             libdocUi.el.navSmallDevicesFTOCBtn.addEventListener('click', libdocUi.toggleFtocSmallDevices);
+            libdocUi.el.navSmallDevicesFTOCBtn.addEventListener('click', libdocUi.updateSearchOccurrenceCmdBottom);
             elDetails.addEventListener("toggle", libdocUi.handlers._toggleFtocLargeDevices);
             if (libdocUi.getUserPreferences().FTOCNormallyOpened) elDetails.open = true;
         }
@@ -548,15 +550,24 @@ const libdocUi = {
             }
         }
     },
+    updateSearchOccurrenceCmdBottom: function() {
+        if (libdocUi.el.searchOccurrencesCmd !== undefined) {
+            libdocUi._so.bottomSpacing = 0;
+            if (libdocUi._currentScreenSizeName == 'xs' || libdocUi._currentScreenSizeName == 'sm') {
+                libdocUi._so.bottomSpacing = libdocUi.el.navSmallDevices.clientHeight + libdocUi.el.ftoc.clientHeight;
+            }
+            libdocUi.el.searchOccurrencesCmd.style.bottom = `${libdocUi._so.bottomSpacing}px`;
+        }
+    },
     createSearchOccurencesCmd: function() {
         if (typeof libdocUi.el.main == 'object'
             && typeof libdocUi.el.searchOccurrencesCmd === 'undefined') {
             libdocUi.el.searchOccurrencesCmd = document.createElement('nav');
             libdocUi.el.searchOccurrencesCmd.id = 'query_occurrences_cmd';
-            libdocUi.el.searchOccurrencesCmd.setAttribute('class', 'd-flex gap-2 | pos-sticky top-0 z-1 | pt-5');
+            libdocUi.el.searchOccurrencesCmd.setAttribute('class', 'd-flex gap-2 | pos-sticky bottom-0 z-1 | pb-5');
             libdocUi.el.searchOccurrencesCmd.innerHTML = `
                 <div    class="pos-absolute top-0 left-0 | w-100 h-100 | "
-                        style="backdrop-filter: blur(4px); mask: linear-gradient(to bottom,rgba(0, 0, 0, 1) 50%, rgba(0, 0, 0, 0));"></div>
+                        style="backdrop-filter: blur(4px); mask: linear-gradient(to top,rgba(0, 0, 0, 1) 50%, rgba(0, 0, 0, 0));"></div>
                 <button type="button"
                     class="pos-relative | h-50px ar-square | fs-5 | brad-4 bc-success-100 c-success-900 bwidth-1 bstyle-dashed bcolor-success-900 cur-pointer __hover-2"
                     onclick="libdocUi.prevSearchOccurrence()"
@@ -581,7 +592,7 @@ const libdocUi = {
                     title="Stop query occurrence">
                     <span class="icon-x | pos-absolute top-50 left-50 t-tY-50 t-tX-50 | c-success-900"></span>
                 </button>`;
-            libdocUi.el.main.prepend(libdocUi.el.searchOccurrencesCmd);
+            libdocUi.el.main.append(libdocUi.el.searchOccurrencesCmd);
             libdocUi.el.searchOccurrencesCurrentIndexPosition = document.querySelector('#current_query_occurrence_index_position');
         }
     },
@@ -590,10 +601,17 @@ const libdocUi = {
     goToOccurrence: function(index) {
         if (typeof index == 'number') {
             if (index > -1 && index < libdocUi._so.els.length) {
-                const scrollTop = libdocUi._so.els[index].offsetTop - libdocUi.el.searchOccurrencesCmd.clientHeight - 20;
-                window.scroll({top: scrollTop});
+                libdocUi._so.els.forEach(function(el) {
+                    el.classList.remove('__search-occurrence');
+                });
+                // const scrollTop = libdocUi._so.els[index].getBoundingClientRect().top - libdocUi.el.searchOccurrencesCmd.clientHeight - 20;
+                // window.scroll({top: scrollTop});
+                libdocUi._so.els[index].scrollIntoView();
+                window.scroll({top: window.scrollY - 100});
                 libdocUi._so.curIndex = index;
                 libdocUi.el.searchOccurrencesCurrentIndexPosition.innerText = `${libdocUi._so.curIndex + 1}/${libdocUi._so.els.length}`;
+                libdocUi._so.els[index].classList.add('__search-occurrence');
+                
             }
         }
     },
@@ -634,42 +652,35 @@ const libdocUi = {
         els: [],
         // Current occurrence index
         curIndex: 0,
+        bottomSpacing: 0
     },
     getTextContentWithoutChildNodes: function(el) {
         if (typeof el == 'object') return [].reduce.call(el.childNodes, function(a, b) { return a + (b.nodeType === 3 ? b.textContent : ''); }, '');
     },
     searchContent: function(query) {
-        libdocUi._so.els = [];
-        const   queryLC = query.toLowerCase();
-        //         tags = ['header>h1', 'header>p',
-        //                 'h1', 'h2', 'h3', 'h4', 'h5', 'h6',
-        //                 'p', 'ul li', 'ol li',
-        //                 'blockquote', 'table td', 'table th', 'dl dd', 'dl dt'];
-        // let selector = '';
-        // tags.forEach(function(tag, index) {
-        //     selector += `main>${tag}${index === tags.length - 1 ? `` : `,`}`;
-        // });
-        // selector = selector.toString();
-        // Every child of main excepting pre, aside and header
-        document.querySelectorAll('main>*:not(pre):not(aside):not(header) *').forEach(function(el) {
-            const textContentWoChildren = libdocUi.getTextContentWithoutChildNodes(el);
-            if (textContentWoChildren.toLowerCase().includes(queryLC)) {
-                libdocUi._so.els.push(el);
-                el.classList.add('__search-occurrence');
+        if (typeof query == 'string') {
+            libdocUi._so.els = [];
+            const queryLC = query.toLowerCase();
+            // Every child of main excepting pre, aside and header
+            document.querySelectorAll('main>*:not(pre):not(aside):not(header) *').forEach(function(el) {
+                const textContentWoChildren = libdocUi.getTextContentWithoutChildNodes(el);
+                if (textContentWoChildren.toLowerCase().includes(queryLC)) {
+                    libdocUi._so.els.push(el);
+                }
+            });
+            // For sandboxes and pre
+            document.querySelectorAll('main>pre, main>.sandbox').forEach(function(el) {
+                if (el.innerText.toLowerCase().includes(queryLC)) {
+                    libdocUi._so.els.push(el);
+                }
+            });
+            if (libdocUi._so.els.length > 0) {
+                libdocUi.createSearchOccurencesCmd();
+                libdocUi.updateSearchOccurrenceCmdBottom();
+                libdocUi.goToOccurrence(0);
+                document.title += ` | “${query}“`;
+                history.replaceState(null, '', `?text=${query}`);
             }
-        });
-        // For sandboxes and pre
-        document.querySelectorAll('main>pre, main>.sandbox').forEach(function(el) {
-            if (el.innerText.toLowerCase().includes(queryLC)) {
-                libdocUi._so.els.push(el);
-                el.classList.add('__search-occurrence');
-            }
-        });
-        if (libdocUi._so.els.length > 0) {
-            libdocUi.createSearchOccurencesCmd();
-            libdocUi.goToOccurrence(0);
-            document.title += ` | “${query}“`;
-            history.replaceState(null, '', `?text=${query}`);
         }
     },
     update: function() {
@@ -692,7 +703,7 @@ const libdocUi = {
         libdocUi.createGoToTop();
         libdocUi.updateNavPrimaryScrollTop();
         libdocUi.updateFtocList();
-        libdocUi.updateGTTBtns() 
+        libdocUi.updateGTTBtns();
         document.addEventListener('cToggle_event', libdocUi.handlers._cToggle);
         window.addEventListener('resize', libdocUi.handlers._windowResize);
         window.addEventListener('load', libdocUi.handlers._windowLoad);

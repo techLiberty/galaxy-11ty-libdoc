@@ -462,8 +462,8 @@ main > video {
 }
 /* SEARCH OCCURRENCES */
 main .__search-occurrence {
-    background-color: var(--ita-colors-success-100);
-    outline: 3px solid var(--ita-colors-neutral-100);
+    background-color: var(--ita-colors-success-100) !important;
+    outline: 3px solid var(--ita-colors-success-100) !important;
     border-radius: 4px;
     text-shadow: none;
 }
