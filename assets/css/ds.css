@@ -459,7 +459,7 @@
   max-height: 300px;
 }
 .maxh-sidebar {
-  max-height: calc(100vh - 2 * var(--ita-spacings-5));
+  max-height: calc(100vh - 59px);
 }
 .minh-100vh {
   min-height: 100vh;
@@ -2144,7 +2144,7 @@
 }
 .maxh-sidebar--xs,
 [maxh-sidebar*="xs"] {
-  max-height: calc(100vh - 2 * var(--ita-spacings-5));
+  max-height: calc(100vh - 59px);
 }
 .minh-100vh--xs,
 [minh-100vh*="xs"] {
@@ -3403,7 +3403,7 @@
 }
 .maxh-sidebar--sm,
 [maxh-sidebar*="sm"] {
-  max-height: calc(100vh - 2 * var(--ita-spacings-5));
+  max-height: calc(100vh - 59px);
 }
 .minh-100vh--sm,
 [minh-100vh*="sm"] {
@@ -4662,7 +4662,7 @@
 }
 .maxh-sidebar--md,
 [maxh-sidebar*="md"] {
-  max-height: calc(100vh - 2 * var(--ita-spacings-5));
+  max-height: calc(100vh - 59px);
 }
 .minh-100vh--md,
 [minh-100vh*="md"] {

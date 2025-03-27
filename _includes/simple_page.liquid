@@ -68,7 +68,7 @@
         ai-start="md"
         ai-center="xs,sm"
         pl-5="md">
-        <div class="d-flex fd-column | pos-sticky top-0 z-1"
+        <div class="d-flex fd-column | pos-sticky top-0 z-2"
             ai-center="xs,sm"
             w-100="xs,sm"
             w-sidebar="md">
@@ -170,9 +170,12 @@
                 {% assign tag_replacement = '<' | append: site.navigationOptions.listElement | append: ' class="d-flex fd-column fg-1 order-1 | m-0 pl-5 | ls-none">' %}
                 {% assign menu = menu | replace: tag_to_replace, tag_replacement %}
                 <div id="nav_primary"
-                    class="h-100 o-auto"
-                    pb-11="md">
+                    class="pos-relative | h-100 o-auto">
+                    <div class="pos-sticky z-1 top-0 left-0 | w-100 pt-6 | pe-none | __gradient-mask-neutral-100-to-bottom"></div>
                     {{ menu }}
+                    <div class="pos-sticky bottom-0 left-0 | w-100 pt-10 | pe-none | __gradient-mask-neutral-100-to-top"
+                        bradbl-3="md"
+                        bradbr-3="md"></div>
                 </div>
             </nav>
         </div>
@@ -188,7 +191,7 @@
                         {{ site.messages[site.lang][title]|default: finalTitle }}
                     </h1>
                     {% if description %}
-                        <p class="d-flex ai-center | pt-5 pl-5 pb-3 m-0 | fvs-wght-400 tws-balance fs-7 lsp-3 lh-5 | blwidth-1 blstyle-dashed bcolor-neutral-500"
+                        <p class="d-flex ai-center | pt-5 pl-5 pb-5 m-0 | fvs-wght-400 tws-balance fs-7 lsp-3 lh-5 | blwidth-1 blstyle-dashed bcolor-neutral-500"
                             pt-3="xs"
                             pb-3="xs"
                             fs-6="sm"
@@ -199,7 +202,8 @@
                     {% if page.url != '/search/' %}
                         <div class="d-flex ai-center | m-0 | blwidth-1 blstyle-dashed bcolor-neutral-500">
                             <div class="pl-5 | bbwidth-1 bbstyle-dashed bcolor-neutral-500"></div>
-                            <p class="d-flex ai-center gap-2 | m-0 pr-2 | fvs-wght-400 fs-2 lsp-3 lh-3 | c-neutral-700">
+                            <p  class="d-flex ai-center gap-2 | m-0 pr-2 | fvs-wght-400 fs-3 lsp-3 lh-3 | c-neutral-700"
+                                fs-2="xs">
                                 <span class="icon-calendar-dots fs-6"></span>
                                 <span ws-nowrap="sm,md">
                                     <span class="ws-nowrap">Last modified</span>
@@ -211,7 +215,8 @@
                                 <div class="pos-relative | p-5 | brad-4 bc-neutral-100 bwidth-1 bstyle-dashed bcolor-neutral-500">
                                     <div class="icon-user | pos-absolute top-50 left-50 t-tY-50 t-tX-50 | fs-6"></div>
                                 </div>
-                                <p class="d-flex fd-column | m-0 | fvs-wght-400 fs-2 lsp-3 lh-1 | c-neutral-700"
+                                <p  class="d-flex fd-column | m-0 | fvs-wght-400 fs-3 lsp-3 lh-1 | c-neutral-700"
+                                    fs-2="xs"
                                     ws-nowrap="sm,md">
                                     Author name
                                 </p>

@@ -98,7 +98,8 @@ body {
     font-optical-sizing: auto;
     font-weight: 300;
     font-style: normal;
-    font-variation-settings: "slnt" 0, "CASL" 1, "CRSV" 0.0, "MONO" 0, "wght" 300;
+    font-size: var(--ita-fontSizes-5);
+    font-variation-settings: "slnt" 0, "CASL" 1, "CRSV" 0.0, "MONO" 0, "wght" 330;
 }
 html,
 .o-auto {
@@ -146,12 +147,12 @@ main ins {
     background-color: var(--ita-colors-success-100);
     color: var(--ita-colors-success-900);
 }
-main > header p,
+/* main > header p,
 main > header summary {
     text-shadow: var(--libdoc-text-shadow-legibility);
-}
+} */
 main p {
-    text-shadow: var(--libdoc-text-shadow-legibility);
+    /* text-shadow: var(--libdoc-text-shadow-legibility); */
     line-height: 1.6em;
 }
 /* HEADINGS */
@@ -213,7 +214,7 @@ main a:visited {
     color: var(--ita-colors-primary-500);
     font-variation-settings: "wght" 500, "MONO" 0;
     letter-spacing: -0.03em;
-    text-shadow: none;
+    /* text-shadow: none; */
     text-underline-offset: 0.2em;
     text-decoration-thickness: 0.1em;
 }
@@ -228,13 +229,14 @@ main em {
 main strong,
 main b {
     font-variation-settings: "wght" 700, "MONO" 0;
+    letter-spacing: -0.03em;
 }
 main i {
     font-variation-settings: "slnt" -15, "MONO" 0;
 }
 /* MARKING AND SPECIALS */
 main mark {
-    text-shadow: none;
+    /* text-shadow: none; */
     background-color: var(--ita-colors-success-100);
     color: var(--ita-colors-success-900);
 }
@@ -243,22 +245,22 @@ main strike {
     text-decoration-color: var(--ita-colors-primary-500);
     text-decoration-thickness: 0.05em;
     text-decoration-style: wavy;
-    text-shadow: none;
+    /* text-shadow: none; */
 }
-main del {
+/* main del {
     text-shadow: none;
-}
+} */
 main del * {
-    text-shadow: none;
+    /* text-shadow: none; */
     background-color: var(--ita-colors-danger-100);
     color: var(--ita-colors-danger-900);
     max-width: var(--libdoc-container-width);
 }
-main ins {
+/* main ins {
     text-shadow: none;
-}
+} */
 main ins * {
-    text-shadow: none;
+    /* text-shadow: none; */
     background-color: var(--ita-colors-success-100);
     color: var(--ita-colors-success-900);
     max-width: var(--libdoc-container-width);
@@ -269,13 +271,13 @@ main samp {
 }
 main q {
     font-variation-settings: "slnt" -15, "CRSV" 1, "CASL" 1, "wght" 400;
-    text-shadow: none;
+    /* text-shadow: none; */
     background-color: var(--ita-colors-primary-100);
 }
 main kbd {
     font-variation-settings: "MONO" 1, "wght" 400;
     font-family: var(--libdoc-font-family);
-    text-shadow: none;
+    /* text-shadow: none; */
     background-color: var(--ita-colors-primary-200);
     padding: 0 0.4em;
     border-radius: 4px;
@@ -284,6 +286,9 @@ main kbd {
 main ul,
 main ol {
     line-height: 1.6em;
+}
+main li + li {
+    margin-top: 0.4em;
 }
 /* 
 https://www.joshwcomeau.com/css/styling-ordered-lists-with-css-counters/
@@ -334,13 +339,13 @@ main > ul ul li::before {
     margin-left: var(--ita-spacings-2);
     margin-top: 0.6em;
 }
-main li {
+/* main li {
     text-shadow: var(--libdoc-text-shadow-legibility);
-}
+} */
 /* CODE AND SYNTAX HIGHLIGHTING */
-main p > code {
+main > *:not(pre) code {
     background-color: var(--ita-colors-primary-200);
-    text-shadow: none;
+    /* text-shadow: none; */
     display: inline-block;
     margin-right: 0.3em;
     margin-left: 0.3em;
@@ -416,7 +421,7 @@ main blockquote {
 }
 main blockquote * {
     font-variation-settings: "slnt" -15, "CASL" 1 , "CRSV" 1;
-    text-shadow: none;
+    /* text-shadow: none; */
 }
 /* DEFINITION LISTS */
 main dl dt {
@@ -465,11 +470,11 @@ main .__search-occurrence {
     background-color: var(--ita-colors-success-100) !important;
     outline: 3px solid var(--ita-colors-success-100) !important;
     border-radius: 4px;
-    text-shadow: none;
+    /* text-shadow: none; */
 }
-main .__search-occurrence * {
+/* main .__search-occurrence * {
     text-shadow: none;
-}
+} */
 
 #nav_primary [aria-current="page"] {
     opacity: 0.5;
@@ -493,6 +498,16 @@ main .__search-occurrence * {
     background-color: var(--ita-colors-primary-500);
     width: 5px;
     height: 5px;
+}
+#nav_primary > ol > li > a.nav_primary__anchor {
+    font-size: var(--ita-fontSizes-5);
+    letter-spacing: -0.04em;
+}
+#nav_primary > ol > li > a.nav_primary__anchor::after {
+    width: 8px;
+    height: 8px;
+    top: calc(50% - 4px);
+    left: -4px;
 }
 
 /* MAIN TABLE OF CONTENT */
@@ -531,10 +546,10 @@ main .__search-occurrence * {
 .sandbox:has(.sandbox__enable_switch:checked) .sandbox__enable_wrapper {
     display: none;
 }
-.sandbox p,
+/* .sandbox p,
 .sandbox li {
     text-shadow: none;
-}
+} */
 
 /* FLOATING TABLE OF CONTENT */
 #floating_toc[open] summary [class*="icon-"]::before {
@@ -548,14 +563,18 @@ main .__search-occurrence * {
     font-variation-settings: "wght" 700, "MONO" 0;
 }
 
-/* RESPONSIVE */
+/* RESPONSIVE MD */
 @media (min-width: 960px) {
     #floating_toc__list {
         width: 200px;
         max-height: calc(100vh - 160px);
     }
 }
+/* RESPONSIVE XS + SM */
 @media (max-width: 959px) {
+    body {
+        font-size: var(--ita-fontSizes-4);
+    }
     main > * {
         max-width: calc(var(--libdoc-container-width) + 2 * var(--ita-spacings-5));
         padding-left: var(--ita-spacings-5);
@@ -574,7 +593,6 @@ main .__search-occurrence * {
     }
     #nav_primary {
         height: calc(100vh - 150px);
-        padding-bottom: 200px;
     }
 }
 
@@ -600,6 +618,22 @@ main .__search-occurrence * {
 }
 .__hover-2:hover > * {
     color: var(--ita-colors-success-100);
+}
+.__gradient-mask-neutral-100-to-top {
+    background-color: var(--ita-colors-neutral-100);
+    mask: linear-gradient(to top,rgba(0, 0, 0, 1), rgba(0, 0, 0, 0));
+}
+.__gradient-mask-neutral-100-to-bottom {
+    background-color: var(--ita-colors-neutral-100);
+    mask: linear-gradient(to bottom,rgba(0, 0, 0, 1), rgba(0, 0, 0, 0));
+}
+.__gradient-mask-primary-100-to-top {
+    background-color: var(--ita-colors-primary-100);
+    mask: linear-gradient(to top,rgba(0, 0, 0, 1), rgba(0, 0, 0, 0));
+}
+.__gradient-mask-primary-100-to-bottom {
+    background-color: var(--ita-colors-primary-100);
+    mask: linear-gradient(to bottom,rgba(0, 0, 0, 1), rgba(0, 0, 0, 0));
 }
 
 /* FANCY */

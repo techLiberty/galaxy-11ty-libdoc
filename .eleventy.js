@@ -180,7 +180,7 @@ export default function(eleventyConfig) {
                     <${m1} id="${slugifiedId}" pl-9="xs,sm">
                         <a  href="#${slugifiedId}"
                             title="Link to this part: ${m2}"
-                            class="pos-absolute top-50 left-0 t-tY-50 | p-4 ml-3 | td-none | brad-4 bc-neutral-100 bwidth-1 bstyle-dashed bcolor-neutral-500 __hover-1"
+                            class="pos-absolute top-50 left-0 t-tY-50 | p-4 ml-1 | td-none | brad-4 bc-neutral-100 bwidth-1 bstyle-dashed bcolor-neutral-500 __hover-1"
                             ml-3="xs,sm">
                             <span class="icon-link-simple | pos-absolute top-50 left-50 t-tY-50 t-tX-50 | fs-4"></span>
                         </a>
@@ -227,7 +227,7 @@ export default function(eleventyConfig) {
                 tocMarkup += `
                     <li class="d-flex">
                         <a  href="#${slugifiedId}"
-                            class="pl-5 pt-1 pb-1 | fs-3 lh-5 fvs-wght-400 | blwidth-1 blstyle-dashed bcolor-neutral-500">
+                            class="pl-5 | fs-3 lh-5 fvs-wght-400 | blwidth-1 blstyle-dashed bcolor-neutral-500">
                             ${htmlTag.value}
                         </a>
                     </li>`;

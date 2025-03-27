@@ -18,7 +18,6 @@ const libdocUi = {
         main: document.querySelector('main'),
         mainHeader: document.querySelector('main > header'),
         navPrimary: document.querySelector('#nav_primary'),
-        navPrimaryHeader: document.querySelector('#nav_primary_header'),
         navSmallDevices: document.querySelector('#nav_small_devices'),
         searchForms: document.querySelectorAll('.search_form'),
         searchInputs: document.querySelectorAll('input[type="search"][name="search"]'),
@@ -457,12 +456,11 @@ const libdocUi = {
     },
     updateNavPrimaryScrollTop: function() {
         const   elCurrentPageLink = libdocUi.el.navPrimary.querySelector('[aria-current="page"]'),
-                elNavP = libdocUi.el.navPrimary,
-                elNavPH = libdocUi.el.navPrimaryHeader;
+                elNavP = libdocUi.el.navPrimary;
         if (elCurrentPageLink !== null && elNavP !== null) {
-            if (elCurrentPageLink.clientHeight + elCurrentPageLink.offsetTop - elNavPH.clientHeight > elNavP.clientHeight ) {
+            if (elCurrentPageLink.clientHeight + elCurrentPageLink.offsetTop > elNavP.clientHeight ) {
                 elNavP.scroll({
-                    top: (elCurrentPageLink.offsetTop - elNavPH.clientHeight - 2 * elCurrentPageLink.clientHeight)
+                    top: (elCurrentPageLink.offsetTop - 2 * elCurrentPageLink.clientHeight)
                 });
             }
         }
@@ -566,8 +564,7 @@ const libdocUi = {
             libdocUi.el.searchOccurrencesCmd.id = 'query_occurrences_cmd';
             libdocUi.el.searchOccurrencesCmd.setAttribute('class', 'd-flex gap-2 | pos-sticky bottom-0 z-1 | pb-5');
             libdocUi.el.searchOccurrencesCmd.innerHTML = `
-                <div    class="pos-absolute top-0 left-0 | w-100 h-100 | "
-                        style="backdrop-filter: blur(4px); mask: linear-gradient(to top,rgba(0, 0, 0, 1) 50%, rgba(0, 0, 0, 0));"></div>
+                <div    class="pos-absolute top-0 left-0 | w-100 h-100 | __gradient-mask-primary-100-to-top"></div>
                 <button type="button"
                     class="pos-relative | h-50px ar-square | fs-5 | brad-4 bc-success-100 c-success-900 bwidth-1 bstyle-dashed bcolor-success-900 cur-pointer __hover-2"
                     onclick="libdocUi.prevSearchOccurrence()"
