@@ -1,7 +1,9 @@
 import { EleventyRenderPlugin } from "@11ty/eleventy";
 import eleventyNavigationPlugin from "@11ty/eleventy-navigation";
+import { InputPathToUrlTransformPlugin } from "@11ty/eleventy";
 
 export default function(eleventyConfig) {
+    eleventyConfig.addPlugin(InputPathToUrlTransformPlugin);
     eleventyConfig.addPlugin(eleventyNavigationPlugin);
     
     const libdocParams = {
@@ -163,11 +165,17 @@ export default function(eleventyConfig) {
     }
 
     eleventyConfig.addAsyncFilter("autoids", async function (content) {
+        let i = 0;
+        const anchorsIds = [];
         content = content.replace(/<([a-zA-Z][a-zA-Z0-9_-]*)\b[^>]*>(.*?)<\/\1>/g, function(m,m1,m2){
             let newM = m;
             if (libdocParams.toc.htmlTags.includes(m1)) {
                 // Add id to the specified html tags
-                const slugifiedId = libdocUtils.slugify(m2);
+                let slugifiedId = libdocUtils.slugify(m2);
+                if (anchorsIds.includes(slugifiedId)) {
+                    slugifiedId += `-${i}`;
+                }
+                anchorsIds.push(slugifiedId);
                 const markup = `
                     <${m1} id="${slugifiedId}" pl-9="xs,sm">
                         <a  href="#${slugifiedId}"
@@ -178,6 +186,7 @@ export default function(eleventyConfig) {
                         </a>
                 `;
                 newM = m.replace(`<${m1}>`, markup);
+                i++;
             }
             return newM;
         });
@@ -208,10 +217,16 @@ export default function(eleventyConfig) {
                     maxh-300px="sm"
                     maxh-200px="xs">`;
             // Displaying the results
-            htmlTagsFound.forEach(function(htmlTag) {
+            const anchorsIds = [];
+            htmlTagsFound.forEach(function(htmlTag, tagIndex) {
+                let slugifiedId = libdocUtils.slugify(htmlTag.value);
+                if (anchorsIds.includes(slugifiedId)) {
+                    slugifiedId += `-${tagIndex}`;
+                }
+                anchorsIds.push(slugifiedId);
                 tocMarkup += `
                     <li class="d-flex">
-                        <a  href="#${libdocUtils.slugify(htmlTag.value)}"
+                        <a  href="#${slugifiedId}"
                             class="pl-5 pt-1 pb-1 | fs-3 lh-5 fvs-wght-400 | blwidth-1 blstyle-dashed bcolor-neutral-500">
                             ${htmlTag.value}
                         </a>
