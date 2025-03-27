@@ -287,7 +287,8 @@ main ul,
 main ol {
     line-height: 1.6em;
 }
-main li + li {
+main > ol li + li,
+main > ul li + li  {
     margin-top: 0.4em;
 }
 /* 
@@ -300,6 +301,7 @@ main > ol,
 main > ol ol {
     counter-reset: listItem;
     list-style: none;
+    margin-top: 0.4em;
 }
 main > ol li,
 main > ol ol li {
@@ -308,16 +310,16 @@ main > ol ol li {
 }
 main > ol li::before,
 main > ol ol li::before {
-    content: counters(listItem, '.') '. ';
+    content: counters(listItem, '.') '.';
     position: absolute;
     transform: translateX(calc(-100% - var(--ita-spacings-3)));
     display: inline-block;
-    font-variation-settings: "wght" 400, "MONO" 0;
-    font-size: var(--ita-fontSizes-3);
-    padding-right: var(--ita-spacings-1);
-    color: var(--ita-colors-primary-600);
-    margin-left: var(--ita-spacings-2);
-    margin-right: var(--ita-spacings-3);
+    font-variation-settings: "wght" 400, "MONO" 1, "CASL" 1;
+    font-size: var(--ita-fontSizes-2);
+    padding: 0em 1em;
+    background-color: var(--ita-colors-primary-600);
+    color: var(--ita-colors-primary-100);
+    border-radius: 100px;
 }
 main > ul {
     padding-left: var(--ita-spacings-11);
@@ -332,7 +334,8 @@ main > ul ul li::before {
     position: absolute;
     transform: translateX(calc(-100% - var(--ita-spacings-5)));
     display: inline-block;
-    padding: var(--ita-spacings-1);
+    width: 8px;
+    height: 8px;
     background-color: var(--ita-colors-primary-500);
     border-radius: 100%;
     margin-right: var(--ita-spacings-3);
@@ -425,8 +428,10 @@ main blockquote * {
 }
 /* DEFINITION LISTS */
 main dl dt {
-    font-variation-settings: "wght" 400, "MONO" 0;
+    font-variation-settings: "wght" 500, "MONO" 0;
     margin-bottom: 0.2em;
+    letter-spacing: -0.04em;
+    color: var(--ita-colors-primary-700);
 }
 main dl dd {
     margin-left: var(--ita-spacings-5);

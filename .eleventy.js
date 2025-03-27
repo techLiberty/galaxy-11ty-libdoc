@@ -227,7 +227,7 @@ export default function(eleventyConfig) {
                 tocMarkup += `
                     <li class="d-flex">
                         <a  href="#${slugifiedId}"
-                            class="pl-5 | fs-3 lh-5 fvs-wght-400 | blwidth-1 blstyle-dashed bcolor-neutral-500">
+                            class="pl-5 pt-1 pb-1 | fs-3 lh-5 fvs-wght-400 | blwidth-1 blstyle-dashed bcolor-neutral-500">
                             ${htmlTag.value}
                         </a>
                     </li>`;
