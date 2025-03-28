@@ -291,9 +291,6 @@ main > ol li + li,
 main > ul li + li  {
     margin-top: 0.4em;
 }
-/* 
-https://www.joshwcomeau.com/css/styling-ordered-lists-with-css-counters/
-*/
 main > ol {
     padding-left: var(--ita-spacings-11);
 }
@@ -306,13 +303,16 @@ main > ol ol {
 main > ol li,
 main > ol ol li {
     counter-increment: listItem;
-    padding-left: var(--ita-spacings-2);
+    padding-left: var(--ita-spacings-5);
 }
+/* 
+https://www.joshwcomeau.com/css/styling-ordered-lists-with-css-counters/
+*/
 main > ol li::before,
 main > ol ol li::before {
     content: counters(listItem, '.') '.';
     position: absolute;
-    transform: translateX(calc(-100% - var(--ita-spacings-3)));
+    transform: translateY(0.2em) translateX(calc(-100% - var(--ita-spacings-3)));
     display: inline-block;
     font-variation-settings: "wght" 400, "MONO" 1, "CASL" 1;
     font-size: var(--ita-fontSizes-2);
@@ -320,6 +320,8 @@ main > ol ol li::before {
     background-color: var(--ita-colors-primary-600);
     color: var(--ita-colors-primary-100);
     border-radius: 100px;
+    line-height: 2em;
+    letter-spacing: -0.2em;
 }
 main > ul {
     padding-left: var(--ita-spacings-11);
@@ -592,6 +594,15 @@ main .__search-occurrence {
     main li > ol,
     main li > ul {
         padding-left: var(--ita-spacings-7);
+    }
+    main > ol li,
+    main > ol ol li {
+        padding-left: var(--ita-spacings-2);
+    }
+    main > ol li::before,
+    main > ol ol li::before {
+        transform: translateY(0.3em) translateX(calc(-100% - var(--ita-spacings-2)));
+        font-size: var(--ita-fontSizes-1);
     }
     main > pre {
         padding: var(--ita-spacings-5);
