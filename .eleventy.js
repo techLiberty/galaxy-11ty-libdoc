@@ -1,8 +1,10 @@
 import { EleventyRenderPlugin } from "@11ty/eleventy";
 import eleventyNavigationPlugin from "@11ty/eleventy-navigation";
 import { InputPathToUrlTransformPlugin } from "@11ty/eleventy";
+import { eleventyImageTransformPlugin } from "@11ty/eleventy-img";
 
 export default function(eleventyConfig) {
+    eleventyConfig.addPlugin(eleventyImageTransformPlugin);
     eleventyConfig.addPlugin(InputPathToUrlTransformPlugin);
     eleventyConfig.addPlugin(eleventyNavigationPlugin);
     
