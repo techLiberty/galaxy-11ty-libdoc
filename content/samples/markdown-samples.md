@@ -187,7 +187,22 @@ Some text to show that the reference links can follow later.
 
 Here's our logo (hover to see the title text):
 
+[{% image "https://raw.githubusercontent.com/ita-design-system/ug-releases/refs/heads/main/ui/medias/suv.png", "alt message" %}](front-matter.md)
 
+{% image "./content/samples/oktavia.png", "alt message" %}
+
+--- 
+
+{% image "./content/samples/skoda-best-winner-car-2022.jpg", "alt message" %}
+
+
+à partir de là
+
+![Oktavia](./oktavia.png)
+
+![suv](https://raw.githubusercontent.com/ita-design-system/ug-releases/refs/heads/main/ui/medias/suv.png)
+
+Lorem ipsum ![SVG Alt](https://raw.githubusercontent.com/ita-design-system/ug-releases/main/ui/medias/solutions-cover.svg) and [![SVG Alt link](https://raw.githubusercontent.com/ita-design-system/ug-releases/main/ui/medias/2-people-and-dog.svg)](#svg) and [![alt text](https://github.com/adam-p/markdown-here/raw/master/src/common/images/icon48.png "Logo Title Text 1")](#)
 
 Inline-style: 
 ![alt text](https://github.com/adam-p/markdown-here/raw/master/src/common/images/icon48.png "Logo Title Text 1")

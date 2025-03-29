@@ -2,12 +2,10 @@ import { EleventyRenderPlugin } from "@11ty/eleventy";
 import eleventyNavigationPlugin from "@11ty/eleventy-navigation";
 import { InputPathToUrlTransformPlugin } from "@11ty/eleventy";
 import { eleventyImageTransformPlugin } from "@11ty/eleventy-img";
+import { escapeAttribute } from "entities";
+import Image from "@11ty/eleventy-img";
 
 export default function(eleventyConfig) {
-    eleventyConfig.addPlugin(eleventyImageTransformPlugin);
-    eleventyConfig.addPlugin(InputPathToUrlTransformPlugin);
-    eleventyConfig.addPlugin(eleventyNavigationPlugin);
-    
     const libdocParams = {
         toc: {
             htmlTags: ['h1', 'h2', 'h3', 'h4', 'h5', 'h6'],
@@ -166,6 +164,40 @@ export default function(eleventyConfig) {
         }
     }
 
+    eleventyConfig.addPlugin(InputPathToUrlTransformPlugin);
+    eleventyConfig.addPlugin(eleventyNavigationPlugin);
+    eleventyConfig.addPlugin(eleventyImageTransformPlugin, {
+		// output image formats
+		formats: ["svg", "avif", "webp"],
+        useCache: false,
+
+		// output image widths
+		widths: [1400],
+        svgShortCircuit: true,
+        filenameFormat: function (id, src, width, format, options) {
+            // Define custom filenames for generated images
+            // id: hash of the original image
+            // src: original image path
+            // width: current width in px
+            // format: current file format
+            // options: set of options passed to the Image call
+            const filename = src.split('/').slice(-1)[0].split('.')[0];
+
+            return `${libdocUtils.slugify(filename)}-${id}-${width}.${format}`;
+        },
+
+		// optional, attributes assigned on <img> nodes override these values
+		htmlOptions: {
+			imgAttributes: {
+				loading: "lazy",
+				decoding: "async",
+			},
+			pictureAttributes: {
+                class: "d-flex fd-column"
+            }
+		}
+	});
+
     eleventyConfig.addAsyncFilter("autoids", async function (content) {
         let i = 0;
         const anchorsIds = [];
@@ -300,6 +332,45 @@ export default function(eleventyConfig) {
                     </header>`;
         return libdocUtils.templates.sandbox({iframeAttribute, iframeCommands, title, code});
     });
+
+    // eleventyConfig.addShortcode("image", async function (src, alt) {
+	// 	if (alt === undefined) {
+	// 		// You bet we throw an error on missing alt (alt="" works okay)
+	// 		throw new Error(`Missing \`alt\` on: ${src}`);
+	// 	}
+
+	// 	let metadata = await Image(src, {
+	// 		widths: [1000],
+	// 		formats: ["avif"],
+    //         useCache: false,
+    //         outputDir: "./_site/img/"
+	// 	});
+
+	// 	let data = metadata.avif[metadata.avif.length - 1];
+    //     console.log(data.url)
+	// 	return `<img src="${data.url}"
+    //         alt="${escapeAttribute(alt)}"
+    //         loading="lazy"
+    //         decoding="async">`;
+	// });
+
+    eleventyConfig.addShortcode("image", async function (src, alt) {
+		return Image(src, {
+			formats: ["avif"],
+            useCache: false,
+            widths: [1400],
+            svgShortCircuit: true,
+			returnType: "html",    // new in v6.0
+			htmlOptions: {         // new in v6.0
+				imgAttributes: {
+                    class: "foobar",
+					alt,               // required, though "" works fine
+					loading: "lazy",   // optional
+					decoding: "async", // optional
+				}
+			}
+		});
+	});
 
     // Copy `css/fonts/` to `_site/css/fonts`
 	// Keeps the same directory structure.
