@@ -89,7 +89,7 @@ const libdocUi = {
                 return result;
             },
             notificationContent: function(value) {
-                return typeof value == 'string' ? value : 'Copied to clipboard';
+                return typeof value == 'string' ? value : libdocMessages.copyToClipboard;
             }
         }
         const userParams = {
@@ -215,7 +215,7 @@ const libdocUi = {
             const content = evt.target.closest('pre').querySelector('code').innerText;
             libdocUi.copyToClipboard(content, {notificationEnabled: false});
             if (elBtn.dataset.originalText === undefined) elBtn.dataset.originalText = elBtn.innerText;
-            elBtn.innerHTML = '<span class="c-success-500">Copied!</span>';
+            elBtn.innerHTML = `<span class="c-success-500">${libdocMessages.copied}!</span>`;
             setTimeout(function() {
                 elBtn.innerHTML = elBtn.dataset.originalText;
                 elBtn.classList.remove('pe-none');
@@ -283,10 +283,10 @@ const libdocUi = {
                 const elLabel = document.querySelector(`label[for="${elInput.id}"]`);
                 if (elInput.value.length < 3) {
                     evt.preventDefault();
-                    elLabel.innerText = '3 char. min.';
+                    elLabel.innerText = libdocMessages.searchMinimumCharacters;
                     elLabel.style.color = 'var(--ita-colors-warning-500)';
                 } else {
-                    elLabel.innerText = 'Search';
+                    elLabel.innerText = libdocMessages.search;
                     elLabel.style.color = null;
                 }
             }
@@ -354,7 +354,8 @@ const libdocUi = {
             const elSummary = document.createElement('summary');
             elSummary.setAttribute('class', 'd-flex jc-end | pt-5 pr-5 | cur-pointer');
             elSummary.setAttribute('d-none', 'xs,sm');
-            elSummary.ariaLabel = 'Table of content';
+            elSummary.title = libdocMessages.toggleFloatingToc;
+            elSummary.ariaLabel = libdocMessages.tableOfContent;
             elSummary.innerHTML = `
                 <span class="d-flex jc-center ai-center gap-2 | pos-relative ar-square | h-50px | brad-4 c-primary-500 bc-neutral-100 bwidth-1 bstyle-dashed bcolor-neutral-500 __hover-1">
                     <span class="icon-list-dashes fs-6"></span>
@@ -422,7 +423,7 @@ const libdocUi = {
             libdocUi.el.gtt = document.createElement('button');
             libdocUi.el.gtt.setAttribute('class', 'd-none--xs d-none--sm | pos-fixed z-2 top-0 right-0 | p-0 h-50px ar-square mt-5 mr-11 | fs-6 | brad-4 bc-neutral-100 bwidth-1 bstyle-dashed bcolor-neutral-500 cur-pointer __hover-1');
             libdocUi.el.gtt.innerHTML = `<span class="icon-arrow-line-up | pos-absolute top-50 left-50 t-tY-50 t-tX-50 | c-primary-500"></span>`;
-            libdocUi.el.gtt.title = 'Go to top';
+            libdocUi.el.gtt.title = libdocMessages.goToTopOfPage;
             libdocUi.el.gtt.addEventListener('click', libdocUi.handlers._clickGTT);
             if (window.scrollY <= libdocUi.el.mainHeader.clientHeight) libdocUi.disableGTTLargeDevices();
             document.body.appendChild(libdocUi.el.gtt);
@@ -524,7 +525,6 @@ const libdocUi = {
                             &&
                             (elFirstLink.offsetTop + elFirstLink.clientHeight < libdocUi.el.ftocList.scrollTop + libdocUi.el.ftocList.clientHeight)
                             ) {
-                            
                         } else {
                             libdocUi.el.ftocList.scroll({top: libdocUi.el.ftocLinks[firstTrueIndex].offsetTop - 80});
                         }
@@ -534,13 +534,11 @@ const libdocUi = {
                             &&
                             (elFirstLink.offsetLeft + elFirstLink.clientWidth < libdocUi.el.ftocList.scrollLeft + libdocUi.el.ftocList.clientWidth)
                             ) {
-                            
                         } else {
                             libdocUi.el.ftocList.scroll({left: libdocUi.el.ftocLinks[firstTrueIndex].offsetLeft - 10});
                         }
                     }
                 }
-                // console.log('done');
             }
         } else {
             if (typeof libdocUi.el.ftoc == 'object') {
@@ -564,29 +562,29 @@ const libdocUi = {
             libdocUi.el.searchOccurrencesCmd.id = 'query_occurrences_cmd';
             libdocUi.el.searchOccurrencesCmd.setAttribute('class', 'd-flex gap-2 | pos-sticky bottom-0 z-1 | pb-5');
             libdocUi.el.searchOccurrencesCmd.innerHTML = `
-                <div    class="pos-absolute top-0 left-0 | w-100 h-100 | __gradient-mask-primary-100-to-top"></div>
+                <div class="pos-absolute top-0 left-0 | w-100 h-100 | __gradient-mask-primary-100-to-top"></div>
                 <button type="button"
                     class="pos-relative | h-50px ar-square | fs-5 | brad-4 bc-success-100 c-success-900 bwidth-1 bstyle-dashed bcolor-success-900 cur-pointer __hover-2"
                     onclick="libdocUi.prevSearchOccurrence()"
-                    title="Previous query occurrence">
+                    title="${libdocMessages.searchOccurrencesPrevious}">
                     <span class="icon-caret-left | pos-absolute top-50 left-50 t-tY-50 t-tX-50 | c-success-900"></span>
                 </button>
                 <button type="button"
                     class="pos-relative | h-50px ar-square | fs-2 | brad-4 bc-success-100 c-success-900 bwidth-1 bstyle-dashed bcolor-success-900 cur-pointer __hover-2"
                     onclick="libdocUi.curSearchOccurrence()"
-                    title="Current query occurrence">
+                    title="${libdocMessages.searchOccurrencesCurrent}">
                     <span id="current_query_occurrence_index_position" class="pos-absolute top-50 left-50 t-tY-50 t-tX-50 | c-success-900"></span>
                 </button>
                 <button type="button"
                     class="pos-relative | h-50px ar-square | fs-5 | brad-4 bc-success-100 c-success-900 bwidth-1 bstyle-dashed bcolor-success-900 cur-pointer __hover-2"
                     onclick="libdocUi.nextSearchOccurrence()"
-                    title="Next query occurrence">
+                    title="${libdocMessages.searchOccurrencesNext}">
                     <span class="icon-caret-right | pos-absolute top-50 left-50 t-tY-50 t-tX-50 | c-success-900"></span>
                 </button>
                 <button type="button"
                     class="pos-relative | h-50px ar-square | fs-2 | brad-4 bc-success-100 c-success-900 bwidth-1 bstyle-dashed bcolor-success-900 cur-pointer __hover-2"
                     onclick="libdocUi.stopSearchOccurrence()"
-                    title="Stop query occurrence">
+                    title="${libdocMessages.searchOccurrencesStop}">
                     <span class="icon-x | pos-absolute top-50 left-50 t-tY-50 t-tX-50 | c-success-900"></span>
                 </button>`;
             libdocUi.el.main.append(libdocUi.el.searchOccurrencesCmd);
@@ -652,6 +650,7 @@ const libdocUi = {
         bottomSpacing: 0
     },
     getTextContentWithoutChildNodes: function(el) {
+        // Source https://medium.com/@roxeteer/javascript-one-liner-to-get-elements-text-content-without-its-child-nodes-8e59269d1e71
         if (typeof el == 'object') return [].reduce.call(el.childNodes, function(a, b) { return a + (b.nodeType === 3 ? b.textContent : ''); }, '');
     },
     searchContent: function(query) {
@@ -688,7 +687,14 @@ const libdocUi = {
             elPre.style.paddingTop = '0';
             const elCommands = elPre.querySelector('.copy_code_block');
             if (elCommands === null) {
-                const commandBarMarkup = `<div class="d-flex jc-end"><button type="button" class="d-flex ai-center | pt-5 pb-5 fvs-wght-400 fs-2 tt-uppercase bc-0 c-primary-900 b-0 cur-pointer | copy_code_block">Copy code</button></div>`;
+                const commandBarMarkup = `<div class="d-flex jc-end">
+                        <button type="button"
+                            class="
+                            d-flex ai-center
+                            pt-5 pb-5 fvs-wght-400 fs-2 tt-uppercase
+                            bc-0 c-primary-900 b-0 cur-pointer
+                            copy_code_block">${libdocMessages.copyCode}</button>
+                    </div>`;
                 elPre.insertAdjacentHTML('afterbegin', commandBarMarkup);
             }
             const elCode = elPre.querySelector('code');
@@ -719,5 +725,3 @@ const libdocUi = {
     }
 }
 libdocUi.update();
-
-// window.libdocUi = libdocUi;

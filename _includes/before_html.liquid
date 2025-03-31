@@ -1,12 +1,17 @@
 {% if eleventyNavigation.key %}
     {% assign breadcrumb = collections.all | eleventyNavigationBreadcrumb: eleventyNavigation.key, site.navigationOptions %}
-    {% if finalTitle == page.inputPath %}
-        {% assign finalTitle = eleventyNavigation.key %}
+    {% if pageTitle == page.inputPath %}
+        {% assign pageTitle = eleventyNavigation.key %}
     {% endif %}
     {% capture breadcrumbMarkup %}
         {% include 'breadcrumb' %}
     {% endcapture %}
 {% endif  %}
 {% if page.url == '/search/' %}
-    {% assign finalTitle = site.messages[site.lang].pageSearchTitle %}
+    {% assign pageTitle = messages.search[pageLang] %}
+{% endif  %}
+{% if tag %}
+    {% capture pageDescription %}
+        {{ messages.pagesTagged[pageLang] }} <mark>{{ tag }}</mark>
+    {% endcapture %}
 {% endif  %}

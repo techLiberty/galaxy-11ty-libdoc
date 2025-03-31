@@ -1,0 +1,17 @@
+{
+    "lang": "en",
+    "author": "Olivier 3lanc",
+    "themeColorHex": "#FFFFFF",
+    "faviconUrl": "/favicon.png",
+    "ogImageUrl": "",
+    "customLinks": [
+        {
+            "url": "#github",
+            "text": "GitHub"
+        },
+        {
+            "url": "#codepen",
+            "text": "Codepen"
+        }
+    ]
+}

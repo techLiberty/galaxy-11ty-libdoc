@@ -4,12 +4,6 @@ export default function () {
     return {
         environment: process.env.MY_ENVIRONMENT || "development",
         imgsrv: process.env.IMAGE_SERVER_ENDPOINT,
-        lang: "en",
-        messages: {
-            en: {
-                pageSearchTitle: "Search"
-            }
-        },
         buildDate: function() {
             const jsDate = new Date();
             let theDay = jsDate.getDate().toString();

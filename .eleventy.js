@@ -169,7 +169,7 @@ export default function(eleventyConfig) {
     eleventyConfig.addPlugin(eleventyImageTransformPlugin, {
 		// output image formats
 		formats: ["svg", "avif", "webp"],
-        useCache: false,
+        // useCache: false,
 
 		// output image widths
 		widths: [1400],
@@ -213,7 +213,7 @@ export default function(eleventyConfig) {
                 const markup = `
                     <${m1} id="${slugifiedId}" pl-9="xs,sm">
                         <a  href="#${slugifiedId}"
-                            title="Link to this part: ${m2}"
+                            title="${m2}"
                             class="pos-absolute top-50 left-0 t-tY-50 | p-4 ml-1 | td-none | brad-4 bc-neutral-100 bwidth-1 bstyle-dashed bcolor-neutral-500 __hover-1"
                             ml-3="xs,sm">
                             <span class="icon-link-simple | pos-absolute top-50 left-50 t-tY-50 t-tX-50 | fs-4"></span>

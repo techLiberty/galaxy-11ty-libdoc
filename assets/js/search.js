@@ -47,7 +47,7 @@ const search = {
             const elTitle = document.querySelector('h1');
             elTitle.innerHTML += `<mark class="fvs-wght-600 wb-break-all">${query}</mark>`;
             if (markup == '') {
-                searchResults.innerHTML = `<li>No result for <mark class="fvs-wght-600 wb-break-all">${query}</mark></li>`;
+                searchResults.innerHTML = `<li>${libdocMessages.searchResultsNoResultForQuery} <mark class="fvs-wght-600 wb-break-all">${query}</mark></li>`;
             } else {
                 searchResults.innerHTML = markup;
             }

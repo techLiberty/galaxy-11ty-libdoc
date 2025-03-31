@@ -1,14 +1,12 @@
 ---
+# title: Tags list
+description: List of all available tags
 layout: simple_page.liquid
-pagination:
-    data: collections.myTags
-    size: 1
-    alias: tag
-permalink: "tags/{{ tag }}/index.html"
+permalink: "tags/index.html"
 # eleventyExcludeFromCollections: true
 eleventyNavigation:
-    parent: Tags list
-    key: tag
+    key: Tags list
+    order: 0
 ---
 {% if collections.myTags.size > 0 %}
     <nav>
@@ -22,10 +20,9 @@ eleventyNavigation:
             maxh-200px="xs">
             {% for tagName in collections.myTags %}
                 <li class="d-flex">
-                    <a  href="../{{ tagName }}/"
+                    <a  href="./{{ tagName }}/"
                         class="
-                        pl-5 pt-1 pb-1
-                        fs-3 lh-5 fvs-wght-400
+                        pl-5 pt-2 pb-2
                         blwidth-1 blstyle-dashed bcolor-neutral-500
                         {% if tag == tagName %}td-none opa-5{% endif %}">
                         {{ tagName }}
@@ -35,16 +32,3 @@ eleventyNavigation:
         </ul>
     </nav>
 {% endif %}
-{% comment %} <ul>
-    {% for tagName in collections.myTags %}
-        <li><a href="../{{ tagName }}/">{{ tagName }}</a></li>
-    {% endfor %}
-</ul> {% endcomment %}
-<ul>
-    {% for item in collections[tag] %}
-        <li>
-            <a href="{{item.page.url}}">{{item.data.eleventyNavigation.key | default: item.data.title | default: item.page.inputPath }}</a>
-            {{ item.data.description }} {{ item.description }}
-        </li>
-    {% endfor %}
-</ul>

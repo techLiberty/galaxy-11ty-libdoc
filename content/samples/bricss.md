@@ -1,9 +1,8 @@
 ---
 # title: Mon titre
 layout: simple_page.liquid
-tags:
-    - tag2
-    - tag1
+tags: 
+  - cool
 eleventyNavigation:
   key: BRiCSS Documentation
   parent: Samples

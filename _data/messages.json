@@ -1,0 +1,78 @@
+{
+    "siteTitle": {
+        "en": "Eleventy LibDoc"
+    },
+    "siteDescription": {
+        "en": "Just and Eleventy SSG starter project to create documentation website"
+    },
+    
+    "copiedToClipboard": {
+        "en": "Go to top of page"
+    },
+    "copied": {
+        "en": "Copied"
+    },
+    "copyCode": {
+        "en": "Copy code"
+    },
+    "goToTopOfPage": {
+        "en": "Go to top of page"
+    },
+    "homepage": {
+        "en": "Homepage"
+    },
+    "homepageShort": {
+        "en": "Home"
+    },
+    "lastModified": {
+        "en": "Last modified"
+    },
+    "menu": {
+        "en": "Menu"
+    },
+    "page": {
+        "en": "Page"
+    },
+    "pagesTagged": {
+        "en": "Pages tagged"
+    },
+    "search": {
+        "en": "Search"
+    },
+    "searchClear": {
+        "en": "Clear input"
+    },
+    "searchMinimumCharacters": {
+        "en": "3 characters min."
+    },
+    "searchResultsNoResultForQuery": {
+        "en": "No result for query"
+    },
+    "searchOccurrencesCurrent": {
+        "en": "Current search occurrence"
+    },
+    "searchOccurrencesNext": {
+        "en": "Next search occurrence"
+    },
+    "searchOccurrencesPrevious": {
+        "en": "Previous search occurrence"
+    },
+    "searchOccurrencesStop": {
+        "en": "Stop search occurrences"
+    },
+    "searchPlaceholder": {
+        "en": "Enter text to search"
+    },
+    "searchSubmit": {
+        "en": "Submit search"
+    },
+    "tableOfContent": {
+        "en": "Table of content"
+    },
+    "toggleFloatingToc": {
+        "en": "Toggle floating Table of content"
+    },
+    "top": {
+        "en": "Top"
+    }
+}
