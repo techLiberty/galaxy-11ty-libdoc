@@ -187,22 +187,82 @@ Some text to show that the reference links can follow later.
 
 Here's our logo (hover to see the title text):
 
-[{% image "https://raw.githubusercontent.com/ita-design-system/ug-releases/refs/heads/main/ui/medias/suv.png", "alt message" %}](front-matter.md)
+<img src="./skoda-best-winner-car-2022.jpg" alt="This is my description">
 
-{% image "./content/samples/oktavia.png", "alt message" %}
+<a href="bricss.md"><img src="./skoda-best-winner-car-2022.jpg" alt="This is my description"></a>
 
---- 
+![Oktavia](./oktavia.png)
+Lorem ipsum ![mon alt](./skoda-best-winner-car-2022.jpg) 
+![suv](https://raw.githubusercontent.com/ita-design-system/ug-releases/refs/heads/main/ui/medias/suv.png) Lorem ipsum ![SVG Alt](https://raw.githubusercontent.com/ita-design-system/ug-releases/main/ui/medias/solutions-cover.svg) and [![SVG Alt link](https://raw.githubusercontent.com/ita-design-system/ug-releases/main/ui/medias/2-people-and-dog.svg)](#svg) and [![alt text](https://github.com/adam-p/markdown-here/raw/master/src/common/images/icon48.png "Logo Title Text 1")](#)
 
-{% image "./content/samples/skoda-best-winner-car-2022.jpg", "alt message" %}
+<figure>
+  <img src="./oktavia.png" alt="best car">
+  <figcaption>Best car Skoda mon alt Dolor lorem eirmod stet elitr lorem labore lorem sed rebum, voluptua clita lorem diam lorem, dolor et aliquyam clita consetetur.</figcaption>
+</figure>
+
+<figure class="damier">
+  <img src="./oktavia.png" alt="best car">
+  <figcaption>Image with damier, just add class name <code>damier</code>.</figcaption>
+</figure>
+
+<figure class="dark">
+  <img src="./oktavia.png" alt="best car">
+  <figcaption>Best car Skoda mon alt Dolor lorem eirmod stet elitr lorem labore lorem sed rebum, voluptua clita lorem diam lorem, dolor et aliquyam clita consetetur.</figcaption>
+</figure>
+
+<figure class="dark damier">
+  <img src="./oktavia.png" alt="best car">
+  <figcaption>Best car Skoda mon alt Dolor lorem eirmod stet elitr lorem labore lorem sed rebum, voluptua clita lorem diam lorem, dolor et aliquyam clita consetetur.</figcaption>
+</figure>
+
+<figure>
+  <img src="./skoda-best-winner-car-2022.jpg" alt="best car">
+  <figcaption>Best car Skoda mon alt Dolor lorem eirmod stet elitr lorem labore lorem sed rebum, voluptua clita lorem diam lorem, dolor et aliquyam clita consetetur.</figcaption>
+</figure>
+
+<figure class="rounded-corners">
+  <img src="./skoda-best-winner-car-2022.jpg" alt="best car">
+  <figcaption>Best car Skoda mon alt Dolor lorem eirmod stet elitr lorem labore lorem sed rebum, voluptua clita lorem diam lorem, dolor et aliquyam clita consetetur.</figcaption>
+</figure>
+
+<figure class="long-shadow">
+  <img src="./skoda-best-winner-car-2022.jpg" alt="best car">
+  <figcaption>Best car Skoda mon alt Dolor lorem eirmod stet elitr lorem labore lorem sed rebum, voluptua clita lorem diam lorem, dolor et aliquyam clita consetetur.</figcaption>
+</figure>
+
+<figure class="rounded-corners long-shadow">
+  <img src="./skoda-best-winner-car-2022.jpg" alt="best car">
+  <figcaption>Best car Skoda mon alt Dolor lorem eirmod stet elitr lorem labore lorem sed rebum, voluptua clita lorem diam lorem, dolor et aliquyam clita consetetur.</figcaption>
+</figure>
+
+<figure class="rounded-corners damier">
+  <figcaption>Best car Skoda mon alt Dolor lorem eirmod stet elitr lorem labore lorem sed rebum, voluptua clita lorem diam lorem, dolor et aliquyam clita consetetur.</figcaption>
+  <img src="./oktavia.png" alt="best car">
+</figure>
+
+<figure class="rounded-corners damier">
+  <img src="./oktavia.png" alt="best car">
+  <figcaption>Best car Skoda mon alt Dolor lorem eirmod stet elitr lorem labore lorem sed rebum, voluptua clita lorem diam lorem, dolor et aliquyam clita consetetur.</figcaption>
+</figure>
+
+<figure class="rounded-corners damier dark">
+  <figcaption>Best car Skoda mon alt Dolor lorem eirmod stet elitr lorem labore lorem sed rebum, voluptua clita lorem diam lorem, dolor et aliquyam clita consetetur.</figcaption>
+  <img src="./oktavia.png" alt="best car">
+</figure>
+
+<figure class="rounded-corners damier dark">
+  <img src="./oktavia.png" alt="best car">
+  <figcaption>Best car Skoda mon alt Dolor lorem eirmod stet elitr lorem labore lorem sed rebum, voluptua clita lorem diam lorem, dolor et aliquyam clita consetetur.</figcaption>
+</figure>
+
+
 
 
 à partir de là
 
-![Oktavia](./oktavia.png)
 
-![suv](https://raw.githubusercontent.com/ita-design-system/ug-releases/refs/heads/main/ui/medias/suv.png)
 
-Lorem ipsum ![SVG Alt](https://raw.githubusercontent.com/ita-design-system/ug-releases/main/ui/medias/solutions-cover.svg) and [![SVG Alt link](https://raw.githubusercontent.com/ita-design-system/ug-releases/main/ui/medias/2-people-and-dog.svg)](#svg) and [![alt text](https://github.com/adam-p/markdown-here/raw/master/src/common/images/icon48.png "Logo Title Text 1")](#)
+
 
 Inline-style: 
 ![alt text](https://github.com/adam-p/markdown-here/raw/master/src/common/images/icon48.png "Logo Title Text 1")

@@ -2,8 +2,8 @@ import { EleventyRenderPlugin } from "@11ty/eleventy";
 import eleventyNavigationPlugin from "@11ty/eleventy-navigation";
 import { InputPathToUrlTransformPlugin } from "@11ty/eleventy";
 import { eleventyImageTransformPlugin } from "@11ty/eleventy-img";
-import { escapeAttribute } from "entities";
-import Image from "@11ty/eleventy-img";
+// import { escapeAttribute } from "entities";
+// import Image from "@11ty/eleventy-img";
 
 export default function(eleventyConfig) {
     const libdocParams = {
@@ -183,7 +183,7 @@ export default function(eleventyConfig) {
             // options: set of options passed to the Image call
             const filename = src.split('/').slice(-1)[0].split('.')[0];
 
-            return `${libdocUtils.slugify(filename)}-${id}-${width}.${format}`;
+            return `${libdocUtils.slugify(filename)}-${id}-__${width}__.${format}`;
         },
 
 		// optional, attributes assigned on <img> nodes override these values
@@ -193,7 +193,7 @@ export default function(eleventyConfig) {
 				decoding: "async",
 			},
 			pictureAttributes: {
-                class: "d-flex fd-column"
+                class: "eleventy-image"
             }
 		}
 	});
@@ -354,23 +354,28 @@ export default function(eleventyConfig) {
     //         decoding="async">`;
 	// });
 
-    eleventyConfig.addShortcode("image", async function (src, alt) {
-		return Image(src, {
-			formats: ["avif"],
-            useCache: false,
-            widths: [1400],
-            svgShortCircuit: true,
-			returnType: "html",    // new in v6.0
-			htmlOptions: {         // new in v6.0
-				imgAttributes: {
-                    class: "foobar",
-					alt,               // required, though "" works fine
-					loading: "lazy",   // optional
-					decoding: "async", // optional
-				}
-			}
-		});
-	});
+    // eleventyConfig.addShortcode("image", async function (src, alt) {
+	// 	return Image(src, {
+	// 		formats: ["avif"],
+    //         useCache: false,
+    //         widths: [1400],
+    //         useCache: false,
+    //         svgShortCircuit: true,
+    //         filenameFormat: function (id, src, width, format, options) {
+    //             const filename = src.split('/').slice(-1)[0].split('.')[0];
+    //             return `${libdocUtils.slugify(filename)}-${id}-${width}.${format}`;
+    //         },
+	// 		returnType: "html",    // new in v6.0
+	// 		htmlOptions: {         // new in v6.0
+	// 			imgAttributes: {
+    //                 class: "foobar",
+	// 				alt,               // required, though "" works fine
+	// 				loading: "lazy",   // optional
+	// 				decoding: "async", // optional
+	// 			}
+	// 		}
+	// 	});
+	// });
 
     // Copy `css/fonts/` to `_site/css/fonts`
 	// Keeps the same directory structure.
