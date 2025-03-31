@@ -659,7 +659,7 @@ const libdocUi = {
             libdocUi._so.els = [];
             const queryLC = query.toLowerCase();
             // Every child of main excepting pre, aside and header
-            document.querySelectorAll('main>*:not(pre):not(aside):not(header) *').forEach(function(el) {
+            document.querySelectorAll('main>*:not(pre):not(aside):not(header), main>*:not(pre):not(aside):not(header) *').forEach(function(el) {
                 const textContentWoChildren = libdocUi.getTextContentWithoutChildNodes(el);
                 if (textContentWoChildren.toLowerCase().includes(queryLC)) {
                     libdocUi._so.els.push(el);
