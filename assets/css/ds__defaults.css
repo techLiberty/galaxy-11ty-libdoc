@@ -549,16 +549,23 @@ main .__search-occurrence {
     top: calc(50% - 4px);
     left: -4px;
 }
+#nav_primary li:has([href="/tags/"]) {
+    display: none;
+}
 
 /* MAIN TABLE OF CONTENT */
-#toc_main[open] > summary {
+#toc_main[open] > summary,
+#tags_list[open] > summary {
     border-bottom: none;
 }
 #toc_main[open] > summary .icon-plus-circle,
-#toc_main:not([open]) > summary .icon-minus-circle {
+#toc_main:not([open]) > summary .icon-minus-circle,
+#tags_list[open] > summary .icon-plus-circle,
+#tags_list:not([open]) > summary .icon-minus-circle {
     display: none;
 }
-#toc_main li {
+#toc_main li,
+#tags_list li {
     break-inside: avoid;
 }
 

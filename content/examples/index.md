@@ -2,11 +2,22 @@
 # title: Mon titre
 description: Usage examples of Eleventy LibDoc
 layout: simple_page.liquid
-lang: fr
-date: "2020-01-01"
 tags:
-    - tag2
-    - tag1
+    - cool
+    - first
+    - sqdkl
+    - qskdj
+    - zeiorz zr
+    - cToggle
+    - met
+    - en
+    - relation
+    - des
+    - éléments
+    - de à
+    - DOM
+    - déclencheurs
+
 eleventyNavigation:
   key: Documentation examples
   parent: Sandbox from file

@@ -8,27 +8,5 @@ eleventyNavigation:
     key: Tags list
     order: 0
 ---
-{% if collections.myTags.size > 0 %}
-    <nav>
-        <ul class="cgap-3em | m-0 pl-0 pb-5 o-auto | lh-1 | ls-none bwidth-1 bstyle-dashed bcolor-neutral-500 btwidth-0 brwidth-0"
-            d-flex="xs,sm"
-            fd-column="xs,sm"
-            fw-wrap="xs,sm"
-            columns-3="md"
-            columns-2="sm"
-            maxh-300px="sm"
-            maxh-200px="xs">
-            {% for tagName in collections.myTags %}
-                <li class="d-flex">
-                    <a  href="./{{ tagName }}/"
-                        class="
-                        pl-5 pt-2 pb-2
-                        blwidth-1 blstyle-dashed bcolor-neutral-500
-                        {% if tag == tagName %}td-none opa-5{% endif %}">
-                        {{ tagName }}
-                    </a>
-                </li>
-            {% endfor %}
-        </ul>
-    </nav>
-{% endif %}
+<div class=""><div class="pt-7 blwidth-1 blstyle-dashed bcolor-neutral-500"></div></div>
+{% include "tags_list" %}

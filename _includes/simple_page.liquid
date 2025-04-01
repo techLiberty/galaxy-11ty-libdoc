@@ -1,4 +1,5 @@
 {%- assign breadcrumbMarkup = '' -%}
+{%- assign pageUrlStart = page.url | slice: 0,6 -%}
 {%- assign tocMarkup = content | toc -%}
 {%- assign pageLang = language | default: config.lang -%}
 {%- assign pageTitle = title | default: tag | default: page.inputPath -%}
@@ -129,6 +130,7 @@
                 data-opened-state-class="d-flex fd-column | maxh-sidebar | bc-neutral-100 bwidth-1 bstyle-dashed bcolor-neutral-500">
                 <menu id="nav_primary_header"
                     class="d-flex fd-column | pos-sticky top-0 z-1 | m-0 p-0 {% if config.customLinks.size == 0 %}pb-7{% endif %} | ls-none bc-neutral-100 bbwidth-1 bbstyle-dashed bcolor-neutral-500"
+                    gap-5="md"
                     bradtl-3="md"
                     bradtr-3="md">
                     <li class="d-flex ai-center">
@@ -147,7 +149,7 @@
                             <input  id="searchInput"
                                     type="search"
                                     name="search"
-                                    class="pl-5 pr-5 pt-3 pb-3 | fs-3 | bc-neutral-100 brad-4 bwidth-1 bstyle-dashed bcolor-neutral-500"
+                                    class="pl-5 pr-5 pt-4 pb-4 | fs-3 | bc-neutral-100 brad-4 bwidth-1 bstyle-dashed bcolor-neutral-500"
                                     placeholder="{{ messages.searchPlaceholder[pageLang] }}"
                                     value="">
                             <div class="d-flex ai-center | pos-absolute top-0 right-0 | h-100 mr-5">
@@ -166,18 +168,30 @@
                         </form>
                     </li>
                     {% if config.customLinks.size > 0 %}
-                        <li class="d-flex ai-center gap-5 | pl-5 pr-5">
+                        <li class="d-flex ai-center fw-wrap">
                             {% for item in config.customLinks %}
                                 <a  href="{{ item.url }}"
-                                    class="d-flex ai-center gap-1 | pt-5 pb-5 | fvs-wght-400 fs-2 lh-1 tt-uppercase td-none | c-neutral-900"
+                                    class="
+                                    d-flex fg-1 {% if config.customLinks.size > 1 %}jc-center{% endif %} ai-center gap-1
+                                    pt-5 pb-5 {% if config.customLinks.size == 1 %}pl-5 pr-5{% else %}pl-2 pr-2{% endif %}
+                                    fvs-wght-600 fs-1 lsp-3 lh-1 tt-uppercase td-none
+                                    c-primary-500
+                                    btwidth-1 btstyle-dashed bcolor-neutral-300
+                                    {% if forloop.last == false %}brwidth-1 brstyle-dashed bcolor-neutral-300{% endif %}"
                                     target="_blank">
-                                    <span class="td-underline">{{ item.text }}</span>
-                                    <span class="icon-arrow-square-out"></span>
+                                    {{ item.text }}
+                                    <span class="icon-arrow-square-out c-primary-300"></span>
                                 </a>
                             {% endfor %}
                         </li>
                     {% endif %}
                 </menu>
+                {% if collections.myTags.size > 0 %}
+                    <a  href="/tags/"
+                        class="d-flex fg-1 | pos-relative | w-100 pt-4 pb-4 pl-5 pr-5 | fs-4 td-none lh-5 tws-balance fvs-wght-500 | c-neutral-900 bbwidth-1 bbstyle-dashed bcolor-neutral-500">
+                        Tags list
+                    </a>
+                {% endif %}
                 {% assign menu = collections.all | eleventyNavigation | eleventyNavigationToHtml: site.navigationOptions %}
                 {% assign currentPageHrefAttribute = '<a href="' | append: page.url | append: '"' %}
                 {% capture currentPageReplacementAttribute %}{{ currentPageHrefAttribute }} aria-current="page"{% endcapture %}
@@ -199,7 +213,7 @@
             w-100-minus-sidebar="md"
             w-100="xs,sm">
             {% block content %}
-                <header class="d-flex fd-column | pt-5 pb-7">
+                <header class="d-flex fd-column | pt-5 {% if pageUrlStart != '/tags/' %}pb-7{% endif %}">
                     {{ breadcrumbMarkup }}
                     <h1 class="mt-3 mb-0 | lsp-5 fvs-wght-700 tws-balance"
                         fs-10="md"
@@ -216,6 +230,22 @@
                         </p>
                     {% endif %}
                     {% if page.url != '/search/' %}
+                        {% if tags.size > 0 %}
+                            <nav id="page_tags"
+                                class="d-flex gap-2 fw-wrap | pl-5 pt-3 pb-3 | blwidth-1 blstyle-dashed bcolor-neutral-500">
+                                {% for tagName in tags %}
+                                    <a  href="/tags/{{ tagName }}/"
+                                        class="
+                                        d-flex ai-center gap-1
+                                        pl-2 pr-3 pt-1 pb-1
+                                        fs-2 lsp-2 td-none
+                                        bc-primary-200 bwidth-1 bstyle-solid bcolor-primary-400 brad-1 bradtl-3 bradbl-3">
+                                        <span class="icon-tag-simple"></span>
+                                        <span class="page_tag">{{ tagName }}</span>
+                                    </a>
+                                {% endfor %}
+                            </nav>
+                        {% endif %}
                         <div class="d-flex ai-center | m-0 | blwidth-1 blstyle-dashed bcolor-neutral-500">
                             <div class="pl-5 | bbwidth-1 bbstyle-dashed bcolor-neutral-500"></div>
                             <p  class="d-flex ai-center gap-2 | m-0 pr-2 | fvs-wght-400 fs-3 lsp-3 lh-3 | c-neutral-700"
@@ -223,7 +253,7 @@
                                 <span class="icon-calendar-dots fs-6"></span>
                                 <span ws-nowrap="sm,md">
                                     <span class="ws-nowrap">{{ messages.lastModified[pageLang] }}</span>
-                                    {{ date | default: site.buildDate }}
+                                    {{ page.date|dateString }}
                                 </span>
                             </p>
                             <div class="pl-5 w-100 | bbwidth-1 bbstyle-dashed bcolor-neutral-500"></div>

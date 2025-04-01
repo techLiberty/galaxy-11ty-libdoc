@@ -261,7 +261,7 @@ const libdocUi = {
                 if (location.pathname == '/search/') {
                     document.title += ` “${textQuery}“`;
                     history.replaceState(null, '', `?search=${textQuery}`);
-                } else {
+                } else if (location.pathname.indexOf("/tags/") !== 0) {
                     libdocUi.searchContent(textQuery);
                 }
                 libdocUi.el.searchInputs.forEach(function(elInput) {
@@ -658,7 +658,7 @@ const libdocUi = {
             libdocUi._so.els = [];
             const queryLC = query.toLowerCase();
             // Every child of main excepting pre, aside and header
-            document.querySelectorAll('main>*:not(pre):not(aside):not(header), main>*:not(pre):not(aside):not(header) *').forEach(function(el) {
+            document.querySelectorAll('main>*:not(pre):not(aside):not(header), main>*:not(pre):not(aside):not(header) *, .page_tag').forEach(function(el) {
                 const textContentWoChildren = libdocUi.getTextContentWithoutChildNodes(el);
                 if (textContentWoChildren.toLowerCase().includes(queryLC)) {
                     libdocUi._so.els.push(el);

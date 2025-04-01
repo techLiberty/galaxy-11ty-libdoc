@@ -5,7 +5,6 @@ layout: simple_page.liquid
 eleventyNavigation:
     key: Sandbox from file
     parent: Samples
-tags: first
 ---
 ```liquid
 {% raw %}{% render 'sandbox', path: '/path/to/file/index.html' %}{% endraw %}

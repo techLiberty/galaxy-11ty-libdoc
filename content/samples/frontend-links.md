@@ -2,9 +2,6 @@
 # title: Mon titre
 description: A copy of my own bookmarks, curated list of useful front-end tools, libraries, etc.
 layout: simple_page.liquid
-tags:
-    - tag2
-    - tag1
 eleventyNavigation:
   key: Frontend links
   parent: Samples

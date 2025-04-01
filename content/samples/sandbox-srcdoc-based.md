@@ -5,7 +5,6 @@ layout: simple_page.liquid
 eleventyNavigation:
     key: Sandbox from srcdoc
     parent: Samples
-tags: first
 ---
 ```liquid
 {% raw %}{% sandbox %}

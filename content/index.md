@@ -3,9 +3,7 @@ title: Eleventy LibDoc
 description: Just and Eleventy SSG starter project to create documentation website
 layout: simple_page.liquid
 permalink: index.html
-tags:
-    - tag1
-    - tag2
+
 ---
 {{ site.name | json }}
 ## Headers

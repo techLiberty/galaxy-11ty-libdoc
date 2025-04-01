@@ -1,0 +1,25 @@
+{% if collections.myTags.size > 0 %}
+    <nav>
+        <ul class="m-0 pl-5 pb-5 | lh-1 | ls-none bwidth-1 bstyle-dashed bcolor-neutral-500 btwidth-0 brwidth-0"
+            d-flex="xs,sm"
+            gap-3="xs,sm"
+            fw-wrap="xs,sm"
+            columns-3="md"
+            columns-2="sm">
+            {% for tagName in collections.myTags %}
+                <li class="d-flex" mb-2="md">
+                    <a  href="/tags/{{ tagName }}/"
+                        class="
+                        d-flex ai-center gap-2
+                        pl-2 pr-3 pt-1 pb-1
+                        fs-3 lsp-2 td-none
+                        bc-primary-200 bwidth-1 bstyle-solid bcolor-primary-400 brad-1 bradtl-3 bradbl-3
+                        {% if tag == tagName %}opa-5{% endif %}">
+                        <span class="icon-tag-simple"></span>
+                        <span>{{ tagName }}</span>
+                    </a>
+                </li>
+            {% endfor %}
+        </ul>
+    </nav>
+{% endif %}

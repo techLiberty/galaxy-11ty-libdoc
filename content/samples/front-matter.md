@@ -1,9 +1,6 @@
 ---
 # title: Mon titre
 layout: simple_page.liquid
-tags:
-    - tag2
-    - tag1
 eleventyNavigation:
   key: Front Matter
   parent: Samples

@@ -6,12 +6,16 @@
     "ogImageUrl": "",
     "customLinks": [
         {
-            "url": "#github",
+            "url": "#",
             "text": "GitHub"
         },
         {
-            "url": "#codepen",
-            "text": "Codepen"
+            "url": "#",
+            "text": "CodePen"
+        },
+        {
+            "url": "#",
+            "text": "LinkedIn"
         }
     ]
 }
