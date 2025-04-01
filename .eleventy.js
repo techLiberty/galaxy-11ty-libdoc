@@ -237,6 +237,17 @@ export default function(eleventyConfig) {
 		return content;
 	});
 
+    eleventyConfig.addAsyncFilter("dateString", async function (content) {
+        const jsDate = new Date();
+        let theDay = content.getDate().toString();
+        if (theDay.length == 1) theDay = `0${theDay}`;
+        let theMonth = (content.getMonth() + 1).toString();
+        if (theMonth.length == 1) theMonth = `0${theMonth}`;
+        const theYear = content.getFullYear().toString();
+        return `${theYear}-${theMonth}-${theDay}`;
+        // console.log(`${theYear}-${theMonth}-${theDay}`)
+	});
+
     eleventyConfig.addAsyncFilter("toc", async function (content) {
         const htmlTagsFound = libdocUtils.extractHtmlTagsFromString(content, libdocParams.toc.htmlTags);
         let tocMarkup = '';
