@@ -1,6 +1,13 @@
 {
     "lang": "en",
+    "siteTitle": {
+        "en": "Eleventy LibDoc"
+    },
+    "siteDescription": {
+        "en": "Just and Eleventy SSG starter project to create documentation website"
+    },
     "author": "Olivier 3lanc",
+    "displayAuthor": true,
     "themeColorHex": "#FFFFFF",
     "faviconUrl": "/favicon.png",
     "ogImageUrl": "",
@@ -17,5 +24,13 @@
             "url": "#",
             "text": "LinkedIn"
         }
-    ]
+    ],
+    "blogTitle": {
+        "en": "My Posts"
+    },
+    "blogDescription": {
+        "en": "My own description for my blog"
+    },
+    "blogAuthor": "The Front Club Team",
+    "blogSlug": "posts"
 }

@@ -1,11 +1,4 @@
 {
-    "siteTitle": {
-        "en": "Eleventy LibDoc"
-    },
-    "siteDescription": {
-        "en": "Just and Eleventy SSG starter project to create documentation website"
-    },
-    
     "copiedToClipboard": {
         "en": "Go to top of page"
     },
@@ -32,6 +25,9 @@
     },
     "page": {
         "en": "Page"
+    },
+    "pages": {
+        "en": "Pages"
     },
     "pagesTagged": {
         "en": "Pages tagged"
@@ -68,6 +64,9 @@
     },
     "tableOfContent": {
         "en": "Table of content"
+    },
+    "tagsList": {
+        "en": "Tags list"
     },
     "toggleFloatingToc": {
         "en": "Toggle floating Table of content"

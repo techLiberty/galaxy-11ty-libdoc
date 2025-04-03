@@ -1,7 +1,7 @@
 ---
 # title: Mon titre
 layout: simple_page.liquid
-tags: DOM
+tags: post
 eleventyNavigation:
   key: BRiCSS Documentation
   parent: Samples

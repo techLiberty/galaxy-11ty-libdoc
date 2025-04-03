@@ -161,6 +161,7 @@ main h5,
 main h6 {
     color: var(--ita-colors-primary-900);
     position: relative;
+    scroll-margin-top: var(--ita-spacings-7);
 }
 main h1:target a,
 main h2:target a,
@@ -552,20 +553,25 @@ main .__search-occurrence {
 #nav_primary li:has([href="/tags/"]) {
     display: none;
 }
+details[name="nav_primary"][open] summary {
+    border-bottom: none;
+    padding-bottom: 0;
+    pointer-events: none;
+}
+details[name="nav_primary"][open] > summary .icon-plus-circle,
+details[name="nav_primary"]:not([open]) > summary .icon-minus-circle {
+    display: none;
+}
 
 /* MAIN TABLE OF CONTENT */
-#toc_main[open] > summary,
-#tags_list[open] > summary {
+#toc_main[open] > summary {
     border-bottom: none;
 }
 #toc_main[open] > summary .icon-plus-circle,
-#toc_main:not([open]) > summary .icon-minus-circle,
-#tags_list[open] > summary .icon-plus-circle,
-#tags_list:not([open]) > summary .icon-minus-circle {
+#toc_main:not([open]) > summary .icon-minus-circle {
     display: none;
 }
-#toc_main li,
-#tags_list li {
+#toc_main li {
     break-inside: avoid;
 }
 
@@ -684,7 +690,7 @@ main .__search-occurrence {
 }
 .__gradient-mask-neutral-100-to-bottom {
     background-color: var(--ita-colors-neutral-100);
-    mask: linear-gradient(to bottom,rgba(0, 0, 0, 1), rgba(0, 0, 0, 0));
+    mask: linear-gradient(to bottom,rgba(0, 0, 0, 1) 50%, rgba(0, 0, 0, 0));
 }
 .__gradient-mask-primary-100-to-top {
     background-color: var(--ita-colors-primary-100);

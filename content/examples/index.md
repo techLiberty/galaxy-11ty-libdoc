@@ -17,6 +17,7 @@ tags:
     - de à
     - DOM
     - déclencheurs
+    - post
 
 eleventyNavigation:
   key: Documentation examples

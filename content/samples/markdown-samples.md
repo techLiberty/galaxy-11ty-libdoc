@@ -2,8 +2,11 @@
 # title: Markdown Samples
 description: All available markdown tags into a single page with examples
 layout: simple_page.liquid
-date: "2020-01-01"
-author: moi
+date: false
+author: false
+tags:
+  - foo
+  - DOM
 eleventyNavigation:
     key: Samples
     title: Markdown Samples

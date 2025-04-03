@@ -1,0 +1,15 @@
+{% assign menu = collections.all | eleventyNavigation | eleventyNavigationToHtml: site.navigationOptions %}
+{% assign currentPageHrefAttribute = '<a href="' | append: page.url | append: '"' %}
+{% capture currentPageReplacementAttribute %}{{ currentPageHrefAttribute }} aria-current="page"{% endcapture %}
+{% assign menu = menu | replace: currentPageHrefAttribute, currentPageReplacementAttribute %}
+{% assign tag_to_replace = '<' | append: site.navigationOptions.listElement | append: '>' %}
+{% assign tag_replacement = '<' | append: site.navigationOptions.listElement | append: ' class="d-flex fd-column fg-1 order-1 | m-0 pl-5 | ls-none">' %}
+{% assign menu = menu | replace: tag_to_replace, tag_replacement %}
+<div id="nav_primary"
+    class="pos-relative | h-100 o-auto">
+    <div class="pos-sticky z-1 top-0 left-0 | w-100 pt-6 | pe-none | __gradient-mask-neutral-100-to-bottom"></div>
+    {{ menu }}
+    <div class="pos-sticky bottom-0 left-0 | w-100 pt-10 | pe-none | __gradient-mask-neutral-100-to-top"
+        bradbl-3="md"
+        bradbr-3="md"></div>
+</div>

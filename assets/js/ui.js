@@ -17,7 +17,12 @@ const libdocUi = {
         navSmallDevicesGTTBtn: document.querySelector('#sd_gtt_btn'),
         main: document.querySelector('main'),
         mainHeader: document.querySelector('main > header'),
+        navPrimaryContainer: document.querySelector('#nav_primary_container'),
+        navPrimaryTagsList: document.querySelector('#nav_primary_tags_list'),
         navPrimary: document.querySelector('#nav_primary'),
+        navPrimaryHeader: document.querySelector('#nav_primary_header'),
+        navPrimarySummaryTags: document.querySelector('#nav_primary_summary_tags'),
+        navPrimarySummaryPages: document.querySelector('#nav_primary_summary_pages'),
         navSmallDevices: document.querySelector('#nav_small_devices'),
         searchForms: document.querySelectorAll('.search_form'),
         searchInputs: document.querySelectorAll('input[type="search"][name="search"]'),
@@ -254,6 +259,7 @@ const libdocUi = {
         _windowResize: function() {
             libdocUi._currentScreenSizeName = libdocUi.getCurrentScreenSizeName();
             libdocUi.updateSearchOccurrenceCmdBottom();
+            libdocUi.updateNavPrimary();
         },
         _windowLoad: function() {
             const textQuery = libdocUi._searchParams.get('text') || libdocUi._searchParams.get('search');
@@ -272,7 +278,7 @@ const libdocUi = {
         },
         _cToggle: function(evt) {
             if (evt.detail.id == 'nav_primary') {
-                libdocUi.updateNavPrimaryScrollTop();
+                libdocUi.updateNavPrimary();
                 libdocUi.updateFTOCBtns();
                 libdocUi.updateGTTBtns();
             }
@@ -298,8 +304,24 @@ const libdocUi = {
                 elClearBtn.hidden = true;
                 elClearBtn.form.querySelector('input[type="search"][name="search"]').focus();
             }
+        },
+        _toggleNavPrimaryAccordion: function(evt) {
+            const   timestamp = Date.now(),
+                    durationInMs = timestamp - libdocUi._timestamp;
+            libdocUi._timestamp = timestamp;
+            // console.log(durationInMs)
+            if (durationInMs > 100) {
+                // console.log('passed')
+                const cup = libdocUi.getUserPreferences();
+                if (cup.navPrimaryAccordion === undefined) {
+                    libdocUi.updateUserPreferences({ navPrimaryAccordion: evt.target.dataset.id });
+                } else if (cup.navPrimaryAccordion != evt.target.dataset.id) {
+                    libdocUi.updateUserPreferences({ navPrimaryAccordion: evt.target.dataset.id });
+                }
+            }
         }
     },
+    _timestamp: Date.now(),
     updateSearchInputClearBtns: function() {
         libdocUi.el.searchInputs.forEach(function(elInput) {
             const elClearBtn = elInput.form.querySelector('.search_form__clear_btn');
@@ -455,14 +477,36 @@ const libdocUi = {
             libdocUi.disableGTTSmallDevices();
         }
     },
-    updateNavPrimaryScrollTop: function() {
+    updateNavPrimary: function() {
+        // Adjust menu heights
+        const tagsSummaryHeight = libdocUi.el.navPrimarySummaryTags === null ? 0 : libdocUi.el.navPrimarySummaryTags.clientHeight;
+        const pagesSummaryHeight = libdocUi.el.navPrimarySummaryPages === null ? 0 : libdocUi.el.navPrimarySummaryPages.clientHeight;
+        const customHeight =    libdocUi.el.navPrimaryContainer.clientHeight
+                                - libdocUi.el.navPrimaryHeader.clientHeight
+                                - pagesSummaryHeight
+                                - tagsSummaryHeight;
+        if (libdocUi.el.navPrimary !== null) libdocUi.el.navPrimary.style.maxHeight = `${customHeight}px`;
+        if (libdocUi.el.navPrimaryTagsList !== null) libdocUi.el.navPrimaryTagsList.style.maxHeight = `${customHeight}px`;
+
+        // Scroll to current page
         const   elCurrentPageLink = libdocUi.el.navPrimary.querySelector('[aria-current="page"]'),
                 elNavP = libdocUi.el.navPrimary;
         if (elCurrentPageLink !== null && elNavP !== null) {
-            if (elCurrentPageLink.clientHeight + elCurrentPageLink.offsetTop > elNavP.clientHeight ) {
+            if (elCurrentPageLink.clientHeight + elCurrentPageLink.offsetTop > elNavP.clientHeight) {
                 elNavP.scroll({
                     top: (elCurrentPageLink.offsetTop - 2 * elCurrentPageLink.clientHeight)
                 });
+            }
+        }
+
+        // Accordion
+        const cur = libdocUi.getUserPreferences();
+        if (cur.navPrimaryAccordion !== undefined) {
+            const elDetailsOpened = document.querySelector('details[name="nav_primary"][open]');
+            if (elDetailsOpened !== null) {
+                if (elDetailsOpened.dataset.id != cur.navPrimaryAccordion) {
+                    document.querySelector(`details[name="nav_primary"][data-id="${cur.navPrimaryAccordion}"]`).open = true;
+                }
             }
         }
     },
@@ -480,9 +524,10 @@ const libdocUi = {
             libdocUi.saveLocalStorage({ identifier: lsId, backup: up});
         } else if (typeof newPreferences == 'object') {
             Object.keys(newPreferences).forEach(function(preference) {
-                if (typeof libdocUi.userPreferences[preference] === typeof newPreferences[preference]) {
-                    currentUserPreference[preference] = newPreferences[preference];
-                }
+                currentUserPreference[preference] = newPreferences[preference];
+                // if (typeof libdocUi.userPreferences[preference] === typeof newPreferences[preference]) {
+                //     currentUserPreference[preference] = newPreferences[preference];
+                // }
             });
             libdocUi.saveLocalStorage({ identifier: lsId, backup: currentUserPreference});
         }
@@ -704,7 +749,7 @@ const libdocUi = {
         });
         libdocUi.createFloatingToc();
         libdocUi.createGoToTop();
-        libdocUi.updateNavPrimaryScrollTop();
+        libdocUi.updateNavPrimary();
         libdocUi.updateFtocList();
         libdocUi.updateGTTBtns();
         document.addEventListener('cToggle_event', libdocUi.handlers._cToggle);
@@ -721,6 +766,9 @@ const libdocUi = {
         });
         libdocUi.el.searchClearBtns.forEach(function(elClearBtn) {
             elClearBtn.addEventListener('click', libdocUi.handlers._clickSearchInputClear);
+        });
+        document.querySelectorAll('details[name="nav_primary"]').forEach(function(elDetail) {
+            elDetail.addEventListener("toggle", libdocUi.handlers._toggleNavPrimaryAccordion);
         });
     }
 }

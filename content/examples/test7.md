@@ -1,7 +1,10 @@
 ---
 # title: Mon titre
-description: Lorem ipsum dolor 7
+# description: Lorem ipsum dolor 7
 layout: simple_page.liquid
+tags:
+  - post
+  - DOM
 eleventyNavigation:
   key: Test 7
 #   parent: Test 1

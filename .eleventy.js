@@ -297,13 +297,21 @@ export default function(eleventyConfig) {
         allData.forEach(function(item) {
             if (typeof item.data.tags == 'object') {
                 item.data.tags.forEach(function(tag) {
-                    if (!finalData.includes(tag)) finalData.push(tag);
+                    if (!finalData.includes(tag) && tag != 'post') finalData.push(tag);
                 })
             }
         });
 		return finalData;
 	});
 
+    eleventyConfig.addCollection("postsByDateDescending", function (collectionsApi) {
+		return collectionsApi.getFilteredByTag("post").sort(function (a, b) {
+			//return a.date - b.date; // sort by date - ascending
+			return b.date - a.date; // sort by date - descending
+			//return a.inputPath.localeCompare(b.inputPath); // sort by path - ascending
+			//return b.inputPath.localeCompare(a.inputPath); // sort by path - descending
+		});
+	});
 
     eleventyConfig.addPairedShortcode("sandbox", async function(content, sandboxTitle) {
         const   code = libdocUtils.HTMLEncode(content.replace(/[\n\r]/, '')),

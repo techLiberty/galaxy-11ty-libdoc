@@ -14,8 +14,8 @@ eleventyExcludeFromCollections: true
     {% endif %}
     {% if collections.all.size > 0 %}
         {% for post in collections.all %}
-            {%- assign pageUrlStart = post.url | slice: 0,6 -%}
-            {% if pageUrlStart != '/tags/' %}
+            {%- assign postUrlSplit = post.url | split: '/' -%}
+            {% if pageUrlSplit[1] != postUrlSplit[1] %}
                 {
                     "url": "{{ post.url }}",
                     "title": "{% if post.data.eleventyNavigation.key %}{{ post.data.eleventyNavigation.key }}{% else %}{{ post.data.title | default: post.inputPath }}{% endif %}",
