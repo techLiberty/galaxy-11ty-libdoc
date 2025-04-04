@@ -33,5 +33,5 @@
     },
     "blogAuthor": "The Front Club Team",
     "blogSlug": "posts",
-    "displayTagsListLink": false
+    "displayTagsListLink": true
 }
