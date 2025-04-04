@@ -9,7 +9,8 @@ const libdocUi = {
         },
     },
     userPreferences: {
-        FTOCNormallyOpened: false
+        FTOCNormallyOpened: false,
+        navPrimaryAccordion: 'pages'
     },
     el: {
         tocMain: document.querySelector('#toc_main > ol'),
@@ -17,12 +18,7 @@ const libdocUi = {
         navSmallDevicesGTTBtn: document.querySelector('#sd_gtt_btn'),
         main: document.querySelector('main'),
         mainHeader: document.querySelector('main > header'),
-        navPrimaryContainer: document.querySelector('#nav_primary_container'),
-        navPrimaryTagsList: document.querySelector('#nav_primary_tags_list'),
         navPrimary: document.querySelector('#nav_primary'),
-        navPrimaryHeader: document.querySelector('#nav_primary_header'),
-        navPrimarySummaryTags: document.querySelector('#nav_primary_summary_tags'),
-        navPrimarySummaryPages: document.querySelector('#nav_primary_summary_pages'),
         navSmallDevices: document.querySelector('#nav_small_devices'),
         searchForms: document.querySelectorAll('.search_form'),
         searchInputs: document.querySelectorAll('input[type="search"][name="search"]'),
@@ -75,6 +71,7 @@ const libdocUi = {
         if (libdocUi.localStorageAvailable()
             && typeof identifier == 'string'
             && typeof backup == 'object') {
+                console.log('save', identifier, JSON.stringify(backup))
             localStorage.setItem(identifier, JSON.stringify(backup));
         }
     },
@@ -246,13 +243,13 @@ const libdocUi = {
         _toggleFtocLargeDevices: function() {
             if (libdocUi.el.ftocDetails.open) {
                 if (libdocUi._currentScreenSizeName == 'md') {
-                    libdocUi.updateUserPreferences({FTOCNormallyOpened: true});
+                    // libdocUi.updateUserPreferences({FTOCNormallyOpened: true});
                     libdocUi.updateFtocList();
                 } else {
-                    libdocUi.updateUserPreferences({FTOCNormallyOpened: false});
+                    // libdocUi.updateUserPreferences({FTOCNormallyOpened: false});
                 }
             } else {
-                libdocUi.updateUserPreferences({FTOCNormallyOpened: false});
+                // libdocUi.updateUserPreferences({FTOCNormallyOpened: false});
             }
             libdocUi.updateFTOCBtns();
         },
@@ -304,24 +301,8 @@ const libdocUi = {
                 elClearBtn.hidden = true;
                 elClearBtn.form.querySelector('input[type="search"][name="search"]').focus();
             }
-        },
-        _toggleNavPrimaryAccordion: function(evt) {
-            const   timestamp = Date.now(),
-                    durationInMs = timestamp - libdocUi._timestamp;
-            libdocUi._timestamp = timestamp;
-            // console.log(durationInMs)
-            if (durationInMs > 100) {
-                // console.log('passed')
-                const cup = libdocUi.getUserPreferences();
-                if (cup.navPrimaryAccordion === undefined) {
-                    libdocUi.updateUserPreferences({ navPrimaryAccordion: evt.target.dataset.id });
-                } else if (cup.navPrimaryAccordion != evt.target.dataset.id) {
-                    libdocUi.updateUserPreferences({ navPrimaryAccordion: evt.target.dataset.id });
-                }
-            }
         }
     },
-    _timestamp: Date.now(),
     updateSearchInputClearBtns: function() {
         libdocUi.el.searchInputs.forEach(function(elInput) {
             const elClearBtn = elInput.form.querySelector('.search_form__clear_btn');
@@ -478,16 +459,6 @@ const libdocUi = {
         }
     },
     updateNavPrimary: function() {
-        // Adjust menu heights
-        const tagsSummaryHeight = libdocUi.el.navPrimarySummaryTags === null ? 0 : libdocUi.el.navPrimarySummaryTags.clientHeight;
-        const pagesSummaryHeight = libdocUi.el.navPrimarySummaryPages === null ? 0 : libdocUi.el.navPrimarySummaryPages.clientHeight;
-        const customHeight =    libdocUi.el.navPrimaryContainer.clientHeight
-                                - libdocUi.el.navPrimaryHeader.clientHeight
-                                - pagesSummaryHeight
-                                - tagsSummaryHeight;
-        if (libdocUi.el.navPrimary !== null) libdocUi.el.navPrimary.style.maxHeight = `${customHeight}px`;
-        if (libdocUi.el.navPrimaryTagsList !== null) libdocUi.el.navPrimaryTagsList.style.maxHeight = `${customHeight}px`;
-
         // Scroll to current page
         const   elCurrentPageLink = libdocUi.el.navPrimary.querySelector('[aria-current="page"]'),
                 elNavP = libdocUi.el.navPrimary;
@@ -498,38 +469,24 @@ const libdocUi = {
                 });
             }
         }
-
-        // Accordion
-        const cur = libdocUi.getUserPreferences();
-        if (cur.navPrimaryAccordion !== undefined) {
-            const elDetailsOpened = document.querySelector('details[name="nav_primary"][open]');
-            if (elDetailsOpened !== null) {
-                if (elDetailsOpened.dataset.id != cur.navPrimaryAccordion) {
-                    document.querySelector(`details[name="nav_primary"][data-id="${cur.navPrimaryAccordion}"]`).open = true;
-                }
-            }
-        }
     },
     getUserPreferences: function() {
         return libdocUi.getLocalStorage(libdocUi.defaults.localStorageIdentifier) || {};
     },
     updateUserPreferences: function(newPreferences) {
-        const   lsId = libdocUi.defaults.localStorageIdentifier,
-                currentUserPreference = libdocUi.getLocalStorage(lsId);
-        if (currentUserPreference === null) {
-            const up = {};
-            Object.keys(libdocUi.userPreferences).forEach(function(preference) {
-                up[preference] = libdocUi.userPreferences[preference];
-            });
-            libdocUi.saveLocalStorage({ identifier: lsId, backup: up});
-        } else if (typeof newPreferences == 'object') {
-            Object.keys(newPreferences).forEach(function(preference) {
-                currentUserPreference[preference] = newPreferences[preference];
-                // if (typeof libdocUi.userPreferences[preference] === typeof newPreferences[preference]) {
-                //     currentUserPreference[preference] = newPreferences[preference];
-                // }
-            });
-            libdocUi.saveLocalStorage({ identifier: lsId, backup: currentUserPreference});
+        if (typeof newPreferences == 'object' && newPreferences !== null) {
+            const   lsId = libdocUi.defaults.localStorageIdentifier,
+                    currentUserPreference = libdocUi.getLocalStorage(lsId);
+    
+            console.log(newPreferences, currentUserPreference);
+            if (currentUserPreference === null || currentUserPreference === undefined) {
+                // const up = {};
+                // Object.keys(newPreferences).forEach(function(preference) {
+                //     up[preference] = libdocUi.userPreferences[preference];
+                // });
+                console.log("send", lsId, newPreferences)
+                libdocUi.saveLocalStorage({ identifier: lsId, backup: newPreferences});
+            }
         }
     },
     updateFTOCBtns: function() {
@@ -726,7 +683,6 @@ const libdocUi = {
     },
     update: function() {
         libdocUi._currentScreenSizeName = libdocUi.getCurrentScreenSizeName();
-        libdocUi.updateUserPreferences();
         hljs.highlightAll();
         document.querySelectorAll('main>pre').forEach(function(elPre) {
             elPre.style.paddingTop = '0';

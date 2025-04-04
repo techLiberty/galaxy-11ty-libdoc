@@ -68,6 +68,9 @@
     "tagsList": {
         "en": "Tags list"
     },
+    "tagsListDescription": {
+        "en": "List of every tag available"
+    },
     "toggleFloatingToc": {
         "en": "Toggle floating Table of content"
     },

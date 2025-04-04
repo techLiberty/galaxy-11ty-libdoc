@@ -24,6 +24,11 @@
     {%- assign pageAuthor = config.blogAuthor -%}
 {% endif %}
 
+{%- if pagePathUrl[1] == 'tags' -%}
+    {%- assign pageTitle = messages.tagsList[pageLang] -%}
+    {%- assign pageDescription = messages.tagsListDescription[pageLang] -%}
+{% endif %}
+
 {% if eleventyNavigation.key %}
     {% assign breadcrumb = collections.all | eleventyNavigationBreadcrumb: eleventyNavigation.key, site.navigationOptions %}
     {% if pageTitle == page.inputPath %}
@@ -33,7 +38,7 @@
         {% include 'breadcrumb' %}
     {% endcapture %}
 {% endif %}
-{% if page.url == '/search/' %}
+{% if pagePathUrl[1] == 'search' %}
     {% assign pageTitle = messages.search[pageLang] %}
 {% endif  %}
 {% if tag %}

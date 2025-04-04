@@ -8,9 +8,9 @@ permalink: "tags/{{ tag }}/index.html"
 date: false
 author: false
 # eleventyExcludeFromCollections: true
-eleventyNavigation:
-    parent: Tags list
-    key: tag
+# eleventyNavigation:
+#     parent: Tags list
+#     key: tag
 ---
 {% assign pages_with_tag = collections[tag] | sort: 'date' %}
 {% assign pages_with_tag = pages_with_tag | reverse %}

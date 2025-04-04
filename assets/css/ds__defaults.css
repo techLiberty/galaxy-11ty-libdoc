@@ -96,7 +96,7 @@ body {
     font-weight: 300;
     font-style: normal;
     font-size: var(--ita-fontSizes-5);
-    font-variation-settings: "slnt" 0, "CASL" 1, "CRSV" 0.0, "MONO" 0, "wght" 330;
+    font-variation-settings: "slnt" 0, "CASL" 0.5, "CRSV" 1, "MONO" 0, "wght" 330;
 }
 html,
 .o-auto {
@@ -161,7 +161,7 @@ main h5,
 main h6 {
     color: var(--ita-colors-primary-900);
     position: relative;
-    scroll-margin-top: var(--ita-spacings-7);
+    scroll-margin-top: var(--ita-spacings-6);
 }
 main h1:target a,
 main h2:target a,
@@ -517,51 +517,93 @@ main .__search-occurrence {
     text-shadow: none;
 } */
 
-#nav_primary [aria-current="page"] {
-    opacity: 0.5;
-}
 #nav_primary .nav_primary__anchor::before {
     content: '';
     display: flex;
-    position: absolute;
-    top: calc(50% - 0.5px);
-    right: 100%;
     border-top: 1px dashed var(--ita-colors-neutral-500);
-    width: 200px;
+    width: var(--ita-spacings-5);
+    min-width: var(--ita-spacings-5);
+    order: -2;
 }
 #nav_primary .nav_primary__anchor::after {
     content: '';
     display: flex;
-    position: absolute;
-    top: calc(50% - 2.5px);
-    left: 0%;
-    border-radius: 100%;
     background-color: var(--ita-colors-primary-500);
-    width: 5px;
-    height: 5px;
+    width: var(--ita-spacings-2);
+    min-width: var(--ita-spacings-2);
+    aspect-ratio: 1;
+    order: -1;
+    margin-right: var(--ita-spacings-2);
+    border-radius: 100%;
+}
+/* #nav_primary .nav_primary__anchor::after {
+    content: '';
+    display: flex;
+    position: absolute;
+    top: 0;
+    left: -4px;
+    width: 10px;
+    height: calc(50% + 5px);
+    background-image: radial-gradient( circle at 50% calc(100% - 5px), var(--ita-colors-primary-500) 0px, var(--ita-colors-primary-500) 4px, var(--ita-colors-neutral-100) 5px, var(--ita-colors-neutral-100) 100% );
+    z-index: 1;
+} */
+/* #nav_primary > ol > li ol {
+    border-left: 1px dashed var(--ita-colors-neutral-500);
+} */
+/* #nav_primary > ol li > a + ol > li:last-child::before {
+    background-color: red;
+    content: '';
+    display: flex;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 10px;
+    height: calc(50% + 5px);
+    background-color: red;
+    z-index: 1;
+} */
+#nav_primary .nav_primary__anchor[aria-current="page"] {
+    color: var(--ita-colors-primary-500);
+}
+#nav_primary > ol > li ol li {
+    border-left: 1px dashed var(--ita-colors-neutral-500);
 }
 #nav_primary > ol > li > a.nav_primary__anchor {
-    font-size: var(--ita-fontSizes-5);
+    font-size: var(--ita-fontSizes-4);
     letter-spacing: -0.04em;
 }
-#nav_primary > ol > li > a.nav_primary__anchor::after {
-    width: 8px;
-    height: 8px;
-    top: calc(50% - 4px);
-    left: -4px;
+#nav_primary > ol > li > ol > li a.nav_primary__anchor {
+    font-variation-settings: "wght" 400, "MONO" 0, "CASL" 0, "CRSV" 0, "slnt" 0;
 }
-#nav_primary li:has([href="/tags/"]) {
-    display: none;
+#nav_primary > ol > li > ol > li a.nav_primary__anchor::after {
+    width: var(--ita-spacings-1);
+    min-width: var(--ita-spacings-1);
 }
-details[name="nav_primary"][open] summary {
-    border-bottom: none;
-    padding-bottom: 0;
-    pointer-events: none;
+/* #nav_primary > ol > li:has(ol)::before {
+    content: '';
+    display: flex;
+    position: absolute;
+    top: 0;
+    left: 0;
+    border-left: 1px dashed var(--ita-colors-neutral-500);
+    height: 100%;
 }
-details[name="nav_primary"][open] > summary .icon-plus-circle,
-details[name="nav_primary"]:not([open]) > summary .icon-minus-circle {
-    display: none;
-}
+#nav_primary > ol > li:has(ol)::after {
+    content: '';
+    display: flex;
+    position: absolute;
+    top: 0;
+    left: 0;
+    border-left: 1px dashed var(--ita-colors-neutral-500);
+    height: 100%;
+} */
+/* #nav_primary > ol > li:has(ol) > a.nav_primary__anchor {
+    padding-top: var(--ita-spacings-5);
+    padding-bottom: var(--ita-spacings-5);
+} */
+/* #nav_primary > ol li:has(ol) > a.nav_primary__anchor {
+    border-left: 1px dashed var(--ita-colors-neutral-500);
+} */
 
 /* MAIN TABLE OF CONTENT */
 #toc_main[open] > summary {
@@ -656,8 +698,8 @@ details[name="nav_primary"]:not([open]) > summary .icon-minus-circle {
     main > picture {
         padding: var(--ita-spacings-5);
     }
-    #nav_primary {
-        height: calc(100vh - 150px);
+    main > figure {
+        padding: var(--ita-spacings-5);
     }
 }
 

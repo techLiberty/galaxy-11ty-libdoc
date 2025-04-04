@@ -32,5 +32,6 @@
         "en": "My own description for my blog"
     },
     "blogAuthor": "The Front Club Team",
-    "blogSlug": "posts"
+    "blogSlug": "posts",
+    "displayTagsListLink": false
 }

@@ -176,6 +176,7 @@
                         </li>
                     {% endif %}
                 </menu>
+                
                 {% if collections.post.size > 0 %}
                     <a  href="/{{ config.blogSlug }}/"
                         id="nav_primary_blog_link"
@@ -186,35 +187,19 @@
                         </span>
                     </a>
                 {% endif %}
-                {% if collections.myTags.size > 0 %}
-                    <details data-id="tags" name="nav_primary">
-                        <summary id="nav_primary_summary_tags"
-                            class="d-flex ai-center | pt-5 pb-5 pl-3 | fvs-wght-500 fs-4 | bbwidth-1 bbstyle-dashed bcolor-neutral-500 cur-pointer">
-                            <span class="d-flex ai-center gap-2 | lsp-2">
-                                <span class="icon-minus-circle | fs-6 | c-primary-500"></span>
-                                <span class="icon-plus-circle | fs-6 | c-primary-500"></span>
-                                {{ messages.tagsList[pageLang] }}
-                            </span>
-                        </summary>
-                        {% include "tags_list" %}
-                    </details>
+
+                {% if collections.myTags.size > 0 and config.displayTagsListLink %}
+                    <a  href="/tags/"
+                        id="nav_primary_blog_link"
+                        class="d-flex ai-center | pt-5 pb-5 pl-3 | fvs-wght-500 fs-4 td-none | c-neutral-900 bbwidth-1 bbstyle-dashed bcolor-neutral-500 cur-pointer">
+                        <span class="d-flex ai-center gap-2 | lsp-2">
+                            <span class="icon-tag-simple | fs-6 | c-primary-500"></span>
+                            {{ messages.tagsList[pageLang] }}
+                        </span>
+                    </a>
                 {% endif %}
 
-                {% if collections.myTags.size > 0 %}
-                    <details data-id="pages" name="nav_primary" open>
-                        <summary id="nav_primary_summary_pages"
-                            class="d-flex ai-center | pt-5 pb-5 pl-3 | fvs-wght-500 fs-4 | bbwidth-1 bbstyle-dashed bcolor-neutral-500 cur-pointer">
-                            <span class="d-flex ai-center gap-2 | lsp-2">
-                                <span class="icon-minus-circle | fs-6 | c-primary-500"></span>
-                                <span class="icon-plus-circle | fs-6 | c-primary-500"></span>
-                                {{ messages.pages[pageLang] }}
-                            </span>
-                        </summary>
-                        {% include "menu_pages" %}
-                    </details>
-                {% else %}
-                    {% include "menu_pages" %}
-                {% endif %}
+                {% include "menu_pages" %}
             </nav>
         </div>
         <main class="pos-relative"
