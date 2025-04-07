@@ -1,7 +1,7 @@
 ---
 # title: Mon titre
 description: Usage examples of Eleventy LibDoc
-layout: simple_page.liquid
+layout: libdoc_page.liquid
 tags:
     - cool
     - first

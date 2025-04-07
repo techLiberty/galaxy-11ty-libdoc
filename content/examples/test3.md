@@ -1,7 +1,7 @@
 ---
 # title: Mon titre
 description: Lorem ipsum dolor 3
-layout: simple_page.liquid
+layout: libdoc_page.liquid
 eleventyNavigation:
   key: Test 3
 #   parent: Test 1

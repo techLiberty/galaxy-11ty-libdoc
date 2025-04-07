@@ -400,6 +400,7 @@ export default function(eleventyConfig) {
 	// Keeps the same directory structure.
 	eleventyConfig.addPassthroughCopy("sandboxes");
     eleventyConfig.addPassthroughCopy("assets");
+    eleventyConfig.addPassthroughCopy("core/assets");
     eleventyConfig.addPassthroughCopy("favicon.png");
 
 };

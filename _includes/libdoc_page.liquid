@@ -1,4 +1,4 @@
-{%- include 'before_html' -%}<!DOCTYPE html>
+{%- include 'libdoc_before_html' -%}<!DOCTYPE html>
 <html lang="{{ pageLang }}">
 <head>
     <meta charset="UTF-8">
@@ -48,10 +48,10 @@
     <meta name="generator" content="{{ eleventy.generator }}">
     
     {% block css_head %} 
-        <link rel="stylesheet" href="/assets/css/ds__defaults.css">
-        <link rel="stylesheet" href="/assets/css/ds.css">
-        <link rel="stylesheet" href="/assets/css/hljs/night-owl.css">
-        <link rel="stylesheet" href="/assets/fonts/icomoon/style.css">
+        <link rel="stylesheet" href="/core/assets/css/ds__defaults.css">
+        <link rel="stylesheet" href="/core/assets/css/ds.css">
+        <link rel="stylesheet" href="/core/assets/css/hljs/night-owl.css">
+        <link rel="stylesheet" href="/core/assets/fonts/icomoon/style.css">
         {% comment %} <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.11.1/styles/nord.min.css"> {% endcomment %}
         {% comment %} <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.11.1/styles/ir-black.min.css"> {% endcomment %}
         {% comment %} <link rel="stylesheet" href="/assets/css/monokai-sublime.css"> {% endcomment %}
@@ -199,7 +199,7 @@
                     </a>
                 {% endif %}
 
-                {% include "menu_pages" %}
+                {% include "libdoc_menu_pages" %}
             </nav>
         </div>
         <main class="pos-relative"
@@ -223,7 +223,7 @@
                         </p>
                     {% endif %}
                     {% if page.url != '/search/' %}
-                        {% if tags.size > 0 and tags not contains 'post' %}
+                        {% if tags.size > 0 %}
                             <nav class="d-flex gap-2 fw-wrap | pl-5 pt-3 pb-3 | blwidth-1 blstyle-dashed bcolor-neutral-500">
                                 {% for tagName in tags %}
                                     {% if tagName != 'post' %}
@@ -299,11 +299,11 @@
     </div>
     
     {% block js_body %}
-        <script src="/assets/js/c-toggle.js"></script>
-        <script src="/assets/js/sandbox.js"></script>
-        <script src="/assets/js/highlight.min.js"></script>
-        <script src="/assets/js/liquid.min.js"></script>
-        <script src="/assets/js/ui.js"></script>
+        <script src="/core/assets/js/c-toggle.js"></script>
+        <script src="/core/assets/js/sandbox.js"></script>
+        <script src="/core/assets/js/highlight.min.js"></script>
+        <script src="/core/assets/js/liquid.min.js"></script>
+        <script src="/core/assets/js/ui.js"></script>
     {% endblock %}
 </body>
 </html>

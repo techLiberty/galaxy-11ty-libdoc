@@ -1,7 +1,7 @@
 ---
 # title: Markdown Samples
 description: All available markdown tags into a single page with examples
-layout: simple_page.liquid
+layout: libdoc_page.liquid
 date: false
 author: false
 tags:

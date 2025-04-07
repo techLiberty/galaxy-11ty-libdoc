@@ -1,7 +1,7 @@
 ---
 # title: Mon titre
 description: Lorem ipsum dolor 10
-layout: simple_page.liquid
+layout: libdoc_page.liquid
 tags: DOM
 eleventyNavigation:
   key: Test 10

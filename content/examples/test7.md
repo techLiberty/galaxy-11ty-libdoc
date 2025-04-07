@@ -1,7 +1,7 @@
 ---
 # title: Mon titre
 # description: Lorem ipsum dolor 7
-layout: simple_page.liquid
+layout: libdoc_page.liquid
 tags:
   - post
   - DOM

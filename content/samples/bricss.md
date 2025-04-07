@@ -1,6 +1,6 @@
 ---
 # title: Mon titre
-layout: simple_page.liquid
+layout: libdoc_page.liquid
 tags: post
 eleventyNavigation:
   key: BRiCSS Documentation

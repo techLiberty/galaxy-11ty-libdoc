@@ -40,6 +40,7 @@ const search = {
                 let summary = content.slice(lowIndex, highIndex);
                 summary = search.HTMLEncode(summary);
                 summary = summary.replaceAll(queryLoweredEncoded, ` <mark class="fvs-wght-600 wb-break-all">${query}</mark> `);
+                if (resultUrl.indexOf('/tags/?') === 0) item.title = libdocMessages.tagsList;
                 if (content.indexOf(queryLowered) > -1) {
                     markup += search.renderSearchResult({url: resultUrl, title: item.title, summary: summary})
                 }
@@ -69,7 +70,7 @@ const search = {
     },
     update: function() {
         // console.log(query)
-        fetch('/bundles/search_index.json')
+        fetch('/core/assets/js/search_index.json')
             .then(response => response.json())
             .then(searchIndexArray => {
                 // console.log(json);

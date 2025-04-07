@@ -1,7 +1,7 @@
 ---
 title: Sandbox from srcdoc
 description: Include a sandbox without a file, input code directly into your page
-layout: simple_page.liquid
+layout: libdoc_page.liquid
 eleventyNavigation:
     key: Sandbox from srcdoc
     parent: Samples

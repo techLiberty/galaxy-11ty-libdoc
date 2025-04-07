@@ -2,7 +2,7 @@
 # title: Mon titre
 description: 
 lang: fr
-layout: simple_page.liquid
+layout: libdoc_page.liquid
 eleventyNavigation:
   key: Test 84
   parent: Test 8

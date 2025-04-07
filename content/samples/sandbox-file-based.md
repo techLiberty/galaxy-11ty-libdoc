@@ -1,7 +1,7 @@
 ---
 title: Sandbox from file
 description: Usage example of a file based sandbox
-layout: simple_page.liquid
+layout: libdoc_page.liquid
 eleventyNavigation:
     key: Sandbox from file
     parent: Samples

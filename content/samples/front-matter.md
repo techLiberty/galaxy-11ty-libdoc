@@ -1,6 +1,6 @@
 ---
 # title: Mon titre
-layout: simple_page.liquid
+layout: libdoc_page.liquid
 eleventyNavigation:
   key: Front Matter
   parent: Samples
@@ -9,7 +9,7 @@ eleventyNavigation:
 Front matter 
 
 ```yaml
-layout: simple_page.liquid
+layout: libdoc_page.liquid
 permalink: fourth/index.html
 tags:
     - tag2
