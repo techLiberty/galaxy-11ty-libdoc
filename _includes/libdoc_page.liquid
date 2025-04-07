@@ -10,7 +10,7 @@
     <meta name="description" itemprop="description" content="{{ pageDescription }}">
     <meta name="application-name" content="{{ pageTitle }}">
     <meta name="author" content="{{ pageAuthor }}">
-    <link rel="icon" type="image/png" href="{{ config.faviconUrl }}">
+    <link rel="icon" type="image/png" href="{{ libdocConfig.faviconUrl }}">
     
     <meta name="msapplication-TileColor" content="{{ pageThemeColorHex }}">
     <meta name="theme-color" content="{{ pageThemeColorHex }}">
@@ -58,8 +58,8 @@
     {% endblock %}
     <script>
         const libdocMessages = {
-            {% for key in messages %}
-                {{ key[0] }}: `{{ messages[key[0]][pageLang] }}`,
+            {% for key in libdocMessages %}
+                {{ key[0] }}: `{{ libdocMessages[key[0]][pageLang] }}`,
             {%- endfor %}
         }
     </script>
@@ -81,33 +81,33 @@
                     <a  href="/"
                         class="d-flex fd-column jc-center ai-center gap-1 | pl-5 pr-2 | td-none ta-center | c-primary-900 b-0 brad-3">
                         <span class="icon-house fs-6"></span>
-                        <span class="fvs-wght-400 fs-1 tt-uppercase">{{ messages.homepageShort[pageLang] }}</span>
+                        <span class="fvs-wght-400 fs-1 tt-uppercase">{{ libdocMessages.homepageShort[pageLang] }}</span>
                     </a>
                     <a  href="/search/"
                         class="d-flex fd-column jc-center ai-center gap-1 | pl-2 pr-2 | td-none ta-center | c-primary-900 b-0 brad-3">
                         <span class="icon-magnifying-glass fs-6"></span>
-                        <span class="fvs-wght-400 fs-1 tt-uppercase">{{ messages.search[pageLang] }}</span>
+                        <span class="fvs-wght-400 fs-1 tt-uppercase">{{ libdocMessages.search[pageLang] }}</span>
                     </a>
                     <button type="button"
                         id="sd_floating_toc_toggle_btn"
                         class="d-flex fd-column jc-center ai-center gap-1 | pl-2 pr-2 | ta-center | cur-pointer c-primary-900 bc-neutral-100 b-0 brad-3"
                         disabled>
                         <span class="icon-list-dashes fs-6"></span>
-                        <span class="fvs-wght-400 fs-1 tt-uppercase">{{ messages.tableOfContent[pageLang] }}</span>
+                        <span class="fvs-wght-400 fs-1 tt-uppercase">{{ libdocMessages.tableOfContent[pageLang] }}</span>
                     </button>
                     <button type="button"
                         id="sd_gtt_btn"
                         class="d-flex fd-column jc-center ai-center gap-1 | pl-2 pr-2 | ta-center | cur-pointer c-primary-900 bc-neutral-100 b-0 brad-3"
                         onclick="libdocUi.handlers._clickGTT()">
                         <span class="icon-arrow-line-up fs-6"></span>
-                        <span class="fvs-wght-400 fs-1 tt-uppercase">{{ messages.top[pageLang] }}</span>
+                        <span class="fvs-wght-400 fs-1 tt-uppercase">{{ libdocMessages.top[pageLang] }}</span>
                     </button>
                     <button type="button"
                         class="d-flex fd-column jc-center ai-center gap-1 | pl-2 pr-5 | ta-center | cur-pointer c-primary-900 bc-neutral-100 b-0 brad-3"
                         c-toggle="nav_primary"
                         data-dismiss="true">
                         <span class="icon-list fs-6" c-toggle-name="nav_primary" data-opened-state-class="icon-x fs-6"></span>
-                        <span class="fvs-wght-400 fs-1 tt-uppercase">{{ messages.menu[pageLang] }}</span>
+                        <span class="fvs-wght-400 fs-1 tt-uppercase">{{ libdocMessages.menu[pageLang] }}</span>
                     </button>
                 </div>
             </nav>
@@ -120,14 +120,14 @@
                 c-toggle-name="nav_primary"
                 data-opened-state-class="d-flex fd-column | w-100 h-sidebar o-hidden | bc-neutral-100 bwidth-1 bstyle-dashed bcolor-neutral-500">
                 <menu id="nav_primary_header"
-                    class="d-flex fd-column | pos-sticky top-0 z-1 | m-0 p-0 {% if config.customLinks.size == 0 %}pb-7{% endif %} | ls-none bc-neutral-100 bbwidth-1 bbstyle-dashed bcolor-neutral-500"
+                    class="d-flex fd-column | pos-sticky top-0 z-1 | m-0 p-0 {% if libdocConfig.customLinks.size == 0 %}pb-7{% endif %} | ls-none bc-neutral-100 bbwidth-1 bbstyle-dashed bcolor-neutral-500"
                     gap-5="md"
                     bradtl-3="md"
                     bradtr-3="md">
                     <li class="d-flex ai-center">
                         <a  href="/"
                             class="p-5 | td-none fvs-wght-700 lsp-5 fs-8 tws-balance | c-neutral-900">
-                            {{ config.siteTitle[pageLang] }}
+                            {{ libdocConfig.siteTitle[pageLang] }}
                         </a>
                     </li>
                     <li d-none="xs,sm">
@@ -135,32 +135,32 @@
                             class="d-flex fd-column | pos-relative | pl-5 pr-5 | search_form">
                             <label for="searchInput"
                                 class="pos-absolute | ml-5 t-tY-50 | fvs-wght-400 fs-1 tt-uppercase | bc-neutral-100">
-                                {{ messages.search[pageLang] }}
+                                {{ libdocMessages.search[pageLang] }}
                             </label>
                             <input  id="searchInput"
                                     type="search"
                                     name="search"
                                     class="pl-5 pr-5 pt-4 pb-4 | fs-3 | bc-neutral-100 brad-4 bwidth-1 bstyle-dashed bcolor-neutral-500"
-                                    placeholder="{{ messages.searchPlaceholder[pageLang] }}"
+                                    placeholder="{{ libdocMessages.searchPlaceholder[pageLang] }}"
                                     value="">
                             <div class="d-flex ai-center | pos-absolute top-0 right-0 | h-100 mr-5">
                                 <button type="button"
                                     class="pos-relative | p-4 pr-5 | fs-3 | brad- bc-neutral-100 c-neutral-900 b-0 cur-pointer | search_form__clear_btn"
-                                    title="{{ messages.searchClear[pageLang] }}"
+                                    title="{{ libdocMessages.searchClear[pageLang] }}"
                                     hidden>
                                     <span class="icon-x | pos-absolute top-50 left-50 t-tY-50 t-tX-50"></span>
                                 </button>
                                 <button type="submit"
                                     class="pos-relative | h-100 p-0 ar-square | fs-5 | brad-4 bc-primary-500 c-neutral-100 bwidth-1 bstyle-dashed bcolor-neutral-100 cur-pointer"
-                                    title="{{ messages.searchSubmit[pageLang] }}">
+                                    title="{{ libdocMessages.searchSubmit[pageLang] }}">
                                     <span class="icon-magnifying-glass | pos-absolute top-50 left-50 t-tY-50 t-tX-50"></span>
                                 </button>
                             </div>
                         </form>
                     </li>
-                    {% if config.customLinks.size > 0 %}
+                    {% if libdocConfig.customLinks.size > 0 %}
                         <li class="d-flex ai-center fw-wrap | pb-3">
-                            {% for item in config.customLinks %}
+                            {% for item in libdocConfig.customLinks %}
                                 <a  href="{{ item.url }}"
                                     style="width:33.33%"
                                     class="
@@ -178,23 +178,23 @@
                 </menu>
                 
                 {% if collections.post.size > 0 %}
-                    <a  href="/{{ config.blogSlug }}/"
+                    <a  href="/{{ libdocConfig.blogSlug }}/"
                         id="nav_primary_blog_link"
                         class="d-flex ai-center | pt-5 pb-5 pl-3 | fvs-wght-500 fs-4 td-none | c-neutral-900 bbwidth-1 bbstyle-dashed bcolor-neutral-500 cur-pointer">
                         <span class="d-flex ai-center gap-2 | lsp-2">
                             <span class="icon-tag-simple | fs-6 | c-primary-500"></span>
-                            {{ config.blogTitle[pageLang] }}
+                            {{ libdocConfig.blogTitle[pageLang] }}
                         </span>
                     </a>
                 {% endif %}
 
-                {% if collections.myTags.size > 0 and config.displayTagsListLink %}
+                {% if collections.myTags.size > 0 and libdocConfig.displayTagsListLink %}
                     <a  href="/tags/"
                         id="nav_primary_blog_link"
                         class="d-flex ai-center | pt-5 pb-5 pl-3 | fvs-wght-500 fs-4 td-none | c-neutral-900 bbwidth-1 bbstyle-dashed bcolor-neutral-500 cur-pointer">
                         <span class="d-flex ai-center gap-2 | lsp-2">
                             <span class="icon-tag-simple | fs-6 | c-primary-500"></span>
-                            {{ messages.tagsList[pageLang] }}
+                            {{ libdocMessages.tagsList[pageLang] }}
                         </span>
                     </a>
                 {% endif %}
@@ -206,14 +206,14 @@
             w-100-minus-sidebar="md"
             w-100="xs,sm">
             {% block content %}
-                <header class="d-flex fd-column | pt-5 {% if pageUrlSplit[1] != 'tags' and pageUrlSplit[1] != config.blogSlug %}pb-7{% endif %}">
+                <header class="d-flex fd-column | pt-5 {% if pageUrlSplit[1] != 'tags' and pageUrlSplit[1] != libdocConfig.blogSlug %}pb-7{% endif %}">
                     {{ breadcrumbMarkup }}
                     <h1 class="mt-3 mb-0 | lsp-5 fvs-wght-700 tws-balance"
                         fs-10="md"
                         fs-9="xs,sm">
                         {{ pageTitle }}
                     </h1>
-                    {% if pageDescription %}
+                    {% if pageDescription != '' %}
                         <p class="d-flex ai-center fw-wrap gap-2 | pt-5 pl-5 pb-5 m-0 | fvs-wght-400 tws-balance fs-7 lsp-3 lh-5 | blwidth-1 blstyle-dashed bcolor-neutral-500"
                             pt-3="xs"
                             pb-3="xs"
@@ -247,13 +247,13 @@
                                     fs-2="xs">
                                     <span class="icon-calendar-dots fs-6"></span>
                                     <span ws-nowrap="sm,md">
-                                        <span class="ws-nowrap">{{ messages.lastModified[pageLang] }}</span>
+                                        <span class="ws-nowrap">{{ libdocMessages.lastModified[pageLang] }}</span>
                                         {{ page.date|dateString }}
                                     </span>
                                 </p>
                             {% endif %}
                             <div class="pl-5 w-100 | bbwidth-1 bbstyle-dashed bcolor-neutral-500"></div>
-                            {% if author != false and pageAuthor != false and config.displayAuthor %}
+                            {% if author != false and pageAuthor != false and libdocConfig.displayAuthor %}
                                 <div class="d-flex ai-center gap-3">
                                     <div class="pos-relative | p-5 | brad-4 bc-neutral-100 bwidth-1 bstyle-dashed bcolor-neutral-500">
                                         <div class="icon-user | pos-absolute top-50 left-50 t-tY-50 t-tX-50 | fs-6"></div>
@@ -276,7 +276,7 @@
                                 <span class="d-flex ai-center gap-1 | lsp-2">
                                     <span class="icon-minus-circle | fs-6 | c-primary-500"></span>
                                     <span class="icon-plus-circle | fs-6 | c-primary-500"></span>
-                                    {{ messages.tableOfContent[pageLang] }}
+                                    {{ libdocMessages.tableOfContent[pageLang] }}
                                 </span>
                             </summary>
                             {{ tocMarkup }}

@@ -140,7 +140,7 @@ const sandbox = {
             elBtn.classList.add('pe-none');
             libdocUi.copyToClipboard(code, {notificationEnabled: false});
             if (elBtn.dataset.originalText === undefined) elBtn.dataset.originalText = elBtn.innerText;
-            elBtn.innerHTML = '<span class="c-success-500">Copied!</span>';
+            elBtn.innerHTML = `<span class="c-success-500">${libdocMessages.copied}!</span>`;
             setTimeout(function() {
                 elBtn.innerHTML = elBtn.dataset.originalText;
                 elBtn.classList.remove('pe-none');
@@ -152,7 +152,7 @@ const sandbox = {
             elBtn.classList.add('pe-none');
             libdocUi.copyToClipboard(permalink, {notificationEnabled: false});
             if (elBtn.dataset.originalText === undefined) elBtn.dataset.originalText = elBtn.innerText;
-            elBtn.innerHTML = '<span class="c-success-500">Copied!</span>';
+            elBtn.innerHTML = `<span class="c-success-500">${libdocMessages.copied}!</span>`;
             setTimeout(function() {
                 elBtn.innerHTML = elBtn.dataset.originalText;
                 elBtn.classList.remove('pe-none');
@@ -167,7 +167,7 @@ const sandbox = {
             elTargetDocument.location.reload();
             elTargetWindow.scroll(0,0);
             if (elBtn.dataset.originalText === undefined) elBtn.dataset.originalText = elBtn.innerText;
-            elBtn.innerHTML = '<span class="c-success-500">Reloaded!</span>';
+            elBtn.innerHTML = `<span class="c-success-500">${libdocMessages.reloaded}!</span>`;
             setTimeout(function() {
                 elBtn.innerHTML = elBtn.dataset.originalText;
                 elBtn.classList.remove('pe-none');

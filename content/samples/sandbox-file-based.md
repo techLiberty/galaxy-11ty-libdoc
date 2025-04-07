@@ -6,8 +6,11 @@ eleventyNavigation:
     key: Sandbox from file
     parent: Samples
 ---
+
+Every sandox **must** must be placed into the `sandbox` folder.
+
 ```liquid
-{% raw %}{% render 'sandbox', path: '/path/to/file/index.html' %}{% endraw %}
+{% raw %}{% render 'sandbox', path: '/sandboxes/to/file/index.html' %}{% endraw %}
 ```
 
 {% render 'sandbox', path: '/sandboxes/2/index.html', title: 'Mon titre spécial très très long et beaucoup de texte' %}
