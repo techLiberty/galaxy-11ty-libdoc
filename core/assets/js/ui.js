@@ -465,7 +465,7 @@ const libdocUi = {
         if (elCurrentPageLink !== null && elNavP !== null) {
             if (elCurrentPageLink.clientHeight + elCurrentPageLink.offsetTop > elNavP.clientHeight) {
                 elNavP.scroll({
-                    top: (elCurrentPageLink.offsetTop - 2 * elCurrentPageLink.clientHeight)
+                    top: (elCurrentPageLink.offsetTop - elCurrentPageLink.clientHeight)
                 });
             }
         }
