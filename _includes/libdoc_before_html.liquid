@@ -19,8 +19,8 @@
             {{ pagination.pageNumber | plus: 1 }}
         {% endif %}
     {%- endcapture -%}
-    {%- assign pageTitle = libdocConfig.blogTitle[pageLang] | append: extendedTitle -%}
-    {%- assign pageDescription = libdocConfig.blogDescription[pageLang] -%}
+    {%- assign pageTitle = libdocConfig.blogTitle | append: extendedTitle -%}
+    {%- assign pageDescription = libdocConfig.blogDescription -%}
     {%- assign pageAuthor = libdocConfig.blogAuthor -%}
 {% endif %}
 

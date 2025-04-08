@@ -1,13 +1,7 @@
 {
-    "lang": "fr",
-    "siteTitle": {
-        "en": "Eleventy LibDoc",
-        "fr": "11ty Libdoc"
-    },
-    "siteDescription": {
-        "en": "Just and Eleventy SSG starter project to create documentation website",
-        "fr": "Un template Eleventy dédié à la création de documentation"
-    },
+    "lang": "en",
+    "siteTitle": "Eleventy Libdoc",
+    "siteDescription": "Just and Eleventy SSG starter project to create documentation website",
     "author": "Olivier 3lanc",
     "displayAuthor": true,
     "themeColorHex": "#FFFFFF",
@@ -27,14 +21,8 @@
             "text": "LinkedIn"
         }
     ],
-    "blogTitle": {
-        "en": "My Posts",
-        "fr": "Blog"
-    },
-    "blogDescription": {
-        "en": "My own description for my blog",
-        "fr": "Description de mon blog"
-    },
+    "blogTitle": "My Posts",
+    "blogDescription": "My own description for my blog",
     "blogAuthor": "The Front Club Team",
     "blogSlug": "posts",
     "displayTagsListLink": true,
