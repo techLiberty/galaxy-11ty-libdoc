@@ -130,7 +130,12 @@ main *::selection {
 main > * {
     display: block;
     width: 100%;
-    max-width: calc(var(--libdoc-container-width) + 2 * var(--ita-spacings-9));
+    /* max-width: calc(var(--libdoc-container-width) + 2 * var(--ita-spacings-9)); */
+    max-width: clamp(
+        calc(var(--ita-widths-content) - 200px),
+        calc(100% - 3 * var(--ita-spacings-5)),
+        calc(var(--ita-widths-content) + 2 * var(--ita-spacings-9))
+    );
     margin-left: auto;
     margin-right: auto;
     padding-left: var(--ita-spacings-9);
@@ -474,31 +479,53 @@ main > figure {
     flex-direction: column;
     align-items: center;
     row-gap: 1em;
-    padding: var(--ita-spacings-9);
+    padding-top: var(--ita-spacings-9);
+    padding-bottom: var(--ita-spacings-9);
     background-color: var(--ita-colors-neutral-100);
     border-radius: 12px;
     border: 1px solid var(--ita-colors-neutral-400);
     overflow: hidden;
+    /* max-width: clamp(var(--ita-widths-content), calc(100% - 3 * var(--ita-spacings-5)), calc(var(--ita-widths-content) + 2 * var(--ita-spacings-9))); */
 }
-main > figure.dark {
+main > picture {
+    padding-top: var(--ita-spacings-9);
+    padding-bottom: var(--ita-spacings-9);
+}
+main > figure.dark,
+main > picture:has(.dark) > img {
     color: var(--ita-colors-neutral-100);
     background-color: var(--ita-colors-neutral-900);
 }
-main > figure.damier > picture > img {
+main > picture:has(.light) > img {
+    color: var(--ita-colors-neutral-900);
+    background-color: var(--ita-colors-neutral-100);
+}
+main > figure.damier > picture > img,
+main > picture:has(.damier) > img {
     background: var(--libdoc-damier);
 }
-main > figure.rounded-corners > picture > img {
+main > figure.rounded-corners > picture > img,
+main > picture:has(.rounded-corners) > img {
     border-radius: 6px;
 }
 main > figure.long-shadow {
     row-gap: 2em;
 }
-main > figure.long-shadow > picture > img {
+main > figure.long-shadow > picture > img,
+main > picture:has(.long-shadow) > img {
     box-shadow: var(--libdoc-long-shadow);
+}
+main > figure.filter-long-shadow > picture > img,
+main > picture:has(.filter-long-shadow) > img {
+    filter: drop-shadow(1em 1em 1em rgba(0,0,0,0.8));
 }
 main > figure > figcaption {
     font-size: var(--ita-fontSizes-4);
     font-variation-settings: "slnt" -5, "CASL" 0, "CRSV" 1.0, "MONO" 0, "wght" 300;
+}
+main > figure.wide,
+main > picture:has(.wide) {
+    max-width: clamp(calc(var(--ita-widths-content) - 200px), calc(100vw - var(--ita-widths-sidebar) - 4 * var(--ita-spacings-5)), calc(2 * var(--ita-widths-content)));
 }
 /* VIDEO */
 main > video {
@@ -619,7 +646,7 @@ main .__search-occurrence {
 
 /* SANDBOX */
 .sandbox {
-    max-width: 1440px;
+    max-width: calc(2 * var(--libdoc-container-width));
     margin-left: auto;
     margin-right: auto;
 }
@@ -695,11 +722,12 @@ main .__search-occurrence {
     main > pre {
         padding: var(--ita-spacings-5);
     }
-    main > picture {
+    main > picture,
+    main > figure,
+    main > figure.wide,
+    main > picture:has(.wide) {
         padding: var(--ita-spacings-5);
-    }
-    main > figure {
-        padding: var(--ita-spacings-5);
+        max-width: calc(calc(var(--ita-widths-content) + 2 * var(--ita-spacings-5)));
     }
 }
 

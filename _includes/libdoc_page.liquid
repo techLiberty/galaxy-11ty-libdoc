@@ -284,12 +284,12 @@
                     {% endif %}
                 </header>
                 {{ content | cleanup | autoids }}
-                <footer class="pt-11 pb-11">
+                <footer class="pt-11 pb-11 minh-100vh">
                     <p class="m-0 | fs-2">
                         <a  href="https://github.com/ita-design-system/eleventy-libdoc"
                             target="_blank"
                             class="td-none">
-                            11ty LibDoc
+                            11ty LibDoc {{ libdocUtils.version }}
                         </a>
                     </p>
                 </footer>

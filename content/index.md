@@ -3,9 +3,8 @@ title: Eleventy LibDoc
 description: Just and Eleventy SSG starter project to create documentation website
 layout: libdoc_page.liquid
 permalink: index.html
-
 ---
-{{ site.name | json }}
+
 ## Headers
 
 # This is a H1 heading

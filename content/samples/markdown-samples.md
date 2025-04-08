@@ -190,6 +190,49 @@ Some text to show that the reference links can follow later.
 
 ## Images
 
+<figure class="rounded-corners long-shadow wide">
+  <img src="./grue-royale.svg" alt="best car">
+  <figcaption>Best car Skoda mon alt Dolor lorem eirmod stet elitr lorem labore lorem sed rebum, voluptua clita lorem diam lorem, dolor et aliquyam clita consetetur.</figcaption>
+</figure>
+
+Most simple case with markdown ![svg](./grue-royale.svg) 
+
+Most simple case with markdown ![gypaetus barbatus](./gypaetus-barbatus-peisey.png) 
+
+With a markdown link [![alt text](./gypaetus-barbatus-peisey.png)](./gypaetus-barbatus-peisey.png)
+
+With a markdown link and image width smaller than content width [![alt text](/favicon.png)](/content/index.md)
+
+With a markdown link and image width smaller than content width <img src="/favicon.png" alt="alt text" width="64" height="64">
+
+<img src="./gypaetus-barbatus-peisey.png" alt="best car">
+
+<img src="./gypaetus-barbatus-peisey.png" alt="best car" class="rounded-corners">
+
+<img src="./gypaetus-barbatus-peisey.png" alt="best car" class="long-shadow">
+
+<img src="./gypaetus-barbatus-peisey.png" alt="best car" class="wide" eleventy:widths="1400,2800">
+
+<img src="./oktavia.png" alt="best car" class="light">
+
+<img src="./oktavia.png" alt="best car" class="dark">
+
+<img src="./oktavia.png" alt="best car" class="damier">
+
+<img src="./oktavia.png" alt="best car" class="rounded-corners">
+
+<img src="./oktavia.png" alt="best car" class="long-shadow">
+
+<img src="./oktavia.png" alt="best car" class="filter-long-shadow">
+
+<img src="./skoda-best-winner-car-2022.jpg" alt="best car" class="wide" eleventy:widths="1400,2800">
+
+<img src="./skoda-best-winner-car-2022.jpg" alt="best car" class="rounded-corners long-shadow wide" eleventy:widths="1400,2800">
+
+<a href="/content/examples/example-2.md">
+  <img src="./oktavia.png" alt="best car">
+</a>
+
 Here's our logo (hover to see the title text):
 
 <img src="./skoda-best-winner-car-2022.jpg" alt="This is my description">
@@ -197,8 +240,9 @@ Here's our logo (hover to see the title text):
 <a href="bricss.md"><img src="./skoda-best-winner-car-2022.jpg" alt="This is my description"></a>
 
 ![Oktavia](./oktavia.png)
-Lorem ipsum ![mon alt](./skoda-best-winner-car-2022.jpg) 
+
 ![suv](https://raw.githubusercontent.com/ita-design-system/ug-releases/refs/heads/main/ui/medias/suv.png) Lorem ipsum ![SVG Alt](https://raw.githubusercontent.com/ita-design-system/ug-releases/main/ui/medias/solutions-cover.svg) and [![SVG Alt link](https://raw.githubusercontent.com/ita-design-system/ug-releases/main/ui/medias/2-people-and-dog.svg)](#svg) and [![alt text](https://github.com/adam-p/markdown-here/raw/master/src/common/images/icon48.png "Logo Title Text 1")](#)
+
 
 <figure>
   <img src="./oktavia.png" alt="best car">
@@ -237,6 +281,11 @@ Lorem ipsum ![mon alt](./skoda-best-winner-car-2022.jpg)
 
 <figure class="rounded-corners long-shadow">
   <img src="./skoda-best-winner-car-2022.jpg" alt="best car">
+  <figcaption>Best car Skoda mon alt Dolor lorem eirmod stet elitr lorem labore lorem sed rebum, voluptua clita lorem diam lorem, dolor et aliquyam clita consetetur.</figcaption>
+</figure>
+
+<figure class="rounded-corners long-shadow wide">
+  <img src="./skoda-best-winner-car-2022.jpg" alt="best car" eleventy:widths="1400,2800">
   <figcaption>Best car Skoda mon alt Dolor lorem eirmod stet elitr lorem labore lorem sed rebum, voluptua clita lorem diam lorem, dolor et aliquyam clita consetetur.</figcaption>
 </figure>
 

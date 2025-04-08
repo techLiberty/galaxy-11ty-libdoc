@@ -1,6 +1,10 @@
 import libdocMessages from "./libdocMessages.json" with { "type": "json" };
 import libdocConfig from "./libdocConfig.json" with { "type": "json" };
+import libdocPackage from "../package.json" with { "type": "json" };
 export default {
+    version: function() {
+        return libdocPackage.version
+    },
     // environment: process.env.MY_ENVIRONMENT || "development",
     HTMLEncode: function(str) {
         // https://stackoverflow.com/a/784765

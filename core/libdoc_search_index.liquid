@@ -8,18 +8,18 @@ eleventyExcludeFromCollections: true
             {% for tagName in collections.myTags %}
                 {
                     "url": "/tags/{{ tagName }}",
-                    "title": "Tag",
+                    "title": "{{ libdocMessages.tag[pageLang] }}",
                     "content": " {{ tagName }} "
                 }{% if forloop.last == false %},{% endif %}
             {% endfor %},
         {% endif %}
-        {% for post in collections.all %}
-            {%- assign postUrlSplit = post.url | split: '/' -%}
-            {% if pageUrlSplit[1] != postUrlSplit[1] %}
+        {% for item in collections.all %}
+            {%- assign itemUrlSplit = item.url | split: '/' -%}
+            {% if pageUrlSplit[1] != itemUrlSplit[1] or item.url == '/' %}
                 {
-                    "url": "{{ post.url }}",
-                    "title": "{% if post.data.eleventyNavigation.key %}{{ post.data.eleventyNavigation.key }}{% else %}{{ post.data.title | default: post.inputPath }}{% endif %}",
-                    "content": "{{ post.data.description | strip_newlines | strip_html }} {{ post.data.tags | join: ' ' }} {{ post.content | strip_newlines | strip_html }}"
+                    "url": "{{ item.url }}",
+                    "title": "{% if item.data.eleventyNavigation.key %}{{ item.data.eleventyNavigation.key }}{% else %}{{ item.data.title | default: item.inputPath }}{% endif %}",
+                    "content": "{{ item.data.description | strip_newlines | strip_html }} {{ item.data.tags | join: ' ' }} {{ item.content | strip_newlines | strip_html }}"
                 }{% if forloop.last == false %},{% endif %}
             {% endif %}
         {% endfor %}

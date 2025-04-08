@@ -139,6 +139,10 @@
         "en": "Table of content",
         "fr": "Table des matières"
     },
+    "tag": {
+        "en": "Tag",
+        "fr": "Tag"
+    },
     "tagsList": {
         "en": "Tags list",
         "fr": "Liste des tags"
