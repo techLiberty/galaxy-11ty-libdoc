@@ -1,6 +1,6 @@
 /**
 * C-TOGGLE
-* v0.3.0
+* v0.3.1
 * Toggle management
 * https://github.com/ita-design-system/c-toggle.js
 */
@@ -177,7 +177,7 @@ const cToggle = {
                 }
                 // Write/overwrite instance
                 cToggle.instances[toggle_id] = {
-                    triggers: [el_trigger],
+                    triggers: document.querySelectorAll(`[c-toggle="${toggle_id}"]`),
                     targets: els_targets,
                     opened: false
                 }
