@@ -11,8 +11,8 @@ eleventyExcludeFromCollections: true
                     "title": "Tag",
                     "content": " {{ tagName }} "
                 }{% if forloop.last == false %},{% endif %}
-            {% endfor %}
-        {% endif %},
+            {% endfor %},
+        {% endif %}
         {% for post in collections.all %}
             {%- assign postUrlSplit = post.url | split: '/' -%}
             {% if pageUrlSplit[1] != postUrlSplit[1] %}
