@@ -15,7 +15,7 @@ export default function(eleventyConfig) {
     eleventyConfig.addPlugin(eleventyImageTransformPlugin, {
 		// output image formats
 		formats: ["svg", "avif", "webp"],
-        useCache: false,
+        // useCache: false,
 
 		// output image widths
 		widths: [1400],

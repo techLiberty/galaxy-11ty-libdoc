@@ -1,311 +1,126 @@
 ---
-# title: Markdown Samples
-description: All available markdown tags into a single page with examples
-layout: libdoc_page.liquid
-date: false
-author: false
-tags:
-  - foo
-  - DOM
 eleventyNavigation:
-    key: Samples
-    title: Markdown Samples
-    order: 20
+    key: Widgets
+    # title: Markdown Samples
+    # order: 20
+# title: Markdown Samples
+description: Pre made snippets that enhance the display of the content
+layout: libdoc_page.liquid
+permalink: widgets/index.html
+# date: false
+# author: false
 ---
 
-## Headings
 
-[MDN reference](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/Heading_Elements)
+## Advanced image widgets
 
-# H1
-## H2
-### H3
-#### H4
-##### H5
-###### H6
+With a markdown link and image width smaller than content width <img src="/favicon.png" alt="alt text">
 
-Alternative syntax
+<img src="/content/medias/gypaetus-barbatus-peisey.png" alt="Pierra Menta">
 
-Alt-H1
-======
+<img src="/content/medias/gypaetus-barbatus-peisey.png" alt="Pierra Menta" class="rounded-corners">
 
-Alt-H2
-------
+<img src="/content/medias/gypaetus-barbatus-peisey.png" alt="Pierra Menta" class="long-shadow">
 
-```markdown
-# H1
-## H2
-### H3
-#### H4
-##### H5
-###### H6
+<img src="/content/medias/gypaetus-barbatus-peisey.png" alt="Pierra Menta" class="filter-long-shadow">
 
-Alternative syntax
+<img src="/content/medias/gypaetus-barbatus-peisey.png" alt="Pierra Menta" class="wide" eleventy:widths="1400,2800">
 
-Alt-H1
-======
+<img src="/content/medias/pierra-menta.jpg" alt="Pierra Menta" class="light">
 
-Alt-H2
-------
-```
+<img src="/content/medias/pierra-menta.jpg" alt="Pierra Menta" class="dark">
 
-## Emphasis
+<img src="/content/medias/pierra-menta.jpg" alt="Pierra Menta" class="damier">
 
+<img src="/content/medias/pierra-menta.jpg" alt="Pierra Menta" class="rounded-corners">
 
-Lightest emphasis is set with single *asterisks* or _underscores_.
+<img src="/content/medias/pierra-menta.jpg" alt="Pierra Menta" class="long-shadow">
 
-Strong emphasis is set with double **asterisks** or __underscores__.
+<img src="/content/medias/pierra-menta.jpg" alt="Pierra Menta" class="filter-long-shadow">
 
-It is possible to combined both emphasis with **asterisks and _underscores_**.
+<img src="/content/medias/pierra-menta.jpg" alt="Pierra Menta" class="wide" eleventy:widths="1400,2800">
 
-Strikethrough using two tildes. ~~this text is scratched.~~
-
-```markdown
-Lightest emphasis is set with single *asterisks* or _underscores_.
-
-Strong emphasis is set with double **asterisks** or __underscores__.
-
-It is possible to combined both emphasis with **asterisks and _underscores_**.
-
-Strikethrough using two tildes. ~~this text is scratched.~~
-```
-
-## Lists
-
-1. First ordered list item
-2. Another item
-    1. Sub First ordered list item
-    2. Sub Another item
-    3. Sub Unordered sub-list.
-        1. Sub Sub First ordered list item
-        2. Sub Sub Another item
-        3. Sub Sub Unordered sub-list. 
-        4. Sub Sub Actual numbers don't matter, just that it's a number sdjkhf qskdjgh dsqlkgjh qsldkggjh qskdjgh qskjldgh qljsgh qlkhsjdg lq
-        5. Sub Sub Ordered sub-list
-        6. Sub Sub And another item.
-    4. Sub Actual numbers don't matter, just that it's a number
-    5. Sub Ordered sub-list
-    6. Sub And another item.
-3. Unordered sub-list. 
-4. Actual numbers don't matter, just that it's a number
-5. Ordered sub-list
-6. And another item.
-7. And another item.
-8. And another item.
-9. And another item.    
-10. And another item.
-
-⋅⋅⋅You can have properly indented paragraphs within list items. Notice the blank line above, and the leading spaces (at least one, but we'll use three here to also align the raw Markdown).
-
-⋅⋅⋅To have a line break without a paragraph, you will need to use two trailing spaces.⋅⋅
-⋅⋅⋅Note that this line is separate, but within the same paragraph.⋅⋅
-⋅⋅⋅(This is contrary to the typical GFM line break behaviour, where trailing spaces are not required.)
-
-* Unordered list can use asterisks
-* Or minuses
-    * Sub Unordered list can use asterisks
-    * Sub Or minuses
-        * Sub sub Unordered list can use asterisks
-        * Sub sub Or minuses
-        * Sub sub Or pluses Et est est magna voluptua et ut. Eirmod kasd et sit invidunt. Justo et clita magna accusam ea kasd sadipscing et, est et dolor amet lorem no diam et sed diam, diam diam rebum dolor rebum, sea accusam dolores et sed diam sadipscing magna gubergren, rebum diam sit diam lorem.
-        * Sub sub And another item.
-        * Sub sub And another item.
-    * Sub Or pluses
-    * Sub And another item.
-    * Sub And another item.
-* Or pluses
-* And another item.
-* And another item.
-
-```markdown
-1. First ordered list item
-2. Another item
-⋅⋅* Unordered sub-list. 
-1. Actual numbers don't matter, just that it's a number
-⋅⋅1. Ordered sub-list
-4. And another item.
-
-⋅⋅⋅You can have properly indented paragraphs within list items. Notice the blank line above, and the leading spaces (at least one, but we'll use three here to also align the raw Markdown).
-
-⋅⋅⋅To have a line break without a paragraph, you will need to use two trailing spaces.⋅⋅
-⋅⋅⋅Note that this line is separate, but within the same paragraph.⋅⋅
-⋅⋅⋅(This is contrary to the typical GFM line break behaviour, where trailing spaces are not required.)
-
-* Unordered list can use asterisks
-- Or minuses
-+ Or pluses
-```
-
-## Links
-
-There are two ways to create links.
-
-[I'm an inline-style link](https://www.google.com)
-
-[I'm an inline-style link with title](https://www.google.com "Google's Homepage")
-
-[I'm a reference-style link][Arbitrary case-insensitive reference text]
-
-[I'm a relative reference to a repository file](../blob/master/LICENSE)
-
-[You can use numbers for reference-style link definitions][1]
-
-Or leave it empty and use the [link text itself].
-
-URLs and URLs in angle brackets will automatically get turned into links. 
-http://www.example.com or <http://www.example.com> and sometimes 
-example.com (but not on Github, for example).
-
-Some text to show that the reference links can follow later.
-
-[arbitrary case-insensitive reference text]: https://www.mozilla.org
-[1]: http://slashdot.org
-[link text itself]: http://www.reddit.com
-
-```markdown
-There are two ways to create links.
-
-[I'm an inline-style link](https://www.google.com)
-
-[I'm an inline-style link with title](https://www.google.com "Google's Homepage")
-
-[I'm a reference-style link][Arbitrary case-insensitive reference text]
-
-[I'm a relative reference to a repository file](../blob/master/LICENSE)
-
-[You can use numbers for reference-style link definitions][1]
-
-Or leave it empty and use the [link text itself].
-
-URLs and URLs in angle brackets will automatically get turned into links. 
-http://www.example.com or <http://www.example.com> and sometimes 
-example.com (but not on Github, for example).
-
-Some text to show that the reference links can follow later.
-
-[arbitrary case-insensitive reference text]: https://www.mozilla.org
-[1]: http://slashdot.org
-[link text itself]: http://www.reddit.com
-```
-
-## Images
-
-<figure class="rounded-corners long-shadow wide">
-  <img src="./grue-royale.svg" alt="best car">
-  <figcaption>Best car Skoda mon alt Dolor lorem eirmod stet elitr lorem labore lorem sed rebum, voluptua clita lorem diam lorem, dolor et aliquyam clita consetetur.</figcaption>
-</figure>
-
-Most simple case with markdown ![svg](./grue-royale.svg) 
-
-Most simple case with markdown ![gypaetus barbatus](./gypaetus-barbatus-peisey.png) 
-
-With a markdown link [![alt text](./gypaetus-barbatus-peisey.png)](./gypaetus-barbatus-peisey.png)
-
-With a markdown link and image width smaller than content width [![alt text](/favicon.png)](/content/index.md)
-
-With a markdown link and image width smaller than content width <img src="/favicon.png" alt="alt text" width="64" height="64">
-
-<img src="./gypaetus-barbatus-peisey.png" alt="best car">
-
-<img src="./gypaetus-barbatus-peisey.png" alt="best car" class="rounded-corners">
-
-<img src="./gypaetus-barbatus-peisey.png" alt="best car" class="long-shadow">
-
-<img src="./gypaetus-barbatus-peisey.png" alt="best car" class="wide" eleventy:widths="1400,2800">
-
-<img src="./oktavia.png" alt="best car" class="light">
-
-<img src="./oktavia.png" alt="best car" class="dark">
-
-<img src="./oktavia.png" alt="best car" class="damier">
-
-<img src="./oktavia.png" alt="best car" class="rounded-corners">
-
-<img src="./oktavia.png" alt="best car" class="long-shadow">
-
-<img src="./oktavia.png" alt="best car" class="filter-long-shadow">
-
-<img src="./skoda-best-winner-car-2022.jpg" alt="best car" class="wide" eleventy:widths="1400,2800">
-
-<img src="./skoda-best-winner-car-2022.jpg" alt="best car" class="rounded-corners long-shadow wide" eleventy:widths="1400,2800">
+<img src="/content/medias/pierra-menta.jpg" alt="Pierra Menta" class="rounded-corners long-shadow wide" eleventy:widths="1400,2800">
 
 <a href="/content/examples/example-2.md">
-  <img src="./oktavia.png" alt="best car">
+  <img src="/content/medias/pierra-menta.jpg" alt="Pierra Menta">
 </a>
 
 Here's our logo (hover to see the title text):
 
-<img src="./skoda-best-winner-car-2022.jpg" alt="This is my description">
+<img src="/content/medias/pierra-menta.jpg" alt="This is my description">
 
-<a href="bricss.md"><img src="./skoda-best-winner-car-2022.jpg" alt="This is my description"></a>
+<a href="bricss.md"><img src="/content/medias/pierra-menta.jpg" alt="This is my description"></a>
 
-![Oktavia](./oktavia.png)
 
-![suv](https://raw.githubusercontent.com/ita-design-system/ug-releases/refs/heads/main/ui/medias/suv.png) Lorem ipsum ![SVG Alt](https://raw.githubusercontent.com/ita-design-system/ug-releases/main/ui/medias/solutions-cover.svg) and [![SVG Alt link](https://raw.githubusercontent.com/ita-design-system/ug-releases/main/ui/medias/2-people-and-dog.svg)](#svg) and [![alt text](https://github.com/adam-p/markdown-here/raw/master/src/common/images/icon48.png "Logo Title Text 1")](#)
+<figure class="rounded-corners long-shadow wide">
+  <img src="/content/medias/glossy-ibis-plegadis-falcinellus.svg" alt="Glossy ibis - Plegadis falcinellus">
+  <figcaption>Glossy ibis - Plegadis falcinellus</figcaption>
+</figure>
 
 
 <figure>
-  <img src="./oktavia.png" alt="best car">
+  <img src="/content/medias/pierra-menta.jpg" alt="Pierra Menta">
   <figcaption>Best car Skoda mon alt Dolor lorem eirmod stet elitr lorem labore lorem sed rebum, voluptua clita lorem diam lorem, dolor et aliquyam clita consetetur.</figcaption>
 </figure>
 
 <figure class="damier">
-  <img src="./oktavia.png" alt="best car">
+  <img src="/content/medias/pierra-menta.jpg" alt="Pierra Menta">
   <figcaption>Image with damier, just add class name <code>damier</code>.</figcaption>
 </figure>
 
 <figure class="dark">
-  <img src="./oktavia.png" alt="best car">
+  <img src="/content/medias/pierra-menta.jpg" alt="Pierra Menta">
   <figcaption>Best car Skoda mon alt Dolor lorem eirmod stet elitr lorem labore lorem sed rebum, voluptua clita lorem diam lorem, dolor et aliquyam clita consetetur.</figcaption>
 </figure>
 
 <figure class="dark damier">
-  <img src="./oktavia.png" alt="best car">
+  <img src="/content/medias/pierra-menta.jpg" alt="Pierra Menta">
   <figcaption>Best car Skoda mon alt Dolor lorem eirmod stet elitr lorem labore lorem sed rebum, voluptua clita lorem diam lorem, dolor et aliquyam clita consetetur.</figcaption>
 </figure>
 
 <figure>
-  <img src="./skoda-best-winner-car-2022.jpg" alt="best car">
+  <img src="/content/medias/pierra-menta.jpg" alt="Pierra Menta">
   <figcaption>Best car Skoda mon alt Dolor lorem eirmod stet elitr lorem labore lorem sed rebum, voluptua clita lorem diam lorem, dolor et aliquyam clita consetetur.</figcaption>
 </figure>
 
 <figure class="rounded-corners">
-  <img src="./skoda-best-winner-car-2022.jpg" alt="best car">
+  <img src="/content/medias/pierra-menta.jpg" alt="Pierra Menta">
   <figcaption>Best car Skoda mon alt Dolor lorem eirmod stet elitr lorem labore lorem sed rebum, voluptua clita lorem diam lorem, dolor et aliquyam clita consetetur.</figcaption>
 </figure>
 
 <figure class="long-shadow">
-  <img src="./skoda-best-winner-car-2022.jpg" alt="best car">
+  <img src="/content/medias/pierra-menta.jpg" alt="Pierra Menta">
   <figcaption>Best car Skoda mon alt Dolor lorem eirmod stet elitr lorem labore lorem sed rebum, voluptua clita lorem diam lorem, dolor et aliquyam clita consetetur.</figcaption>
 </figure>
 
 <figure class="rounded-corners long-shadow">
-  <img src="./skoda-best-winner-car-2022.jpg" alt="best car">
+  <img src="/content/medias/pierra-menta.jpg" alt="Pierra Menta">
   <figcaption>Best car Skoda mon alt Dolor lorem eirmod stet elitr lorem labore lorem sed rebum, voluptua clita lorem diam lorem, dolor et aliquyam clita consetetur.</figcaption>
 </figure>
 
 <figure class="rounded-corners long-shadow wide">
-  <img src="./skoda-best-winner-car-2022.jpg" alt="best car" eleventy:widths="1400,2800">
+  <img src="/content/medias/pierra-menta.jpg" alt="Pierra Menta" eleventy:widths="1400,2800">
   <figcaption>Best car Skoda mon alt Dolor lorem eirmod stet elitr lorem labore lorem sed rebum, voluptua clita lorem diam lorem, dolor et aliquyam clita consetetur.</figcaption>
 </figure>
 
 <figure class="rounded-corners damier">
   <figcaption>Best car Skoda mon alt Dolor lorem eirmod stet elitr lorem labore lorem sed rebum, voluptua clita lorem diam lorem, dolor et aliquyam clita consetetur.</figcaption>
-  <img src="./oktavia.png" alt="best car">
+  <img src="/content/medias/pierra-menta.jpg" alt="Pierra Menta">
 </figure>
 
 <figure class="rounded-corners damier">
-  <img src="./oktavia.png" alt="best car">
+  <img src="/content/medias/pierra-menta.jpg" alt="Pierra Menta">
   <figcaption>Best car Skoda mon alt Dolor lorem eirmod stet elitr lorem labore lorem sed rebum, voluptua clita lorem diam lorem, dolor et aliquyam clita consetetur.</figcaption>
 </figure>
 
 <figure class="rounded-corners damier dark">
   <figcaption>Best car Skoda mon alt Dolor lorem eirmod stet elitr lorem labore lorem sed rebum, voluptua clita lorem diam lorem, dolor et aliquyam clita consetetur.</figcaption>
-  <img src="./oktavia.png" alt="best car">
+  <img src="/content/medias/pierra-menta.jpg" alt="Pierra Menta">
 </figure>
 
 <figure class="rounded-corners damier dark">
-  <img src="./oktavia.png" alt="best car">
+  <img src="/content/medias/pierra-menta.jpg" alt="Pierra Menta">
   <figcaption>Best car Skoda mon alt Dolor lorem eirmod stet elitr lorem labore lorem sed rebum, voluptua clita lorem diam lorem, dolor et aliquyam clita consetetur.</figcaption>
 </figure>
 
