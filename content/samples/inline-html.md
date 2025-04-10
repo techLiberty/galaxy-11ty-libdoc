@@ -14,70 +14,215 @@ permalink: inline-html/index.html
 
 In addition of common [markdown](/content/samples/markdown.md), it is possible to use some raw HTML tags.
 
-<dl>
-  <dt>Definition list</dt>
-  <dd>Is something people use sometimes.</dd>
+## Definition lists
 
-  <dt>Markdown in HTML</dt>
-  <dd>Does *not* work **very** well. Use HTML <em>tags</em>.</dd>
+<dl>
+  <dt>Term</dt>
+  <dd>This is the text defining the term.</dd>
+  <dt>Markdown</dt>
+  <dd>Markdown is a lightweight markup language for creating formatted text using a plain-text editor. John Gruber created Markdown in 2004 as an easy-to-read markup language.</dd>
+  <dt>HTML<dt>
+  <dd>Hypertext Markup Language (HTML) is the standard markup language[a] for documents designed to be displayed in a web browser. It defines the content and structure of web content. It is often assisted by technologies such as Cascading Style Sheets (CSS) and scripting languages such as JavaScript, a programming language.</dd>
 </dl>
 
 ```html
 <dl>
-  <dt>Definition list</dt>
-  <dd>Is something people use sometimes.</dd>
-
-  <dt>Markdown in HTML</dt>
-  <dd>Does *not* work **very** well. Use HTML <em>tags</em>.</dd>
+  <dt>Term</dt>
+  <dd>This is the text defining the term.</dd>
+  <dt>Markdown</dt>
+  <dd>Markdown is a lightweight markup language for creating formatted text using a plain-text editor. John Gruber created Markdown in 2004 as an easy-to-read markup language.</dd>
+  <dt>HTML<dt>
+  <dd>Hypertext Markup Language (HTML) is the standard markup language[a] for documents designed to be displayed in a web browser. It defines the content and structure of web content. It is often assisted by technologies such as Cascading Style Sheets (CSS) and scripting languages such as JavaScript, a programming language.</dd>
 </dl>
 ```
-<p>
-    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus nisi lacus, auctor sit amet purus vel, gravida
-    luctus lectus. Aenean rhoncus dapibus enim, sit amet faucibus leo ornare vitae. <br>
-    <span> span </span>
-    <b>Bold word</b>
-    <i>italic</i>
-    <em>emphasis</em>
-    <mark>mark</mark>
-    <small> small </small>
-    <sub> sub </sub>
-    <sup> sup </sup>
-    <u> Statements... </u>
-    <abbr title="National Aeronautics and Space Administration">NASA</abbr>
-    <strike> strikethrough </strike>
-    <span><del> deprecated info </del> <ins> new info </ins> </span>
-    <s> not relevant </s>
-    <a href="#link">link</a>
-    <time datetime="2020-08-17 08:00">Monday at 8:00 AM</time>
-    <ruby>
-        <rb>ruby base</rb><rt>annotation
-    </rt></ruby>
-    <br>
-    <kbd>CTRL</kbd>+<kbd>ALT</kbd>+<kbd>CANC</kbd>
-</p>
 
-<p>“You're late!”</p>
-<del>
-  <p>“I apologize for the delay.”</p>
-</del>
-<ins cite="../howtobeawizard.html" datetime="2018-05">
-  <p>“A wizard is never late …”</p>
-</ins>
+[MDN Reference](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/dl)
 
-<p> This is a <q>short quote</q> </p>
+## Mark
+
+Here is a paragraph with a mark tag that <mark>highlights text fragment</mark>.
+
+```html
+Here is a paragraph with a mark tag that <mark>highlights text fragment</mark>.
+```
+
+[MDN Reference](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/mark)
+
+## Unarticulated annotation
+
+Here is a paragraph with an <u>unarticulated annotation</u>.
+
+```html
+Here is a paragraph with an <u>unarticulated annotation</u>.
+```
+
+[MDN Reference](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/u)
+
+## Side comment
+
+Eleventy LibDoc is a starter project to create documentation website.
+
+<small>Eleventy LibDoc is under MIT License.</small>
+
+```html
+<small>Eleventy LibDoc is under MIT License.</small>
+```
+
+[MDN Reference](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/small)
+
+## Sup
+
+Equation *a*<sup>2</sup> + *b*<sup>2</sup> = *c*<sup>2</sup> usually expresses the *Pythagorean theorem*.
+
+```markdown
+Equation *a*<sup>2</sup> + *b*<sup>2</sup> = *c*<sup>2</sup> usually expresses the *Pythagorean theorem*.
+```
+
+[MDN Reference](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/sup)
+
+## Sub
+
+Caffeine **C**<sub>8</sub>**H**<sub>10</sub>**N**<sub>4</sub>**O**<sub>2</sub> is known to be the favorite’s developer molecule.
+
+```html
+Caffeine **C**<sub>8</sub>**H**<sub>10</sub>**N**<sub>4</sub>**O**<sub>2</sub> is known to be the favorite’s developer molecule.
+```
+
+[MDN Reference](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/sub)
+
+## Abbr
+
+With <abbr title="Eleventy">11ty</abbr> you can use <abbr title="Cascading Style Sheets">CSS</abbr> to style your
+<abbr title="HyperText Markup Language">HTML</abbr>. Title attribute is optional.
+
+```markdown
+With <abbr title="Eleventy">11ty</abbr> you can use <abbr title="Cascading Style Sheets">CSS</abbr> to style your
+<abbr title="HyperText Markup Language">HTML</abbr>. Title attribute is optional.
+```
+
+[MDN Reference](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/abbr)
+
+## Strikethrough
+
+This tag is useful when you wish <s>to emphasis</s> to display something not relevant anymore.
+
+```html
+This tag is useful when you wish <s>to emphasis</s> to display something not relevant anymore.
+```
+ 
+[MDN Reference](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/s)
+
+## Deleted text
+
+When you want to display something that was <del>added</del> deleted.
+
+```html
+When you want to display something that was <del>added</del> deleted.
+```
+ 
+[MDN Reference](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/del)
+
+## Inserted text
+
+When you want to display something that was <ins>added</ins>.
+
+```html
+When you want to display something that was <ins>added</ins>.
+```
+ 
+[MDN Reference](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/ins)
+
+## Date Time
+
+The concert took place on <time datetime="2018-07-07">July 7th, 2018</time> 
+and started at <time datetime="PT20H30M">20h 30m</time>.
+
+```html
+The concert took place on <time datetime="2018-07-07">July 7th, 2018</time> 
+and started at <time datetime="PT20H30M">20h 30m</time>.
+```
+ 
+[MDN Reference](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/time)
+
+## Ruby
+
+Even if not common, ruby tag represents <ruby>small annotations<rt>Ruby</rt></ruby> that are rendered above spec (single work recommended).
+<ruby>A text fragment <rt>Description</rt></ruby> can be described.
+
+```html
+Even if not common, ruby tag represents <ruby>small annotations<rt>Ruby</rt></ruby> that are rendered above spec (single work recommended).
+<ruby>A text fragment <rt>Description</rt></ruby> can be described.
+```
+ 
+[MDN Reference](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/ruby)
+
+## Keyboard input element
+
+You can use <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>R</kbd> to refresh page and empty cache.
+
+```html
+You can use <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>R</kbd> to refresh page and empty cache.
+```
+ 
+[MDN Reference](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/kbd)
+
+
+## Inline quotation
+
+And then Albus says 
+<q cite="https://www.harrypotter.com/fr/features/pearls-of-wisdom-from-professor-dumbledore">
+It is our choices, Harry, that show what we truly are, far more than our abilities.
+</q> 
+to Harry.
+
+```html
+And then Albus says 
+<q cite="https://www.harrypotter.com/fr/features/pearls-of-wisdom-from-professor-dumbledore">
+It is our choices, Harry, that show what we truly are, far more than our abilities.
+</q> 
+to Harry.
+```
+ 
+[MDN Reference](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/q)
+
+## Details
 
 <details>
-    <summary>Summary of content below</summary>
-    <p>Content 1</p>
-    <p>Content 2</p>
-    <p>Content 3</p>
-    <p>Content 4</p>
+    <summary>LibDoc description</summary>
+    LibDoc is an <a href="https://www.11ty.dev">Eleventy</a> starter project dedicated to documentation.
 </details>
 
-<p>
-    <var> variable </var> = 1000;
-    <samp>Traceback (most recent call last):<br>NameError: name 'variabl' is not defined</samp>
-</p>
+```html
+<details>
+    <summary>LibDoc description</summary>
+    LibDoc is an <a href="https://www.11ty.dev">Eleventy</a> starter project dedicated to documentation.
+</details>
+```
+ 
+[MDN Reference](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/details)
 
+## Variable
 
-<hr>
+The volume of a box is <var>l</var> × <var>w</var> × <var>h</var>, where
+<var>l</var> represents the length, <var>w</var> the width and
+<var>h</var> the height of the box.
+
+```html
+The volume of a box is <var>l</var> × <var>w</var> × <var>h</var>, where
+<var>l</var> represents the length, <var>w</var> the width and
+<var>h</var> the height of the box.
+```
+ 
+[MDN Reference](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/var)
+
+## Sample output
+
+Neo wakes up and reads his screen saying, 
+<samp>The Matrix has you... Follow the white rabbit... Knock, knock, Neo.</samp>
+
+```html
+Neo wakes up and reads his screen saying, 
+<samp>The Matrix has you... Follow the white rabbit... Knock, knock, Neo.</samp>
+```
+ 
+[MDN Reference](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/samp)

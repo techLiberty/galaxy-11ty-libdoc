@@ -246,7 +246,7 @@ main mark {
 }
 main s,
 main strike {
-    text-decoration-color: var(--ita-colors-primary-500);
+    text-decoration-color: var(--ita-colors-danger-500);
     text-decoration-thickness: 0.05em;
     text-decoration-style: wavy;
     /* text-shadow: none; */
@@ -271,7 +271,12 @@ main ins * {
 }
 main samp {
     font-family: var(--libdoc-font-family);
-    font-variation-settings: "MONO" 1, "CASL" 1, "wght" 400;
+    font-variation-settings: "MONO" 1, "CASL" 0, "wght" 400;
+    letter-spacing: -0.04em;
+    color: var(--ita-colors-neutral-100);
+    background: var(--ita-colors-neutral-800);
+    border-radius: 3px;
+    padding: 0em 0.3em;
 }
 main q {
     font-variation-settings: "slnt" -15, "CRSV" 1, "CASL" 1, "wght" 400;
@@ -279,12 +284,12 @@ main q {
     background-color: var(--ita-colors-primary-100);
 }
 main kbd {
-    font-variation-settings: "MONO" 1, "wght" 400;
+    font-variation-settings: "MONO" 1, "wght" 500;
     font-family: var(--libdoc-font-family);
-    /* text-shadow: none; */
     background-color: var(--ita-colors-primary-200);
     padding: 0 0.4em;
     border-radius: 4px;
+    letter-spacing: -0.03em;
 }
 /* LISTS */
 main ul,
@@ -460,7 +465,7 @@ main blockquote::after {
     right: calc(-1 * var(--ita-spacings-5));
 }
 main blockquote * {
-    font-variation-settings: "slnt" -15, "CASL" 1 , "CRSV" 1;
+    font-variation-settings: "slnt" -15, "CASL" 1, "CRSV" 1;
     /* text-shadow: none; */
 }
 /* DEFINITION LISTS */
@@ -468,12 +473,14 @@ main dl dt {
     font-variation-settings: "wght" 500, "MONO" 0;
     margin-bottom: 0.2em;
     letter-spacing: -0.04em;
-    color: var(--ita-colors-primary-700);
+    color: var(--ita-colors-primary-500);
 }
 main dl dd {
-    margin-left: var(--ita-spacings-5);
+    margin-left: var(--ita-spacings-2);
     margin-bottom: 1em;
     line-height: 1.6em;
+    padding-left: var(--ita-spacings-5);
+    border-left: 1px dashed var(--ita-colors-primary-500);
 }
 /* DETAILS */
 main > details summary {
@@ -481,12 +488,16 @@ main > details summary {
     display: flex;
     align-items: center;
     gap: var(--ita-spacings-2);
+    letter-spacing: -0.03em;
 }
 main > details summary::before {
     content: '\e914';
     font-family: icomoon;
     color: var(--ita-colors-primary-500);
     font-size: var(--ita-fontSizes-6);
+}
+main > details[open] summary {
+    margin-bottom: 1em;
 }
 main > details[open] summary::before {
     content: '\e913';
@@ -564,6 +575,31 @@ main > video {
     background: var(--ita-colors-neutral-900);
     padding: 0;
     max-width: var(--libdoc-container-width);
+}
+/* INLINE HTML */
+main rt {
+    background: linear-gradient(transparent calc(100% - 0.5px), var(--ita-colors-neutral-500) 0.5px);
+}
+main time {
+    font-variation-settings: "slnt" 0, "CASL" 0, "CRSV" 0, "MONO" 0, "wght" 400;
+    letter-spacing: -0.02em;
+}
+main var {
+    font-variation-settings: "slnt" 0, "CASL" 0, "CRSV" 0, "MONO" 1, "wght" 400;
+    letter-spacing: -0.02em;
+}
+main p:has(small) {
+    line-height: 1em;
+}
+main small {
+    font-size: var(--ita-fontSizes-3);
+    color: var(--ita-colors-neutral-700);
+    font-variation-settings: "slnt" 0, "CASL" 0, "CRSV" 0, "MONO" 0;
+}
+main u {
+    text-decoration-style: wavy;
+    text-decoration-color: var(--ita-colors-danger-500);
+    color: var(--ita-colors-danger-900);
 }
 /* SEARCH OCCURRENCES */
 main .__search-occurrence {
