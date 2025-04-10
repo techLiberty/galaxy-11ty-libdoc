@@ -395,6 +395,9 @@ main > pre > code::before {
     font-variation-settings: "wght" 400;
 }
 /* TABLES */
+main > .table-wrapper + .table-wrapper {
+    margin-top: 2em;
+}
 main table {
     display: table;
     width: 100%;
@@ -407,12 +410,12 @@ main table thead th {
     font-size: var(--ita-fontSizes-3);
     padding: var(--ita-spacings-3);
     background-color: var(--ita-colors-primary-100);
-    border: 1px solid var(--ita-colors-primary-200);
+    border: 1px solid var(--ita-colors-primary-300);
 }
 main table tbody tr td {
     padding: var(--ita-spacings-3);
     font-size: var(--ita-fontSizes-3);
-    border: 1px solid var(--ita-colors-primary-200);
+    border: 1px solid var(--ita-colors-primary-300);
     font-variation-settings: "wght" 400, "MONO" 0;
 }
 main table tbody tr:nth-child(odd) td {
@@ -421,6 +424,10 @@ main table tbody tr:nth-child(odd) td {
 }
 main table tbody tr:nth-child(even) td {
     background-color: var(--ita-colors-primary-100);
+}
+main table td code {
+    background-color: var(--ita-colors-primary-400);
+    color: var(--ita-colors-neutral-100);
 }
 /* QUOTES */
 main blockquote {
@@ -434,6 +441,7 @@ main blockquote {
     border: var(--ita-spacings-8) solid var(--ita-colors-neutral-100);
     font-family: var(--libdoc-font-family);
     font-size: var(--ita-fontSizes-7);
+    box-shadow: 0px 0px 20px inset rgba(15, 49, 86, 0.3);
 }
 main blockquote::before {
     content: "❝";
@@ -441,14 +449,14 @@ main blockquote::before {
     left: calc(-1 * var(--ita-spacings-5));
     font-size: 4em;
     color: var(--ita-colors-primary-300);
-    transform: translateY(-51%);
+    transform: translateY(-60%);
 }
 main blockquote::after {
     content: "❞";
     position: absolute;
     font-size: 4em;
     color: var(--ita-colors-primary-300);
-    transform: translateY(-25%);
+    transform: translateY(-20%);
     right: calc(-1 * var(--ita-spacings-5));
 }
 main blockquote * {

@@ -152,7 +152,7 @@ LibDoc supports automatic nestable bullet numbering. Incremental writing is opti
 1. Rodinian Period/System (1780–850 Ma) – named after the supercontinent Rodinia, stable environment.
 ```
 
-## Advanced ordered lists
+Below is an example mixing other markdown tags
 
 1. **Hadean Eon (4567–4030 Ma)**
     1. *Chaotian Era/Erathem (4567–4404 Ma)* – the name alluding both to the mythological Chaos and the chaotic phase of planet formation.
@@ -174,6 +174,29 @@ LibDoc supports automatic nestable bullet numbering. Incremental writing is opti
         1. *Columbian Period/System (2060–1780 Ma)* – named after the supercontinent Columbia.
     1. *Mesoproterozoic Era/Erathem (1780–850 Ma)*
         1. *Rodinian Period/System (1780–850 Ma)* – named after the supercontinent Rodinia, stable environment.
+
+```markdown
+1. **Hadean Eon (4567–4030 Ma)**
+    1. *Chaotian Era/Erathem (4567–4404 Ma)* – the name alluding both to the mythological Chaos and the chaotic phase of planet formation.
+    1. *Jack Hillsian or Zirconian Era/Erathem (4404–4030 Ma)* – both names allude to the Jack Hills Greenstone Belt which provided the oldest mineral grains on Earth, zircons.
+1. **Archean Eon/Eonothem (4030–2420 Ma)**
+    1. *Paleoarchean Era/Erathem (4030–3490 Ma)*
+        1. *Acastan Period/System (4030–3810 Ma)* – named after the Acasta Gneiss, one of the oldest preserved pieces of continental crust.
+        1. *Isuan Period/System (3810–3490 Ma)* – named after the Isua Greenstone Belt.
+    1. *Mesoarchean Era/Erathem (3490–2780 Ma)*
+        1. *Vaalbaran Period/System (3490–3020 Ma)* – based on the names of the Kaapvaal (Southern Africa) and Pilbara (Western Australia) cratons, to reflect the growth of stable continental nuclei or proto-cratonic kernels.
+        1. *Pongolan Period/System (3020–2780 Ma)* – named after the Pongola Supergroup, in reference to the well preserved evidence of terrestrial microbial communities in those rocks.
+    1. *Neoarchean Era/Erathem (2780–2420 Ma)*
+        1. *Methanian Period/System (2780–2630 Ma)* – named for the inferred predominance of methanotrophic prokaryotes
+        1. *Siderian Period/System (2630–2420 Ma)* – named for the voluminous banded iron formations formed within its duration.
+1. **Proterozoic Eon/Eonothem (2420–538.8 Ma)**
+    1. *Paleoproterozoic Era/Erathem (2420–1780 Ma)*
+        1. *Oxygenian Period/System (2420–2250 Ma)* – named for displaying the first evidence for a global oxidising atmosphere.
+        1. *Jatulian or Eukaryian Period/System (2250–2060 Ma)* – names are respectively for the Lomagundi–Jatuli δ13C isotopic excursion event spanning its duration, and for the (proposed) first fossil appearance of eukaryotes.
+        1. *Columbian Period/System (2060–1780 Ma)* – named after the supercontinent Columbia.
+    1. *Mesoproterozoic Era/Erathem (1780–850 Ma)*
+        1. *Rodinian Period/System (1780–850 Ma)* – named after the supercontinent Rodinia, stable environment.
+```
 
 ## Brackets links
 
@@ -432,15 +455,29 @@ Additional languages may be added into the page, see <https://highlightjs.org/do
 
 Table markdown was made by [Github Flavoured Markdown](https://github.github.com/gfm/#tables-extension-) as an extension of the [Markdown specifications](https://daringfireball.net/projects/markdown/syntax).
 
+Tables are responsive and with horizontal scroll enabled if its content is wider than the max width of the main content wrapper.
+
 | First column    | Second        | Third |
 | -------------   |:-------------:| -----:|
 | col 3 is        | right-aligned |  1600 |
 | col 2 is        | centered      |    12 |
 | Alternate lines | are neat      |     1 |
 
+| Year | Film                                          | Director       | Composer          |
+|------|-----------------------------------------------|----------------|-------------------|
+| 2001 | Harry Potter and the Philosopher's Stone      | Chris Columbus | John Williams     |
+| 2002 | Harry Potter and the Chamber of Secrets       | Chris Columbus | John Williams     |
+| 2004 | Harry Potter and the Prisoner of Azkaban      | Alfonso Cuarón | John Williams     |
+| 2005 | Harry Potter and the Goblet of Fire           | Mike Newell    | Patrick Doyle     |
+| 2007 | Harry Potter and the Order of the Phoenix     | David Yates    | Nicholas Hooper   |
+| 2009 | Harry Potter and the Half-Blood Prince        | David Yates    | Nicholas Hooper   |
+| 2010 | Harry Potter and the Deathly Hallows – Part 1 | David Yates    | Alexandre Desplat |
+| 2011 | Harry Potter and the Deathly Hallows – Part 2 | David Yates    | Alexandre Desplat |
+
+
 **There must be at least 3 dashes separating each header cell.**
 The outer pipes (|) are optional, and you don't need to make the 
-raw Markdown line up prettily. You can also use inline Markdown.
+raw Markdown line up prettily. You can also use inline Markdown inside table cells.
 
 Markdown | Less | Pretty
 --- | --- | ---
@@ -454,9 +491,20 @@ Markdown | Less | Pretty
 | col 2 is        | centered      |    12 |
 | Alternate lines | are neat      |     1 |
 
+| Year | Film                                          | Director       | Composer          |
+|------|-----------------------------------------------|----------------|-------------------|
+| 2001 | Harry Potter and the Philosopher's Stone      | Chris Columbus | John Williams     |
+| 2002 | Harry Potter and the Chamber of Secrets       | Chris Columbus | John Williams     |
+| 2004 | Harry Potter and the Prisoner of Azkaban      | Alfonso Cuarón | John Williams     |
+| 2005 | Harry Potter and the Goblet of Fire           | Mike Newell    | Patrick Doyle     |
+| 2007 | Harry Potter and the Order of the Phoenix     | David Yates    | Nicholas Hooper   |
+| 2009 | Harry Potter and the Half-Blood Prince        | David Yates    | Nicholas Hooper   |
+| 2010 | Harry Potter and the Deathly Hallows – Part 1 | David Yates    | Alexandre Desplat |
+| 2011 | Harry Potter and the Deathly Hallows – Part 2 | David Yates    | Alexandre Desplat |
+
 **There must be at least 3 dashes separating each header cell.**
 The outer pipes (|) are optional, and you don't need to make the 
-raw Markdown line up prettily. You can also use inline Markdown.
+raw Markdown line up prettily. You can also use inline Markdown inside table cells.
 
 Markdown | Less | Pretty
 --- | --- | ---
