@@ -4,123 +4,201 @@ eleventyNavigation:
     # title: Markdown Samples
     # order: 20
 # title: Markdown Samples
-description: Pre made snippets that enhance the display of the content
+description: Pre made HTML snippets that enhance the display of the content
 layout: libdoc_page.liquid
 permalink: widgets/index.html
 # date: false
 # author: false
 ---
 
+## Light background on images with transparency 
 
-## Advanced image widgets
+`light` class name on `<img>` tag applies a white background on image.
 
-With a markdown link and image width smaller than content width <img src="/favicon.png" alt="alt text">
+<img class="light"
+    src="/content/medias/gypaetus-barbatus-peisey.png"
+    alt="Gypaetus barbatus">
 
-<img src="/content/medias/gypaetus-barbatus-peisey.png" alt="Pierra Menta">
+```html
+<img class="light"
+    src="/content/medias/gypaetus-barbatus-peisey.png"
+    alt="Gypaetus barbatus">
+```
 
-<img src="/content/medias/gypaetus-barbatus-peisey.png" alt="Pierra Menta" class="rounded-corners">
+## Dark background on images with transparency 
 
-<img src="/content/medias/gypaetus-barbatus-peisey.png" alt="Pierra Menta" class="long-shadow">
+`dark` class name on `<img>` tag applies a black background on image.
 
-<img src="/content/medias/gypaetus-barbatus-peisey.png" alt="Pierra Menta" class="filter-long-shadow">
+<img class="dark"
+    src="/content/medias/gypaetus-barbatus-peisey.png"
+    alt="Gypaetus barbatus">
 
-<img src="/content/medias/gypaetus-barbatus-peisey.png" alt="Pierra Menta" class="wide" eleventy:widths="1400,2800">
+```html
+<img class="dark"
+    src="/content/medias/gypaetus-barbatus-peisey.png"
+    alt="Gypaetus barbatus">
+```
 
-<img src="/content/medias/pierra-menta.jpg" alt="Pierra Menta" class="light">
+## Damier background to images with transparency 
 
-<img src="/content/medias/pierra-menta.jpg" alt="Pierra Menta" class="dark">
+`damier` class name on `<img>` tag highlights transparency.
 
-<img src="/content/medias/pierra-menta.jpg" alt="Pierra Menta" class="damier">
+<img class="damier"
+    src="/content/medias/gypaetus-barbatus-peisey.png"
+    alt="Gypaetus barbatus">
 
-<img src="/content/medias/pierra-menta.jpg" alt="Pierra Menta" class="rounded-corners">
+```html
+<img class="damier"
+    src="/content/medias/gypaetus-barbatus-peisey.png"
+    alt="Gypaetus barbatus">
+```
 
-<img src="/content/medias/pierra-menta.jpg" alt="Pierra Menta" class="long-shadow">
+## Rounded corners
 
-<img src="/content/medias/pierra-menta.jpg" alt="Pierra Menta" class="filter-long-shadow">
+`rounded-corners` class name on `<img>` tag allows to apply smooth corners on the image.
 
-<img src="/content/medias/pierra-menta.jpg" alt="Pierra Menta" class="wide" eleventy:widths="1400,2800">
+<img class="rounded-corners"
+    src="/content/medias/pierra-menta.jpg"
+    alt="Pierra Menta">
 
-<img src="/content/medias/pierra-menta.jpg" alt="Pierra Menta" class="rounded-corners long-shadow wide" eleventy:widths="1400,2800">
+```html
+<img class="rounded-corners"
+    src="/content/medias/pierra-menta.jpg"
+    alt="Pierra Menta">
+```
 
-<a href="/content/examples/example-2.md">
-  <img src="/content/medias/pierra-menta.jpg" alt="Pierra Menta">
-</a>
+## Long shadow
 
-Here's our logo (hover to see the title text):
+`long-shadow` class name on `<img>` tag allows to apply a long box shadow.
 
-<img src="/content/medias/pierra-menta.jpg" alt="This is my description">
+<img class="long-shadow"
+    src="/content/medias/pierra-menta.jpg"
+    alt="Pierra Menta">
 
-<a href="bricss.md"><img src="/content/medias/pierra-menta.jpg" alt="This is my description"></a>
+```html
+<img class="long-shadow"
+    src="/content/medias/pierra-menta.jpg"
+    alt="Pierra Menta">
+```
 
+## Filter long shadow
 
-<figure class="rounded-corners long-shadow wide">
-  <img src="/content/medias/glossy-ibis-plegadis-falcinellus.svg" alt="Glossy ibis - Plegadis falcinellus">
-  <figcaption>Glossy ibis - Plegadis falcinellus</figcaption>
-</figure>
+`filter-long-shadow` class name on `<img>` tag allows to apply drop shadow on non-transparent pixels.
 
+<img class="filter-long-shadow"
+    src="/content/medias/gypaetus-barbatus-peisey.png"
+    alt="Gypaetus barbatus">
+
+```html
+<img class="filter-long-shadow"
+    src="/content/medias/gypaetus-barbatus-peisey.png"
+    alt="Gypaetus barbatus">
+```
+
+## Boxed image
+
+Boxed images require specific markup as follows but keeps same features class names as previously.
 
 <figure>
-  <img src="/content/medias/pierra-menta.jpg" alt="Pierra Menta">
-  <figcaption>Best car Skoda mon alt Dolor lorem eirmod stet elitr lorem labore lorem sed rebum, voluptua clita lorem diam lorem, dolor et aliquyam clita consetetur.</figcaption>
+    <img src="/content/medias/pierra-menta.jpg" alt="Pierra Menta">
+    <figcaption>A basic boxed image with its long description.</figcaption>
 </figure>
 
-<figure class="damier">
-  <img src="/content/medias/pierra-menta.jpg" alt="Pierra Menta">
-  <figcaption>Image with damier, just add class name <code>damier</code>.</figcaption>
-</figure>
-
-<figure class="dark">
-  <img src="/content/medias/pierra-menta.jpg" alt="Pierra Menta">
-  <figcaption>Best car Skoda mon alt Dolor lorem eirmod stet elitr lorem labore lorem sed rebum, voluptua clita lorem diam lorem, dolor et aliquyam clita consetetur.</figcaption>
-</figure>
-
-<figure class="dark damier">
-  <img src="/content/medias/pierra-menta.jpg" alt="Pierra Menta">
-  <figcaption>Best car Skoda mon alt Dolor lorem eirmod stet elitr lorem labore lorem sed rebum, voluptua clita lorem diam lorem, dolor et aliquyam clita consetetur.</figcaption>
-</figure>
-
+```html
 <figure>
-  <img src="/content/medias/pierra-menta.jpg" alt="Pierra Menta">
-  <figcaption>Best car Skoda mon alt Dolor lorem eirmod stet elitr lorem labore lorem sed rebum, voluptua clita lorem diam lorem, dolor et aliquyam clita consetetur.</figcaption>
+    <img src="/content/medias/pierra-menta.jpg" alt="Pierra Menta">
+    <figcaption>A basic boxed image with its long description.</figcaption>
 </figure>
+```
 
-<figure class="rounded-corners">
-  <img src="/content/medias/pierra-menta.jpg" alt="Pierra Menta">
-  <figcaption>Best car Skoda mon alt Dolor lorem eirmod stet elitr lorem labore lorem sed rebum, voluptua clita lorem diam lorem, dolor et aliquyam clita consetetur.</figcaption>
-</figure>
+## Mixed features
 
-<figure class="long-shadow">
-  <img src="/content/medias/pierra-menta.jpg" alt="Pierra Menta">
-  <figcaption>Best car Skoda mon alt Dolor lorem eirmod stet elitr lorem labore lorem sed rebum, voluptua clita lorem diam lorem, dolor et aliquyam clita consetetur.</figcaption>
-</figure>
+`rounded-corners` and `long-shadow`.
 
-<figure class="rounded-corners long-shadow">
-  <img src="/content/medias/pierra-menta.jpg" alt="Pierra Menta">
-  <figcaption>Best car Skoda mon alt Dolor lorem eirmod stet elitr lorem labore lorem sed rebum, voluptua clita lorem diam lorem, dolor et aliquyam clita consetetur.</figcaption>
-</figure>
+<img class="rounded-corners long-shadow"
+    src="/content/medias/pierra-menta.jpg"
+    alt="Pierra Menta">
+
+```html
+<img class="rounded-corners long-shadow"
+    src="/content/medias/pierra-menta.jpg"
+    alt="Pierra Menta">
+```
 
 <figure class="rounded-corners long-shadow wide">
-  <img src="/content/medias/pierra-menta.jpg" alt="Pierra Menta" eleventy:widths="1400,2800">
-  <figcaption>Best car Skoda mon alt Dolor lorem eirmod stet elitr lorem labore lorem sed rebum, voluptua clita lorem diam lorem, dolor et aliquyam clita consetetur.</figcaption>
+    <img src="/content/medias/pierra-menta.jpg"
+        alt="Pierra Menta"
+        eleventy:widths="1400,2800">
+    <figcaption>
+        A wide boxed image with rounded corners and a long box shadow, with its long description.
+        Class names applied on figure:
+        <code>rounded-corners</code>,
+        <code>long-shadow</code> and 
+        <code>wide</code>.
+    </figcaption>
 </figure>
 
-<figure class="rounded-corners damier">
-  <figcaption>Best car Skoda mon alt Dolor lorem eirmod stet elitr lorem labore lorem sed rebum, voluptua clita lorem diam lorem, dolor et aliquyam clita consetetur.</figcaption>
-  <img src="/content/medias/pierra-menta.jpg" alt="Pierra Menta">
+```html
+<figure class="rounded-corners long-shadow wide">
+    <img src="/content/medias/pierra-menta.jpg"
+        alt="Pierra Menta"
+        eleventy:widths="1400,2800">
+    <figcaption>
+        A wide boxed image with rounded corners and a long box shadow, with its long description.
+        Class names applied on figure:
+        <code>rounded-corners</code>,
+        <code>long-shadow</code> and 
+        <code>wide</code>.
+    </figcaption>
+</figure>
+```
+
+<figure class="wide">
+    <img src="/content/medias/gypaetus-barbatus-peisey.png"
+        alt="Gypaetus barbatus"
+        eleventy:widths="1400,2800">
+    <figcaption>
+        A wide boxed image with its long description.
+        Class name applied on figure: 
+        <code>wide</code>.
+    </figcaption>
 </figure>
 
-<figure class="rounded-corners damier">
-  <img src="/content/medias/pierra-menta.jpg" alt="Pierra Menta">
-  <figcaption>Best car Skoda mon alt Dolor lorem eirmod stet elitr lorem labore lorem sed rebum, voluptua clita lorem diam lorem, dolor et aliquyam clita consetetur.</figcaption>
+```html
+<figure class="wide">
+    <img src="/content/medias/gypaetus-barbatus-peisey.png"
+        alt="Gypaetus barbatus"
+        eleventy:widths="1400,2800">
+    <figcaption>
+        A wide boxed image with its long description.
+        Class name applied on figure: 
+        <code>wide</code>.
+    </figcaption>
+</figure>
+```
+
+<figure class="filter-long-shadow wide">
+    <img src="/content/medias/gypaetus-barbatus-peisey.png"
+        alt="Gypaetus barbatus"
+        eleventy:widths="1400,2800">
+    <figcaption>
+        A wide boxed image with filter drop shadow, with its long description.
+        Class names applied on figure: 
+        <code>filter-long-shadow</code> and <code>wide</code>.
+    </figcaption>
 </figure>
 
-<figure class="rounded-corners damier dark">
-  <figcaption>Best car Skoda mon alt Dolor lorem eirmod stet elitr lorem labore lorem sed rebum, voluptua clita lorem diam lorem, dolor et aliquyam clita consetetur.</figcaption>
-  <img src="/content/medias/pierra-menta.jpg" alt="Pierra Menta">
+```html
+<figure class="filter-long-shadow wide">
+    <img src="/content/medias/gypaetus-barbatus-peisey.png"
+        alt="Gypaetus barbatus"
+        eleventy:widths="1400,2800">
+    <figcaption>
+        A wide boxed image with filter drop shadow, with its long description.
+        Class names applied on figure: 
+        <code>filter-long-shadow</code> and <code>wide</code>.
+    </figcaption>
 </figure>
+```
 
-<figure class="rounded-corners damier dark">
-  <img src="/content/medias/pierra-menta.jpg" alt="Pierra Menta">
-  <figcaption>Best car Skoda mon alt Dolor lorem eirmod stet elitr lorem labore lorem sed rebum, voluptua clita lorem diam lorem, dolor et aliquyam clita consetetur.</figcaption>
-</figure>
 

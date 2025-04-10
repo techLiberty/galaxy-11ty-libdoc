@@ -11,32 +11,112 @@ permalink: inline-html/index.html
 # author: false
 ---
 
-
 In addition of common [markdown](/content/samples/markdown.md), it is possible to use some raw HTML tags.
 
 ## Definition lists
 
 <dl>
-  <dt>Term</dt>
-  <dd>This is the text defining the term.</dd>
-  <dt>Markdown</dt>
-  <dd>Markdown is a lightweight markup language for creating formatted text using a plain-text editor. John Gruber created Markdown in 2004 as an easy-to-read markup language.</dd>
-  <dt>HTML<dt>
-  <dd>Hypertext Markup Language (HTML) is the standard markup language[a] for documents designed to be displayed in a web browser. It defines the content and structure of web content. It is often assisted by technologies such as Cascading Style Sheets (CSS) and scripting languages such as JavaScript, a programming language.</dd>
+    <dt>Term</dt>
+    <dd>This is the text defining the term.</dd>
+    <dt>Markdown</dt>
+    <dd>Markdown is a lightweight markup language for creating formatted text using a plain-text editor. John Gruber created Markdown in 2004 as an easy-to-read markup language.</dd>
+    <dt>HTML<dt>
+    <dd>Hypertext Markup Language (HTML) is the standard markup language[a] for documents designed to be displayed in a web browser. It defines the content and structure of web content. It is often assisted by technologies such as Cascading Style Sheets (CSS) and scripting languages such as JavaScript, a programming language.</dd>
 </dl>
 
 ```html
 <dl>
-  <dt>Term</dt>
-  <dd>This is the text defining the term.</dd>
-  <dt>Markdown</dt>
-  <dd>Markdown is a lightweight markup language for creating formatted text using a plain-text editor. John Gruber created Markdown in 2004 as an easy-to-read markup language.</dd>
-  <dt>HTML<dt>
-  <dd>Hypertext Markup Language (HTML) is the standard markup language[a] for documents designed to be displayed in a web browser. It defines the content and structure of web content. It is often assisted by technologies such as Cascading Style Sheets (CSS) and scripting languages such as JavaScript, a programming language.</dd>
+    <dt>Term</dt>
+    <dd>This is the text defining the term.</dd>
+    <dt>Markdown</dt>
+    <dd>Markdown is a lightweight markup language for creating formatted text using a plain-text editor. John Gruber created Markdown in 2004 as an easy-to-read markup language.</dd>
+    <dt>HTML<dt>
+    <dd>Hypertext Markup Language (HTML) is the standard markup language[a] for documents designed to be displayed in a web browser. It defines the content and structure of web content. It is often assisted by technologies such as Cascading Style Sheets (CSS) and scripting languages such as JavaScript, a programming language.</dd>
 </dl>
 ```
 
 [MDN Reference](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/dl)
+
+## Details
+
+<details>
+    <summary>LibDoc description</summary>
+    LibDoc is an <a href="https://www.11ty.dev">Eleventy</a> starter project dedicated to documentation.
+</details>
+
+```html
+<details>
+    <summary>LibDoc description</summary>
+    LibDoc is an <a href="https://www.11ty.dev">Eleventy</a> starter project dedicated to documentation.
+</details>
+```
+ 
+[MDN Reference](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/details)
+
+
+## Inline quotation
+
+And then Albus says 
+<q cite="https://www.harrypotter.com/fr/features/pearls-of-wisdom-from-professor-dumbledore">
+    It is our choices, Harry, that show what we truly are, far more than our abilities.
+</q> 
+to Harry.
+
+```html
+And then Albus says 
+<q cite="https://www.harrypotter.com/fr/features/pearls-of-wisdom-from-professor-dumbledore">
+    It is our choices, Harry, that show what we truly are, far more than our abilities.
+</q> 
+to Harry.
+```
+ 
+[MDN Reference](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/q)
+
+## Variable
+
+The volume of a box is <var>l</var> × <var>w</var> × <var>h</var>, where
+<var>l</var> represents the length, <var>w</var> the width and
+<var>h</var> the height of the box.
+
+```html
+The volume of a box is <var>l</var> × <var>w</var> × <var>h</var>, where
+<var>l</var> represents the length, <var>w</var> the width and
+<var>h</var> the height of the box.
+```
+ 
+[MDN Reference](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/var)
+
+## Superscript
+
+Equation *a*<sup>2</sup> + *b*<sup>2</sup> = *c*<sup>2</sup> usually expresses the *Pythagorean theorem*.
+
+```markdown
+Equation *a*<sup>2</sup> + *b*<sup>2</sup> = *c*<sup>2</sup> usually expresses the *Pythagorean theorem*.
+```
+
+[MDN Reference](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/sup)
+
+## Subscript
+
+Caffeine **C**<sub>8</sub>**H**<sub>10</sub>**N**<sub>4</sub>**O**<sub>2</sub> is known to be the favorite’s developer molecule.
+
+```html
+Caffeine **C**<sub>8</sub>**H**<sub>10</sub>**N**<sub>4</sub>**O**<sub>2</sub> is known to be the favorite’s developer molecule.
+```
+
+[MDN Reference](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/sub)
+
+## Abbr
+
+With <abbr title="Eleventy">11ty</abbr> you can use <abbr title="Cascading Style Sheets">CSS</abbr> to style your
+<abbr title="HyperText Markup Language">HTML</abbr>. Title attribute is optional.
+
+```markdown
+With <abbr title="Eleventy">11ty</abbr> you can use <abbr title="Cascading Style Sheets">CSS</abbr> to style your
+<abbr title="HyperText Markup Language">HTML</abbr>. Title attribute is optional.
+```
+
+[MDN Reference](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/abbr)
 
 ## Mark
 
@@ -70,38 +150,6 @@ Eleventy LibDoc is a starter project to create documentation website.
 
 [MDN Reference](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/small)
 
-## Sup
-
-Equation *a*<sup>2</sup> + *b*<sup>2</sup> = *c*<sup>2</sup> usually expresses the *Pythagorean theorem*.
-
-```markdown
-Equation *a*<sup>2</sup> + *b*<sup>2</sup> = *c*<sup>2</sup> usually expresses the *Pythagorean theorem*.
-```
-
-[MDN Reference](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/sup)
-
-## Sub
-
-Caffeine **C**<sub>8</sub>**H**<sub>10</sub>**N**<sub>4</sub>**O**<sub>2</sub> is known to be the favorite’s developer molecule.
-
-```html
-Caffeine **C**<sub>8</sub>**H**<sub>10</sub>**N**<sub>4</sub>**O**<sub>2</sub> is known to be the favorite’s developer molecule.
-```
-
-[MDN Reference](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/sub)
-
-## Abbr
-
-With <abbr title="Eleventy">11ty</abbr> you can use <abbr title="Cascading Style Sheets">CSS</abbr> to style your
-<abbr title="HyperText Markup Language">HTML</abbr>. Title attribute is optional.
-
-```markdown
-With <abbr title="Eleventy">11ty</abbr> you can use <abbr title="Cascading Style Sheets">CSS</abbr> to style your
-<abbr title="HyperText Markup Language">HTML</abbr>. Title attribute is optional.
-```
-
-[MDN Reference](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/abbr)
-
 ## Strikethrough
 
 This tag is useful when you wish <s>to emphasis</s> to display something not relevant anymore.
@@ -132,7 +180,7 @@ When you want to display something that was <ins>added</ins>.
  
 [MDN Reference](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/ins)
 
-## Date Time
+## Time and date
 
 The concert took place on <time datetime="2018-07-07">July 7th, 2018</time> 
 and started at <time datetime="PT20H30M">20h 30m</time>.
@@ -144,18 +192,6 @@ and started at <time datetime="PT20H30M">20h 30m</time>.
  
 [MDN Reference](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/time)
 
-## Ruby
-
-Even if not common, ruby tag represents <ruby>small annotations<rt>Ruby</rt></ruby> that are rendered above spec (single work recommended).
-<ruby>A text fragment <rt>Description</rt></ruby> can be described.
-
-```html
-Even if not common, ruby tag represents <ruby>small annotations<rt>Ruby</rt></ruby> that are rendered above spec (single work recommended).
-<ruby>A text fragment <rt>Description</rt></ruby> can be described.
-```
- 
-[MDN Reference](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/ruby)
-
 ## Keyboard input element
 
 You can use <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>R</kbd> to refresh page and empty cache.
@@ -165,55 +201,6 @@ You can use <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>R</kbd> to refresh page an
 ```
  
 [MDN Reference](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/kbd)
-
-
-## Inline quotation
-
-And then Albus says 
-<q cite="https://www.harrypotter.com/fr/features/pearls-of-wisdom-from-professor-dumbledore">
-It is our choices, Harry, that show what we truly are, far more than our abilities.
-</q> 
-to Harry.
-
-```html
-And then Albus says 
-<q cite="https://www.harrypotter.com/fr/features/pearls-of-wisdom-from-professor-dumbledore">
-It is our choices, Harry, that show what we truly are, far more than our abilities.
-</q> 
-to Harry.
-```
- 
-[MDN Reference](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/q)
-
-## Details
-
-<details>
-    <summary>LibDoc description</summary>
-    LibDoc is an <a href="https://www.11ty.dev">Eleventy</a> starter project dedicated to documentation.
-</details>
-
-```html
-<details>
-    <summary>LibDoc description</summary>
-    LibDoc is an <a href="https://www.11ty.dev">Eleventy</a> starter project dedicated to documentation.
-</details>
-```
- 
-[MDN Reference](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/details)
-
-## Variable
-
-The volume of a box is <var>l</var> × <var>w</var> × <var>h</var>, where
-<var>l</var> represents the length, <var>w</var> the width and
-<var>h</var> the height of the box.
-
-```html
-The volume of a box is <var>l</var> × <var>w</var> × <var>h</var>, where
-<var>l</var> represents the length, <var>w</var> the width and
-<var>h</var> the height of the box.
-```
- 
-[MDN Reference](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/var)
 
 ## Sample output
 
@@ -226,3 +213,15 @@ Neo wakes up and reads his screen saying,
 ```
  
 [MDN Reference](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/samp)
+
+## Ruby
+
+Even if not common, ruby tag represents <ruby>small annotations<rt>Ruby</rt></ruby> that are rendered above spec (single work recommended).
+<ruby>A text fragment <rt>Description</rt></ruby> can be described.
+
+```html
+Even if not common, ruby tag represents <ruby>small annotations<rt>Ruby</rt></ruby> that are rendered above spec (single work recommended).
+<ruby>A text fragment <rt>Description</rt></ruby> can be described.
+```
+ 
+[MDN Reference](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/ruby)
