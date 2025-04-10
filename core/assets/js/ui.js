@@ -338,8 +338,8 @@ const libdocUi = {
                 let nextHeadingRects = 0;
                 if (elNextHeading !== undefined) nextHeadingRects = elNextHeading.getBoundingClientRect();
                 if (headingRects.y >= -10 && headingRects.y < window.innerHeight - 50
-                    || headingRects.y <-10 && nextHeadingRects.y >= window.innerHeight - 50
-                    ) {
+                    || headingRects.y < -10 && nextHeadingRects.y >= window.innerHeight - 50
+                    || headingRects.y < -10 && elNextHeading === undefined) {
                     linkIndexesArray.push(true);
                 } else {
                     linkIndexesArray.push(false);
