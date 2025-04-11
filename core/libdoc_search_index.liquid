@@ -8,7 +8,7 @@ eleventyExcludeFromCollections: true
             {% for tagName in collections.myTags %}
                 {
                     "url": "/tags/{{ tagName }}",
-                    "title": "{{ libdocMessages.tag[pageLang] }}",
+                    "title": "{{ libdocMessages.tag[libdocConfig.lang] }}",
                     "content": " {{ tagName }} "
                 }{% if forloop.last == false %},{% endif %}
             {% endfor %},
