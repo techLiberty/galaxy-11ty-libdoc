@@ -221,10 +221,12 @@
                             fs-5="xs">
                             {{ pageDescription }}
                         </p>
+                    {% else %}
+                        <div class="pt-5 | blwidth-1 blstyle-dashed bcolor-neutral-500"></div>
                     {% endif %}
                     {% if page.url != '/search/' %}
                         {% if tags.size > 0 %}
-                            <nav class="d-flex gap-2 fw-wrap | pl-5 pt-3 pb-3 | blwidth-1 blstyle-dashed bcolor-neutral-500">
+                            <nav class="d-flex gap-2 fw-wrap | pl-5 pt-3 pb-5 | blwidth-1 blstyle-dashed bcolor-neutral-500">
                                 {% for tagName in tags %}
                                     {% if tagName != 'post' %}
                                         <a  href="/tags/{{ tagName }}/"
@@ -284,7 +286,7 @@
                     {% endif %}
                 </header>
                 {{ content | cleanup | autoids }}
-                <footer class="pt-11 pb-11 minh-100vh">
+                <footer class="mt-11 pt-11 pb-11 minh-100vh | btwidth-1 btstyle-dashed bcolor-neutral-500">
                     <p class="m-0 | fs-2">
                         <a  href="https://github.com/ita-design-system/eleventy-libdoc"
                             target="_blank"
