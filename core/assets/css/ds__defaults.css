@@ -113,7 +113,7 @@ input:focus {
 code {
     font-variation-settings: "slnt" 0, "CASL" 0, "CRSV" 0.0, "MONO" 1, "wght" 300;
     line-height: 1.6em;
-    font-size: var(--ita-fontSizes-3);
+    font-size: var(--ita-fontSizes-4);
 }
 /* MAIN CONTENT */
 main {
@@ -372,7 +372,7 @@ main > *:not(pre) code {
     padding-left: 0.3em;
     padding-right: 0.3em;
     border-radius: 0.3em;
-    font-variation-settings: "wght" 400;
+    font-variation-settings: "wght" 400, "MONO" 1, "CASL" 0, "CRSV" 1;
     color: var(--ita-colors-primary-800);
 }
 /* language not supported in highlight js */
