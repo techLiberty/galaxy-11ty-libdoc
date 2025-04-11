@@ -1,17 +1,56 @@
 ---
+layout: libdoc_page
+permalink: inline-html/index.html
 eleventyNavigation:
     key: Inline HTML
     # title: Markdown Samples
     # order: 20
 # title: Markdown Samples
 description: Use some raw HTML tags into your pages
-layout: libdoc_page.liquid
-permalink: inline-html/index.html
 # date: false
 # author: false
 ---
 
 In addition of common [markdown](/content/samples/markdown.md), it is possible to use some raw HTML tags.
+
+## Line break
+
+* **I am an item** <br>
+    Sometimes it comes we need to break the line inside markdown
+* **I am another item** <br>
+    Sometimes it comes we need to re-break the line inside markdown
+* **I am the ultimate item** <br>
+    Sometimes it comes we need to re-re-break the line inside markdown
+
+
+```markdown
+* **I am an item** <br>
+    Sometimes it comes we need to break the line
+* **I am another item** <br>
+    Sometimes it comes we need to re-break the line
+* **I am the ultimate item** <br>
+    Sometimes it comes we need to re-re-break the line
+```
+
+[MDN Reference](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/br)
+
+## Links
+
+Just like [Markdown internal links](/content/samples/markdown.md#internal-links), you can write dynamic HTML links pointing to input path and then easily create links between your project pages. **`permalink` must be set into the destination page**. If permalink changes on destination page, internal links pointing to this page change accordingly. 
+
+Of course, non-dynamic links work too! Here is an example:
+
+Let’s go to <a href="/content/samples/markdown.md">Markdown</a> page (dynamic link) 
+or <a href="/content/front-matter/index.md">Front matter</a> page (dynamic link) 
+or <a href="/content/front-matter/front-matter-minimal/">minimal</a> page (static link) 
+
+```html
+Let’s go to <a href="/content/samples/markdown.md">Markdown</a> page (dynamic link) 
+or <a href="/content/front-matter/index.md">Front matter</a> page (dynamic link) 
+or <a href="/content/front-matter/front-matter-minimal/">minimal</a> page (static link) 
+```
+
+[MDN Reference](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/a)
 
 ## Definition lists
 

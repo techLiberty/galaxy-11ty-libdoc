@@ -1,17 +1,15 @@
 ---
-eleventyNavigation:
-    key: Widgets
-    # title: Markdown Samples
-    # order: 20
-# title: Markdown Samples
-description: Pre made HTML snippets that enhance the display of the content
 layout: libdoc_page.liquid
-permalink: widgets/index.html
-# date: false
-# author: false
+permalink: widgets/images/index.html
+eleventyNavigation:
+    key: Images widgets
+    parent: Widgets
+description: Ready to use HTML to highlight your images
 ---
 
-## Light background on images with transparency 
+[Markdown images](/content/samples/markdown.md#images) are useful for everyday use but sometime it comes you have to highlight your images.
+
+## Light background on images with transparency
 
 `light` class name on `<img>` tag applies a white background on image.
 
@@ -25,7 +23,7 @@ permalink: widgets/index.html
     alt="Gypaetus barbatus">
 ```
 
-## Dark background on images with transparency 
+## Dark background on images with transparency
 
 `dark` class name on `<img>` tag applies a black background on image.
 
@@ -39,7 +37,7 @@ permalink: widgets/index.html
     alt="Gypaetus barbatus">
 ```
 
-## Damier background to images with transparency 
+## Damier background to images with transparency
 
 `damier` class name on `<img>` tag highlights transparency.
 
@@ -108,6 +106,34 @@ Boxed images require specific markup as follows but keeps same features class na
 <figure>
     <img src="/content/medias/pierra-menta.jpg" alt="Pierra Menta">
     <figcaption>A basic boxed image with its long description.</figcaption>
+</figure>
+```
+
+## Boxed image wide
+
+The `wide` class name allows to feature an image.
+
+<figure class="wide">
+    <img src="/content/medias/pierra-menta.jpg"
+        alt="Pierra Menta"
+        eleventy:widths="1400,2800">
+    <figcaption>
+        A wide boxed image with its description.
+        Class name applied on figure:
+        <code>wide</code>.
+    </figcaption>
+</figure>
+
+```html
+<figure class="wide">
+    <img src="/content/medias/pierra-menta.jpg"
+        alt="Pierra Menta"
+        eleventy:widths="1400,2800">
+    <figcaption>
+        A wide boxed image with its description.
+        Class name applied on figure:
+        <code>wide</code>.
+    </figcaption>
 </figure>
 ```
 

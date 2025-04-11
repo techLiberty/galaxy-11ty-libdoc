@@ -140,6 +140,7 @@ main > * {
     margin-right: auto;
     padding-left: var(--ita-spacings-9);
     padding-right: var(--ita-spacings-9);
+    text-wrap-style: balance;
 }
 main del {
     background-color: var(--ita-colors-danger-100);
@@ -441,12 +442,12 @@ main blockquote {
     color: var(--ita-colors-primary-900);
     padding: var(--ita-spacings-5) var(--ita-spacings-9);
     max-width: var(--libdoc-container-width);
-    border-bottom-left-radius: 100px;
-    border-top-right-radius: 100px;
-    border: var(--ita-spacings-8) solid var(--ita-colors-neutral-100);
+    border-bottom-left-radius: 3em;
+    border-top-right-radius: 3em;
+    border: var(--ita-spacings-2) solid var(--ita-colors-neutral-100);
     font-family: var(--libdoc-font-family);
     font-size: var(--ita-fontSizes-7);
-    box-shadow: 0px 0px 20px inset rgba(15, 49, 86, 0.3);
+    box-shadow: 0px 0px 5px inset var(--ita-colors-neutral-500), 0px 0px 5px var(--ita-colors-neutral-500);
 }
 main blockquote::before {
     content: "❝";
@@ -586,7 +587,7 @@ main time {
 }
 main var {
     font-variation-settings: "slnt" 0, "CASL" 0, "CRSV" 0, "MONO" 1, "wght" 400;
-    letter-spacing: -0.02em;
+    letter-spacing: -0.04em;
 }
 main p:has(small) {
     line-height: 1em;
@@ -633,6 +634,7 @@ main .__search-occurrence {
     order: -1;
     margin-right: var(--ita-spacings-2);
     border-radius: 100%;
+    transform: translateX(calc(-50% + 1px));
 }
 /* #nav_primary .nav_primary__anchor::after {
     content: '';
