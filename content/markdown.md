@@ -253,16 +253,16 @@ The [Geologic Time Scale][Geologic Time Scale] or geological time scale
 ```
 
 Note that dynamic links to file input path don’t work on reference links. 
-`[1]: /content/front-matter.md` Does not work.
+`[1]: /content/front-matter/index.md` Does not work.
 
 ## Links with title
 
 Optionnaly, you can add a title attribute to your markdown links, adding a space and a text between quotes after link <abbr title="Uniform Resource Locator">URL</abbr>.
 
-[Dynamic link to front matter](/content/front-matter.md "Go to front matter")
+[Dynamic link to front matter](/content/front-matter/index.md "Go to front matter")
 
 ```markup
-[Dynamic link to front matter](/content/front-matter.md "Go to front matter")
+[Dynamic link to front matter](/content/front-matter/index.md "Go to front matter")
 ```
 
 ## Images
@@ -287,28 +287,28 @@ Here is a simple case with a vector image ![Alt text](/content/medias/grue-royal
 [webp wiki]: https://en.wikipedia.org/wiki/WEBP
 
 Example of an image with a dynamic link.
-[![Alt text](/content/medias/pierra-menta.jpg)](/content/samples/markdown.md#images)
+[![Alt text](/content/medias/pierra-menta.jpg)](/content/markdown.md#images)
 
 Optionally add a title attribute
-[![Alt text](/content/medias/pierra-menta.jpg)](/content/samples/markdown.md#images "Go to Markdown page section Images")
+[![Alt text](/content/medias/pierra-menta.jpg)](/content/markdown.md#images "Go to Markdown page section Images")
 
 ```markdown
 Example of an image with a dynamic link. 
-[![Alt text](/content/medias/pierra-menta.jpg)](/content/samples/markdown.md#images)
+[![Alt text](/content/medias/pierra-menta.jpg)](/content/markdown.md#images)
 
 Optionally add a title attribute
-[![Alt text](/content/medias/pierra-menta.jpg)](/content/samples/markdown.md#images "Go to Markdown page section Images")
+[![Alt text](/content/medias/pierra-menta.jpg)](/content/markdown.md#images "Go to Markdown page section Images")
 ```
 
 Here is an example of a markdown link inclufing a raster image with its natural width smaller than main content width
 
-[![alt text](/favicon.png)](/content/samples/markdown.md#images "Go to Markdown page section Images").
+[![alt text](/favicon.png)](/content/markdown.md#images "Go to Markdown page section Images").
 
 *Please note that, awaiting enhancement, raster images smaller than main content width do not render properly on high density displays like Retina.*
 
 Here is an example of a markdown link inclufing a vector image with its natural width smaller than main content width
 
-[![alt text](/content/medias/info.svg)](/content/samples/markdown.md#images "Go to Markdown page section Images").
+[![alt text](/content/medias/info.svg)](/content/markdown.md#images "Go to Markdown page section Images").
 
 ### Remote images
 

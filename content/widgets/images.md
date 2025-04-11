@@ -7,7 +7,7 @@ eleventyNavigation:
 description: Ready to use HTML to highlight your images
 ---
 
-[Markdown images](/content/samples/markdown.md#images) are useful for everyday use but sometime it comes you have to highlight your images.
+[Markdown images](/content/markdown.md#images) are useful for everyday use but sometime it comes you have to highlight your images.
 
 ## Light background on images with transparency
 

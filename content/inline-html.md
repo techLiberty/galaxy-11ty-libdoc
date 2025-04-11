@@ -11,7 +11,7 @@ description: Use some raw HTML tags into your pages
 # author: false
 ---
 
-In addition of common [markdown](/content/samples/markdown.md), it is possible to use some raw HTML tags.
+In addition of common [markdown](/content/markdown.md), it is possible to use some raw HTML tags.
 
 ## Line break
 
@@ -36,16 +36,16 @@ In addition of common [markdown](/content/samples/markdown.md), it is possible t
 
 ## Links
 
-Just like [Markdown internal links](/content/samples/markdown.md#internal-links), you can write dynamic HTML links pointing to input path and then easily create links between your project pages. **`permalink` must be set into the destination page**. If permalink changes on destination page, internal links pointing to this page change accordingly. 
+Just like [Markdown internal links](/content/markdown.md#internal-links), you can write dynamic HTML links pointing to input path and then easily create links between your project pages. **`permalink` must be set into the destination page**. If permalink changes on destination page, internal links pointing to this page change accordingly. 
 
 Of course, non-dynamic links work too! Here is an example:
 
-Let’s go to <a href="/content/samples/markdown.md">Markdown</a> page (dynamic link) 
+Let’s go to <a href="/content/markdown.md">Markdown</a> page (dynamic link) 
 or <a href="/content/front-matter/index.md">Front matter</a> page (dynamic link) 
 or <a href="/content/front-matter/front-matter-minimal/">minimal</a> page (static link) 
 
 ```html
-Let’s go to <a href="/content/samples/markdown.md">Markdown</a> page (dynamic link) 
+Let’s go to <a href="/content/markdown.md">Markdown</a> page (dynamic link) 
 or <a href="/content/front-matter/index.md">Front matter</a> page (dynamic link) 
 or <a href="/content/front-matter/front-matter-minimal/">minimal</a> page (static link) 
 ```
