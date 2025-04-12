@@ -424,7 +424,7 @@ const libdocUi = {
     createGoToTop: function() {
         if (libdocUi.el.gtt === undefined) {
             libdocUi.el.gtt = document.createElement('button');
-            libdocUi.el.gtt.setAttribute('class', 'd-none--xs d-none--sm | pos-fixed z-2 top-0 right-0 | p-0 h-50px ar-square mt-5 mr-11 | fs-6 | brad-4 bc-neutral-100 bwidth-1 bstyle-dashed bcolor-neutral-500 cur-pointer __hover-1');
+            libdocUi.el.gtt.setAttribute('class', 'd-none--xs d-none--sm | pos-fixed z-2 bottom-0 right-0 | p-0 h-50px ar-square mb-5 mr-5 | fs-6 | brad-4 bc-neutral-100 bwidth-1 bstyle-dashed bcolor-neutral-500 cur-pointer __hover-1');
             libdocUi.el.gtt.innerHTML = `<span class="icon-arrow-line-up | pos-absolute top-50 left-50 t-tY-50 t-tX-50 | c-primary-500"></span>`;
             libdocUi.el.gtt.title = libdocMessages.goToTopOfPage;
             libdocUi.el.gtt.addEventListener('click', libdocUi.handlers._clickGTT);
