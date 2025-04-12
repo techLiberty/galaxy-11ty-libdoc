@@ -1,12 +1,11 @@
 {%- assign breadcrumbMarkup = '' -%}
 {%- assign pageUrlSplit = page.url | split: '/' -%}
-{%- assign tocMarkup = content | toc -%}
+{%- assign tocMarkup = '' -%}
 {%- assign pageLang = language | default: libdocConfig.lang -%}
 {%- assign pageTitle = title | default: tag | default: page.inputPath -%}
 {%- assign pageDescription = description | default: "" -%}
 {%- assign pageAuthor = author | default: libdocConfig.author -%}
-{%- assign configDisplayAuthor = displayAuthor | default: libdocConfig.author -%}
-{%- assign pageThemeColorHex = pageThemeColorHex | default: libdocConfig.themeColorHex -%}
+{%- assign pageThemeColorHex = themeColorHex | default: libdocConfig.themeColorHex -%}
 {%- assign pageOgImageUrl = ogImageUrl | default: libdocConfig.ogImageUrl -%}
 
 {% comment %} {%- assign blogPathUrl = '/' | append: libdocConfig.blogSlug | append: '/' -%} {% endcomment %}
@@ -30,7 +29,7 @@
 {% endif %}
 
 {% if eleventyNavigation.key %}
-    {% assign breadcrumb = collections.all | eleventyNavigationBreadcrumb: eleventyNavigation.key, libdocConfig.navigationOptions %}
+    {% assign breadcrumb = collections.all | eleventyNavigationBreadcrumb: eleventyNavigation.key, libdocSystem.navigationOptions %}
     {% if pageTitle == page.inputPath %}
         {% assign pageTitle = eleventyNavigation.key %}
     {% endif %}
@@ -41,10 +40,16 @@
 
 {% if pagePathUrl[1] == 'search' %}
     {% assign pageTitle = libdocMessages.search[pageLang] %}
-{% endif  %}
+{% endif %}
 
 {% if tag %}
     {% capture pageDescription %}
         {{ libdocMessages.pagesTagged[pageLang] }} <em>{{ tag }}</em>
     {% endcapture %}
-{% endif  %}
+{% endif %}
+
+{% if tocEnabled == true %}
+    {%- assign tocMarkup = content | toc -%}
+{% elsif tocEnabled != false and libdocConfig.tocEnabled %}
+    {%- assign tocMarkup = content | toc -%}
+{% endif %}

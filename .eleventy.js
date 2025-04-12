@@ -52,7 +52,7 @@ export default function(eleventyConfig) {
         const anchorsIds = [];
         content = content.replace(/<([a-zA-Z][a-zA-Z0-9_-]*)\b[^>]*>(.*?)<\/\1>/g, function(m,m1,m2){
             let newM = m;
-            if (libdocConfig.toc.htmlTags.includes(m1)) {
+            if (libdocConfig.tocHtmlTags.includes(m1)) {
                 // Add id to the specified html tags
                 let slugifiedId = libdocUtils.slugify(m2);
                 if (anchorsIds.includes(slugifiedId)) {
@@ -98,9 +98,9 @@ export default function(eleventyConfig) {
 	});
 
     eleventyConfig.addAsyncFilter("toc", async function (content) {
-        const htmlTagsFound = libdocUtils.extractHtmlTagsFromString(content, libdocConfig.toc.htmlTags);
+        const htmlTagsFound = libdocUtils.extractHtmlTagsFromString(content, libdocConfig.tocHtmlTags);
         let tocMarkup = '';
-        if (htmlTagsFound.length > libdocConfig.toc.minTags) {
+        if (htmlTagsFound.length > libdocConfig.tocMinTags) {
             tocMarkup = `
                 <ol class="cgap-3em | m-0 pl-0 pb-5 o-auto | lh-1 | ls-none bwidth-1 bstyle-dashed bcolor-neutral-500 btwidth-0 brwidth-0"
                     d-flex="xs,sm"
