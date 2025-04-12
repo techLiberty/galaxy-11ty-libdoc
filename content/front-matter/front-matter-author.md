@@ -1,19 +1,27 @@
 ---
 layout: libdoc_page
-permalink: front-matter/author-disabled/index.html
+permalink: front-matter/author/index.html
 eleventyNavigation:
-    key: Do not display author
+    key: Author
     parent: Front Matter
     order: 50
-description: How to remove author from page header
+description: Manage the display of author into the header of each page
 tags:
     - front-matter
     - navigation
-    - minimal
     - author
 date: Last Modified
 ---
-A front matter with author disabled:
+By default rendered page display [LibDoc configuration author](/content/configuration/author.md). To override the default author, enter any string in the `author` key of the front matter. To remove the author on the page, set `false`.
+
+The following example display a custom author name:
+
+```yaml
+layout: libdoc_page
+author: John Doe
+```
+
+The following example removes author:
 
 ```yaml
 layout: libdoc_page

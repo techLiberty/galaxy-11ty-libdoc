@@ -14,4 +14,4 @@ Removing display for author on a page that has no Eleventy Navigation settings.
 
 This page is not linked into the primary navigation and has no breadcrumb.
 
-Go back to [How not to display author](/content/front-matter/front-matter-remove-author.md).
+Go back to [How not to display author](/content/front-matter/front-matter-author.md).

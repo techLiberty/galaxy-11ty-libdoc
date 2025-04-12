@@ -67,3 +67,14 @@ Parameter | Type | Description | Page override
 `tocEnabled` | Boolean | Enable or disable Table of Content | yes
 `tocHtmlTags` | Array | List of tags to support into the Table of Content | no
 `tocMinTags` | Integer | Minimum amount of headings detected to enable Table of Content | no
+
+<dl>
+    <dt>lang</dt>
+    <dd>This string defines language strings of the user interface applied on the entire website through <a href="/content/configuration/messages.md">LibDoc Messages</a>.</dd>
+    <dt>siteTitle</dt>
+    <dd>The title link of the project always displayed at the top of the primary navigation.</dd>
+    <dt>siteDescription</dt>
+    <dd>The description always displayed as title attribute on the site title link.</dd>
+    <dt>author</dt>
+    <dd>Author’s metadata applied by default. Learn more about [author]()</dd>
+</dl>
