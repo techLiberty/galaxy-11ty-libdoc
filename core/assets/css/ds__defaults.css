@@ -770,6 +770,9 @@ main .__search-occurrence {
     body {
         font-size: var(--ita-fontSizes-4);
     }
+    code {
+        font-size: var(--ita-fontSizes-3);
+    }
     main > * {
         max-width: calc(var(--libdoc-container-width) + 2 * var(--ita-spacings-5));
         padding-left: var(--ita-spacings-5);

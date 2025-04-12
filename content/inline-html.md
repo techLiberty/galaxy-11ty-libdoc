@@ -9,6 +9,7 @@ eleventyNavigation:
 description: Use some raw HTML tags into your pages
 # date: false
 # author: false
+# tocEnabled: false
 ---
 
 In addition of common [markdown](/content/markdown.md), it is possible to use some raw HTML tags.
