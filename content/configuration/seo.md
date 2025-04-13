@@ -89,21 +89,3 @@ Author is displayed following these ordered priorities:
 
 1. By default author’s value is `libdocConfig.author` if nothing is set into the front matter.
 1. If `author` is set into the front matter, page’s author gets this value.
-
-## Theme color
-
-Theme color is propagated on the following metadata
-
-```html
-<meta name="msapplication-TileColor" content="">
-<meta name="theme-color" content="">
-<meta name="msapplication-TileColor" content="">
-<meta name="apple-mobile-web-app-status-bar-style" content="">
-<meta name="theme-color" content="">
-```
-
-Theme color is displayed following these ordered priorities:
-
-1. By default theme color’s value is `libdocConfig.themeColorHex` if nothing is set into the front matter.
-1. If `themeColorHex` is set into the front matter, page’s theme color gets this value.
-

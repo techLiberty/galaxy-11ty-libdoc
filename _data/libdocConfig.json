@@ -3,7 +3,6 @@
     "siteTitle": "Eleventy LibDoc",
     "siteDescription": "Just and Eleventy SSG starter project to create documentation website",
     "author": "Olivier 3lanc",
-    "themeColorHex": "#FFFFFF",
     "faviconUrl": "/favicon.png",
     "ogImageUrl": "",
     "customLinks": [

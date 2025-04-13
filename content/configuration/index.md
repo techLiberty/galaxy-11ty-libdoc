@@ -18,7 +18,6 @@ Here is the current LibDoc’s configuration file available in `_data/libdocConf
     "siteTitle": "Eleventy LibDoc",
     "siteDescription": "Just and Eleventy SSG starter project to create documentation website",
     "author": "Olivier 3lanc",
-    "themeColorHex": "#FFFFFF",
     "faviconUrl": "/favicon.png",
     "ogImageUrl": "",
     "customLinks": [
@@ -52,7 +51,6 @@ Parameter | Type | Description | Page override
 `siteTitle` | String | Title of the project | no
 `siteDescription` | String | Description of the project | no
 `author` | String or Boolean | Default author of pages. Setting to <var>false</var> disables author display | yes
-`themeColorHex` | String | Metadata theme color in hexadecimal value | yes
 `faviconUrl` | String | URL of the favicon | yes
 `ogImageUrl` | String | Metadata URL of the default Open Graph image | yes
 `customLinks` | Array | Array of objects defining custom links into the primary navigation | no
@@ -67,14 +65,3 @@ Parameter | Type | Description | Page override
 `tocEnabled` | Boolean | Enable or disable Table of Content | yes
 `tocHtmlTags` | Array | List of tags to support into the Table of Content | no
 `tocMinTags` | Integer | Minimum amount of headings detected to enable Table of Content | no
-
-<dl>
-    <dt>lang</dt>
-    <dd>This string defines language strings of the user interface applied on the entire website through <a href="/content/configuration/messages.md">LibDoc Messages</a>.</dd>
-    <dt>siteTitle</dt>
-    <dd>The title link of the project always displayed at the top of the primary navigation.</dd>
-    <dt>siteDescription</dt>
-    <dd>The description always displayed as title attribute on the site title link.</dd>
-    <dt>author</dt>
-    <dd>Author’s metadata applied by default. Learn more about [author]()</dd>
-</dl>
