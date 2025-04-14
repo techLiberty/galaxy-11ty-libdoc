@@ -27,7 +27,8 @@ const search = {
         if (typeof search.searchIndexArray == 'object') {
             let markup = '';
             search.searchIndexArray.forEach(function(item) {
-                const   content = search.decodeHtmlCharCodes(item.content).toLowerCase(),
+                const   itemContent = `${item.content} ${item.title}`,
+                        content = search.decodeHtmlCharCodes(itemContent).toLowerCase(),
                         queryLowered = query.toLowerCase(),
                         queryLoweredEncoded = search.HTMLEncode(queryLowered),
                         occurrenceIndex = content.indexOf(queryLowered),
