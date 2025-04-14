@@ -1,12 +1,11 @@
 ---
+layout: libdoc_page
 eleventyNavigation:
     key: Markdown
-    # title: Markdown Samples
-    # order: 20
-# title: Markdown Samples
+    parent: Creating content
+    order: 10
 description: All available markdown tags into a single page with examples
-layout: libdoc_page.liquid
-permalink: markdown/index.html
+permalink: creating-content/markdown/index.html
 date: Last Modified
 # author: false
 ---
@@ -214,10 +213,10 @@ Easily create links between your project pages. Eleventy allows to create dynami
 
 **`permalink` must be set into the destination page**. If permalink changes on destination page, internal links pointing to this page change accordingly.
 
-[Bring me to the page ./markdown.md](/content/markdown.md)
+[Bring me to the page ./markdown.md](/content/creating-content/markdown.md)
 
 ```markdown
-[Bring me to the page ./markdown.md](/content/markdown.md)
+[Bring me to the page ./markdown.md](/content/creating-content/markdown.md)
 ```
 
 Links <abbr title="Uniform Resource Locator">URL</abbr> to pages that does not set `permalink` **don’t change automatically** but works fine.
@@ -287,28 +286,28 @@ Here is a simple case with a vector image ![Alt text](/content/medias/grue-royal
 [webp wiki]: https://en.wikipedia.org/wiki/WEBP
 
 Example of an image with a dynamic link.
-[![Alt text](/content/medias/pierra-menta.jpg)](/content/markdown.md#images)
+[![Alt text](/content/medias/pierra-menta.jpg)](/content/creating-content/markdown.md#images)
 
 Optionally add a title attribute
-[![Alt text](/content/medias/pierra-menta.jpg)](/content/markdown.md#images "Go to Markdown page section Images")
+[![Alt text](/content/medias/pierra-menta.jpg)](/content/creating-content/markdown.md#images "Go to Markdown page section Images")
 
 ```markdown
 Example of an image with a dynamic link. 
-[![Alt text](/content/medias/pierra-menta.jpg)](/content/markdown.md#images)
+[![Alt text](/content/medias/pierra-menta.jpg)](/content/creating-content/markdown.md#images)
 
 Optionally add a title attribute
-[![Alt text](/content/medias/pierra-menta.jpg)](/content/markdown.md#images "Go to Markdown page section Images")
+[![Alt text](/content/medias/pierra-menta.jpg)](/content/creating-content/markdown.md#images "Go to Markdown page section Images")
 ```
 
 Here is an example of a markdown link inclufing a raster image with its natural width smaller than main content width
 
-[![alt text](/favicon.png)](/content/markdown.md#images "Go to Markdown page section Images").
+[![alt text](/favicon.png)](/content/creating-content/markdown.md#images "Go to Markdown page section Images").
 
 *Please note that, awaiting enhancement, raster images smaller than main content width do not render properly on high density displays like Retina.*
 
 Here is an example of a markdown link inclufing a vector image with its natural width smaller than main content width
 
-[![alt text](/content/medias/info.svg)](/content/markdown.md#images "Go to Markdown page section Images").
+[![alt text](/content/medias/info.svg)](/content/creating-content/markdown.md#images "Go to Markdown page section Images").
 
 ### Remote images
 

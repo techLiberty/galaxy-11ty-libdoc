@@ -5,7 +5,7 @@ eleventyNavigation:
     key: Site title and description
     parent: Configuration
     order: 20
-# title: LibDoc’s configuration
+title: Site title and description - Configuration
 description: How site title and site description are managed through LibDoc build
 tags:
     - configuration

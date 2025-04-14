@@ -3,10 +3,9 @@ layout: libdoc_page
 permalink: configuration/seo/index.html
 eleventyNavigation:
     key: SEO
-    parent: Configuration
     order: 60
 # title: LibDoc’s configuration
-description: How LibDoc’s configuration and pages parameters are applied for SEO
+description: How LibDoc’s configuration and pages parameters are applied for Search Engine Optimization
 tags:
     - configuration
     - SEO

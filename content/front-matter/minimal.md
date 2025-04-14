@@ -1,15 +1,23 @@
 ---
 layout: libdoc_page
+permalink: front-matter/minimal/index.html
+eleventyNavigation:
+    key: Minimal front matter
+    parent: Front Matter
+    order: 10
+description: What is mandatory in a LibDoc front matter
+tags:
+    - front-matter
+    - navigation
+    - minimal
+date: Last Modified
 ---
-
-Front matter of the current page:
+Here is the minimal front matter for a page:
 
 ```yaml
 layout: libdoc_page
 ```
 
-I am to simpliest way to create a page into [Eleventy LibDoc](/content/index.md).
+Note that a page with the above front matter is not linked into the main/primary menu and there is no breadcrumb. To enable link item in the primary navigation, `eleventyNavigation.key` must be set into the [front matter](/content/front-matter/index.md). Learn more how to create ordered and hierarchical primary menu.
 
-Be aware that this makes naturally orphan pages. This page is not linked into the primary navigation and has no breadcrumb. It must be linked somewhere to be accessed.
-
-Go back to [Front matter minimal](/content/front-matter/front-matter-minimal.md).
+[View an example of a minimal page](/content/front-matter/examples/minimal/ "You cannot find this page into main menu")

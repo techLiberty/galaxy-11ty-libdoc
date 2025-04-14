@@ -1,13 +1,13 @@
 ---
 layout: libdoc_page.liquid
-permalink: widgets/images/index.html
 eleventyNavigation:
     key: Images widgets
     parent: Widgets
 description: Ready to use HTML to highlight your images
+permalink: creating-content/widgets/images/index.html
 ---
 
-[Markdown images](/content/markdown.md#images) are useful for everyday use but sometime it comes you have to highlight your images.
+[Markdown images](/content/creating-content/markdown.md#images) are useful for everyday use but sometime it comes you have to highlight your images.
 
 ## Light background on images with transparency
 

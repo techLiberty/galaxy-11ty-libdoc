@@ -4,7 +4,8 @@ permalink: front-matter/author/index.html
 eleventyNavigation:
     key: Author
     parent: Front Matter
-    order: 50
+    order: 70
+title: Author - Front Matter
 description: Manage the display of author into the header of each page
 tags:
     - front-matter

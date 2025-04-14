@@ -5,7 +5,7 @@ eleventyNavigation:
     key: Language
     parent: Configuration
     order: 10
-# title: LibDoc’s configuration
+title: Language - Configuration
 description: How to set up LibDoc’s internationalization texts of user interface
 tags:
     - configuration

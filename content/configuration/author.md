@@ -6,7 +6,7 @@ eleventyNavigation:
     parent: Configuration
     title: Author
     order: 30
-# title: LibDoc’s configuration
+title: Author - Configuration
 description: How Author’s value is propagated on page metadata
 tags:
     - configuration

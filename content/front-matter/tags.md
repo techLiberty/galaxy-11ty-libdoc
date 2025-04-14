@@ -1,23 +1,29 @@
 ---
 layout: libdoc_page
+permalink: front-matter/tags/index.html
+eleventyNavigation:
+    key: Tags
+    parent: Front Matter
+    order: 50
+title: Tags - Front Matter
+description: How to assign tags to a page
 tags:
-    - orphan-tag
-    - minimal
     - front-matter
+    - navigation
+    - tags
+date: Last Modified
 ---
-
-Front matter of the current page:
+A front matter with only tags:
 
 ```yaml
 layout: libdoc_page
 tags:
-    - orphan-tag
+    - tags
     - minimal
     - front-matter
 ```
 
-Adding tags to the page that has no Eleventy Navigation settings.
+A page with the above front matter is not linked into the main/primary menu and there is no breadcrumb. To enable link item in the primary navigation, `eleventyNavigation.key` must be set into the [front matter](/content/front-matter/index.md). It can be found in [tags list](/tags/).
 
-This page is not linked into the primary navigation and has no breadcrumb. It can be found in [tags list](/tags/orphan-tag/).
+[View an example of a page with only tags](/content/front-matter/examples/tags/)
 
-Go back to [Front matter add tags](/content/front-matter/front-matter-add-tags.md).

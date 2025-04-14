@@ -140,7 +140,6 @@ main > * {
     margin-right: auto;
     padding-left: var(--ita-spacings-9);
     padding-right: var(--ita-spacings-9);
-    text-wrap-style: balance;
 }
 main del {
     background-color: var(--ita-colors-danger-100);
@@ -168,6 +167,7 @@ main h6 {
     color: var(--ita-colors-primary-900);
     position: relative;
     scroll-margin-top: var(--ita-spacings-6);
+    text-wrap-style: balance;
 }
 main h1:target a,
 main h2:target a,
@@ -616,7 +616,8 @@ main .__search-occurrence {
     text-shadow: none;
 } */
 
-#nav_primary .nav_primary__anchor::before {
+#nav_primary .nav_primary__anchor::before,
+.nav_primary .nav_primary__anchor::before {
     content: '';
     display: flex;
     border-top: 1px dashed var(--ita-colors-neutral-500);
@@ -624,7 +625,8 @@ main .__search-occurrence {
     min-width: var(--ita-spacings-5);
     order: -2;
 }
-#nav_primary .nav_primary__anchor::after {
+#nav_primary .nav_primary__anchor::after,
+.nav_primary .nav_primary__anchor::after {
     content: '';
     display: flex;
     background-color: var(--ita-colors-primary-500);
@@ -662,20 +664,25 @@ main .__search-occurrence {
     background-color: red;
     z-index: 1;
 } */
-#nav_primary .nav_primary__anchor[aria-current="page"] {
+#nav_primary .nav_primary__anchor[aria-current="page"],
+.nav_primary .nav_primary__anchor[aria-current="page"] {
     color: var(--ita-colors-primary-500);
 }
-#nav_primary > ol > li ol li {
+#nav_primary > ol > li ol li,
+.nav_primary > ol > li ol li {
     border-left: 1px dashed var(--ita-colors-neutral-500);
 }
-#nav_primary > ol > li > a.nav_primary__anchor {
+#nav_primary > ol > li > a.nav_primary__anchor,
+.nav_primary > ol > li > a.nav_primary__anchor {
     font-size: var(--ita-fontSizes-4);
     letter-spacing: -0.04em;
 }
-#nav_primary > ol > li > ol > li a.nav_primary__anchor {
+#nav_primary > ol > li > ol > li a.nav_primary__anchor,
+.nav_primary > ol > li > ol > li a.nav_primary__anchor {
     font-variation-settings: "wght" 400, "MONO" 0, "CASL" 0, "CRSV" 0, "slnt" 0;
 }
-#nav_primary > ol > li > ol > li a.nav_primary__anchor::after {
+#nav_primary > ol > li > ol > li a.nav_primary__anchor::after,
+.nav_primary > ol > li > ol > li a.nav_primary__anchor::after {
     width: var(--ita-spacings-1);
     min-width: var(--ita-spacings-1);
 }
@@ -706,6 +713,9 @@ main .__search-occurrence {
 } */
 
 /* MAIN TABLE OF CONTENT */
+#toc_main {
+    text-wrap-style: balance;
+}
 #toc_main[open] > summary {
     border-bottom: none;
 }
