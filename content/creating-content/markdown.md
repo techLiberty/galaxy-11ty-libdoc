@@ -270,33 +270,33 @@ To optimize page performances and bandwidth, raster images like PNG, JPEG, GIF a
 
 ### Local images
 
-Here is a simple case with a raster image ![Alt text](/content/medias/pierra-menta.jpg)
+Here is a simple case with a raster image ![Alt text](/assets/images/pierra-menta.jpg)
 
 ```markdown
-![Alt text](/content/medias/pierra-menta.jpg) 
+![Alt text](/assets/images/pierra-menta.jpg) 
 ```
 
-Here is a simple case with a vector image ![Alt text](/content/medias/grue-royale.svg) 
+Here is a simple case with a vector image ![Alt text](/assets/images/grue-royale.svg) 
 
 ```markdown
-![Alt text](/content/medias/grue-royale.svg) 
+![Alt text](/assets/images/grue-royale.svg) 
 ```
 
 [avif wiki]: https://en.wikipedia.org/wiki/AVIF
 [webp wiki]: https://en.wikipedia.org/wiki/WEBP
 
 Example of an image with a dynamic link.
-[![Alt text](/content/medias/pierra-menta.jpg)](/content/creating-content/markdown.md#images)
+[![Alt text](/assets/images/pierra-menta.jpg)](/content/creating-content/markdown.md#images)
 
 Optionally add a title attribute
-[![Alt text](/content/medias/pierra-menta.jpg)](/content/creating-content/markdown.md#images "Go to Markdown page section Images")
+[![Alt text](/assets/images/pierra-menta.jpg)](/content/creating-content/markdown.md#images "Go to Markdown page section Images")
 
 ```markdown
 Example of an image with a dynamic link. 
-[![Alt text](/content/medias/pierra-menta.jpg)](/content/creating-content/markdown.md#images)
+[![Alt text](/assets/images/pierra-menta.jpg)](/content/creating-content/markdown.md#images)
 
 Optionally add a title attribute
-[![Alt text](/content/medias/pierra-menta.jpg)](/content/creating-content/markdown.md#images "Go to Markdown page section Images")
+[![Alt text](/assets/images/pierra-menta.jpg)](/content/creating-content/markdown.md#images "Go to Markdown page section Images")
 ```
 
 Here is an example of a markdown link inclufing a raster image with its natural width smaller than main content width
@@ -307,7 +307,7 @@ Here is an example of a markdown link inclufing a raster image with its natural 
 
 Here is an example of a markdown link inclufing a vector image with its natural width smaller than main content width
 
-[![alt text](/content/medias/info.svg)](/content/creating-content/markdown.md#images "Go to Markdown page section Images").
+[![alt text](/assets/images/info.svg)](/content/creating-content/markdown.md#images "Go to Markdown page section Images").
 
 ### Remote images
 
@@ -333,12 +333,12 @@ Just like [reference links](#reference-links), you can assign text shortcuts to 
 
 ![alt text][gypaetus]
 
-[gypaetus]: /content/medias/gypaetus-barbatus-peisey.jpg "Gypaetus Barbatus flying"
+[gypaetus]: /assets/images/gypaetus-barbatus-peisey.jpg "Gypaetus Barbatus flying"
 
 ```markdown
 ![alt text][gypaetus]
 
-[gypaetus]: /content/medias/gypaetus-barbatus-peisey.jpg "Gypaetus Barbatus flying"
+[gypaetus]: /assets/images/gypaetus-barbatus-peisey.jpg "Gypaetus Barbatus flying"
 ```
 
 ## Inline code
