@@ -29,5 +29,5 @@ Here are the parameters related to blog.
 * `blogAuthor` sets a custom author for the blog.
 * `blogSlug` sets a permalink prefix for every blog permalinks.
 
-Learn more about blog feature usage.
+**A blog link appears when at least one page is tagged with `post`.** Learn more about [blog feature usage](/content/creating-content/blogging.md).
 
