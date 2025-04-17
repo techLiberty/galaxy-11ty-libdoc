@@ -2,6 +2,7 @@ import { EleventyRenderPlugin } from "@11ty/eleventy";
 import eleventyNavigationPlugin from "@11ty/eleventy-navigation";
 import { InputPathToUrlTransformPlugin } from "@11ty/eleventy";
 import { eleventyImageTransformPlugin } from "@11ty/eleventy-img";
+import { EleventyHtmlBasePlugin } from "@11ty/eleventy";
 import libdocMessages from "./_data/libdocMessages.json" with { "type": "json" };
 import libdocConfig from "./_data/libdocConfig.json" with { "type": "json" };
 import libdocUtils from "./_data/libdocUtils.js";
@@ -9,7 +10,7 @@ import libdocUtils from "./_data/libdocUtils.js";
 // import Image from "@11ty/eleventy-img";
 
 export default function(eleventyConfig) {
-
+    eleventyConfig.addPlugin(EleventyHtmlBasePlugin);
     eleventyConfig.addPlugin(InputPathToUrlTransformPlugin);
     eleventyConfig.addPlugin(eleventyNavigationPlugin);
     eleventyConfig.addPlugin(eleventyImageTransformPlugin, {
@@ -166,12 +167,13 @@ export default function(eleventyConfig) {
         const   code = libdocUtils.HTMLEncode(content.replace(/[\n\r]/, '')),
                 title = typeof sandboxTitle == `string` ? sandboxTitle : libdocMessages.sandbox[libdocConfig.lang],
                 iframeAttribute = `srcdoc="${code}"`,
+                enableSwitchId = libdocUtils.generateRandomId(),
                 iframeCommands = `<header class="d-flex jc-space-between | pl-5" style="height: 58px">
                         <div class="d-flex ai-center | fvs-wght-400 fs-3 | c-neutral-500">
                             srcdoc
                         </div>
                     </header>`;
-        return libdocUtils.templates.sandbox({iframeAttribute, iframeCommands, title, code});
+        return libdocUtils.templates.sandbox({iframeAttribute, iframeCommands, title, code, enableSwitchId});
     });
 
     eleventyConfig.addPairedShortcode("sandboxFile", async function(content, permalink, sandboxTitle) {
@@ -208,5 +210,8 @@ export default function(eleventyConfig) {
     eleventyConfig.addPassthroughCopy("assets");
     eleventyConfig.addPassthroughCopy("core/assets");
     eleventyConfig.addPassthroughCopy("favicon.png");
-
+    
+    return {
+        pathPrefix: libdocConfig.htmlBasePathPrefix
+    }
 };
