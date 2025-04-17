@@ -181,6 +181,9 @@
                 {% if collections.post.size > 0 %}
                     <a  href="/{{ libdocConfig.blogSlug }}/"
                         id="nav_primary_blog_link"
+                        {% if pageUrlSplit[1] == libdocConfig.blogSlug %}
+                            aria-current="page"
+                        {% endif %}
                         class="d-flex ai-center | pt-5 pb-5 pl-3 | fvs-wght-500 fs-4 td-none | c-neutral-900 bbwidth-1 bbstyle-dashed bcolor-neutral-500 cur-pointer">
                         <span class="d-flex ai-center gap-2 | lsp-2">
                             <span class="icon-tag-simple | fs-6 | c-primary-500"></span>
@@ -192,6 +195,9 @@
                 {% if collections.myTags.size > 0 and libdocConfig.displayTagsListLink %}
                     <a  href="/tags/"
                         id="nav_primary_blog_link"
+                        {% if pageUrlSplit[1] == 'tags'%}
+                            aria-current="page"
+                        {% endif %}
                         class="d-flex ai-center | pt-5 pb-5 pl-3 | fvs-wght-500 fs-4 td-none | c-neutral-900 bbwidth-1 bbstyle-dashed bcolor-neutral-500 cur-pointer">
                         <span class="d-flex ai-center gap-2 | lsp-2">
                             <span class="icon-tag-simple | fs-6 | c-primary-500"></span>
@@ -287,8 +293,9 @@
                     {% endif %}
                 </header>
                 {{ content | cleanup | autoids }}
-                <footer class="mt-11 pt-11 pb-11 minh-100vh | btwidth-1 btstyle-dashed bcolor-neutral-500">
-                    <p class="m-0 | fs-2">
+                <footer class="minh-100vh">
+                    <div class="pt-11 | bwidth-1 bstyle-dashed bcolor-neutral-500 btwidth-0 brwidth-0"></div>
+                    <p class="mt-5 mb-0 | fs-2">
                         <a  href="https://github.com/ita-design-system/eleventy-libdoc"
                             target="_blank"
                             class="td-none">

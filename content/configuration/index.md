@@ -41,7 +41,9 @@ Here is the current LibDoc’s configuration file available in `_data/libdocConf
     "displayTagsListLink": true,
     "tocEnabled": true,
     "tocHtmlTags": ["h1", "h2", "h3", "h4", "h5", "h6"],
-    "tocMinTags": 1
+    "tocMinTags": 1,
+    "htmlBasePathPrefix": "",
+    "sandboxRunSwitch": true
 }
 ```
 
@@ -65,3 +67,5 @@ Parameter | Type | Description | Page override
 `tocEnabled` | Boolean | Enable or disable Table of Content | yes
 `tocHtmlTags` | Array | List of tags to support into the Table of Content | no
 `tocMinTags` | Integer | Minimum amount of headings detected to enable Table of Content | no
+`htmlBasePathPrefix` | String | Configure your HTML base path prefix | no
+`sandboxRunSwitch` | Boolean | Enable disable scroll into sandbox instead of page | no

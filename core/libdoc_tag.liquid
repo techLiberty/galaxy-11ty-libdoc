@@ -22,19 +22,19 @@ eleventyExcludeFromCollections: true
                 <div class="pl-10 | bbwidth-1 bbstyle-dashed bcolor-neutral-500" pl-5="xs"></div>
                 <a  href="{{ item.page.url }}"
                     class="d-flex fd-column gap-2 fg-1 | p-5 | td-none | bc-primary-100 brad-2 bwidth-1 bstyle-dashed bcolor-primary-500">
-                    <span class="d-flex ai-center gap-2 | fvs-wght-400 fs-3 lsp-3 lh-3 | c-primary-900"
-                        fs-2="xs">
-                        <span class="icon-calendar-dots"></span>
-                        <span ws-nowrap="sm,md">
-                            <span class="ws-nowrap">{{ libdocMessages.lastModified[pageLang] }}</span>
-                            {{ item.page.date|dateString }}
-                        </span>
-                    </span>
+                    {%- if item.data.ogImageUrl %}
+                        <span class="mb-2 | brad-2"
+                            style="
+                            aspect-ratio: 2;
+                            background: center / cover no-repeat url('{{ item.data.ogImageUrl }}')"></span>
+                    {%- endif %}
                     <strong class="fs-7 fvs-wght-600 lh-3"
                         fs-6="xs">
                         {{ item.data.eleventyNavigation.key | default: item.data.title | default: item.page.inputPath }}
                     </strong>
-                    <span class="fs-4 fvs-wght-400 lh-5 c-primary-900">{{ item.data.description }}</span>
+                    <span class="fs-4 fvs-wght-400 lh-5 c-primary-900">
+                        {{ item.data.description }}
+                    </span>
                 </a>
             </li>
         {% endfor %}

@@ -226,6 +226,10 @@ main a:hover {
     color: var(--ita-colors-primary-700);
     font-variation-settings: "wght" 700, "MONO" 0;
 }
+main a[aria-current="page"] {
+    opacity: 0.5;
+    pointer-events: none;
+}
 /* EMPHASIS */
 main em {
     font-variation-settings: "slnt" -8, "wght" 400;
@@ -412,7 +416,7 @@ main table {
 }
 main table thead th {
     text-align: left;
-    font-variation-settings: "wght" 400, "MONO" 0;
+    font-variation-settings: "wght" 700, "MONO" 0;
     font-size: var(--ita-fontSizes-3);
     padding: var(--ita-spacings-3);
     background-color: var(--ita-colors-primary-100);
@@ -664,8 +668,8 @@ main .__search-occurrence {
     background-color: red;
     z-index: 1;
 } */
-#nav_primary .nav_primary__anchor[aria-current="page"],
-.nav_primary .nav_primary__anchor[aria-current="page"] {
+#nav_primary_container [aria-current="page"],
+.nav_primary [aria-current="page"] {
     color: var(--ita-colors-primary-500);
 }
 #nav_primary > ol > li ol li,
