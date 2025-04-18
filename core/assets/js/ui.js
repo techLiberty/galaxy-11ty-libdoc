@@ -71,7 +71,7 @@ const libdocUi = {
         if (libdocUi.localStorageAvailable()
             && typeof identifier == 'string'
             && typeof backup == 'object') {
-                console.log('save', identifier, JSON.stringify(backup))
+            // console.log('save', identifier, JSON.stringify(backup));
             localStorage.setItem(identifier, JSON.stringify(backup));
         }
     },
@@ -252,6 +252,20 @@ const libdocUi = {
                 // libdocUi.updateUserPreferences({FTOCNormallyOpened: false});
             }
             libdocUi.updateFTOCBtns();
+        },
+        _scrollNavPrimaryPreviousPreferenceValue: 0,
+        _scrollNavPrimary: function() {
+            const   previous = libdocUi.handlers._scrollNavPrimaryPreviousPreferenceValue,
+                    current = libdocUi.el.navPrimary.scrollTop,
+                    tolerance = 10,
+                    lowBound = previous - tolerance,
+                    highBound = previous + tolerance;
+            if (current < lowBound || current > highBound) {
+                libdocUi.updateUserPreferences({
+                    navPrimaryScrollTop: libdocUi.el.navPrimary.scrollTop
+                });
+                libdocUi.handlers._scrollNavPrimaryPreviousPreferenceValue = current;
+            }
         },
         _windowResize: function() {
             libdocUi._currentScreenSizeName = libdocUi.getCurrentScreenSizeName();
@@ -459,14 +473,19 @@ const libdocUi = {
         }
     },
     updateNavPrimary: function() {
-        // Scroll to current page
-        const   elCurrentPageLink = libdocUi.el.navPrimary.querySelector('[aria-current="page"]'),
-                elNavP = libdocUi.el.navPrimary;
-        if (elCurrentPageLink !== null && elNavP !== null) {
-            if (elCurrentPageLink.clientHeight + elCurrentPageLink.offsetTop > elNavP.clientHeight) {
-                elNavP.scroll({
-                    top: (elCurrentPageLink.offsetTop - elCurrentPageLink.clientHeight)
-                });
+        const userPreferences = libdocUi.getLocalStorage(libdocUi.defaults.localStorageIdentifier);
+        if (userPreferences?.navPrimaryScrollTop) {
+            libdocUi.el.navPrimary.scroll({top: userPreferences?.navPrimaryScrollTop});
+        } else {
+            // Scroll to [aria-current="page"] element
+            const   elCurrentPageLink = libdocUi.el.navPrimary.querySelector('[aria-current="page"]'),
+                    elNavP = libdocUi.el.navPrimary;
+            if (elCurrentPageLink !== null && elNavP !== null) {
+                if (elCurrentPageLink.clientHeight + elCurrentPageLink.offsetTop > elNavP.clientHeight) {
+                    elNavP.scroll({
+                        top: (elCurrentPageLink.offsetTop - elCurrentPageLink.clientHeight)
+                    });
+                }
             }
         }
     },
@@ -475,17 +494,21 @@ const libdocUi = {
     },
     updateUserPreferences: function(newPreferences) {
         if (typeof newPreferences == 'object' && newPreferences !== null) {
-            const   lsId = libdocUi.defaults.localStorageIdentifier,
-                    currentUserPreference = libdocUi.getLocalStorage(lsId);
-    
-            console.log(newPreferences, currentUserPreference);
-            if (currentUserPreference === null || currentUserPreference === undefined) {
-                // const up = {};
-                // Object.keys(newPreferences).forEach(function(preference) {
-                //     up[preference] = libdocUi.userPreferences[preference];
-                // });
-                console.log("send", lsId, newPreferences)
-                libdocUi.saveLocalStorage({ identifier: lsId, backup: newPreferences});
+            const currentUserPreference = libdocUi.getLocalStorage(libdocUi.defaults.localStorageIdentifier);
+            if (currentUserPreference === null) {
+                libdocUi.saveLocalStorage({
+                    identifier: libdocUi.defaults.localStorageIdentifier,
+                    backup: newPreferences
+                });
+            } else {
+                let newStorage = {};
+                for (const key in newPreferences) {
+                    newStorage[key] = newPreferences[key];
+                }
+                libdocUi.saveLocalStorage({
+                    identifier: libdocUi.defaults.localStorageIdentifier,
+                    backup: newStorage
+                });
             }
         }
     },
@@ -714,6 +737,7 @@ const libdocUi = {
         document.addEventListener('cToggle_event', libdocUi.handlers._cToggle);
         window.addEventListener('resize', libdocUi.handlers._windowResize);
         window.addEventListener('load', libdocUi.handlers._windowLoad);
+        libdocUi.el.navPrimary.addEventListener('scroll', libdocUi.handlers._scrollNavPrimary);
         document.querySelectorAll('.copy_code_block').forEach(function(el) {
             el.addEventListener('click', libdocUi.handlers._clickCopyCodeBlock);
         });
