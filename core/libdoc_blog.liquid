@@ -14,7 +14,7 @@ permalink: "{{ libdocConfig.blogSlug }}/{% if pagination.pageNumber > 0 %}page-{
                 <div class="pos-absolute t-tX-50 | p-1 | bc-primary-500 brad-4"></div>
                 <div class="pl-10 | bbwidth-1 bbstyle-dashed bcolor-neutral-500" pl-5="xs"></div>
                 <a  href="{{ item.url }}"
-                    class="d-flex fd-column gap-2 fg-1 | p-5 | td-none | bc-primary-100 brad-2 bwidth-1 bstyle-dashed bcolor-primary-500">
+                    class="d-flex fd-column gap-2 fg-1 | p-5 | td-none | bc-neutral-100 brad-2 bwidth-1 bstyle-dashed bcolor-neutral-500">
                     {%- if item.data.ogImageUrl %}
                         <span class="mb-2 | brad-2"
                             style="
@@ -30,10 +30,11 @@ permalink: "{{ libdocConfig.blogSlug }}/{% if pagination.pageNumber > 0 %}page-{
                         </span>
                     </span>
                     <strong class="fs-7 fvs-wght-600 lh-3"
-                        fs-6="xs">
+                        fs-5="xs">
                         {{ item.data.eleventyNavigation.key | default: item.data.title | default: item.page.inputPath }}
                     </strong>
-                    <span class="fs-4 fvs-wght-400 lh-5 c-primary-900">
+                    <span class="fs-4 fvs-wght-400 lh-5 c-primary-900"
+                        fs-3="xs">
                         {{ item.data.description }}
                     </span>
                 </a>
@@ -41,7 +42,7 @@ permalink: "{{ libdocConfig.blogSlug }}/{% if pagination.pageNumber > 0 %}page-{
         {% endfor %}
     </ol>
 
-    <nav class="d-flex gap-2 fw-wrap | pl-10 pt-10 | blwidth-1 blstyle-dashed bcolor-neutral-500">
+    <nav class="d-flex gap-2 fw-wrap | pl-10 pt-10 | blwidth-1 blstyle-dashed bcolor-neutral-500" pl-5="xs,sm">
         {% for pageEntry in pagination.pages %}
             <a  href="{{ pagination.hrefs[ forloop.index0 ] }}"
                 title="{{ libdocMessages.page[libdocConfig.lang] }} {{ forloop.index }}"
