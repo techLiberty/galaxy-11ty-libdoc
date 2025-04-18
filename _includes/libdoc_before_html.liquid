@@ -4,14 +4,14 @@
 {%- assign pageLang = language | default: libdocConfig.lang -%}
 {%- assign pageTitle = title | default: page.inputPath -%}
 {%- assign pageDescription = description | default: "" -%}
-{%- assign pageAuthor = author | default: libdocConfig.author -%}
+{%- assign pageAuthor = libdocConfig.author -%}
 {%- assign pageOgImageUrl = ogImageUrl | default: libdocConfig.ogImageUrl -%}
 
 {%- comment -%} {%- assign blogPathUrl = '/' | append: libdocConfig.blogSlug | append: '/' -%} {%- endcomment -%}
 {%- assign pagePathUrl = page.url | split: '/' -%}
 {%- if pagePathUrl[1] == libdocConfig.blogSlug -%}
     {%- capture extendedTitle -%}
-        {%- if pagination.pageNumber > 0 -%}
+        {%- if pagination.pageNumber > 0 %}
             -
             {{ libdocMessages.page[pageLang] }}
             {{ pagination.pageNumber | plus: 1 }}
@@ -20,6 +20,10 @@
     {%- assign pageTitle = libdocConfig.blogTitle | append: extendedTitle -%}
     {%- assign pageDescription = libdocConfig.blogDescription -%}
     {%- assign pageAuthor = libdocConfig.blogAuthor -%}
+{%- endif -%}
+
+{%- if author -%}
+    {%- assign pageAuthor = author -%}
 {%- endif -%}
 
 {%- if pagePathUrl[1] == 'tags' -%}
