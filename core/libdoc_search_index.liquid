@@ -7,7 +7,7 @@ eleventyExcludeFromCollections: true
         {% if collections.myTags.size > 0 %}
             {% for tagName in collections.myTags %}
                 {
-                    "url": "/tags/{{ tagName }}",
+                    "url": "{{ '/tags/' | url }}{{ tagName }}",
                     "title": "{{ libdocMessages.tag[libdocConfig.lang] }}",
                     "content": " {{ tagName }} "
                 }{% if forloop.last == false %},{% endif %}
@@ -17,7 +17,7 @@ eleventyExcludeFromCollections: true
             {%- assign itemUrlSplit = item.url | split: '/' -%}
             {% if pageUrlSplit[1] != itemUrlSplit[1] or item.url == '/' %}
                 {
-                    "url": "{{ item.url }}",
+                    "url": "{{ item.url | url }}",
                     "title": "{{ item.data.title | default: item.data.eleventyNavigation.key | default: item.inputPath }}",
                     "content": "{{ item.data.description | strip_newlines | strip_html }} {{ item.data.tags | join: ' ' }} {{ item.content | strip_newlines | strip_html }}"
                 }{% if forloop.last == false %},{% endif %}

@@ -71,7 +71,7 @@ const search = {
     },
     update: function() {
         // console.log(query)
-        fetch('/core/assets/js/search_index.json')
+        fetch(libdocConfig.searchIndexUrl)
             .then(response => response.json())
             .then(searchIndexArray => {
                 // console.log(json);
