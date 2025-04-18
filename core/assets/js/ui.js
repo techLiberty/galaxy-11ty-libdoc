@@ -554,7 +554,8 @@ const libdocUi = {
         if (libdocUi.el.searchOccurrencesCmd !== undefined) {
             libdocUi._so.bottomSpacing = 0;
             if (libdocUi._currentScreenSizeName == 'xs' || libdocUi._currentScreenSizeName == 'sm') {
-                libdocUi._so.bottomSpacing = libdocUi.el.navSmallDevices.clientHeight + libdocUi.el.ftoc.clientHeight;
+                const fTocHeight = libdocUi.el.ftoc?.clientHeight || 0;
+                libdocUi._so.bottomSpacing = libdocUi.el.navSmallDevices.clientHeight + fTocHeight;
             }
             libdocUi.el.searchOccurrencesCmd.style.bottom = `${libdocUi._so.bottomSpacing}px`;
         }
