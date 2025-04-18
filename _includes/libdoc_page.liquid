@@ -160,12 +160,11 @@
                         </form>
                     </li>
                     {% if libdocConfig.customLinks.size > 0 %}
-                        <li class="d-flex ai-center fw-wrap | pb-3">
+                        <li class="d-flex ai-center fw-wrap gap-7 rgap-1 | pb-3 pl-4">
                             {% for item in libdocConfig.customLinks %}
                                 <a  href="{{ item.url }}"
-                                    style="width:33.33%"
                                     class="
-                                    d-flex jc-center ai-center gap-1
+                                    d-flex ai-center gap-1
                                     pt-2 pb-2
                                     fvs-wght-600 fs-2 lsp-3 lh-1 tt-uppercase td-none
                                     c-primary-600"
