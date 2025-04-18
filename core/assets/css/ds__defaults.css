@@ -230,6 +230,18 @@ main a[aria-current="page"] {
     opacity: 0.5;
     pointer-events: none;
 }
+main a[href^="https://"]::after {
+    content: '\e900';
+    font-family: icomoon;
+    text-decoration: none;
+    display: inline-flex;
+    float: none;
+    color: var(--ita-colors-primary-300);
+    transition: color 300ms;
+}
+main a[href^="https://"]:hover::after {
+    color: var(--ita-colors-primary-700);
+}
 /* EMPHASIS */
 main em {
     font-variation-settings: "slnt" -8, "wght" 400;

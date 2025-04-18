@@ -753,6 +753,11 @@ const libdocUi = {
         document.querySelectorAll('details[name="nav_primary"]').forEach(function(elDetail) {
             elDetail.addEventListener("toggle", libdocUi.handlers._toggleNavPrimaryAccordion);
         });
+
+        libdocUi.el.main.querySelectorAll('a[href^="https://"]').forEach(function(el) {
+            el.target = '_blank';
+            el.title = `${libdocMessages.open} ${el.href} ${libdocMessages.inANewTab.toLowerCase()}`
+        })
     }
 }
 libdocUi.update();
