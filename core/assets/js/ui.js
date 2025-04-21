@@ -529,7 +529,7 @@ const libdocUi = {
         }
     },
     updateFtocList: function() {
-        if (window.scrollY > libdocUi.el.mainHeader.clientHeight) {
+        if (window.scrollY > libdocUi.el.mainHeader.clientHeight && typeof libdocUi.el.ftoc == 'object') {
             libdocUi.el.ftoc.style.display = null;
             if (libdocUi.el.ftocDetails.open) {
                 const linkIndexesArray = libdocUi.getVisibleTocIndexes();

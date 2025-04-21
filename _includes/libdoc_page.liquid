@@ -217,7 +217,7 @@
             {% block content %}
                 <header class="d-flex fd-column | pt-5 {% if pageUrlSplit[1] != 'tags' and pageUrlSplit[1] != libdocConfig.blogSlug %}pb-7{% endif %}">
                     {% include 'libdoc_breadcrumb' %}
-                    <h1 class="mt-3 mb-0 | lsp-5 fvs-wght-700 tws-balance"
+                    <h1 class="mt-3 mb-0 | lsp-5 fvs-wght-700 tws-balance {% if pageTitle == page.inputPath %}wb-break-work{% endif %}"
                         fs-10="md"
                         fs-9="xs,sm">
                         {{ pageTitle }}

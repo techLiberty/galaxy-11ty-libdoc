@@ -16,10 +16,12 @@ permalink: "{{ libdocConfig.blogSlug }}/{% if pagination.pageNumber > 0 %}page-{
                 <a  href="{{ item.url }}"
                     class="d-flex fd-column gap-2 fg-1 | p-5 | td-none | bc-neutral-100 brad-2 bwidth-1 bstyle-dashed bcolor-neutral-500">
                     {%- if item.data.ogImageUrl %}
-                        <span class="mb-2 | brad-2"
-                            style="
-                            aspect-ratio: 2;
-                            background: center / cover no-repeat url('{{ item.data.ogImageUrl }}')"></span>
+                        <img src="{{ item.data.ogImageUrl }}"
+                            alt="{{ item.data.eleventyNavigation.key | default: item.data.title | default: item.page.inputPath }}"
+                            eleventy:widths="1200"
+                            loading="lazy"
+                            decoding="async"
+                            class="w-100 h-auto | brad-2 bc-primary-200">
                     {%- endif %}
                     <span class="d-flex ai-center gap-2 | fvs-wght-400 fs-3 lsp-3 lh-3 | c-primary-900"
                         fs-2="xs">
