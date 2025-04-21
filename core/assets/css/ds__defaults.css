@@ -621,6 +621,66 @@ main u {
 main img.long-shadow {
     margin-bottom: 2em;
 }
+/* ALERTS */
+main .alert {
+    display: flex;
+    flex-direction: column;
+    gap: var(--ita-spacings-3);
+    font-variation-settings: "wght" 400, "slnt" 0, "CASL" 0, "CRSV" 0;
+    padding: var(--ita-spacings-2) var(--ita-spacings-5);
+    border-left-style: solid;
+    border-left-width: 3px;
+    border-color: var(--ita-colors-neutral-500);
+    color: var(--ita-colors-neutral-700);
+    font-size: var(--ita-fontSizes-4);
+}
+main .alert[data-title]::before {
+    content: attr(data-title);
+    font-variation-settings: "wght" 700, "slnt" 0, "CASL" 0, "CRSV" 0;
+    text-transform: uppercase;
+    font-size: var(--ita-fontSizes-3);
+    padding-bottom: var(--ita-spacings-1);
+    color: var(--ita-colors-neutral-700);
+    border-bottom-style: solid;
+    border-bottom-width: 1px;
+    border-color: var(--ita-colors-neutral-500);
+}
+main .alert.info {
+    background-color: var(--ita-colors-primary-100);
+    color: var(--ita-colors-primary-900);
+    border-color: var(--ita-colors-primary-500);
+}
+main .alert.info::before {
+    color: var(--ita-colors-primary-500);
+    border-color: currentColor;
+}
+main .alert.success {
+    background-color: var(--ita-colors-success-100);
+    color: var(--ita-colors-success-900);
+    border-color: var(--ita-colors-success-500);
+}
+main .alert.success::before {
+    color: var(--ita-colors-success-500);
+    border-color: currentColor;
+}
+main .alert.warning {
+    background-color: var(--ita-colors-warning-100);
+    color: var(--ita-colors-warning-900);
+    border-color: var(--ita-colors-warning-500);
+}
+main .alert.warning::before {
+    color: var(--ita-colors-warning-500);
+    border-color: currentColor;
+}
+main .alert.danger {
+    background-color: var(--ita-colors-danger-100);
+    color: var(--ita-colors-danger-900);
+    border-color: var(--ita-colors-danger-500);
+}
+main .alert.danger::before {
+    color: var(--ita-colors-danger-500);
+    border-color: currentColor;
+}
 /* SEARCH OCCURRENCES */
 main .__search-occurrence {
     background-color: var(--ita-colors-success-100) !important;
