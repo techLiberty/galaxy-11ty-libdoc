@@ -31,5 +31,5 @@ author: false
 
 A page with the above front matter is not linked into the main/primary menu and there is no breadcrumb. To enable link item in the primary navigation, `eleventyNavigation.key` must be set into the [front matter](/content/front-matter/index.md).
 
-[View an example of a page with author disabled](/content/front-matter/author-disabled/)
+[View an example of a page with author disabled](/content/front-matter/examples/author-disabled/)
 
