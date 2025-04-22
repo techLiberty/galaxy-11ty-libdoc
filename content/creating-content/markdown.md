@@ -299,13 +299,13 @@ Optionally add a title attribute
 [![Alt text](/assets/images/pierra-menta.jpg)](/content/creating-content/markdown.md#images "Go to Markdown page section Images")
 ```
 
-Here is an example of a markdown link inclufing a raster image with its natural width smaller than main content width
+Here is an example of a markdown link including a raster image with its natural width smaller than main content width
 
 [![alt text](/favicon.png)](/content/creating-content/markdown.md#images "Go to Markdown page section Images").
 
 *Please note that, awaiting enhancement, raster images smaller than main content width do not render properly on high density displays like Retina.*
 
-Here is an example of a markdown link inclufing a vector image with its natural width smaller than main content width
+Here is an example of a markdown link including a vector image with its natural width smaller than main content width
 
 [![alt text](/assets/images/info.svg)](/content/creating-content/markdown.md#images "Go to Markdown page section Images").
 

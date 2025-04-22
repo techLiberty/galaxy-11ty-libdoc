@@ -547,10 +547,6 @@ main figure {
     overflow: hidden;
     /* max-width: clamp(var(--ita-widths-content), calc(100% - 3 * var(--ita-spacings-5)), calc(var(--ita-widths-content) + 2 * var(--ita-spacings-9))); */
 }
-/* main > picture {
-    padding-top: var(--ita-spacings-9);
-    padding-bottom: var(--ita-spacings-9);
-} */
 main figure.dark,
 main picture:has(.dark) img {
     color: var(--ita-colors-neutral-100);
@@ -623,19 +619,19 @@ main img.long-shadow {
 }
 /* ALERTS */
 main .alert {
-    display: flex;
-    flex-direction: column;
-    gap: var(--ita-spacings-3);
     font-variation-settings: "wght" 400, "slnt" 0, "CASL" 0, "CRSV" 0;
-    padding: var(--ita-spacings-2) var(--ita-spacings-5);
+    padding: var(--ita-spacings-3) var(--ita-spacings-5);
     border-left-style: solid;
     border-left-width: 3px;
     border-color: var(--ita-colors-neutral-500);
     color: var(--ita-colors-neutral-700);
+    background-color: var(--ita-colors-primary-100);
     font-size: var(--ita-fontSizes-4);
 }
 main .alert[data-title]::before {
     content: attr(data-title);
+    display: block;
+    margin-bottom: var(--ita-spacings-3);
     font-variation-settings: "wght" 700, "slnt" 0, "CASL" 0, "CRSV" 0;
     text-transform: uppercase;
     font-size: var(--ita-fontSizes-3);
@@ -646,7 +642,7 @@ main .alert[data-title]::before {
     border-color: var(--ita-colors-neutral-500);
 }
 main .alert.info {
-    background-color: var(--ita-colors-primary-100);
+    background-color: var(--ita-colors-neutral-100);
     color: var(--ita-colors-primary-900);
     border-color: var(--ita-colors-primary-500);
 }
@@ -714,32 +710,6 @@ main .__search-occurrence {
     border-radius: 100%;
     transform: translateX(calc(-50% + 1px));
 }
-/* #nav_primary .nav_primary__anchor::after {
-    content: '';
-    display: flex;
-    position: absolute;
-    top: 0;
-    left: -4px;
-    width: 10px;
-    height: calc(50% + 5px);
-    background-image: radial-gradient( circle at 50% calc(100% - 5px), var(--ita-colors-primary-500) 0px, var(--ita-colors-primary-500) 4px, var(--ita-colors-neutral-100) 5px, var(--ita-colors-neutral-100) 100% );
-    z-index: 1;
-} */
-/* #nav_primary > ol > li ol {
-    border-left: 1px dashed var(--ita-colors-neutral-500);
-} */
-/* #nav_primary > ol li > a + ol > li:last-child::before {
-    background-color: red;
-    content: '';
-    display: flex;
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 10px;
-    height: calc(50% + 5px);
-    background-color: red;
-    z-index: 1;
-} */
 #nav_primary_container [aria-current="page"],
 .nav_primary [aria-current="page"] {
     color: var(--ita-colors-primary-500);
@@ -762,31 +732,6 @@ main .__search-occurrence {
     width: var(--ita-spacings-1);
     min-width: var(--ita-spacings-1);
 }
-/* #nav_primary > ol > li:has(ol)::before {
-    content: '';
-    display: flex;
-    position: absolute;
-    top: 0;
-    left: 0;
-    border-left: 1px dashed var(--ita-colors-neutral-500);
-    height: 100%;
-}
-#nav_primary > ol > li:has(ol)::after {
-    content: '';
-    display: flex;
-    position: absolute;
-    top: 0;
-    left: 0;
-    border-left: 1px dashed var(--ita-colors-neutral-500);
-    height: 100%;
-} */
-/* #nav_primary > ol > li:has(ol) > a.nav_primary__anchor {
-    padding-top: var(--ita-spacings-5);
-    padding-bottom: var(--ita-spacings-5);
-} */
-/* #nav_primary > ol li:has(ol) > a.nav_primary__anchor {
-    border-left: 1px dashed var(--ita-colors-neutral-500);
-} */
 
 /* MAIN TABLE OF CONTENT */
 #toc_main {
@@ -827,10 +772,6 @@ main .__search-occurrence {
 .sandbox:has(.sandbox__enable_switch:checked) .sandbox__enable_wrapper {
     display: none;
 }
-/* .sandbox p,
-.sandbox li {
-    text-shadow: none;
-} */
 
 /* FLOATING TABLE OF CONTENT */
 #floating_toc[open] summary [class*="icon-"]::before {
@@ -857,7 +798,7 @@ main .__search-occurrence {
         font-size: var(--ita-fontSizes-4);
     }
     code {
-        font-size: var(--ita-fontSizes-3);
+        font-size: var(--ita-fontSizes-2);
     }
     main > * {
         max-width: calc(var(--libdoc-container-width) + 2 * var(--ita-spacings-5));
@@ -920,20 +861,4 @@ main .__search-occurrence {
 }
 .__hover-2:hover > * {
     color: var(--ita-colors-success-100);
-}
-.__gradient-mask-neutral-100-to-top {
-    background-color: var(--ita-colors-neutral-100);
-    mask: linear-gradient(to top,rgba(0, 0, 0, 1), rgba(0, 0, 0, 0));
-}
-.__gradient-mask-neutral-100-to-bottom {
-    background-color: var(--ita-colors-neutral-100);
-    mask: linear-gradient(to bottom,rgba(0, 0, 0, 1) 50%, rgba(0, 0, 0, 0));
-}
-.__gradient-mask-primary-100-to-top {
-    background-color: var(--ita-colors-primary-100);
-    mask: linear-gradient(to top,rgba(0, 0, 0, 1), rgba(0, 0, 0, 0));
-}
-.__gradient-mask-primary-100-to-bottom {
-    background-color: var(--ita-colors-primary-100);
-    mask: linear-gradient(to bottom,rgba(0, 0, 0, 1), rgba(0, 0, 0, 0));
 }
