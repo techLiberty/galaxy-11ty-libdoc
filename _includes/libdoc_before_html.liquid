@@ -1,7 +1,7 @@
 {%- assign pageUrlSplit = page.url | split: '/' -%}
 {%- assign tocMarkup = '' -%}
-{%- assign pageLang = language | default: libdocConfig.lang -%}
-{%- assign pageTitle = title | default: page.inputPath -%}
+{%- assign pageLang = libdocConfig.lang -%}
+{%- assign pageTitle = page.inputPath -%}
 {%- assign pageDescription = description | default: "" -%}
 {%- assign pageAuthor = libdocConfig.author -%}
 {%- assign pageOgImageUrl = ogImageUrl | default: libdocConfig.ogImageUrl -%}
@@ -10,7 +10,7 @@
 {%- assign pagePathUrl = page.url | split: '/' -%}
 {%- if pagePathUrl[1] == libdocConfig.blogSlug -%}
     {%- capture extendedTitle -%}
-        {%- if pagination.pageNumber > 0 %}
+        {%- if pagination.pageNumber > 0 -%}
             -
             {{ libdocMessages.page[pageLang] }}
             {{ pagination.pageNumber | plus: 1 }}
@@ -52,4 +52,12 @@
     {%- assign tocMarkup = content | toc -%}
 {%- elsif tocEnabled != false and libdocConfig.tocEnabled -%}
     {%- assign tocMarkup = content | toc -%}
+{%- endif -%}
+
+{%- if language -%}
+    {%- assign pageLang = language -%}
+{%- endif -%}
+
+{%- if title -%}
+    {%- assign pageTitle = title -%}
 {%- endif -%}
