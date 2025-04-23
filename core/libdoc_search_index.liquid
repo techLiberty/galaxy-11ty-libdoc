@@ -3,7 +3,7 @@ permalink: core/assets/js/search_index.json
 eleventyExcludeFromCollections: true
 ---
 [
-    {% if collections.all.size > 0 %}
+    {% if collections.all.size > 0 and libdocConfig.searchEnabled %}
         {% if collections.myTags.size > 0 %}
             {% for tagName in collections.myTags %}
                 {
