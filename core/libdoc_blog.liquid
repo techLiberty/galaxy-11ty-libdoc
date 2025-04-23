@@ -25,17 +25,23 @@ permalink: "{{ libdocConfig.blogSlug }}/{% if pagination.pageNumber > 0 %}page-{
                     {%- endif %}
                     <span class="d-flex ai-center gap-2 | fvs-wght-400 fs-3 lsp-3 lh-3 | c-primary-900"
                         fs-2="xs">
-                        <span class="icon-calendar-dots"></span>
-                        <span ws-nowrap="sm,md">
-                            <span class="ws-nowrap">{{ libdocMessages.lastModified[pageLang] }}</span>
+                        <span class="icon-calendar-dots fs-8 | c-neutral-500" fs-6="xs"></span>
+                        <span class="d-flex jc-space-between ai-center fg-1 gap-5 | c-neutral-700"
+                            ws-nowrap="sm,md">
                             {{ item.page.date|dateString }}
+                            {% if item.data.author %}
+                                <span class="d-flex ai-center gap-2">
+                                    <span class="icon-user fs-8 | c-neutral-500" fs-6="xs"></span>
+                                    {{ item.data.author }}
+                                </span>
+                            {% endif %}
                         </span>
                     </span>
-                    <strong class="fs-7 fvs-wght-600 lh-3"
+                    <strong class="fs-8 lsp-5 fvs-wght-600 lh-3"
                         fs-5="xs">
                         {{ item.data.eleventyNavigation.key | default: item.data.title | default: item.page.inputPath }}
                     </strong>
-                    <span class="fs-4 fvs-wght-400 lh-5 c-primary-900"
+                    <span class="fs-4 fvs-wght-400 lh-5 | c-neutral-700"
                         fs-3="xs">
                         {{ item.data.description }}
                     </span>
