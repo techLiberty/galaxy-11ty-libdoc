@@ -11,7 +11,7 @@ tags:
     - configuration
     - SEO
 ---
+Into `_data/libdocConfig.json`:
 
-`siteTile` is always displayed as title link at the top of the primary navigation.
-
-`siteDescription` is displayed as metadata description on the page with `permalink: index.html`.
+* `siteTile` is always displayed as title link at the top of the primary navigation.
+* `siteDescription` is displayed as metadata description on the page with `permalink: index.html` (home page) and as <var>title</var> attribute on home page link.

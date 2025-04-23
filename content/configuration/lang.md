@@ -64,6 +64,10 @@ tags:
         "en": "Home",
         "fr": "Accueil"
     },
+    "inANewTab": {
+        "en": "In a new tab",
+        "fr": "Dans un nouvel onglet"
+    },
     "lastModified": {
         "en": "Last modified",
         "fr": "Dernière modification"

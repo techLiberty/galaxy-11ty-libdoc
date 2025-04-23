@@ -1,6 +1,6 @@
 ---
 layout: libdoc_page
-permalink: front-matter/date-disabled/index.html
+permalink: front-matter/date/index.html
 eleventyNavigation:
     key: Date
     parent: Front Matter

@@ -21,4 +21,7 @@ Available into `_data/libdocConfig.json`:
 }
 ```
 
-The favicon URL is set into the key `faviconUrl` of the LibDoc configuration JSON file. Favicon URL parameter can be overridden on each page’s front matter with the same key `faviconUrl`.
+Favicon URL is applied following these ordered priorities:
+
+1. By default favicon URL’s value is `libdocConfig.faviconUrl` if nothing is set into the front matter.
+1. If `faviconUrl` is set into the front matter, page’s favicon URL gets this value.
