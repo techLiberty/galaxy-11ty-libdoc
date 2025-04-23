@@ -17,6 +17,8 @@ Here is the current LibDoc’s configuration file available in `_data/libdocConf
     "lang": "en",
     "siteTitle": "Eleventy LibDoc",
     "siteDescription": "Just and Eleventy SSG starter project to create documentation website",
+    "siteLogoUrl": "",
+    "siteLogoMaxHeight": 60,
     "author": "Olivier 3lanc",
     "faviconUrl": "/favicon.png",
     "ogImageUrl": "",
@@ -59,25 +61,26 @@ Here is the current LibDoc’s configuration file available in `_data/libdocConf
 
 Parameter | Type | Description | Page override
 --- |--- |--- |---
-`lang`| String | Locale of the project, required for every message of the user interface | yes
-`siteTitle` | String | Title of the project | no
-`siteDescription` | String | Description of the project | no
-`author` | String or Boolean | Default author of pages. Setting to <var>false</var> disables author display | yes
-`faviconUrl` | String | URL of the favicon | yes
-`ogImageUrl` | String | Metadata URL of the default Open Graph image | yes
-`customLinks` | Array | Array of objects defining custom links into the primary navigation | no
-`customLinks[i].text` | String | Link text | no
-`customLinks[i].url` | String | Link URL | no
-`blogTitle` | String | Sets the blog title | no
-`blogDescription` | String | Sets the blog description | no
-`blogAuthor` | String | Sets the blog author | no
-`blogSlug` | String | Sets the slug for the blog | no
-`customLinks[i]` | Object | Object defining a custom link | no
-`displayTagsListLink` | Boolean | Enable or disable the link that opens tags list page | no
-`tocEnabled` | Boolean | Enable or disable Table of Content | yes
-`tocHtmlTags` | Array | List of tags to support into the Table of Content | no
-`tocMinTags` | Integer | Minimum amount of headings detected to enable Table of Content | no
-`htmlBasePathPrefix` | String | Configure your HTML base path prefix | no
-`sandboxRunSwitch` | Boolean | Enable disable scroll into sandbox instead of page | no
+`lang`| String | Locale of the project, required for every message of the user interface [Learn more](/content/configuration/lang.md) | yes
+`siteTitle` | String | Title of the project [Learn more](/content/configuration/site-title-and-description.md) | no
+`siteDescription` | String | Description of the project [Learn more](/content/configuration/site-title-and-description.md) | no
+`siteLogoUrl` | String | Optional site logo URL [Learn more](/content/configuration/site-logo.md) | no
+`siteLogoMaxHeight` | Integer | If site logo URL is set, adjusts maximum height of the logo in pixels [Learn more](/content/configuration/site-logo.md) | no
+`author` | String or Boolean | Default author of pages. Setting to <var>false</var> disables author display [Learn more](/content/configuration/author.md) | yes
+`faviconUrl` | String | URL of the favicon [Learn more](/content/configuration/favicon.md) | yes
+`ogImageUrl` | String | Metadata URL of the default Open Graph image [Learn more](/content/configuration/open-graph-image.md) | yes
+`customLinks` | Array | Array of objects defining custom links into the primary navigation [Learn more](/content/configuration/custom-links.md) | no
+`customLinks[i].text` | String | Link text [Learn more](/content/configuration/custom-links.md) | no
+`customLinks[i].url` | String | Link URL [Learn more](/content/configuration/custom-links.md) | no
+`blogTitle` | String | Sets the blog title [Learn more](/content/configuration/blog.md) | no
+`blogDescription` | String | Sets the blog description [Learn more](/content/configuration/blog.md) | no
+`blogAuthor` | String | Sets the blog author [Learn more](/content/configuration/blog.md) | no
+`blogSlug` | String | Sets the slug for the blog [Learn more](/content/configuration/blog.md) | no
+`displayTagsListLink` | Boolean | Enable or disable the link that opens tags list page [Learn more](/content/configuration/tags-list-link.md) | no
+`tocEnabled` | Boolean | Enable or disable Table of Content [Learn more](/content/configuration/toc.md) | yes
+`tocHtmlTags` | Array | List of tags to support into the Table of Content [Learn more](/content/configuration/toc.md) | no
+`tocMinTags` | Integer | Minimum amount of headings detected to enable Table of Content [Learn more](/content/configuration/toc.md) | no
+`htmlBasePathPrefix` | String | Configure your HTML base path prefix [Learn more](/content/configuration/html-base.md) | no
+`sandboxRunSwitch` | Boolean | Enable disable scroll into sandbox instead of page [Learn more](/content/configuration/sandboxes.md) | no
 `searchEnabled` | Boolean | Enable disable search feature | no
-`hljsLanguages` | Array | List of supported languages for syntax highlighting, just add aliases according to your needs [list](https://highlightjs.readthedocs.io/en/latest/supported-languages.html) | no
+`hljsLanguages` | Array | List of supported languages for syntax highlighting, just add aliases according to your needs [Learn more](/content/configuration/hljs.md) | no

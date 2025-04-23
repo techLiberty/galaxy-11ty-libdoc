@@ -51,6 +51,12 @@
     <link rel="stylesheet" href="/core/assets/css/ds.css">
     <link rel="stylesheet" href="/core/assets/css/hljs/night-owl.css">
     <link rel="stylesheet" href="/core/assets/fonts/icomoon/style.css">
+    <style>
+        :root {
+            --ita-widths-sidebar: {{ libdocSystem.widthSidebar }}px;
+            --ita-widths-content: {{ libdocSystem.widthContent }}px;
+        }
+    </style>
     <noscript>
         <link rel="stylesheet" href="/core/assets/css/noscript.css">
     </noscript>
@@ -132,11 +138,23 @@
                     bradtl-3="md"
                     bradtr-3="md">
                     <li class="d-flex ai-center">
-                        <a  href="/"
-                            class="p-5 | td-none fvs-wght-700 lsp-5 fs-8 tws-balance | c-neutral-900"
-                            title="{{ libdocConfig.siteDescription }}">
-                            {{ libdocConfig.siteTitle }}
-                        </a>
+                        {% if libdocConfig.siteLogoUrl != '' %}
+                            <a  href="/"
+                                class="pl-5 pt-5 pr-5 | td-none fvs-wght-700 lsp-5 fs-8 tws-balance | c-neutral-900"
+                                title="{{ libdocConfig.siteDescription }}">
+                                <img src="{{ libdocConfig.siteLogoUrl }}"
+                                    alt="{{ libdocConfig.siteTitle }}"
+                                    eleventy:widths="{{ libdocSystem.widthSidebar | minus: 40 | times: 2 }}"
+                                    class="maxw-100 w-auto"
+                                    style="max-height: {{ libdocConfig.siteLogoMaxHeight }}px">
+                            </a>
+                        {% else %}
+                            <a  href="/"
+                                class="p-5 | td-none fvs-wght-700 lsp-5 fs-8 tws-balance | c-neutral-900"
+                                title="{{ libdocConfig.siteDescription }}">
+                                {{ libdocConfig.siteTitle }}
+                            </a>
+                        {% endif %}
                     </li>
                     {% if libdocConfig.searchEnabled %}
                         <li d-none="xs,sm">

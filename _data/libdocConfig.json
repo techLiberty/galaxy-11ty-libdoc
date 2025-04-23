@@ -2,6 +2,8 @@
     "lang": "en",
     "siteTitle": "Eleventy LibDoc",
     "siteDescription": "Just and Eleventy SSG starter project to create documentation website",
+    "siteLogoUrl": "",
+    "siteLogoMaxHeight": 60,
     "author": "Olivier 3lanc",
     "faviconUrl": "/favicon.png",
     "ogImageUrl": "",
