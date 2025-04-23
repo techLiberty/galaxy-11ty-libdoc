@@ -10,7 +10,7 @@ title: Blog - Configuration
 description: How to set up blogging feature in Eleventy LibDoc
 tags:
     - configuration
-    - blog
+    - blogging
 ---
 
 Here are the parameters related to blog.

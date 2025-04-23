@@ -9,7 +9,7 @@ eleventyNavigation:
 description: How to use the blog feature of LibDoc
 tags:
     - navigation
-    - blog
+    - blogging
 date: Last Modified
 ---
 
