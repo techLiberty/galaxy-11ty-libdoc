@@ -18,8 +18,8 @@ eleventyExcludeFromCollections: true
             {% if pageUrlSplit[1] != itemUrlSplit[1] or item.url == '/' %}
                 {
                     "url": "{{ item.url | url }}",
-                    "title": "{{ item.data.title | default: item.data.eleventyNavigation.key | default: item.inputPath }}",
-                    "content": "{{ item.data.description | strip_newlines | strip_html }} {{ item.data.tags | join: ' ' }} {{ item.content | strip_newlines | strip_html }}"
+                    "title": "{{ item.data.title | default: item.data.eleventyNavigation.key | default: item.inputPath | escape }}",
+                    "content": "{{ item.data.description | strip_newlines | strip_html | escape }} {{ item.data.tags | join: ' ' }} {{ item.content | strip_newlines | strip_html | escape }}"
                 }{% if forloop.last == false %},{% endif %}
             {% endif %}
         {% endfor %}
