@@ -424,7 +424,7 @@ Example of syntax highlighting with Liquid. Encapsulate code into `raw ... endra
 
 ```liquid
 {% raw %}{% assign filePath = "." | append: path %}
-{% sandboxFile path, title %}{% renderFile filePath %}{% endsandboxFile %}{% endraw %}
+{% sandboxFile path, title %}{% include filePath %}{% endsandboxFile %}{% endraw %}
 ```
 
 Markdown code
@@ -432,7 +432,7 @@ Markdown code
 ```markdown
     ```liquid
     {% raw %}{% assign filePath = "." | append: path %}
-    {% sandboxFile path, title %}{% renderFile filePath %}{% endsandboxFile %}{% endraw %}
+    {% sandboxFile path, title %}{% include filePath %}{% endsandboxFile %}{% endraw %}
     ```
 ```
 
