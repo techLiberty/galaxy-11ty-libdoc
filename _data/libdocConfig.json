@@ -29,5 +29,6 @@
     "tocMinTags": 1,
     "htmlBasePathPrefix": "",
     "sandboxRunSwitch": false,
-    "searchEnabled": true
+    "searchEnabled": true,
+    "hljsLanguages": ["xml", "javascript", "json", "yaml", "liquid", "markdown", "css"]
 }

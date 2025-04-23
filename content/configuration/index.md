@@ -44,7 +44,8 @@ Here is the current LibDoc’s configuration file available in `_data/libdocConf
     "tocMinTags": 1,
     "htmlBasePathPrefix": "",
     "sandboxRunSwitch": true,
-    "searchEnabled": true
+    "searchEnabled": true,
+    "hljsLanguages": ["xml", "javascript", "json", "yaml", "liquid", "markdown", "css"]
 }
 ```
 
@@ -71,3 +72,4 @@ Parameter | Type | Description | Page override
 `htmlBasePathPrefix` | String | Configure your HTML base path prefix | no
 `sandboxRunSwitch` | Boolean | Enable disable scroll into sandbox instead of page | no
 `searchEnabled` | Boolean | Enable disable search feature | no
+`hljsLanguages` | Array | List of supported languages for syntax highlighting, just add aliases according to your needs [list](https://highlightjs.readthedocs.io/en/latest/supported-languages.html) | no
