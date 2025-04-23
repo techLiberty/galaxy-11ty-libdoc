@@ -351,9 +351,11 @@ To display very short length of `code`, just `use the **following** # syntax`.
 
 ## Syntax highlighting
 
-Eleventy LibDoc uses [highlight.js](https://highlightjs.org/demo) to highlight code.
+To create a code block
 
-To create a code block, enter three back-ticks ` ``` ` followed by the language name and end with the same ` ``` ` into a new line. Here are few examples.
+1. Enter three back-ticks ` ``` ` followed by the language [alias](https://highlightjs.readthedocs.io/en/latest/supported-languages.html)
+2. Enter your code to highlight
+3. End with the same ` ``` ` into a new line.
 
 Example of syntax highlighting with HTML
 
@@ -387,39 +389,6 @@ Markdown code
     ```
 ```
 
-Example of syntax highlighting with Python
-
-```python
-s = "Python syntax highlighting"
-print s
-```
-
-Markdown code
-
-```markdown
-    ```python
-    s = "Python syntax highlighting"
-    print s
-    ```
-```
-
-
-Example of syntax highlighting with PHP
-
-```php
-$s = "PHP syntax highlighting";
-echo $s;
-```
-
-Markdown code
-
-```markdown
-    ```php
-    $s = "PHP syntax highlighting";
-    echo $s;
-    ```
-```
-
 Example of syntax highlighting with Liquid. Encapsulate code into `raw ... endraw` [raw paired shortcodes](https://liquidjs.com/tags/raw.html).
 
 ```liquid
@@ -448,7 +417,7 @@ No language specified may render unwanted result, please specify.
     ```
 ```
 
-Additional languages may be added into the page, see <https://highlightjs.org/download>
+To manage your own supported languages according to your needs, see [Highlight JS configuration](/content/configuration/hljs.md).
 
 ## Tables
 

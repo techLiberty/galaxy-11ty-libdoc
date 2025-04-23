@@ -45,7 +45,15 @@ Here is the current LibDoc’s configuration file available in `_data/libdocConf
     "htmlBasePathPrefix": "",
     "sandboxRunSwitch": true,
     "searchEnabled": true,
-    "hljsLanguages": ["xml", "javascript", "json", "yaml", "liquid", "markdown", "css"]
+    "hljsLanguages": [
+        "xml",
+        "javascript",
+        "json",
+        "yaml",
+        "liquid",
+        "markdown",
+        "css"
+    ]
 }
 ```
 

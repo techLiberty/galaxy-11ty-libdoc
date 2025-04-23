@@ -30,5 +30,13 @@
     "htmlBasePathPrefix": "",
     "sandboxRunSwitch": false,
     "searchEnabled": true,
-    "hljsLanguages": ["xml", "javascript", "json", "yaml", "liquid", "markdown", "css"]
+    "hljsLanguages": [
+        "xml",
+        "javascript",
+        "json",
+        "yaml",
+        "liquid",
+        "markdown",
+        "css"
+    ]
 }
