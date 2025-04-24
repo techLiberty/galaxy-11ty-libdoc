@@ -21,7 +21,7 @@ eleventyExcludeFromCollections: true
                 <div class="pos-absolute t-tX-50 | p-1 | bc-primary-500 brad-4"></div>
                 <div class="pl-10 | bbwidth-1 bbstyle-dashed bcolor-neutral-500" pl-5="xs"></div>
                 <a  href="{{ item.page.url }}"
-                    class="d-flex fd-column gap-2 fg-1 | pl-5 | td-none | bwidth-1 bstyle-dashed bcolor-neutral-500 btwidth-0 brwidth-0 bbwidth-0">
+                    class="d-flex fd-column gap-2 fg-1 | p-5 | td-none | bc-primary-100 bwidth-1 bstyle-dashed bcolor-neutral-500 brad-2">
                     {%- if item.data.ogImageUrl %}
                         <img src="{{ item.data.ogImageUrl }}"
                             alt="{{ item.data.eleventyNavigation.key | default: item.data.title | default: item.page.inputPath }}"
@@ -30,10 +30,17 @@ eleventyExcludeFromCollections: true
                             decoding="async"
                             class="w-100 h-auto | brad-2 bc-primary-200">
                     {%- endif %}
-                    <strong class="fs-5 fvs-wght-600 lh-3">
+                    <strong class="d-flex fd-column | fs-5 fvs-wght-600 lh-3">
+                        <span class="fs-2 | c-primary-400">
+                            {% if item.data.eleventyNavigation.parent %}
+                                {{ item.data.eleventyNavigation.parent }}
+                            {% elsif item.data.tags contains 'post' %}
+                                {{ libdocConfig.blogTitle }}
+                            {% endif %}
+                        </span>
                         {{ item.data.eleventyNavigation.key | default: item.data.title | default: item.page.inputPath }}
                     </strong>
-                    <span class="fs-3 fvs-wght-400 lh-5 c-primary-900">
+                    <span class="fs-4 fvs-wght-300 lh-5 | c-primary-900">
                         {{ item.data.description }}
                     </span>
                 </a>
