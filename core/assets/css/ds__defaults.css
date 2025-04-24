@@ -460,10 +460,10 @@ main blockquote {
     max-width: var(--libdoc-container-width);
     border-bottom-left-radius: 3em;
     border-top-right-radius: 3em;
-    border: var(--ita-spacings-2) solid var(--ita-colors-neutral-100);
+    border: var(--ita-spacings-1) solid var(--ita-colors-neutral-100);
     font-family: var(--libdoc-font-family);
     font-size: var(--ita-fontSizes-7);
-    box-shadow: 0px 0px 5px inset var(--ita-colors-neutral-500), 0px 0px 5px var(--ita-colors-neutral-500);
+    /* box-shadow: 0px 0px 5px inset var(--ita-colors-neutral-500), 0px 0px 5px var(--ita-colors-neutral-500); */
 }
 main blockquote::before {
     content: "❝";
@@ -617,6 +617,15 @@ main u {
 main img.long-shadow {
     margin-bottom: 2em;
 }
+main abbr[title] {
+    cursor: pointer;
+}
+main abbr[title].expanded::after {
+    content: " (" attr(title) ")";
+}
+main abbr[data-title].expanded::after {
+    content: " (" attr(data-title) ")";
+}
 /* ALERTS */
 main .alert {
     font-variation-settings: "wght" 400, "slnt" 0, "CASL" 0, "CRSV" 0;
@@ -678,11 +687,15 @@ main .alert.danger::before {
     border-color: currentColor;
 }
 /* SEARCH OCCURRENCES */
+@keyframes flash {
+    50% { background-color: yellow }
+    100% { background-color: inherit }
+}
 main .__search-occurrence {
-    background-color: var(--ita-colors-success-100) !important;
-    outline: 3px solid var(--ita-colors-success-100) !important;
-    border-radius: 4px;
-    /* text-shadow: none; */
+    outline: 2px dashed var(--ita-colors-success-500) !important;
+    outline-offset: 2px;
+    border-radius: 3px;
+    animation: flash 1s 0s 1 linear;
 }
 /* main .__search-occurrence * {
     text-shadow: none;

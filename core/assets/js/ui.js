@@ -315,6 +315,12 @@ const libdocUi = {
                 elClearBtn.hidden = true;
                 elClearBtn.form.querySelector('input[type="search"][name="search"]').focus();
             }
+        },
+        _clickAbbr: function(evt) {
+            evt.target.classList.add('expanded');
+            evt.target.dataset.title = evt.target.title;
+            evt.target.removeEventListener('click', libdocUi.handlers._clickAbbr);
+            evt.target.removeAttribute('title');
         }
     },
     updateSearchInputClearBtns: function() {
@@ -757,7 +763,10 @@ const libdocUi = {
         libdocUi.el.main.querySelectorAll('a[href^="https://"]').forEach(function(el) {
             el.target = '_blank';
             el.title = `${libdocMessages.open} ${el.href} ${libdocMessages.inANewTab.toLowerCase()}`
-        })
+        });
+        libdocUi.el.main.querySelectorAll('abbr[title]').forEach(function(el) {
+            el.addEventListener('click', libdocUi.handlers._clickAbbr);
+        });
     }
 }
 libdocUi.update();

@@ -10,6 +10,75 @@ permalink: creating-content/inline-html/index.html
 
 In addition of common [markdown](/content/creating-content/markdown.md), it is possible to use some raw HTML tags.
 
+## Abbr
+
+With <abbr title="Eleventy">11ty</abbr> you can use <abbr title="Cascading Style Sheets">CSS</abbr> to style your
+<abbr title="HyperText Markup Language">HTML</abbr>. Title attribute is optional but if set, `<abbr>` tags are clickable and expanded once on click.
+
+<div>
+    <p class="alert success">
+        On Eleventy LibDoc, abbreviation elements with title attribute 
+        are clickable just like 
+        <abbr title="Exempli Gratia">E.G.</abbr>
+    </p>
+</div>
+
+```markdown
+With <abbr title="Eleventy">11ty</abbr> you can use <abbr title="Cascading Style Sheets">CSS</abbr> to style your
+<abbr title="HyperText Markup Language">HTML</abbr>. Title attribute is optional. Title attribute is optional but if set, `<abbr>` tags are clickable and expanded once on click.
+```
+
+[MDN Reference](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/abbr)
+
+## Deleted text
+
+When you want to display something that was <del>added</del> deleted.
+
+```html
+When you want to display something that was <del>added</del> deleted.
+```
+ 
+[MDN Reference](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/del)
+
+
+## Inline quotation
+
+And then Albus says 
+<q cite="https://www.harrypotter.com/fr/features/pearls-of-wisdom-from-professor-dumbledore">
+    It is our choices, Harry, that show what we truly are, far more than our abilities.
+</q> 
+to Harry.
+
+```html
+And then Albus says 
+<q cite="https://www.harrypotter.com/fr/features/pearls-of-wisdom-from-professor-dumbledore">
+    It is our choices, Harry, that show what we truly are, far more than our abilities.
+</q> 
+to Harry.
+```
+ 
+[MDN Reference](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/q)
+
+## Inserted text
+
+When you want to display something that was <ins>added</ins>.
+
+```html
+When you want to display something that was <ins>added</ins>.
+```
+ 
+[MDN Reference](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/ins)
+
+## Keyboard input element
+
+You can use <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>R</kbd> to refresh page and empty cache.
+
+```html
+You can use <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>R</kbd> to refresh page and empty cache.
+```
+ 
+[MDN Reference](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/kbd)
+
 ## Line break
 
 * **I am an item** <br>
@@ -49,70 +118,6 @@ or <a href="/content/front-matter/front-matter-minimal/">minimal</a> page (stati
 
 [MDN Reference](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/a)
 
-## Inline quotation
-
-And then Albus says 
-<q cite="https://www.harrypotter.com/fr/features/pearls-of-wisdom-from-professor-dumbledore">
-    It is our choices, Harry, that show what we truly are, far more than our abilities.
-</q> 
-to Harry.
-
-```html
-And then Albus says 
-<q cite="https://www.harrypotter.com/fr/features/pearls-of-wisdom-from-professor-dumbledore">
-    It is our choices, Harry, that show what we truly are, far more than our abilities.
-</q> 
-to Harry.
-```
- 
-[MDN Reference](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/q)
-
-## Variable
-
-The volume of a box is <var>l</var> × <var>w</var> × <var>h</var>, where
-<var>l</var> represents the length, <var>w</var> the width and
-<var>h</var> the height of the box.
-
-```html
-The volume of a box is <var>l</var> × <var>w</var> × <var>h</var>, where
-<var>l</var> represents the length, <var>w</var> the width and
-<var>h</var> the height of the box.
-```
- 
-[MDN Reference](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/var)
-
-## Superscript
-
-Equation *a*<sup>2</sup> + *b*<sup>2</sup> = *c*<sup>2</sup> usually expresses the *Pythagorean theorem*.
-
-```markdown
-Equation *a*<sup>2</sup> + *b*<sup>2</sup> = *c*<sup>2</sup> usually expresses the *Pythagorean theorem*.
-```
-
-[MDN Reference](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/sup)
-
-## Subscript
-
-Caffeine **C**<sub>8</sub>**H**<sub>10</sub>**N**<sub>4</sub>**O**<sub>2</sub> is known to be the favorite’s developer molecule.
-
-```html
-Caffeine **C**<sub>8</sub>**H**<sub>10</sub>**N**<sub>4</sub>**O**<sub>2</sub> is known to be the favorite’s developer molecule.
-```
-
-[MDN Reference](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/sub)
-
-## Abbr
-
-With <abbr title="Eleventy">11ty</abbr> you can use <abbr title="Cascading Style Sheets">CSS</abbr> to style your
-<abbr title="HyperText Markup Language">HTML</abbr>. Title attribute is optional.
-
-```markdown
-With <abbr title="Eleventy">11ty</abbr> you can use <abbr title="Cascading Style Sheets">CSS</abbr> to style your
-<abbr title="HyperText Markup Language">HTML</abbr>. Title attribute is optional.
-```
-
-[MDN Reference](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/abbr)
-
 ## Mark
 
 Here is a paragraph with a mark tag that <mark>highlights text fragment</mark>.
@@ -123,15 +128,29 @@ Here is a paragraph with a mark tag that <mark>highlights text fragment</mark>.
 
 [MDN Reference](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/mark)
 
-## Unarticulated annotation
+## Ruby
 
-Here is a paragraph with an <u>unarticulated annotation</u>.
+Even if not common, ruby tag represents <ruby>small annotations<rt>Ruby</rt></ruby> that are rendered above spec (single work recommended).
+<ruby>A text fragment <rt>Description</rt></ruby> can be described.
 
 ```html
-Here is a paragraph with an <u>unarticulated annotation</u>.
+Even if not common, ruby tag represents <ruby>small annotations<rt>Ruby</rt></ruby> that are rendered above spec (single work recommended).
+<ruby>A text fragment <rt>Description</rt></ruby> can be described.
 ```
+ 
+[MDN Reference](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/ruby)
 
-[MDN Reference](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/u)
+## Sample output
+
+Neo wakes up and reads his screen saying, 
+<samp>The Matrix has you... Follow the white rabbit... Knock, knock, Neo.</samp>
+
+```html
+Neo wakes up and reads his screen saying, 
+<samp>The Matrix has you... Follow the white rabbit... Knock, knock, Neo.</samp>
+```
+ 
+[MDN Reference](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/samp)
 
 ## Side comment
 
@@ -155,25 +174,25 @@ This tag is useful when you wish <s>to emphasis</s> to display something not rel
  
 [MDN Reference](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/s)
 
-## Deleted text
+## Subscript
 
-When you want to display something that was <del>added</del> deleted.
-
-```html
-When you want to display something that was <del>added</del> deleted.
-```
- 
-[MDN Reference](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/del)
-
-## Inserted text
-
-When you want to display something that was <ins>added</ins>.
+Caffeine **C**<sub>8</sub>**H**<sub>10</sub>**N**<sub>4</sub>**O**<sub>2</sub> is known to be the favorite’s developer molecule.
 
 ```html
-When you want to display something that was <ins>added</ins>.
+Caffeine **C**<sub>8</sub>**H**<sub>10</sub>**N**<sub>4</sub>**O**<sub>2</sub> is known to be the favorite’s developer molecule.
 ```
- 
-[MDN Reference](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/ins)
+
+[MDN Reference](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/sub)
+
+## Superscript
+
+Equation *a*<sup>2</sup> + *b*<sup>2</sup> = *c*<sup>2</sup> usually expresses the *Pythagorean theorem*.
+
+```markdown
+Equation *a*<sup>2</sup> + *b*<sup>2</sup> = *c*<sup>2</sup> usually expresses the *Pythagorean theorem*.
+```
+
+[MDN Reference](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/sup)
 
 ## Time and date
 
@@ -187,36 +206,26 @@ and started at <time datetime="PT20H30M">20h 30m</time>.
  
 [MDN Reference](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/time)
 
-## Keyboard input element
+## Unarticulated annotation
 
-You can use <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>R</kbd> to refresh page and empty cache.
-
-```html
-You can use <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>R</kbd> to refresh page and empty cache.
-```
- 
-[MDN Reference](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/kbd)
-
-## Sample output
-
-Neo wakes up and reads his screen saying, 
-<samp>The Matrix has you... Follow the white rabbit... Knock, knock, Neo.</samp>
+Here is a paragraph with an <u>unarticulated annotation</u>.
 
 ```html
-Neo wakes up and reads his screen saying, 
-<samp>The Matrix has you... Follow the white rabbit... Knock, knock, Neo.</samp>
+Here is a paragraph with an <u>unarticulated annotation</u>.
 ```
- 
-[MDN Reference](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/samp)
 
-## Ruby
+[MDN Reference](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/u)
 
-Even if not common, ruby tag represents <ruby>small annotations<rt>Ruby</rt></ruby> that are rendered above spec (single work recommended).
-<ruby>A text fragment <rt>Description</rt></ruby> can be described.
+## Variable
+
+The volume of a box is <var>l</var> × <var>w</var> × <var>h</var>, where
+<var>l</var> represents the length, <var>w</var> the width and
+<var>h</var> the height of the box.
 
 ```html
-Even if not common, ruby tag represents <ruby>small annotations<rt>Ruby</rt></ruby> that are rendered above spec (single work recommended).
-<ruby>A text fragment <rt>Description</rt></ruby> can be described.
+The volume of a box is <var>l</var> × <var>w</var> × <var>h</var>, where
+<var>l</var> represents the length, <var>w</var> the width and
+<var>h</var> the height of the box.
 ```
  
-[MDN Reference](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/ruby)
+[MDN Reference](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/var)
