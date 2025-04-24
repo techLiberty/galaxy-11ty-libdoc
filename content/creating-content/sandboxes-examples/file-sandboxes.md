@@ -5,4 +5,6 @@ eleventyNavigation:
     parent: Sandboxes
 description: Examples of file based sandboxes
 permalink: creating-content/sandboxes/file-based-examples/index.html
+tags:
+    - sandbox
 ---
