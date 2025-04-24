@@ -619,12 +619,20 @@ main img.long-shadow {
 }
 main abbr[title] {
     cursor: pointer;
+    border-bottom: 1px dotted currentColor;
 }
 main abbr[title].expanded::after {
     content: " (" attr(title) ")";
 }
 main abbr[data-title].expanded::after {
     content: " (" attr(data-title) ")";
+}
+/* EMBEDS */
+main > iframe {
+    aspect-ratio: 2.06;
+    width: 100%;
+    height: auto;
+    border: none;
 }
 /* ALERTS */
 main .alert {
