@@ -619,7 +619,10 @@ main img.long-shadow {
 }
 main abbr[title] {
     cursor: pointer;
-    border-bottom: 1px dotted currentColor;
+    /* Safari hack */
+    text-decoration-style: dotted;
+    text-decoration: underline;
+    text-decoration: underline dotted;
 }
 main abbr[title].expanded::after {
     content: " (" attr(title) ")";
