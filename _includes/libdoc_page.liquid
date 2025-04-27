@@ -55,6 +55,7 @@
         :root {
             --ita-widths-sidebar: {{ libdocSystem.widthSidebar }}px;
             --ita-widths-content: {{ libdocSystem.widthContent }}px;
+            --ita-widths-main-container-max: calc(2 * var(--ita-widths-content) + var(--ita-widths-sidebar));
         }
     </style>
     <noscript>
@@ -75,12 +76,13 @@
         }
     </script>
 </head>
-<body class="d-flex fd-column | m-0">
-    <div class="d-flex"
+<body class="d-flex fd-column ai-center | m-0">
+    <div class="d-flex | w-100"
         fd-column="xs,sm"
         ai-start="md"
         ai-center="xs,sm"
-        pl-5="md">
+        pl-5="md"
+        style="max-width: var(--ita-widths-main-container-max)">
         <div class="d-flex fd-column | pos-sticky top-0 z-2"
             ai-center="xs,sm"
             w-100="xs,sm"
