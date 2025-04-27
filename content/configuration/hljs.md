@@ -12,10 +12,9 @@ tags:
     - configuration
     - syntax-highlighting
 ---
-
 To optimize performance, supported syntax highlighter languages are set on demand. You can adjust it to your own needs by setting the `hljsLanguages` array of [highlight.js aliases](https://highlightjs.readthedocs.io/en/latest/supported-languages.html):
 
-Default languages set:
+Default syntax highlighting supported languages set into `_data/libdocConfig.json`:
 
 ```json
 {
