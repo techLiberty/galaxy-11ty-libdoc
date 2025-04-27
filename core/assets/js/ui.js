@@ -431,7 +431,7 @@ const libdocUi = {
             elSummary.title = libdocMessages.toggleFloatingToc;
             elSummary.ariaLabel = libdocMessages.tableOfContent;
             elSummary.innerHTML = `
-                <span class="d-flex jc-center ai-center gap-2 | pos-relative ar-square | h-50px | brad-4 c-primary-500 bc-neutral-100 bwidth-1 bstyle-dashed bcolor-neutral-500 __hover-1">
+                <span class="d-flex jc-center ai-center gap-2 | pos-relative ar-square | h-50px | brad-4 c-primary-500 bc-neutral-100 bwidth-1 bstyle-dashed bcolor-neutral-500 __hover-1 __soft-shadow">
                     <span class="icon-list-dashes fs-6"></span>
                 </span>`;
             elDetails.appendChild(elSummary);
@@ -445,7 +445,8 @@ const libdocUi = {
                         pos-relative
                         o-auto pl-0 mb-0 pt-3 pb-3
                         lsp-3
-                        bc-primary-100 blwidth-0 bwidth-1 bstyle-dashed bcolor-primary-300 ls-none"
+                        bc-primary-100 blwidth-0 bwidth-1 bstyle-dashed bcolor-primary-300 ls-none
+                        __soft-shadow"
                         fw-wrap="xs,sm"
                         mt-2="md"
                         mr-5="md"
@@ -471,7 +472,8 @@ const libdocUi = {
             elDetails.innerHTML += floatingTocMarkup;
 
             libdocUi.el.ftoc = document.createElement('div');
-            libdocUi.el.ftoc.setAttribute('class', 'd-flex | pos-fixed z-2 | floating_toc');
+            libdocUi.el.ftoc.id = 'floating_toc_container';
+            libdocUi.el.ftoc.setAttribute('class', 'd-flex | pos-fixed z-2');
             libdocUi.el.ftoc.setAttribute('top-0', 'md');
             libdocUi.el.ftoc.setAttribute('right-0', 'md');
             libdocUi.el.ftoc.setAttribute('left-0', 'xs,sm');
@@ -495,7 +497,7 @@ const libdocUi = {
     createGoToTop: function() {
         if (libdocUi.el.gtt === undefined) {
             libdocUi.el.gtt = document.createElement('button');
-            libdocUi.el.gtt.setAttribute('class', 'd-none--xs d-none--sm | pos-fixed z-2 bottom-0 right-0 | p-0 h-50px ar-square mb-5 mr-5 | fs-6 | brad-4 bc-neutral-100 bwidth-1 bstyle-dashed bcolor-neutral-500 cur-pointer __hover-1');
+            libdocUi.el.gtt.setAttribute('class', 'd-none--xs d-none--sm | pos-fixed z-2 bottom-0 right-0 | p-0 h-50px ar-square mb-5 mr-5 | fs-6 | brad-4 bc-neutral-100 bwidth-1 bstyle-dashed bcolor-neutral-500 cur-pointer __hover-1 __soft-shadow');
             libdocUi.el.gtt.innerHTML = `<span class="icon-arrow-line-up | pos-absolute top-50 left-50 t-tY-50 t-tX-50 | c-primary-500"></span>`;
             libdocUi.el.gtt.title = libdocMessages.goToTopOfPage;
             libdocUi.el.gtt.addEventListener('click', libdocUi.handlers._clickGTT);

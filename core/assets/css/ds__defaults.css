@@ -2,12 +2,13 @@
     --libdoc-container-width: var(--ita-widths-content);
     --libdoc-font-family: "Recursive", sans-serif;
     --libdoc-damier: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAIAAACQkWg2AAAAHElEQVR4AWP4jwOcwQFoo2FUAy4JXAbRRMOoBgCE0rCfubvZNQAAAABJRU5ErkJggg==');
+    --libdoc-soft-shadow: 0px 0px 10px rgba(0,0,0,0.1);
     --libdoc-long-shadow:
-        1px 1px 2px rgba(15, 49, 86, 0.08),
-        5px 6px 9px rgba(15, 49, 86, 0.16),
-        12px 13px 21px rgba(15, 49, 86, 0.24),
-        22px 24px 38px rgba(15, 49, 86, 0.32),
-        34px 37px 59px rgba(15, 49, 86, 0.40);
+        1px 1px 2px rgba(15, 49, 86, 0.08), 
+        5px 6px 9px rgba(15, 49, 86, 0.26), 
+        12px 13px 21px rgba(15, 49, 86, 0.34), 
+        22px 24px 38px rgba(15, 49, 86, 0.42),
+        34px 37px 59px rgba(15, 49, 86, 0.50);
 }
 /* FONTS */
 /* cyrillic-ext */
@@ -904,6 +905,19 @@ main .__search-occurrence {
         padding-left: var(--ita-spacings-5);
         padding-right: var(--ita-spacings-5);
     }
+    main h1,
+    main h2 {
+        font-size: var(--ita-fontSizes-8);
+    }
+    main h3,
+    main h4 {
+        font-size: var(--ita-fontSizes-7);
+        letter-spacing: -0.05em;
+    }
+    main h5,
+    main h6 {
+        font-size: var(--ita-fontSizes-6);
+    }
     main > ol,
     main > ul {
         padding-left: var(--ita-spacings-8);
@@ -936,6 +950,9 @@ main .__search-occurrence {
         font-size: var(--ita-fontSizes-6);
         padding: var(--ita-spacings-5) var(--ita-spacings-7);
     }
+    #floating_toc_container {
+        box-shadow: var(--libdoc-soft-shadow);
+    }
 }
 
 /* HOVERS */
@@ -960,4 +977,9 @@ main .__search-occurrence {
 }
 .__hover-2:hover > * {
     color: var(--ita-colors-success-100);
+}
+
+/* SHADOWS */
+.__soft-shadow {
+    box-shadow: var(--libdoc-soft-shadow);
 }
