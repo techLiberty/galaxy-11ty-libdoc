@@ -15,13 +15,13 @@ In addition of common [markdown](/content/creating-content/markdown.md), it is p
 With <abbr title="Eleventy">11ty</abbr> you can use <abbr title="Cascading Style Sheets">CSS</abbr> to style your
 <abbr title="HyperText Markup Language">HTML</abbr>. Title attribute is optional but if set, `<abbr>` tags are clickable and expanded once on click.
 
-<div>
-    <p class="alert success">
+<aside>
+    <p class="alert alert-success">
         On Eleventy LibDoc, abbreviation elements with title attribute 
         are clickable just like 
         <abbr title="Exempli Gratia">E.G.</abbr>
     </p>
-</div>
+</aside>
 
 ```markdown
 With <abbr title="Eleventy">11ty</abbr> you can use <abbr title="Cascading Style Sheets">CSS</abbr> to style your

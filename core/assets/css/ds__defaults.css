@@ -736,39 +736,39 @@ main .alert[data-title]::before {
     border-bottom-width: 1px;
     border-color: var(--ita-colors-neutral-500);
 }
-main .alert.info {
+main .alert.alert-info {
     background-color: var(--ita-colors-neutral-100);
     color: var(--ita-colors-primary-900);
     border-color: var(--ita-colors-primary-500);
 }
-main .alert.info::before {
+main .alert.alert-info::before {
     color: var(--ita-colors-primary-500);
     border-color: currentColor;
 }
-main .alert.success {
+main .alert.alert-success {
     background-color: var(--ita-colors-success-100);
     color: var(--ita-colors-success-900);
     border-color: var(--ita-colors-success-500);
 }
-main .alert.success::before {
+main .alert.alert-success::before {
     color: var(--ita-colors-success-500);
     border-color: currentColor;
 }
-main .alert.warning {
+main .alert.alert-warning {
     background-color: var(--ita-colors-warning-100);
     color: var(--ita-colors-warning-900);
     border-color: var(--ita-colors-warning-500);
 }
-main .alert.warning::before {
+main .alert.alert-warning::before {
     color: var(--ita-colors-warning-500);
     border-color: currentColor;
 }
-main .alert.danger {
+main .alert.alert-danger {
     background-color: var(--ita-colors-danger-100);
     color: var(--ita-colors-danger-900);
     border-color: var(--ita-colors-danger-500);
 }
-main .alert.danger::before {
+main .alert.alert-danger::before {
     color: var(--ita-colors-danger-500);
     border-color: currentColor;
 }

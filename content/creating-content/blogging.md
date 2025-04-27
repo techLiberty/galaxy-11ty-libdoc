@@ -13,9 +13,9 @@ date: git Last Modified
 
 To start blogging, just write at least one page with the `post` tag. **The item "My Posts" into the primary navigation is displayed when at least one page has the `post` tag**. [View blog configuration](/content/configuration/blog.md) related pages.
 
-<div>
-    <p class="alert info">The only requirement to start blogging is the <var>post</var> tag into the front matter.</p>
-</div>
+<aside>
+    <p class="alert alert-info">The only requirement to start blogging is the <var>post</var> tag into the front matter.</p>
+</aside>
 
 ## Minimal blog post front matter
 
@@ -47,15 +47,15 @@ description: This is a simple blog post test
 
 The Open Graph Image is a metadata image URL that is displayed when a link to a LibDoc page is shared into a social network. By default, LibDoc configation `ogImageUrl` is used on every page but this parameter can be overridden on each page’s front matter with the same key `ogImageUrl`.
 
-<div>
-    <p class="alert warning"><strong>Open Graph Image URL must be public and absolute with <code>https://</code> protocol.</strong>.</p>
-</div>
+<aside>
+    <p class="alert alert-warning"><strong>Open Graph Image URL must be public and absolute with <code>https://</code> protocol.</strong>.</p>
+</aside>
 
 Then you can customize each page of your project.
 
-<div>
-    <p class="alert info">If <code>ogImageUrl</code> is set properly into the front matter, this Open Graph Image URL is used as thumbnail for this blog post into the "My Posts" feed. Recommended size is 1200 x 630 pixels.</p>
-</div>
+<aside>
+    <p class="alert alert-info">If <code>ogImageUrl</code> is set properly into the front matter, this Open Graph Image URL is used as thumbnail for this blog post into the "My Posts" feed. Recommended size is 1200 x 630 pixels.</p>
+</aside>
 
 ```yaml
 layout: libdoc_page
