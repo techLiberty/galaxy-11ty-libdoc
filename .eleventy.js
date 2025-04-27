@@ -214,7 +214,7 @@ export default function(eleventyConfig) {
                             <span class="fvs-wght-400 | c-neutral-300">${libdocMessages.open[libdocConfig.lang]}</span>
                             <span class="icon-arrow-square-out c-neutral-500"></span>
                         </a>
-                        <div class="d-flex gap-5">
+                        <div class="d-flex gap-7">
                             <button type="button"
                                 class="d-flex ai-center | p-0 | fvs-wght-400 fs-2 tt-uppercase | bc-0 c-neutral-300 b-0 cur-pointer | sandbox__reload">
                                 <span class="o-hidden | to-ellipsis ws-nowrap">${libdocMessages.reload[libdocConfig.lang]}</span>
