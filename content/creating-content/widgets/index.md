@@ -9,8 +9,10 @@ permalink: creating-content/widgets/index.html
 ---
 
 * [Alerts](/content/creating-content/widgets/alerts.md) Simple paragraphs that displays informations to highlight
+* [Buttons](/content/creating-content/widgets/buttons.md) Form buttons and links to create Call To Actions
 * [Definition lists](/content/creating-content/widgets/definition-lists.md) How to use definition lists
 * [Details](/content/creating-content/widgets/details.md) Simple dropdown toggle information
+* [Icons](/content/creating-content/widgets/icons.md) Available icons to use with the content
 * [Embeds](/content/creating-content/widgets/embeds.md) Code integration results of various content providers
 * [Images](/content/creating-content/widgets/images.md) Ready to use HTML to highlight your images
 
