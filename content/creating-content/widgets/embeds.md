@@ -12,22 +12,19 @@ Here are few examples of how Eleventy LibDoc renders embeds from various sources
 
 A [codepen](https://codepen.io) example:
 
-<p class="codepen" data-height="500" data-default-tab="html,result" data-slug-hash="zYXxyEj" data-pen-title="FURIOSA 3D Animated Poster" data-user="olivier3lanc" style="height: 500px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;">
-  <span>See the Pen <a href="https://codepen.io/olivier3lanc/pen/zYXxyEj">
+<iframe height="300" style="width: 100%;" scrolling="no" title="FURIOSA 3D Animated Poster" src="https://codepen.io/olivier3lanc/embed/zYXxyEj?default-tab=html%2Cresult" frameborder="no" loading="lazy" allowtransparency="true" allowfullscreen="true">
+  See the Pen <a href="https://codepen.io/olivier3lanc/pen/zYXxyEj">
   FURIOSA 3D Animated Poster</a> by Olivier 3lanc (<a href="https://codepen.io/olivier3lanc">@olivier3lanc</a>)
-  on <a href="https://codepen.io">CodePen</a>.</span>
-</p>
-<script async src="https://public.codepenassets.com/embed/index.js"></script>
+  on <a href="https://codepen.io">CodePen</a>.
+</iframe>
 
 ```html
-<p class="codepen" data-height="500" data-default-tab="html,result" data-slug-hash="zYXxyEj" data-pen-title="FURIOSA 3D Animated Poster" data-user="olivier3lanc" style="height: 500px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;">
-  <span>See the Pen <a href="https://codepen.io/olivier3lanc/pen/zYXxyEj">
+<iframe height="300" style="width: 100%;" scrolling="no" title="FURIOSA 3D Animated Poster" src="https://codepen.io/olivier3lanc/embed/zYXxyEj?default-tab=html%2Cresult" frameborder="no" loading="lazy" allowtransparency="true" allowfullscreen="true">
+  See the Pen <a href="https://codepen.io/olivier3lanc/pen/zYXxyEj">
   FURIOSA 3D Animated Poster</a> by Olivier 3lanc (<a href="https://codepen.io/olivier3lanc">@olivier3lanc</a>)
-  on <a href="https://codepen.io">CodePen</a>.</span>
-</p>
-<script async src="https://public.codepenassets.com/embed/index.js"></script>
+  on <a href="https://codepen.io">CodePen</a>.
+</iframe>
 ```
-
 
 ## Youtube
 
