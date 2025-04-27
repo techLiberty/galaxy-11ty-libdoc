@@ -10,5 +10,6 @@
         "activeAnchorClass": ""
     },
     "widthSidebar": 300,
-    "widthContent": 700
+    "widthContent": 700,
+    "icomoonIconSize": 32
 }

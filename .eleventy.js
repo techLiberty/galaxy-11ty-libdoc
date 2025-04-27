@@ -5,6 +5,8 @@ import { eleventyImageTransformPlugin } from "@11ty/eleventy-img";
 import { EleventyHtmlBasePlugin } from "@11ty/eleventy";
 import libdocMessages from "./_data/libdocMessages.json" with { "type": "json" };
 import libdocConfig from "./_data/libdocConfig.json" with { "type": "json" };
+import libdocSystem from "./_data/libdocSystem.json" with { "type": "json" };
+import icomoon from "./core/assets/fonts/icomoon/selection.json" with { "type": "json" };
 import libdocUtils from "./_data/libdocUtils.js";
 // import { escapeAttribute } from "entities";
 // import Image from "@11ty/eleventy-img";
@@ -162,6 +164,28 @@ export default function(eleventyConfig) {
 			//return b.inputPath.localeCompare(a.inputPath); // sort by path - descending
 		});
 	});
+
+    eleventyConfig.addShortcode("icomoon", async function() {
+        let markup = `
+            <aside class="mt-10 mb-10" mt-7="xs" mb-7="xs">
+                <ul class="d-flex jc-center fw-wrap gap-7 | p-0 | ls-none" rgap-10="sm,md">`;
+        icomoon.icons.forEach(function(iconData) {
+            let pathsMarkup = '';
+            const w = libdocSystem.icomoonIconSize;
+            iconData.icon.paths.forEach(function(path) {
+                pathsMarkup += path;
+            });
+            markup += `
+                <li class="d-flex fd-column ai-center gap-3" style="width: 20%">
+                    <svg class="icomoon-icon" width="${w}" height="${w}" viewBox="0 0 ${w} ${w}">
+                        <path d="${pathsMarkup}" fill="currentColor"></path>
+                    </svg>
+                    <code class="fs-2 tws-balance ta-center" fs-1="xs">${iconData.properties.name}</code>
+                </li>`;
+        });
+        markup += '</ul></aside>';
+        return markup;
+    });
 
     eleventyConfig.addPairedShortcode("sandbox", async function(content, sandboxTitle) {
         const   code = libdocUtils.HTMLEncode(content.replace(/[\n\r]/, '')),
