@@ -89,11 +89,12 @@ I am a
     <span class="icon-play"></span> 
     link
 </a>
-or a 
+with an icon or a 
 <button type="button" class="btn btn-primary">
     <span class="icon-faders"></span>
     button
 </button>
+with an icon.
 
 ```html
 I am a 
@@ -101,11 +102,12 @@ I am a
     <span class="icon-play"></span> 
     link
 </a>
-or a 
+with an icon or a 
 <button type="button" class="btn btn-primary">
     <span class="icon-faders"></span>
     button
 </button>
+with an icon.
 ```
 
 ## Usages examples with alerts
