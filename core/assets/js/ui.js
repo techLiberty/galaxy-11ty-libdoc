@@ -1,6 +1,5 @@
 const libdocUi = {
     defaults: {
-        headingsSelector: `main > h1, main > h2, main > h3, main > h4, main > h5, main > h6`,
         localStorageIdentifier: 'eleventyLibdoc',
         screenSizes: {
             xs: [0, 599],
@@ -22,7 +21,8 @@ const libdocUi = {
         navSmallDevices: document.querySelector('#nav_small_devices'),
         searchForms: document.querySelectorAll('.search_form'),
         searchInputs: document.querySelectorAll('input[type="search"][name="search"]'),
-        searchClearBtns: document.querySelectorAll('.search_form__clear_btn')
+        searchClearBtns: document.querySelectorAll('.search_form__clear_btn'),
+        ftocHeadings: []
     },
     getCurrentScreenSizeName: function() {
         let response = '';
@@ -243,18 +243,12 @@ const libdocUi = {
         _scrollWindowForFTOC: function() {
             libdocUi.updateFtocList();
         },
-        _toggleFtocLargeDevices: function() {
+        _toggleFtocLargeDevices: function(evt) {
             if (libdocUi.el.ftocDetails.open) {
-                if (libdocUi._currentScreenSizeName == 'md') {
-                    // libdocUi.updateUserPreferences({FTOCNormallyOpened: true});
-                    libdocUi.updateFtocList();
-                } else {
-                    // libdocUi.updateUserPreferences({FTOCNormallyOpened: false});
-                }
+                libdocUi.updateUserPreferences({FTOCNormallyOpened: true});
             } else {
-                // libdocUi.updateUserPreferences({FTOCNormallyOpened: false});
+                libdocUi.updateUserPreferences({FTOCNormallyOpened: false});
             }
-            libdocUi.updateFTOCBtns();
         },
         _scrollNavPrimaryPreviousPreferenceValue: 0,
         _scrollNavPrimary: function() {
@@ -455,18 +449,22 @@ const libdocUi = {
                         brad-3="md"
                         bb-0="xs,sm"
                         br-0="xs,sm">`;
+            libdocUi.el.ftocHeadings = [];
             libdocUi.el.tocMain.querySelectorAll('a').forEach(function(el) {
+                const   headingReference = el.getAttribute(`href`),
+                        elHeading = libdocUi.el.main.querySelector(headingReference);
+                libdocUi.el.ftocHeadings.push(elHeading);
                 floatingTocMarkup += `
-                <li>
-                    <a  href="${el.getAttribute(`href`)}"
-                        class="d-flex | pl-5 pr-5 | fs-4 lsp-3 lh-5 fvs-wght-500 | c-primary-500 blwidth-1 blstyle-dashed bcolor-primary-300"
-                        pt-2="md"
-                        pb-2="md"
-                        pt-1="xs,sm"
-                        pb-1="xs,sm">
-                        ${el.innerHTML}
-                    </a>
-                </li>`;
+                    <li>
+                        <a  href="${headingReference}"
+                            class="d-flex | pl-5 pr-5 | fs-4 lsp-3 lh-5 fvs-wght-500 | c-primary-500 blwidth-1 blstyle-dashed bcolor-primary-300"
+                            pt-2="md"
+                            pb-2="md"
+                            pt-1="xs,sm"
+                            pb-1="xs,sm">
+                            ${el.innerHTML}
+                        </a>
+                    </li>`;
             });
             floatingTocMarkup += '</ul></div>';
             elDetails.innerHTML += floatingTocMarkup;
@@ -486,7 +484,6 @@ const libdocUi = {
             window.addEventListener('scroll', libdocUi.handlers._scrollWindowForFTOC);
             libdocUi.el.ftocLinks = libdocUi.el.ftoc.querySelectorAll('a');
             libdocUi.el.ftocList = libdocUi.el.ftoc.querySelector('#floating_toc__list');
-            libdocUi.el.ftocHeadings = document.querySelectorAll(libdocUi.defaults.headingsSelector);
             libdocUi.el.navSmallDevicesFTOCBtn.disabled = false;
             libdocUi.el.navSmallDevicesFTOCBtn.addEventListener('click', libdocUi.toggleFtocSmallDevices);
             libdocUi.el.navSmallDevicesFTOCBtn.addEventListener('click', libdocUi.updateSearchOccurrenceCmdBottom);
@@ -561,6 +558,9 @@ const libdocUi = {
                 });
             } else {
                 let newStorage = {};
+                for (const key in currentUserPreference) {
+                    newStorage[key] = currentUserPreference[key];
+                }
                 for (const key in newPreferences) {
                     newStorage[key] = newPreferences[key];
                 }
