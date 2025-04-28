@@ -991,6 +991,7 @@ main .__search-occurrence {
 }
 #floating_toc a {
     transition: all 300ms;
+    max-width: 80vw;
 }
 #floating_toc a:hover {
     color: var(--ita-colors-primary-700);
