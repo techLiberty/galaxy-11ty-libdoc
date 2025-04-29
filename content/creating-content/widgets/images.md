@@ -54,7 +54,13 @@ permalink: creating-content/widgets/images/index.html
 
 ## Rounded corners
 
-`rounded-corners` class name on `<img>` tag allows to apply smooth corners on the image.
+`rounded-corners` class name on `<img>` tag allows to apply smooth corners on the image. 
+
+<aside>
+    <p  class="alert alert-warning">
+        Available only if <var>libdocConfig.roundedImagesCorners</var> is set to <var>false</var>, otherwise has no effect.
+    </p>
+</aside>
 
 <img class="rounded-corners"
     src="/assets/images/pierra-menta.jpg"

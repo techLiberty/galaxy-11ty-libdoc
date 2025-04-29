@@ -55,7 +55,8 @@ Here is the current LibDoc’s configuration file available in `_data/libdocConf
         "liquid",
         "markdown",
         "css"
-    ]
+    ],
+    "roundedImagesCorners": true
 }
 ```
 
@@ -84,3 +85,4 @@ Parameter | Type | Description | Page override
 `sandboxRunSwitch` | Boolean | Enable disable scroll into sandbox instead of page [Learn more](/content/configuration/sandboxes.md) | no
 `searchEnabled` | Boolean | Enable disable search feature | no
 `hljsLanguages` | Array | List of supported languages for syntax highlighting, just add aliases according to your needs [Learn more](/content/configuration/hljs.md) | no
+`roundedImagesCorners` | Boolean | Enable disable rounded image corners by default | no

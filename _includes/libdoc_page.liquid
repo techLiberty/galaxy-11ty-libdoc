@@ -57,6 +57,11 @@
             --ita-widths-content: {{ libdocSystem.widthContent }}px;
             --ita-widths-main-container-max: calc(2 * var(--ita-widths-content) + var(--ita-widths-sidebar));
         }
+        {% if libdocConfig.roundedImagesCorners %}
+            main img {
+                border-radius: 9px;
+            }
+        {% endif %}
     </style>
     <noscript>
         <link rel="stylesheet" href="/core/assets/css/noscript.css">
