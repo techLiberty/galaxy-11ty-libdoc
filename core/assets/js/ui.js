@@ -212,6 +212,10 @@ const libdocUi = {
         }
     },
     handlers: {
+        _touchStart: function(evt) {
+            document.body.classList.add('touch-device');
+            document.body.removeEventListener('touch', libdocUi.handlers._touchStart);
+        },
         _clickCopyCodeBlock: function(evt) {
             const elBtn = evt.target.closest('button');
             const content = evt.target.closest('pre').querySelector('code').innerText;
@@ -822,7 +826,8 @@ const libdocUi = {
         });
         document.querySelectorAll('main svg.icomoon-icon').forEach(function(el) {
             libdocUi.fitSvgToItsContent(el)
-        }) 
+        });
+        document.body.addEventListener('touchstart', libdocUi.handlers._touchStart);
     }
 }
 libdocUi.update();
