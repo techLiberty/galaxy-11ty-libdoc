@@ -12,7 +12,8 @@ const libdocUi = {
         navPrimaryAccordion: 'pages'
     },
     el: {
-        tocMain: document.querySelector('#toc_main > ol'),
+        tocMain: document.querySelector('#toc_main'),
+        tocMainOl: document.querySelector('#toc_main > ol'),
         navSmallDevicesFTOCBtn: document.querySelector('#sd_floating_toc_toggle_btn'),
         navSmallDevicesGTTBtn: document.querySelector('#sd_gtt_btn'),
         main: document.querySelector('main'),
@@ -418,7 +419,7 @@ const libdocUi = {
         return linkIndexesArray;
     },
     createFloatingToc: function() {;
-        if (libdocUi.el.ftoc === undefined && libdocUi.el.tocMain !== null) {
+        if (libdocUi.el.ftoc === undefined && libdocUi.el.tocMainOl !== null) {
             libdocUi.el.ftocDetails = document.createElement('details');
             const elDetails = libdocUi.el.ftocDetails;
             elDetails.setAttribute('w-100', 'xs,sm');
@@ -454,7 +455,7 @@ const libdocUi = {
                         bb-0="xs,sm"
                         br-0="xs,sm">`;
             libdocUi.el.ftocHeadings = [];
-            libdocUi.el.tocMain.querySelectorAll('a').forEach(function(el) {
+            libdocUi.el.tocMainOl.querySelectorAll('a').forEach(function(el) {
                 const   headingReference = el.getAttribute(`href`),
                         elHeading = libdocUi.el.main.querySelector(headingReference);
                 libdocUi.el.ftocHeadings.push(elHeading);
@@ -492,7 +493,13 @@ const libdocUi = {
             libdocUi.el.navSmallDevicesFTOCBtn.addEventListener('click', libdocUi.toggleFtocSmallDevices);
             libdocUi.el.navSmallDevicesFTOCBtn.addEventListener('click', libdocUi.updateSearchOccurrenceCmdBottom);
             elDetails.addEventListener("toggle", libdocUi.handlers._toggleFtocLargeDevices);
-            if (libdocUi.getUserPreferences().FTOCNormallyOpened) elDetails.open = true;
+            if (libdocUi.getUserPreferences().FTOCNormallyOpened) {
+                elDetails.open = true;
+                if (libdocUi._currentScreenSizeName == 'xs'
+                    || libdocUi._currentScreenSizeName == 'sm') {
+                    libdocUi.el.tocMain.open = false;
+                }
+            }
         }
     },
     createGoToTop: function() {
@@ -576,7 +583,7 @@ const libdocUi = {
         }
     },
     updateFTOCBtns: function() {
-        if (libdocUi.el.tocMain !== null) {
+        if (libdocUi.el.tocMainOl !== null) {
             if (cToggle.instances.nav_primary.opened) {
                 libdocUi.el.navSmallDevicesFTOCBtn.disabled = true;
             } else {
