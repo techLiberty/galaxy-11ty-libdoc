@@ -1137,7 +1137,7 @@ main .__search-occurrence {
 @media (min-width: 960px) and (max-width: 1440px) {
     body:not(.touch-device) #floating_toc__list {
         transition: opacity 300ms;
-        opacity: 0.1;
+        opacity: 0.3;
     }
     body:not(.touch-device) #floating_toc:hover #floating_toc__list {
         opacity: 1;
