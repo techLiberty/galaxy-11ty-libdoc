@@ -78,6 +78,24 @@ export default function(eleventyConfig) {
 		return content;
 	});
 
+    eleventyConfig.addAsyncFilter("embed", async function (src) {
+        try {
+            const url = new URL(src);
+            const content = `
+                <aside>
+                    <iframe src="${url}"
+                        frameborder="0"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                        loading="lazy"
+                        allowfullscreen></iframe>
+                </aside>`;
+            return content;
+        } catch (e) {
+            console.log(`${src} is not a valid URL`);
+            return '';
+        }
+	});
+
     eleventyConfig.addAsyncFilter("cleanup", async function (content) {
         content = content.replaceAll(`<table>`, `<div class="o-auto w-100 table-wrapper"><table>`);
         content = content.replaceAll(`</table>`, `</table></div>`);
@@ -162,6 +180,25 @@ export default function(eleventyConfig) {
 			//return a.inputPath.localeCompare(b.inputPath); // sort by path - ascending
 			//return b.inputPath.localeCompare(a.inputPath); // sort by path - descending
 		});
+	});
+
+    eleventyConfig.addShortcode("embed", async function(src, height) {
+		try {
+            const url = new URL(src);
+            const content = `
+                <aside>
+                    <iframe src="${url}"
+                        frameborder="0"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                        loading="lazy"
+                        height="${height || ``}"
+                        allowfullscreen></iframe>
+                </aside>`;
+            return content;
+        } catch (e) {
+            console.log(`${src} is not a valid URL`);
+            return '';
+        }
 	});
 
     eleventyConfig.addShortcode("icomoon", async function() {

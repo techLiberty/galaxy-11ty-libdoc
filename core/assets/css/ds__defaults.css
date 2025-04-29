@@ -860,6 +860,11 @@ main > iframe {
     height: auto;
     border: none;
 }
+main > aside > iframe {
+    width: 100%;
+    aspect-ratio: 16/9;
+    background-color: var(--ita-colors-neutral-200);
+}
 /* ALERTS */
 main .alert {
     font-variation-settings: "wght" 400, "slnt" 0, "CASL" 0, "CRSV" 0;
