@@ -582,7 +582,7 @@ main blockquote {
 main blockquote::before {
     content: "❝";
     position: absolute;
-    left: calc(-1 * var(--ita-spacings-5));
+    left: 0;
     font-size: 4em;
     color: var(--ita-colors-primary-300);
     transform: translateY(-60%);
@@ -593,7 +593,7 @@ main blockquote::after {
     font-size: 4em;
     color: var(--ita-colors-primary-300);
     transform: translateY(-20%);
-    right: calc(-1 * var(--ita-spacings-5));
+    right: 0;
 }
 main blockquote * {
     font-variation-settings: "slnt" -15, "CASL" 1, "CRSV" 1;
@@ -1084,6 +1084,17 @@ main .__search-occurrence {
     }
     #floating_toc_container {
         box-shadow: var(--libdoc-soft-shadow);
+    }
+}
+
+/* RESPONSIVE XS + SM */
+@media (min-width: 960px) and (max-width: 1440px) {
+    #floating_toc__list {
+        transition: opacity 300ms;
+        opacity: 0.1;
+    }
+    #floating_toc__list:hover {
+        opacity: 1;
     }
 }
 
