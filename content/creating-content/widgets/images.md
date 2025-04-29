@@ -52,26 +52,6 @@ permalink: creating-content/widgets/images/index.html
     alt="Gypaetus barbatus">
 ```
 
-## Rounded corners
-
-`rounded-corners` class name on `<img>` tag allows to apply smooth corners on the image. 
-
-<aside>
-    <p  class="alert alert-warning">
-        Available only if <var>libdocConfig.roundedImagesCorners</var> is set to <var>false</var>, otherwise has no effect.
-    </p>
-</aside>
-
-<img class="rounded-corners"
-    src="/assets/images/pierra-menta.jpg"
-    alt="Pierra Menta">
-
-```html
-<img class="rounded-corners"
-    src="/assets/images/pierra-menta.jpg"
-    alt="Pierra Menta">
-```
-
 ## Long shadow
 
 `long-shadow` class name on `<img>` tag allows to apply a long box shadow.
@@ -122,8 +102,7 @@ The `wide` class name allows to feature an image.
 
 <figure class="wide">
     <img src="/assets/images/pierra-menta.jpg"
-        alt="Pierra Menta"
-        eleventy:widths="1400,2800">
+        alt="Pierra Menta">
     <figcaption>
         A wide boxed image with its description.
         Class name applied on figure:
@@ -134,8 +113,7 @@ The `wide` class name allows to feature an image.
 ```html
 <figure class="wide">
     <img src="/assets/images/pierra-menta.jpg"
-        alt="Pierra Menta"
-        eleventy:widths="1400,2800">
+        alt="Pierra Menta">
     <figcaption>
         A wide boxed image with its description.
         Class name applied on figure:
@@ -146,74 +124,9 @@ The `wide` class name allows to feature an image.
 
 ## Mixed features
 
-`rounded-corners` and `long-shadow`.
-
-<img class="rounded-corners long-shadow"
-    src="/assets/images/pierra-menta.jpg"
-    alt="Pierra Menta">
-
-```html
-<img class="rounded-corners long-shadow"
-    src="/assets/images/pierra-menta.jpg"
-    alt="Pierra Menta">
-```
-
-<figure class="rounded-corners long-shadow wide">
-    <img src="/assets/images/pierra-menta.jpg"
-        alt="Pierra Menta"
-        eleventy:widths="1400,2800">
-    <figcaption>
-        A wide boxed image with rounded corners and a long box shadow, with its long description.
-        Class names applied on figure:
-        <code>rounded-corners</code>,
-        <code>long-shadow</code> and 
-        <code>wide</code>.
-    </figcaption>
-</figure>
-
-```html
-<figure class="rounded-corners long-shadow wide">
-    <img src="/assets/images/pierra-menta.jpg"
-        alt="Pierra Menta"
-        eleventy:widths="1400,2800">
-    <figcaption>
-        A wide boxed image with rounded corners and a long box shadow, with its long description.
-        Class names applied on figure:
-        <code>rounded-corners</code>,
-        <code>long-shadow</code> and 
-        <code>wide</code>.
-    </figcaption>
-</figure>
-```
-
-<figure class="wide">
-    <img src="/assets/images/gypaetus-barbatus-peisey.png"
-        alt="Gypaetus barbatus"
-        eleventy:widths="1400,2800">
-    <figcaption>
-        A wide boxed image with its long description.
-        Class name applied on figure: 
-        <code>wide</code>.
-    </figcaption>
-</figure>
-
-```html
-<figure class="wide">
-    <img src="/assets/images/gypaetus-barbatus-peisey.png"
-        alt="Gypaetus barbatus"
-        eleventy:widths="1400,2800">
-    <figcaption>
-        A wide boxed image with its long description.
-        Class name applied on figure: 
-        <code>wide</code>.
-    </figcaption>
-</figure>
-```
-
 <figure class="filter-long-shadow wide">
     <img src="/assets/images/gypaetus-barbatus-peisey.png"
-        alt="Gypaetus barbatus"
-        eleventy:widths="1400,2800">
+        alt="Gypaetus barbatus">
     <figcaption>
         A wide boxed image with filter drop shadow, with its long description.
         Class names applied on figure: 
@@ -224,8 +137,7 @@ The `wide` class name allows to feature an image.
 ```html
 <figure class="filter-long-shadow wide">
     <img src="/assets/images/gypaetus-barbatus-peisey.png"
-        alt="Gypaetus barbatus"
-        eleventy:widths="1400,2800">
+        alt="Gypaetus barbatus">
     <figcaption>
         A wide boxed image with filter drop shadow, with its long description.
         Class names applied on figure: 

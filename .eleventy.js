@@ -19,9 +19,8 @@ export default function(eleventyConfig) {
 		// output image formats
 		formats: ["svg", "avif", "webp"],
         // useCache: false,
-
 		// output image widths
-		widths: [1400],
+		widths: [libdocSystem.widthContent + 30, libdocSystem.widthContent * 2, libdocSystem.widthContent * 4],
         svgShortCircuit: true,
         filenameFormat: function (id, src, width, format, options) {
             // Define custom filenames for generated images
