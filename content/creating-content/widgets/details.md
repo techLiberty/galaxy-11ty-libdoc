@@ -29,6 +29,16 @@ In addition, contiguous details tags with the same name attribute value can crea
         Write semantic content with <abbr title="Hyper Text Markup Language">HTML</abbr>.
         Learn more at <a href="https://developer.mozilla.org/en-US/docs/Web/HTML">MDN</a>
     </p>
+    <ol>
+        <li>Hadean Eon (4567–4030 Ma)</li>
+        <li>Chaotian Era/Erathem (4567–4404 Ma) – the name alluding both to the mythological Chaos and the chaotic phase of planet formation.</li>
+        <li>Jack Hillsian or Zirconian Era/Erathem (4404–4030 Ma) – both names allude to the Jack Hills Greenstone Belt which provided the oldest mineral grains on Earth, zircons.</li>
+    </ol>
+    <ul>
+        <li>Hadean Eon (4567–4030 Ma)</li>
+        <li>Chaotian Era/Erathem (4567–4404 Ma) – the name alluding both to the mythological Chaos and the chaotic phase of planet formation.</li>
+        <li>Jack Hillsian or Zirconian Era/Erathem (4404–4030 Ma) – both names allude to the Jack Hills Greenstone Belt which provided the oldest mineral grains on Earth, zircons.</li>
+    </ul>
 </details>
 <details name="languages">
     <summary>CSS</summary>

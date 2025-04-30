@@ -500,13 +500,11 @@ main > ol:has(ul) {
     counter-reset: mixedItem;
 }
 main > ol:has(ul) > li {
+    counter-increment: mixedItem;
     padding-left: var(--ita-spacings-6);
     border-left: 1px dashed var(--ita-colors-primary-500);
 }
-main > ol:has(ul) > li {
-    counter-increment: mixedItem;
-}
-main > ol:has(ul) > li:before {
+main > ol:has(ul) > li:before  {
     content: counter(mixedItem) '.';
     position: absolute;
     transform: translateX(calc(-100% - var(--ita-spacings-2)));
@@ -521,8 +519,7 @@ main > ol:has(ul) > li:before {
     letter-spacing: -0.1em;
     border: none;
 }
-main > ol:has(ul) li > ol > li::marker,
-main > ul:has(ol) li > ol > li::marker {
+main > *:not(header) li::marker {
     font-variation-settings: "wght" 500, "MONO" 1, "CASL" 1;
     color: var(--ita-colors-primary-500);
     font-size: var(--ita-fontSizes-3);
@@ -1114,8 +1111,7 @@ main .__search-occurrence {
         font-size: var(--ita-fontSizes-1);
         transform: translateX(calc(-100% - var(--ita-spacings-3)));
     }
-    main > ol:has(ul) li > ol > li::marker,
-    main > ul:has(ol) li > ol > li::marker {
+    main > *:not(header) li::marker {
         font-size: var(--ita-fontSizes-2);
     }
     main > pre {
