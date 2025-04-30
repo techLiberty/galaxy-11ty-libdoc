@@ -5,6 +5,7 @@ eleventyNavigation:
     parent: Widgets
 description: Create simple dropdown toggle and accordions
 permalink: creating-content/widgets/details-and-accordions/index.html
+tocEnabled: false
 ---
 <details>
     <summary>LibDoc description</summary>
