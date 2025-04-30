@@ -12,10 +12,10 @@ Here are few examples of how Eleventy LibDoc renders embeds from various sources
 
 The most simple way to include an iframe, just add the embed filter to your <abbr title="Uniform Resource Locator">URL</abbr> string like this `{% raw %}{{ '<URL_STRING>' | embed }}{% endraw %}`.
 
-{{ 'https://www.youtube-nocookie.com/embed/kzf9A9tkkl4?si=fHC17SGXUi5S3CaZ&amp;controls=0' | embed }}
+{{ 'https://www.youtube-nocookie.com/embed/kzf9A9tkkl4?controls=0' | embed }}
 
 ```liquid
-{% raw %}{{ 'https://www.youtube-nocookie.com/embed/kzf9A9tkkl4?si=fHC17SGXUi5S3CaZ&amp;controls=0' | embed }}{% endraw %}
+{% raw %}{{ 'https://www.youtube-nocookie.com/embed/kzf9A9tkkl4?controls=0' | embed }}{% endraw %}
 ```
 
 ## Shortcode
