@@ -210,6 +210,55 @@ main h6 {
     font-size: var(--ita-fontSizes-7);
     letter-spacing: -0.05em;
 }
+main > *:not(header) h1,
+main > *:not(header) h1,
+main > *:not(header) h2,
+main > *:not(header) h2,
+main > *:not(header) h3,
+main > *:not(header) h3,
+main > *:not(header) h4,
+main > *:not(header) h4,
+main > *:not(header) h5,
+main > *:not(header) h5,
+main > *:not(header) h6,
+main > *:not(header) h6 {
+    margin: 0;
+    padding-left: 0 !important;
+    line-height: 1.2em;
+    display: inline-flex;
+}
+main > *:not(header) h1,
+main > *:not(header) h1 {
+    font-size: var(--ita-fontSizes-7);
+}
+main > *:not(header) h2,
+main > *:not(header) h2 {
+    font-size: var(--ita-fontSizes-6);
+}
+main > *:not(header) h3,
+main > *:not(header) h3,
+main > *:not(header) h4,
+main > *:not(header) h4,
+main > *:not(header) h5,
+main > *:not(header) h5,
+main > *:not(header) h6,
+main > *:not(header) h6 {
+    font-size: var(--ita-fontSizes-5);
+}
+main > *:not(header) h1 a,
+main > *:not(header) h1 a,
+main > *:not(header) h2 a,
+main > *:not(header) h2 a,
+main > *:not(header) h3 a,
+main > *:not(header) h3 a,
+main > *:not(header) h4 a,
+main > *:not(header) h4 a,
+main > *:not(header) h5 a,
+main > *:not(header) h5 a,
+main > *:not(header) h6 a,
+main > *:not(header) h6 a {
+    display: none;
+}
 /* LINKS */
 main a {
     transition: all 300ms;
@@ -445,56 +494,6 @@ main > ul:has(ol) ol {
     padding-left: var(--ita-spacings-5);
     margin-top: 0.5em;
 }
-/* Other tags in lists */
-main > ol h1,
-main > ul h1,
-main > ol h2,
-main > ul h2,
-main > ol h3,
-main > ul h3,
-main > ol h4,
-main > ul h4,
-main > ol h5,
-main > ul h5,
-main > ol h6,
-main > ul h6 {
-    margin: 0;
-    padding-left: 0 !important;
-    line-height: 1.2em;
-    display: inline-flex;
-}
-main > ol h1,
-main > ul h1 {
-    font-size: var(--ita-fontSizes-7);
-}
-main > ol h2,
-main > ul h2 {
-    font-size: var(--ita-fontSizes-6);
-}
-main > ol h3,
-main > ul h3,
-main > ol h4,
-main > ul h4,
-main > ol h5,
-main > ul h5,
-main > ol h6,
-main > ul h6 {
-    font-size: var(--ita-fontSizes-5);
-}
-main > ol h1 a,
-main > ul h1 a,
-main > ol h2 a,
-main > ul h2 a,
-main > ol h3 a,
-main > ul h3 a,
-main > ol h4 a,
-main > ul h4 a,
-main > ol h5 a,
-main > ul h5 a,
-main > ol h6 a,
-main > ul h6 a {
-    display: none;
-}
 main > ol:has(ul) {
     list-style: none;
     counter-reset: mixedItem;
@@ -647,7 +646,8 @@ main dl dd {
     border-left: 1px dashed var(--ita-colors-primary-500);
 }
 /* DETAILS */
-main > details summary {
+main > details summary,
+main > *:not(header) details summary {
     font-variation-settings: "wght" 400, "MONO" 0;
     display: flex;
     align-items: center;
@@ -656,22 +656,28 @@ main > details summary {
     letter-spacing: -0.03em;
     cursor: pointer;
 }
-main > details summary::before {
+main > details summary::before,
+main > *:not(header) details summary::before {
     content: '\e914';
     font-family: icomoon;
     color: var(--ita-colors-primary-500);
     font-size: var(--ita-fontSizes-6);
 }
-main > details[open] summary::before {
+main > details[open] summary::before,
+main > *:not(header) details[open] summary::before {
     content: '\e913';
 }
 main > details:has(+ details) summary,
-main > details + details summary {
+main > details + details summary,
+main > *:not(header) details:has(+ details) summary,
+main > *:not(header) details + details summary {
     padding: 1em 0;
     border-bottom: 1px dashed var(--ita-colors-neutral-500);
 }
 main > details[open]:has(+ details) summary,
-main > details + details[open] summary {
+main > details + details[open] summary,
+main > *:not(header) details[open]:has(+ details) summary,
+main > *:not(header) details + details[open] summary {
     border-bottom: none;
 }
 /* HORIZONTAL RULE */
