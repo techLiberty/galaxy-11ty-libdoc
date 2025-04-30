@@ -655,7 +655,9 @@ main > details summary {
     display: flex;
     align-items: center;
     gap: var(--ita-spacings-2);
+    padding: var(--ita-spacings-2) 0;
     letter-spacing: -0.03em;
+    cursor: pointer;
 }
 main > details summary::before {
     content: '\e914';
@@ -663,11 +665,17 @@ main > details summary::before {
     color: var(--ita-colors-primary-500);
     font-size: var(--ita-fontSizes-6);
 }
-main > details[open] summary {
-    margin-bottom: 1em;
-}
 main > details[open] summary::before {
     content: '\e913';
+}
+main > details:has(+ details) summary,
+main > details + details summary {
+    padding: 1em 0;
+    border-bottom: 1px dashed var(--ita-colors-neutral-500);
+}
+main > details[open]:has(+ details) summary,
+main > details + details[open] summary {
+    border-bottom: none;
 }
 /* HORIZONTAL RULE */
 main hr {
