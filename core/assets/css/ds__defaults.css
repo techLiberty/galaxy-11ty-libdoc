@@ -874,7 +874,10 @@ main > iframe {
 main > aside > iframe {
     width: 100%;
     aspect-ratio: 16/9;
-    background-color: var(--ita-colors-neutral-200);
+    background-color: var(--ita-colors-neutral-900);
+    border-radius: 9px;
+    overflow: hidden;
+    box-shadow: var(--libdoc-long-shadow);
 }
 /* ALERTS */
 main .alert {
