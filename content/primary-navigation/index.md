@@ -13,7 +13,7 @@ date: Last Modified
 The primary navigation is one of the most important element of the user interface. It contains six parts:
 
 1. [The home page link](/content/primary-navigation/home-link.md)<br>
-    <div class="mt-5 mb-5 | pe-none">
+    <div class="pt-5 pb-5 | pe-none">
         <div class="d-flex | bc-neutral-100 bwidth-1 bstyle-dashed bcolor-neutral-500 bradtl-3 brwidth-0 bbwidth-0"
             style="max-width: var(--ita-widths-sidebar);">
             <a  href="/"
@@ -25,7 +25,7 @@ The primary navigation is one of the most important element of the user interfac
         </div>
     </div>
 1. [The search input](/content/primary-navigation/search-input.md)
-    <div class="mt-5 mb-5 | pe-none">
+    <div class="pt-5 pb-5 | pe-none">
         <div class="d-flex fd-column | pos-relative | pl-5 pr-5 | bc-neutral-100 bwidth-1 bstyle-dashed bcolor-neutral-500 btwidth-0 bbwidth-0"
             style="max-width: var(--ita-widths-sidebar)">
             <label for="dummySearchInput"
@@ -53,7 +53,7 @@ The primary navigation is one of the most important element of the user interfac
         </div>
     </div>
 1. [Custom links](/content/primary-navigation/custom-links.md)<br>
-    <div class="pos-relative | mt-5 mb-5 | pe-none">
+    <div class="pos-relative | pt-5 pb-5 | pe-none">
         <nav class="d-flex ai-center fw-wrap | pb-3 pt-3 | bc-neutral-100 bwidth-1 bstyle-dashed bcolor-neutral-500 btwidth-0 bbwidth-0"
             style="max-width: var(--ita-widths-sidebar)">
             <a href="#"
@@ -89,7 +89,7 @@ The primary navigation is one of the most important element of the user interfac
         </nav>
     </div>
 1. [The blog link](/content/primary-navigation/blog-link.md)<br>
-    <div class="mt-5 mb-5 | pe-none">
+    <div class="pt-5 pb-5 | pe-none">
         <a  href="/posts/"
             class="d-flex ai-center | pt-5 pb-5 pl-3 | fvs-wght-500 fs-4 td-none | bc-neutral-100 btwidth-1 btstyle-dashed bcolor-neutral-500 cur-pointer"
             style="max-width: var(--ita-widths-sidebar)">
@@ -100,7 +100,7 @@ The primary navigation is one of the most important element of the user interfac
         </a>
     </div>
 1. [The tags list link](/content/primary-navigation/tags-link.md)<br>
-    <div class="mt-5 mb-5 | pe-none">
+    <div class="pt-5 pb-5 | pe-none">
         <a  href="/tags/"
             class="d-flex ai-center | pt-5 pb-5 pl-3 | fvs-wght-500 fs-4 td-none | bc-neutral-100 btwidth-1 btstyle-dashed bcolor-neutral-500 cur-pointer"
             style="max-width: var(--ita-widths-sidebar)">
