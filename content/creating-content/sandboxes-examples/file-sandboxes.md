@@ -8,3 +8,4 @@ permalink: creating-content/sandboxes/file-based-examples/index.html
 tags:
     - sandbox
 ---
+{% include 'sandbox' path: '/sandboxes/2/index.html' %}
