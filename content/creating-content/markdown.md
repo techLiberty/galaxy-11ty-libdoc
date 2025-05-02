@@ -326,17 +326,23 @@ Optionnaly, you can add a title attribute to your markdown links, adding a space
 
 ## Images
 
-To optimize page performances and bandwidth, raster images like PNG, JPEG, GIF are transcoded into [AVIF][avif wiki] and [WEBP][webp wiki] format through [Eleventy Image Plugin](https://www.11ty.dev/docs/plugins/image/). Vector images are used as is.
+To optimize page performances and bandwidth, raster images like PNG, JPEG, GIF are transcoded into [AVIF][avif wiki] and [WEBP][webp wiki] format through [Eleventy Image Plugin](https://www.11ty.dev/docs/plugins/image/). In addition, to support responsiveness, every raster image is transcoded into multiple files with different widths to fit target devices.
+
+Vector images are used as is.
 
 ### Local images
 
-Here is a simple case with a raster image ![Alt text](/assets/images/pierra-menta.jpg)
+Here is a simple case with a raster image
+
+![Alt text](/assets/images/pierra-menta.jpg)
 
 ```markdown
 ![Alt text](/assets/images/pierra-menta.jpg) 
 ```
 
-Here is a simple case with a vector image ![Alt text](/assets/images/grue-royale.svg) 
+Here is a simple case with a vector image
+
+![Alt text](/assets/images/grue-royale.svg) 
 
 ```markdown
 ![Alt text](/assets/images/grue-royale.svg) 
