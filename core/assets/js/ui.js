@@ -425,7 +425,7 @@ const libdocUi = {
             elDetails.setAttribute('w-100', 'xs,sm');
             elDetails.id = 'floating_toc';
             const elSummary = document.createElement('summary');
-            elSummary.setAttribute('class', 'd-flex jc-end | pt-5 pr-5 | cur-pointer');
+            elSummary.setAttribute('class', 'd-flex jc-end | pt-5 | cur-pointer');
             elSummary.setAttribute('d-none', 'xs,sm');
             elSummary.title = libdocMessages.toggleFloatingToc;
             elSummary.ariaLabel = libdocMessages.tableOfContent;
@@ -448,7 +448,6 @@ const libdocUi = {
                         __soft-shadow"
                         fw-wrap="xs,sm"
                         mt-2="md"
-                        mr-5="md"
                         mt-0="xs,sm"
                         maxh-200px="xs,sm"
                         brad-3="md"
@@ -505,7 +504,8 @@ const libdocUi = {
     createGoToTop: function() {
         if (libdocUi.el.gtt === undefined) {
             libdocUi.el.gtt = document.createElement('button');
-            libdocUi.el.gtt.setAttribute('class', 'd-none--xs d-none--sm | pos-fixed z-2 bottom-0 right-0 | p-0 h-50px ar-square mb-5 mr-5 | fs-6 | brad-4 bc-neutral-100 bwidth-1 bstyle-dashed bcolor-neutral-500 cur-pointer __hover-1 __soft-shadow');
+            libdocUi.el.gtt.id = 'gtt_btn';
+            libdocUi.el.gtt.setAttribute('class', 'd-none--xs d-none--sm | pos-fixed z-2 bottom-0 | p-0 h-50px ar-square mb-5 | fs-6 | brad-4 bc-neutral-100 bwidth-1 bstyle-dashed bcolor-neutral-500 cur-pointer __hover-1 __soft-shadow');
             libdocUi.el.gtt.innerHTML = `<span class="icon-arrow-line-up | pos-absolute top-50 left-50 t-tY-50 t-tX-50 | c-primary-500"></span>`;
             libdocUi.el.gtt.title = libdocMessages.goToTopOfPage;
             libdocUi.el.gtt.addEventListener('click', libdocUi.handlers._clickGTT);

@@ -1046,11 +1046,16 @@ main .__search-occurrence {
     font-variation-settings: "wght" 700, "MONO" 0;
 }
 
+/* GTT / Go to top button */
+#gtt_btn {
+    right: clamp(var(--ita-spacings-5), 100%, calc(50% - var(--ita-widths-content) - 130px));
+}
+
 /* RESPONSIVE MD */
 @media (min-width: 960px) {
     #floating_toc_container {
         /* Limit floating TOC left position */
-        left: clamp(0%, calc(100% - 200px - var(--ita-spacings-5)), calc(50% + var(--ita-widths-content)));
+        right: clamp(var(--ita-spacings-5), 100%, calc(50% - var(--ita-widths-content) - 130px));
     }
     #floating_toc__list {
         width: 200px;
