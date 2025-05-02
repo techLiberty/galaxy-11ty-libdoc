@@ -9,3 +9,5 @@ tags:
     - sandbox
 ---
 {% include 'sandbox' path: '/sandboxes/2/index.html' %}
+
+{% include 'sandbox' path: '/sandboxes/3/index.html' %}
