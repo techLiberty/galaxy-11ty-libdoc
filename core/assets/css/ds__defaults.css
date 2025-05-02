@@ -730,17 +730,13 @@ main figure.long-shadow img,
 main picture:has(.long-shadow) img {
     box-shadow: var(--libdoc-long-shadow);
 }
-main figure.filter-long-shadow img,
-main picture:has(.filter-long-shadow) img {
-    filter: drop-shadow(1em 1em 1em rgba(0,0,0,0.8));
-}
 main figure figcaption {
     font-size: var(--ita-fontSizes-4);
     font-variation-settings: "slnt" -5, "CASL" 0, "CRSV" 1.0, "MONO" 0, "wght" 300;
 }
 main figure.wide,
 main picture:has(.wide) {
-    max-width: clamp(calc(var(--ita-widths-content) - 200px), calc(100vw - var(--ita-widths-sidebar) - 4 * var(--ita-spacings-5)), calc(2 * var(--ita-widths-content)));
+    max-width: calc(1.6 * var(--ita-widths-content));
 }
 /* VIDEO */
 main video {
@@ -1052,6 +1048,9 @@ main .__search-occurrence {
 
 /* RESPONSIVE MD */
 @media (min-width: 960px) {
+    #floating_toc_container {
+        left: clamp(0%, calc(100% - 200px - var(--ita-spacings-5)), calc(50% + var(--ita-widths-content)));
+    }
     #floating_toc__list {
         width: 200px;
         max-height: calc(100vh - 160px);

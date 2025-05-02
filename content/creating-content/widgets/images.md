@@ -66,20 +66,6 @@ permalink: creating-content/widgets/images/index.html
     alt="Pierra Menta">
 ```
 
-## Filter long shadow
-
-`filter-long-shadow` class name on `<img>` tag allows to apply drop shadow on non-transparent pixels.
-
-<img class="filter-long-shadow"
-    src="/assets/images/gypaetus-barbatus-peisey.png"
-    alt="Gypaetus barbatus">
-
-```html
-<img class="filter-long-shadow"
-    src="/assets/images/gypaetus-barbatus-peisey.png"
-    alt="Gypaetus barbatus">
-```
-
 ## Boxed image
 
 Boxed images require specific markup as follows but keeps same features class names as previously.
@@ -124,24 +110,24 @@ The `wide` class name allows to feature an image.
 
 ## Mixed features
 
-<figure class="filter-long-shadow wide">
-    <img src="/assets/images/gypaetus-barbatus-peisey.png"
+<figure class="long-shadow wide">
+    <img src="/assets/images/gypaetus-barbatus-peisey.jpg"
         alt="Gypaetus barbatus">
     <figcaption>
         A wide boxed image with filter drop shadow, with its long description.
         Class names applied on figure: 
-        <code>filter-long-shadow</code> and <code>wide</code>.
+        <code>long-shadow</code> and <code>wide</code>.
     </figcaption>
 </figure>
 
 ```html
-<figure class="filter-long-shadow wide">
-    <img src="/assets/images/gypaetus-barbatus-peisey.png"
+<figure class="long-shadow wide">
+    <img src="/assets/images/gypaetus-barbatus-peisey.jpg"
         alt="Gypaetus barbatus">
     <figcaption>
         A wide boxed image with filter drop shadow, with its long description.
         Class names applied on figure: 
-        <code>filter-long-shadow</code> and <code>wide</code>.
+        <code>long-shadow</code> and <code>wide</code>.
     </figcaption>
 </figure>
 ```
