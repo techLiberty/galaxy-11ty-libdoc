@@ -1032,6 +1032,9 @@ main .__search-occurrence {
 .sandbox:has(.sandbox__enable_switch:checked) .sandbox__enable_wrapper {
     display: none;
 }
+.sandbox + .sandbox {
+    margin-top: 2em;
+}
 
 /* FLOATING TABLE OF CONTENT */
 #floating_toc[open] summary [class*="icon-"]::before {
