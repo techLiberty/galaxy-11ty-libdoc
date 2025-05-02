@@ -736,7 +736,7 @@ main figure figcaption {
 }
 main figure.wide,
 main picture:has(.wide) {
-    max-width: calc(1.6 * var(--ita-widths-content));
+    max-width: calc(100% - 2 * var(--ita-spacings-8));
 }
 /* VIDEO */
 main video {
@@ -1010,7 +1010,7 @@ main .__search-occurrence {
 
 /* SANDBOX */
 .sandbox {
-    max-width: calc(2 * var(--libdoc-container-width));
+    max-width: 100%;
     margin-left: auto;
     margin-right: auto;
 }
