@@ -40,7 +40,23 @@ Please note some limitations about inline sandboxes:
 ---
 
 {% sandbox %}
-<h1>I am the simpliest sandbox!</h1>
+<style>
+    body {
+        font-family: -apple-system, BlinkMacSystemFont, avenir next, avenir, segoe ui, helvetica neue, Cantarell, Ubuntu, roboto, noto, helvetica, arial, sans-serif;
+        font-weight: 800;
+        margin: 0;
+        padding:2em;
+        background: dodgerblue;
+        color: white;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 100vh;
+        text-align: center;
+        box-sizing: border-box;
+    }
+</style>
+<h1>I am an inline sandbox!</h1>
 {% endsandbox %}
 
 ```liquid
