@@ -1049,6 +1049,7 @@ main .__search-occurrence {
 /* RESPONSIVE MD */
 @media (min-width: 960px) {
     #floating_toc_container {
+        /* Limit floating TOC left position */
         left: clamp(0%, calc(100% - 200px - var(--ita-spacings-5)), calc(50% + var(--ita-widths-content)));
     }
     #floating_toc__list {
