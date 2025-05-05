@@ -1,0 +1,13 @@
+{
+    "siteTitle": "11ty Test",
+    "customLinks": [
+        {
+            "url": "#",
+            "text": "GitHub"
+        },
+        {
+            "url": "#",
+            "text": "CodePen"
+        }
+    ]
+}
