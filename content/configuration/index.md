@@ -10,35 +10,24 @@ tags:
     - configuration
 ---
 
-Here is the current LibDoc’s configuration file available in `_data/libdocConfig.json` displayed as example, this file has to be adjusted to your needs each time you start a new project:
+Here is the current `settings.json` LibDoc’s configuration file available at the root of your project. **`settings.json` can be empty, just change parameters you need to override**.
+
+If not specified in `settings.json`, the following parameters are applied:
 
 ```json
 {
     "lang": "en",
     "siteTitle": "Eleventy LibDoc",
-    "siteDescription": "Just and Eleventy SSG starter project to create documentation website",
+    "siteDescription": "An Eleventy starter project to craft slick documentation",
     "siteLogoUrl": "",
     "siteLogoMaxHeight": 60,
-    "author": "Olivier 3lanc",
+    "author": false,
     "faviconUrl": "/favicon.png",
-    "ogImageUrl": "",
-    "customLinks": [
-        {
-            "url": "#",
-            "text": "GitHub"
-        },
-        {
-            "url": "#",
-            "text": "CodePen"
-        },
-        {
-            "url": "#",
-            "text": "LinkedIn"
-        }
-    ],
+    "ogImageUrl": "https://raw.githubusercontent.com/ita-design-system/ita-medias/refs/heads/main/ogimage-11ty-libdoc.png",
+    "customLinks": [],
     "blogTitle": "My Posts",
     "blogDescription": "My own description for my blog",
-    "blogAuthor": "The Front Club Team",
+    "blogAuthor": "The Blog Team",
     "blogSlug": "posts",
     "displayTagsListLink": true,
     "tocEnabled": true,

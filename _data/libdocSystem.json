@@ -11,5 +11,21 @@
     },
     "widthSidebar": 300,
     "widthContent": 700,
-    "icomoonIconSize": 32
+    "icomoonIconSize": 32,
+    "pluginsParameters": {
+        "eleventyImageTransform": {
+            "formats": ["svg", "avif", "webp"],
+            "useCache": true,
+            "svgShortCircuit": true,
+            "htmlOptions": {
+                "imgAttributes": {
+                    "loading": "lazy",
+                    "decoding": "async"
+                },
+                "pictureAttributes": {
+                    "class": "eleventy-image"
+                }
+            }
+        }
+    }
 }

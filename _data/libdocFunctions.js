@@ -1,18 +1,25 @@
-import libdocUtils from "./libdocUtils.js";
-import libdocConfig from "./libdocConfig.js";
-import libdocSystem from "./libdocSystem.json" with { "type": "json" };
-import libdocMessages from "./libdocMessages.json" with { "type": "json" };
-import icomoon from "../core/assets/fonts/icomoon/selection.json" with { "type": "json" };
+import libdocUtils      from "./libdocUtils.js";
+import libdocConfig     from "./libdocConfig.js";
+import libdocSystem     from "./libdocSystem.json" with { "type": "json" };
+import libdocMessages   from "./libdocMessages.json" with { "type": "json" };
+import icomoon          from "../core/assets/fonts/icomoon/selection.json" with { "type": "json" };
 export default {
     pluginsParameters: {
         eleventyImageTransform: function() {
+            // https://www.11ty.dev/docs/plugins/image/#more-configuration-options
+            const   params = libdocSystem.pluginsParameters.eleventyImageTransform,
+                    w = libdocSystem.widthContent;
             return {
                 // output image formats
-                formats: ["svg", "avif", "webp"],
-                // useCache: false,
+                formats: params.formats,
+                useCache: params.useCache,
+                svgShortCircuit: params.svgShortCircuit,
                 // output image widths
-                widths: [libdocSystem.widthContent + 30, libdocSystem.widthContent * 2, libdocSystem.widthContent * 4],
-                svgShortCircuit: true,
+                widths: [
+                    w + 30,
+                    w * 2,
+                    w * 4
+                ],
                 filenameFormat: function (id, src, width, format, options) {
                     // Define custom filenames for generated images
                     // id: hash of the original image
@@ -21,23 +28,13 @@ export default {
                     // format: current file format
                     // options: set of options passed to the Image call
                     const filename = src.split('/').slice(-1)[0].split('.')[0];
-        
                     return `${libdocUtils.slugify(filename)}-${id}-__${width}__.${format}`;
                 },
                 // transform: (sharp) => {
                 //     sharp.trim();
                 // },
-        
                 // optional, attributes assigned on <img> nodes override these values
-                htmlOptions: {
-                    imgAttributes: {
-                        loading: "lazy",
-                        decoding: "async",
-                    },
-                    pictureAttributes: {
-                        class: "eleventy-image"
-                    }
-                }
+                htmlOptions: params.htmlOptions
             }
         }
     },
@@ -97,7 +94,6 @@ export default {
             return content;
         },
         dateString: async function(content) {
-            // const jsDate = new Date();
             let theDay = content.getDate().toString();
             if (theDay.length == 1) theDay = `0${theDay}`;
             let theMonth = (content.getMonth() + 1).toString();
