@@ -45,7 +45,7 @@ Please note some limitations about inline sandboxes:
         font-family: -apple-system, BlinkMacSystemFont, avenir next, avenir, segoe ui, helvetica neue, Cantarell, Ubuntu, roboto, noto, helvetica, arial, sans-serif;
         font-weight: 800;
         margin: 0;
-        padding:2em;
+        padding: 2em;
         background: dodgerblue;
         color: white;
         display: flex;
@@ -61,18 +61,66 @@ Please note some limitations about inline sandboxes:
 
 ```liquid
 {% raw %}{% sandbox %}
-<h1>I am the simpliest sandbox!</h1>
+<style>
+    body {
+        font-family: -apple-system, BlinkMacSystemFont, avenir next, avenir, segoe ui, helvetica neue, Cantarell, Ubuntu, roboto, noto, helvetica, arial, sans-serif;
+        font-weight: 800;
+        margin: 0;
+        padding: 2em;
+        background: dodgerblue;
+        color: white;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 100vh;
+        text-align: center;
+        box-sizing: border-box;
+    }
+</style>
+<h1>I am an inline sandbox!</h1>
 {% endsandbox %}{% endraw %}
 ```
 
 Optionally add a custom title for your inline sandbox just adding an argument to the paired shortcode.
 
 {% sandbox 'Custom title' %}
+<style>
+    body {
+        font-family: -apple-system, BlinkMacSystemFont, avenir next, avenir, segoe ui, helvetica neue, Cantarell, Ubuntu, roboto, noto, helvetica, arial, sans-serif;
+        font-weight: 800;
+        margin: 0;
+        padding: 2em;
+        background: dodgerblue;
+        color: white;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 100vh;
+        text-align: center;
+        box-sizing: border-box;
+    }
+</style>
 <h1>I have a custom title!</h1>
 {% endsandbox %}
 
 ```liquid
 {% raw %}{% sandbox 'Custom title' %}
+<style>
+    body {
+        font-family: -apple-system, BlinkMacSystemFont, avenir next, avenir, segoe ui, helvetica neue, Cantarell, Ubuntu, roboto, noto, helvetica, arial, sans-serif;
+        font-weight: 800;
+        margin: 0;
+        padding: 2em;
+        background: dodgerblue;
+        color: white;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 100vh;
+        text-align: center;
+        box-sizing: border-box;
+    }
+</style>
 <h1>I have a custom title!</h1>
 {% endsandbox %}{% endraw %}
 ```
@@ -86,6 +134,22 @@ An inline sandbox with doctype:
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>doctype inline sandbox</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, avenir next, avenir, segoe ui, helvetica neue, Cantarell, Ubuntu, roboto, noto, helvetica, arial, sans-serif;
+            font-weight: 800;
+            margin: 0;
+            padding: 2em;
+            background: dodgerblue;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            text-align: center;
+            box-sizing: border-box;
+        }
+    </style>
 </head>
 <body>
     <h1>Inline sandbox with doctype</h1>
@@ -101,6 +165,22 @@ An inline sandbox with doctype:
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>doctype inline sandbox</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, avenir next, avenir, segoe ui, helvetica neue, Cantarell, Ubuntu, roboto, noto, helvetica, arial, sans-serif;
+            font-weight: 800;
+            margin: 0;
+            padding: 2em;
+            background: dodgerblue;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            text-align: center;
+            box-sizing: border-box;
+        }
+    </style>
 </head>
 <body>
     <h1>Inline sandbox with doctype</h1>
