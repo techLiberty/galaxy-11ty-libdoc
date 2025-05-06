@@ -12,11 +12,13 @@ tags:
     - tags
 ---
 
-The boolean `displayTagsListLink` enables or disables LibDoc’s page containing every tag found into the entire project. 
+The boolean `displayTagsListLink` enables or disables the link to tags list page of the primary navigation. Tags list page contains every tag found into the entire project. 
+
+To disable tags list link display, just enter into `settings.json`:
 
 ```json
 {
-    "displayTagsListLink": true
+    "displayTagsListLink": false
 }
 ```
 

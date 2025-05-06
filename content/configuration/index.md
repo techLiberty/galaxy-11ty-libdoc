@@ -3,14 +3,20 @@ layout: libdoc_page
 permalink: configuration/index.html
 eleventyNavigation:
     key: Configuration
-    order: 10
+    order: 20
 title: LibDoc’s configuration
 description: List and descriptions of every LibDoc parameter
 tags:
     - configuration
 ---
 
-Here is the current `settings.json` LibDoc’s configuration file available at the root of your project. **`settings.json` can be empty, just change parameters you need to override**.
+Here is the default LibDoc’s configuration. Each parameter can be overridden through the file `settings.json` at the root of the project. 
+
+Even if `settings.json` can be empty, it is recommended to enter at least:
+
+* `siteTitle`
+* `siteDescription`
+* `faviconUrl`
 
 If not specified in `settings.json`, the following parameters are applied:
 

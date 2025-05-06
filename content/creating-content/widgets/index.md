@@ -15,4 +15,5 @@ permalink: creating-content/widgets/index.html
 * [Icons](/content/creating-content/widgets/icons.md) Available icons to use with the content
 * [Embeds](/content/creating-content/widgets/embeds.md) Code integration results of various content providers
 * [Images](/content/creating-content/widgets/images.md) Ready to use HTML to highlight your images
+* [Sandboxes](/content/creating-content/widgets/sandboxes.md) Simple HTML resources separated from LibDoc’s pages scope and embedded into a LibDoc page
 

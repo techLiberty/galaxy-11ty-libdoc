@@ -2,15 +2,15 @@
 layout: libdoc_page
 eleventyNavigation:
     key: Sandboxes
-    parent: Creating content
-    order: 40
-description: How to use sandboxes feature of Eleventy LibDoc
-permalink: creating-content/sandboxes/index.html
+    parent: Widgets
+    order: 80
+description: Simple HTML resources separated from LibDoc’s pages scope and embedded into a LibDoc page
+permalink: creating-content/widgets/sandboxes/index.html
 tags:
     - sandbox
 ---
 
-**Sandboxes are simple HTML resources separated from LibDoc scope and embedded into a LibDoc page**, just like a Youtube embed or any other. LibDoc sandboxes come with a custom user interface with both code and result. By default, code and result get 50% of the width each but it can be resized. There are two ways to include a sandbox:
+**Sandboxes are simple HTML resources separated from LibDoc’s pages scope and embedded into a LibDoc page**, just like a Youtube embed or any other. LibDoc sandboxes come with a custom user interface with both code and result. By default, code and result get 50% of the width each but it can be resized. There are two ways to include a sandbox:
 
 
 | Feature                                  | Inline sandbox | File sandbox |
@@ -189,7 +189,7 @@ An inline sandbox with doctype:
 {% endsandbox %}{% endraw %}
 ```
 
-[View examples of inline sandboxes](/content/creating-content/sandboxes-examples/inline-sandboxes.md)
+[View examples of inline sandboxes](/content/creating-content/widgets/sandboxes-examples/inline-sandboxes.md)
 
 ## File sandbox
 
@@ -203,4 +203,4 @@ This simple example contains only one HTML file into `sandboxes/1/`.
 {% raw %}{% include 'sandbox' path: '/sandboxes/1/index.html' %}{% endraw %}
 ```
 
-[View examples of file based sandboxes](/content/creating-content/sandboxes-examples/file-sandboxes.md)
+[View examples of file based sandboxes](/content/creating-content/widgets/sandboxes-examples/file-sandboxes.md)

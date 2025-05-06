@@ -12,7 +12,7 @@ tags:
 date: Last Modified
 ---
 
-LibDoc allows to display personal and/or important links into the primary navigation. It can be set into [LibDoc configuration](/content/configuration/index.md).
+LibDoc allows to display personal and/or important links into the primary navigation. It can be set into [LibDoc configuration](/content/configuration/custom-links.md).
 
 <div class="pos-relative | pe-none">
     <nav class="d-flex ai-center fw-wrap | pb-3 pt-3 | bc-neutral-100 bwidth-1 bstyle-dashed bcolor-neutral-500 btwidth-0 bbwidth-0"

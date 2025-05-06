@@ -3,6 +3,7 @@ layout: libdoc_page
 permalink: primary-navigation/index.html
 eleventyNavigation:
     key: Primary Navigation
+    order: 50
 # title: LibDoc’s Front Matter 
 description: Detailed features of LibDoc’s primary navigation
 tags:

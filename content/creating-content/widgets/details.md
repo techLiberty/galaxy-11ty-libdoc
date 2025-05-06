@@ -3,6 +3,7 @@ layout: libdoc_page.liquid
 eleventyNavigation:
     key: Details and accordions
     parent: Widgets
+    order: 40
 description: Create simple dropdown toggle and accordions
 permalink: creating-content/widgets/details-and-accordions/index.html
 tocEnabled: false

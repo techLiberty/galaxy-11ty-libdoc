@@ -28,5 +28,5 @@ LibDoc has a feature dedicated to blogging. Any page created that contains a tag
 
 **Blog posts link appears only if at least one page contains a `post` tag.**
 
-Learn more about blog feature configuration.
+Learn more about [blog feature configuration](/content/configuration/blog.md).
 

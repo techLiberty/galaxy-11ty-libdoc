@@ -232,7 +232,7 @@ Example of an unordered list containing ordered lists.
         1. *Columbian Period/System (2060–1780 Ma)* – named after the supercontinent Columbia.
 * # Mesoproterozoic Era/Erathem (1780–850 Ma)
     1. ![alt](/assets/images/pierra-menta.jpg) – names are respectively for the Lomagundi–Jatuli δ13C isotopic excursion event spanning its duration, and for the (proposed) first fossil appearance of eukaryotes.
-    1. ### Columbian Period/System (2060–1780 Ma) – named after the supercontinent Columbia.
+    1. ## Columbian Period/System (2060–1780 Ma) – named after the supercontinent Columbia.
     1. <aside>
             <p class="alert">
                 Default alert.

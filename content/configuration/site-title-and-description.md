@@ -11,7 +11,16 @@ tags:
     - configuration
     - SEO
 ---
-Into `_data/libdocConfig.json`:
+Just like [faviconUrl](/content/configuration/favicon.md) and [author](/content/configuration/author.md), site title and site description are important text strings to enter when project starts. Set it into `settings.json`:
+
+```json
+{
+    "siteTitle": "My Documentation",
+    "siteDescription": "The description of my documentation website"
+}
+```
 
 * `siteTile` is always displayed as title link at the top of the primary navigation.
 * `siteDescription` is displayed as metadata description on the page with `permalink: index.html` (home page) and as <var>title</var> attribute on home page link.
+
+Site title and description are also involved in [SEO](/content/seo.md).

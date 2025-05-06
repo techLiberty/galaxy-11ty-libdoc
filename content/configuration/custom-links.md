@@ -13,9 +13,9 @@ tags:
     - custom-links
 ---
 
-Available into `_data/libdocConfig.json`, the `customLinks` object is an array that sets up the personal link to place into the header of the primary navigation. It looks like as follows
+Available into `settings.json`, the `customLinks` object is an array that sets up the personal link to place into the header of the primary navigation. It looks like as follows
 
-An example of `_data/libdocConfig.json` with custom links:
+An example of `settings.json` with custom links:
 
 ```json
 {
@@ -36,10 +36,5 @@ An example of `_data/libdocConfig.json` with custom links:
 }
 ```
 
-An example of `_data/libdocConfig.json` disabled:
-
-```json
-{
-    "customLinks": []
-}
-```
+* `url` sets the link <abbr title="Uniform Resource Locator">URL</abbr>.
+* `text` sets the text of the link.

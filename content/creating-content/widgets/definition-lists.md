@@ -3,6 +3,7 @@ layout: libdoc_page.liquid
 eleventyNavigation:
     key: Definition lists
     parent: Widgets
+    order: 30
 description: How to use definition lists
 permalink: creating-content/widgets/definition-lists/index.html
 ---

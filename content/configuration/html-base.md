@@ -12,21 +12,13 @@ tags:
     - configuration
 ---
 
-Eleventy LibDoc includes the [base plugin](https://www.11ty.dev/docs/plugins/html-base/). By default, `libdocConfig.htmlBasePathPrefix` is an empty string. If your build is not deployed to a domain root and you need to add a prefix after domain name.
-
-Default setting:
-
-```json
-{
-    "htmlBasePathPrefix": ""
-}
-```
+Eleventy LibDoc includes the [base plugin](https://www.11ty.dev/docs/plugins/html-base/). **By default, `settings.htmlBasePathPrefix` is an empty string**. If your build is not deployed to a domain root and you need to add a prefix after domain name.
 
 If website is pushed into a sub directory of the domain name (for example on Github Pages), just add slashes before and after directory name.
 
 ```json
 {
-    "htmlBasePathPrefix": "/directory-name/"
+    "htmlBasePathPrefix": "/repository-name/"
 }
 ```
 

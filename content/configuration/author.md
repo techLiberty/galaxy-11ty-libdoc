@@ -14,13 +14,17 @@ tags:
     - author
 ---
 
-`author` is propagated on the following metadata
+`author` is set to `false` by default, it means no author is displayed. To add default author on each page header, just enter text string of the default author into `settings.json`. 
 
-```html
-<meta name="author" content="">
+<aside>
+    <p class="alert alert-info">
+        Note that page author can be overridden on each page. <a href="/content/front-matter/author.md">Learn more</a>
+    </p>
+</aside>
+
+```json
+{
+    "author": "John Doe"
+}
 ```
 
-Author is displayed following these ordered priorities:
-
-1. By default author’s value is `libdocConfig.author` if nothing is set into the front matter.
-1. If `author` is set into the front matter, page’s author gets this value.

@@ -13,11 +13,11 @@ tags:
     - sandbox
 ---
 
-By default, [sandboxes](/content/creating-content/sandboxes.md) have to be enabled to run. A simple system to avoid scroll into sandbox instead of page. This feature can be disabled setting `"sandboxRunSwitch": false`.
+By default, [sandboxes](/content/creating-content/widgets/sandboxes.md) have to be enabled to run. Eleventy LibDoc has a simple system to avoid scroll into sandbox instead of page. This feature can be disabled by setting `"sandboxRunSwitch": false` into `settings.json`.
 
 ```json
 {
-    "sandboxRunSwitch": true
+    "sandboxRunSwitch": false
 }
 ```
 

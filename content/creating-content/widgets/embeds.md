@@ -3,6 +3,7 @@ layout: libdoc_page.liquid
 eleventyNavigation:
     key: Embeds
     parent: Widgets
+    order: 50
 description: Code integration results of various content providers
 permalink: creating-content/widgets/embeds/index.html
 ---

@@ -3,6 +3,7 @@ layout: libdoc_page.liquid
 eleventyNavigation:
     key: Alerts
     parent: Widgets
+    order: 10
 description: Simple paragraphs that displays informations to highlight.
 permalink: creating-content/widgets/alerts/index.html
 ---

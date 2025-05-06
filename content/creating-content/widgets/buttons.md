@@ -3,6 +3,7 @@ layout: libdoc_page.liquid
 eleventyNavigation:
     key: Buttons
     parent: Widgets
+    order: 20
 description: Form buttons and links to create Call To Actions.
 permalink: creating-content/widgets/buttons/index.html
 ---

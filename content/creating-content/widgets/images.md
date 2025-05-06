@@ -4,6 +4,7 @@ eleventyNavigation:
     key: Images widgets
     parent: Widgets
     title: Images
+    order: 70
 description: Ready to use HTML to highlight your images
 permalink: creating-content/widgets/images/index.html
 ---

@@ -3,6 +3,7 @@ layout: libdoc_page.liquid
 eleventyNavigation:
     key: Icons
     parent: Widgets
+    order: 60
 description: Available icons to use with the content
 permalink: creating-content/widgets/icons/index.html
 ---

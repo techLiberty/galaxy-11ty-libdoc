@@ -14,11 +14,11 @@ tags:
     - SEO
 ---
 
-Available into `_data/libdocConfig.json`:
+Default Open Graph URL is empty. To assign a default Open Graph URL, enter it into `settings.json`:
 
 ```json
 {
-    "ogImageUrl": ""
+    "ogImageUrl": "https://<YOUR_OWN_PUBLIC_ABSOLUTE_URL>.png"
 }
 ```
 
