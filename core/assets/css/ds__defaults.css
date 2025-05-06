@@ -534,10 +534,7 @@ main > *:not(header) li::marker {
 /* CODE AND SYNTAX HIGHLIGHTING */
 main > *:not(pre) code {
     background-color: var(--ita-colors-primary-200);
-    /* text-shadow: none; */
     display: inline-block;
-    margin-right: 0.3em;
-    margin-left: 0.3em;
     padding-left: 0.3em;
     padding-right: 0.3em;
     border-radius: 0.3em;
