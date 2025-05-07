@@ -712,7 +712,6 @@ main figure {
     border-radius: 12px;
     border: 1px solid var(--ita-colors-neutral-400);
     overflow: hidden;
-    /* max-width: clamp(var(--ita-widths-content), calc(100% - 3 * var(--ita-spacings-5)), calc(var(--ita-widths-content) + 2 * var(--ita-spacings-9))); */
 }
 main figure.dark,
 main picture:has(.dark) img {
@@ -1055,14 +1054,14 @@ main .__search-occurrence {
 
 /* GTT / Go to top button */
 #gtt_btn {
-    right: clamp(var(--ita-spacings-5), 100%, calc(50% - var(--ita-widths-content) - 130px));
+    right: clamp(var(--ita-spacings-5), 100%, calc(50% - var(--ita-widths-content) - var(--ita-widths-content) / 2));
 }
 
 /* RESPONSIVE MD */
 @media (min-width: 960px) {
     #floating_toc_container {
         /* Limit floating TOC left position */
-        right: clamp(var(--ita-spacings-5), 100%, calc(50% - var(--ita-widths-content) - 130px));
+        right: clamp(var(--ita-spacings-5), 100%, calc(50% - var(--ita-widths-content) - var(--ita-widths-content) / 2));
     }
     #floating_toc__list {
         width: 200px;
