@@ -112,4 +112,3 @@ The primary navigation is one of the most important element of the user interfac
         </a>
     </div>
 1. [The Eleventy Navigation](/content/primary-navigation/eleventy-navigation.md)
-

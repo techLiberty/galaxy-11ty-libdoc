@@ -6,7 +6,7 @@ eleventyNavigation:
     parent: Primary Navigation
     order: 50
 # title: LibDoc’s Front Matter 
-description: How to display custom links into the header of the primary navigation
+description: Display important links that visitors may need to see on each page you create
 tags:
     - navigation
 date: Last Modified

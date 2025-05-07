@@ -7,7 +7,7 @@ eleventyNavigation:
     title: Open Graph image
     order: 50
 title: Open Graph Image - Configuration
-description: How to manage Open Graph Image metadata
+description: Set the image displayed when visitors share your pages
 tags:
     - configuration
     - open-graph-image

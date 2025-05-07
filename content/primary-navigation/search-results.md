@@ -6,14 +6,11 @@ eleventyNavigation:
     parent: Primary Navigation
     order: 30
 # title: LibDoc’s Front Matter 
-description: Description of the search results page
+description: On a valid text query, search results page appears with excerpts of occurences
 tags:
     - navigation
 date: Last Modified
 ---
-
-On a valid text query, search result page appears with excerpts of occurences.
-
 <div class="pe-none">
     <div class="d-flex fd-column | pos-relative | pl-5 pr-5 | bc-neutral-100 bwidth-1 bstyle-dashed bcolor-neutral-500 btwidth-0 bbwidth-0"
         style="max-width: var(--ita-widths-sidebar)">

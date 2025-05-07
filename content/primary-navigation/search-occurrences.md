@@ -6,7 +6,7 @@ eleventyNavigation:
     parent: Primary Navigation
     order: 40
 # title: LibDoc’s Front Matter 
-description: Description of the search occurrences feature
+description: Easily navigate into a page clicked from a search result
 tags:
     - navigation
 date: Last Modified

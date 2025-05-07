@@ -4,7 +4,45 @@ description: An Eleventy starter project to craft slick documentation
 layout: libdoc_page.liquid
 permalink: index.html
 ---
-Eleventy LibDoc is a lightweight and performances focused starter project for [Eleventy][11ty] to craft slick web related code documentation.
+Eleventy LibDoc is a starter project for [Eleventy][11ty] to craft slick web related code documentation.
+
+* **Configuration** <br>settings.json at the root of the project defines project’s settings.
+    * **Language**. <br>Every <abbr title="User Interface">UI</abbr> text string of Eleventy LibDoc is identified as a key which allows to easily extend it with more languages.
+    * **Site title and description** <br>Involved in <abbr title="Search Engine Optimization">SEO</abbr>, site title and description take part of the most important settings to be set at project start.
+    * **Site logo** <br>Optionally replace text link by logo image 
+    * **Author** <br>Choose to display or not a default author on each page. Override this setting on each page created.
+    * **Favicon** <br>Set your own favicon, overridable on each page created.
+    * **Custom links** <br>Into the primary navigation, display important links that visitors may need to see on each page you create.
+    * **Open Graph Image** <br>Set the image displayed when visitors share your pages.
+    * **Table of content** <br>When content amount is greater than a threshold, a table of content is displayed into page header.
+    * **Floating table of content** <br>In addition of main <abbr title="Table Of Content">TOC</abbr>, a floating table of content appears when visitor scrolls. Just like main TOC, the floating TOC displays anchor links to headings and also current visible part of the page.
+    * **Base** <br>Allows to deploy your build into a sub domain instead of root. Computes input path and every <abbr title="Uniform Resource Locator">URL</abbr> to fit to the sub domain target.
+    * **Syntax highlighting** <br>Adjust your own supported languages for syntax highlighting.
+* **Creating content** <br>Easily write documentation with Markdown and <abbr title="Hyper Text Markup Language">HTML</abbr>.
+    * **Markdown** <br>Perfect to write content with common semantics.
+    * **Inline HTML** <br>Allows to enhance markdown unsupported semantics.
+    * **Widgets** <br>Useful for advanced and specific usages.
+        * **Alerts** <br>Simple paragraphs that displays informations to highlight.
+        * **Buttons** <br>Form buttons and links to create Call To Actions
+        * **Definition lists** <br>How to use definition lists
+        * **Details and accordions** <br>Create simple dropdown toggle and accordions
+        * **Icons** <br>Available icons to use with the content
+        * **Embeds** <br>Code integration results of various content providers
+        * **Images** <br>Ready to use HTML to highlight your images
+        * **Sandboxes** <br>Simple HTML resources separated from LibDoc’s pages scope and embedded into a LibDoc page.
+    * **Tags** <br>Assign keywords into your pages to create topics.
+    * **Blog** <br>Each page tagged with `post` is displayed into a blog feed.
+* **Primary navigation** <br>One of the most important element of the user interface.
+    * **Home page link** <br>Always visible, redirects to the root of the project.
+    * **Search** <br>Quickly get search results from any text query entered into the input search form.
+    * **Search occurrences** <br>Easily navigate into a page clicked from a search result.
+    * **Eleventy navigation** <br>Organize your content with infinite-depth hierarchical navigation.
+    * **Eleventy breadcrumb** <br>Automatic breadcrumb is created from Eleventy navigation.
+* **Accessibility** <br>LibDoc was developed with accessibility awareness.
+* **Performance** <br>Low front-end dependencies and vanilla JS self-made components make LibDoc cross-browser compatibility and high-grade performances.
+* **Printable** <br>Every page created with LibDoc can be printed. Try to print preview this page in PDF!
+
+---
 
 * `_data/` <br>⤷  Eleventy [data global](https://www.11ty.dev/docs/data-global/).
     * `libdocConfig.js` <br>⤷ returns default or user defined LibDoc parameters. [Learn more](/content/configuration/index.md).

@@ -6,12 +6,11 @@ eleventyNavigation:
     parent: Primary Navigation
     order: 20
 # title: LibDoc’s Front Matter 
-description: Description of the search input zone
+description: Quickly get search results from any text query entered into the input search form
 tags:
     - navigation
 date: Last Modified
 ---
-
 The search feature allows to find any text query greater than 3 characters on every page created on the project, excepting pages with front matter `eleventyExcludeFromCollections: true` [11ty ref](https://www.11ty.dev/docs/data-configuration/). Every search query can be linked, view an example with the query ["configuration"](/search/?search=configuration).
 
 <div class="pe-none">

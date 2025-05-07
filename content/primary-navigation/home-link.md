@@ -6,7 +6,7 @@ eleventyNavigation:
     parent: Primary Navigation
     order: 10
 # title: LibDoc’s Front Matter 
-description: Description of the home page link
+description: Always visible, redirects to the root of the project.
 tags:
     - navigation
 date: Last Modified
