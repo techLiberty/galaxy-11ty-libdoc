@@ -337,7 +337,7 @@
                 {% endif %}
             </header>
             {{ content | cleanup | autoids }}
-            <footer class="minh-100vh mt-10">
+            <footer class="minh-100vh {% if pageUrlSplit[1] != libdocConfig.blogSlug %}mt-10{% endif %}">
                 <div class="pt-11 | bwidth-1 bstyle-dashed bcolor-neutral-500 btwidth-0 brwidth-0"></div>
                 <p class="mt-5 mb-0 | fs-2">
                     <a  href="https://github.com/ita-design-system/eleventy-libdoc"
