@@ -8,7 +8,7 @@ Eleventy LibDoc is a lightweight and performances focused starter project for [E
 
 * `_data/` <br>⤷  Eleventy [data global](https://www.11ty.dev/docs/data-global/).
     * `libdocConfig.js` <br>⤷ returns default or user defined LibDoc parameters. [Learn more](/content/configuration/index.md).
-    * `libdocFunctions.js` <br>⤷ manages filters, shortcodes, collections, [widgets](/content/creating-content/widgets/), etc. 
+    * `libdocFunctions.js` <br>⤷ manages filters, shortcodes, collections, [widgets](/content/creating-content/widgets/index.md), etc. 
     * `libdocMessages.json` <br>⤷ contains i18n strings for user interface. [Learn more](/content/configuration/lang.md).
     * `libdocSystem.json` <br>⤷ contains non user related parameters.
     * `libdocUtils.js` <br>⤷ contains helpful and ready to use UI and content functions.

@@ -203,37 +203,36 @@ Following examples contain more complex HTML structure combining ordered lists a
 
 Example of an ordered list containing unordered lists.
 
-1. ## Proterozoic Eon/Eonothem (2420–538.8 Ma)
+1. **Proterozoic Eon/Eonothem (2420–538.8 Ma)**
     1. *Paleoproterozoic Era/Erathem (2420–1780 Ma)*
-        * ## Oxygenian Period/System (2420–2250 Ma)
+        * Oxygenian Period/System (2420–2250 Ma)
             named for displaying the first evidence for a global oxidising atmosphere.
-        * *Jatulian or Eukaryian Period/System (2250–2060 Ma)* – names are respectively for the Lomagundi–Jatuli δ13C isotopic excursion event spanning its duration, and for the (proposed) first fossil appearance of eukaryotes.
-        * *Columbian Period/System (2060–1780 Ma)* – named after the supercontinent Columbia.
+        * Jatulian or Eukaryian Period/System (2250–2060 Ma) – names are respectively for the Lomagundi–Jatuli δ13C isotopic excursion event spanning its duration, and for the (proposed) first fossil appearance of eukaryotes.
+        * Columbian Period/System (2060–1780 Ma) – named after the supercontinent Columbia.
     1. *Paleoproterozoic Era/Erathem (2420–1780 Ma)*
-        * *Columbian Period/System (2060–1780 Ma)* – named after the supercontinent Columbia.
-        * ## Oxygenian Period/System (2420–2250 Ma)
-            named for displaying the first evidence for a global oxidising atmosphere.
+        * Columbian Period/System (2060–1780 Ma) – named after the supercontinent Columbia.
+        * Oxygenian Period/System (2420–2250 Ma) - named for displaying the first evidence for a global oxidising atmosphere.
 1. **Mesoproterozoic Era/Erathem (1780–850 Ma)**
     1. *Rodinian Period/System (1780–850 Ma)* – named after the supercontinent Rodinia, stable environment.
     1. *Columbian Period/System (2060–1780 Ma)* – named after the supercontinent Columbia.
-        * ## Hadean Eon (4567–4030 Ma)
-        * **Archean Eon/Eonothem (4030–2420 Ma)**
-        * **Proterozoic Eon/Eonothem (2420–538.8 Ma)**
+        * Hadean Eon (4567–4030 Ma)
+        * Archean Eon/Eonothem (4030–2420 Ma)
+        * Proterozoic Eon/Eonothem (2420–538.8 Ma)
     1. *Oxygenian Period/System (2420–2250 Ma)* – named for displaying the first evidence for a global oxidising atmosphere.
 
 ---
 
-Example of an unordered list containing ordered lists.
+Example of an unordered list containing ordered lists with multiple tags types.
 
 * **Proterozoic Eon/Eonothem (2420–538.8 Ma)**
-    * ## Paleoproterozoic Era/Erathem (2420–1780 Ma)
-        1. *Oxygenian Period/System (2420–2250 Ma)* – named for displaying the first evidence for a global oxidising atmosphere.
-        1. *Jatulian or Eukaryian Period/System (2250–2060 Ma)* – names are respectively for the Lomagundi–Jatuli δ13C isotopic excursion event spanning its duration, and for the (proposed) first fossil appearance of eukaryotes.
-        1. *Columbian Period/System (2060–1780 Ma)* – named after the supercontinent Columbia.
-* # Mesoproterozoic Era/Erathem (1780–850 Ma)
-    1. ![alt](/assets/images/pierra-menta.jpg) – names are respectively for the Lomagundi–Jatuli δ13C isotopic excursion event spanning its duration, and for the (proposed) first fossil appearance of eukaryotes.
-    1. ## Columbian Period/System (2060–1780 Ma) – named after the supercontinent Columbia.
-    1. <aside>
+    * *Paleoproterozoic Era/Erathem (2420–1780 Ma)*
+        1. Oxygenian Period/System (2420–2250 Ma) – named for displaying the first evidence for a global oxidising atmosphere.
+        1. Jatulian or Eukaryian Period/System (2250–2060 Ma) – names are respectively for the Lomagundi–Jatuli δ13C isotopic excursion event spanning its duration, and for the (proposed) first fossil appearance of eukaryotes.
+        1. Columbian Period/System (2060–1780 Ma) – named after the supercontinent Columbia.
+* **Mesoproterozoic Era/Erathem (1780–850 Ma)**
+    1. ![Pierra Menta mountain](/assets/images/pierra-menta.jpg) – names are respectively for the Lomagundi–Jatuli δ13C isotopic excursion event spanning its duration, and for the (proposed) first fossil appearance of eukaryotes.
+    1. *Columbian Period/System (2060–1780 Ma)* – named after the supercontinent Columbia.
+    1.  <aside>
             <p class="alert">
                 Default alert.
                 Alerts widgets are simple paragraphs that displays informations to highlight.
@@ -242,6 +241,8 @@ Example of an unordered list containing ordered lists.
         </aside>
 
 ---
+
+Example of an ordered list containing unordered lists.
 
 1. Ordered One
    * Unordered First

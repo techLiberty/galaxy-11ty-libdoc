@@ -11,11 +11,12 @@ tags:
     - configuration
     - logo
 ---
-Home link in primary navigation is the site title by default, but it can be a logo. To set your own logo, enter its relative or absolute URL into `settings.json`:
+Home link in primary navigation is the site title by default, but it can be a logo. To set your own logo, enter its relative or absolute URL into `settings.json`. Maximum logo width is limited to primary navigation bounds. If needed, logo size is available via `siteLogoMaxHeight` parameter.
 
 ```json
 {
-    "siteLogoUrl": "/assets/path/to/logo.svg"
+    "siteLogoUrl": "/assets/path/to/logo.svg",
+    "siteLogoMaxHeight": 100
 }
 ```
 
