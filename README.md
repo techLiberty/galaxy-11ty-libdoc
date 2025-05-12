@@ -1,9 +1,12 @@
 # Eleventy LibDoc
 
-Eleventy LibDoc is a starter project for [Eleventy][11ty] to craft slick web related code documentation. [View demo of this repository](https://11ty-libdoc-blank.netlify.app)
+[Eleventy LibDoc website](https://eleventy-libdoc.netlify.app/) | [11ty website](11ty)
 
-![image](https://github.com/user-attachments/assets/cc6e7b1e-20d1-4249-a282-33d6eda7ae4a)
+Eleventy LibDoc is a starter project for Eleventy to craft slick web related code documentation.
 
+[![Netlify Status](https://api.netlify.com/api/v1/badges/d1986dbf-2272-4614-8dec-c228ba4699ef/deploy-status)](https://app.netlify.com/sites/11ty-libdoc-blank/deploys)
+
+![screenshots](https://github.com/user-attachments/assets/cc6e7b1e-20d1-4249-a282-33d6eda7ae4a)
 
 ## Getting started
 
@@ -11,6 +14,8 @@ Eleventy LibDoc is a starter project for [Eleventy][11ty] to craft slick web rel
 2. Run `npm install`
 3. Enter your own settings in `settings.json`. [Configuration](/content/configuration/index.md).
 4. Build `npx @11ty/eleventy`
+
+[View deployment of this repository](https://11ty-libdoc-blank.netlify.app)
 
 ## Key features
 
