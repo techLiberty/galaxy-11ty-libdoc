@@ -1,8 +1,9 @@
 ---
 title: Hello World!
-description: I am the very first page of this project
+description: I am the home page of this project
 layout: libdoc_page.liquid
 permalink: index.html
+date: git Last Modified
 ---
 <aside>
     <p class="alert alert-success" data-title="Howdy!">
