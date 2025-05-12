@@ -339,15 +339,25 @@
                 {% endif %}
             </header>
             {{ content | cleanup | autoids }}
-            <footer class="minh-100vh {% if pageUrlSplit[1] != libdocConfig.blogSlug %}mt-10{% endif %}">
-                <div class="pt-11 | bwidth-1 bstyle-dashed bcolor-neutral-500 btwidth-0 brwidth-0"></div>
-                <p class="mt-5 mb-0 | fs-2">
-                    <a  href="https://github.com/ita-design-system/eleventy-libdoc"
+            <footer class="minh-100vh">
+                <div class="pt-11 | blwidth-1 blstyle-dashed bcolor-neutral-500"></div>
+                <nav class="d-flex ai-center | blwidth-1 blstyle-dashed bcolor-neutral-500">
+                    <div class="pl-5 | bbwidth-1 bbstyle-dashed bcolor-neutral-500"></div>
+                    {% if editThisPageRootUrl.size > 0 %}
+                        <a  href="{{ editThisPageRootUrl }}{{ page.inputPath | replace: "./", "/" }}"
+                            target="_blank"
+                            class="btn btn-primary-light">
+                            <span class="icon-pencil-simple"></span>
+                            {{ libdocMessages.editThisPage[libdocConfig.lang] }}
+                        </a>
+                    {% endif %}
+                    <div class="pl-5 w-100 | bbwidth-1 bbstyle-dashed bcolor-neutral-500"></div>
+                    <a  href="{{ libdocConfig.editThisPageRootUrl }}{{ page.inputPath | replace: "./", "/" }}"
                         target="_blank"
-                        class="td-none">
+                        class="d-flex ai-center gap-2 | pl-2 pr-2 | fvs-wght-400 fs-2 lsp-3 lh-3 td-none ws-nowrap">
                         11ty LibDoc {{ libdocUtils.version }}
                     </a>
-                </p>
+                </nav>
             </footer>
         </main>
     </div>

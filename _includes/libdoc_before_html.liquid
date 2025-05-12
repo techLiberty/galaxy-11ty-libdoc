@@ -5,6 +5,7 @@
 {%- assign pageDescription = description | default: "" -%}
 {%- assign pageAuthor = libdocConfig.author -%}
 {%- assign pageOgImageUrl = ogImageUrl | default: libdocConfig.ogImageUrl -%}
+{%- assign editThisPageRootUrl = libdocConfig.editThisPageRootUrl | default: '' -%}
 
 {%- comment -%} {%- assign blogPathUrl = '/' | append: libdocConfig.blogSlug | append: '/' -%} {%- endcomment -%}
 {%- assign pagePathUrl = page.url | split: '/' -%}
@@ -67,6 +68,14 @@
 
 {%- if pageDescription == false or pageDescription == 'false' -%}
     {%- assign pageDescription = '' -%}
+{%- endif -%}
+
+{%- if editThisPageRootUrl == false
+    or editThisPageRootUrl == 'false'
+    or pagePathUrl[1] == 'tags'
+    or pagePathUrl[1] == 'search'
+    or pagePathUrl[1] == libdocConfig.blogSlug -%}
+    {%- assign editThisPageRootUrl = '' -%}
 {%- endif -%}
 
 {%- comment -%} Eleventy Navigation {%- endcomment -%}
