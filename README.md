@@ -21,7 +21,7 @@ Eleventy LibDoc is a starter project for [Eleventy][11ty] to craft slick web rel
         View performances
     </a>
 *   **Printable**<br>
-    Every page created with LibDoc can be printed. Try to print preview this page in PDF!
+    Every page created with LibDoc can be printed.
 
 ## Configuration
 
