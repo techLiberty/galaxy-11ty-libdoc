@@ -2,6 +2,9 @@
 
 Eleventy LibDoc is a starter project for [Eleventy][11ty] to craft slick web related code documentation. [View demo of this repository](https://11ty-libdoc-blank.netlify.app)
 
+![image](https://github.com/user-attachments/assets/cc6e7b1e-20d1-4249-a282-33d6eda7ae4a)
+
+
 ## Getting started
 
 1. Clone or fork <https://github.com/ita-design-system/eleventy-libdoc>
