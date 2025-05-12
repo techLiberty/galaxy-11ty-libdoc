@@ -1,6 +1,6 @@
 # Eleventy LibDoc
 
-Eleventy LibDoc is a starter project for [Eleventy][11ty] to craft slick web related code documentation.
+Eleventy LibDoc is a starter project for [Eleventy][11ty] to craft slick web related code documentation. [View demo of this repository](https://11ty-libdoc-blank.netlify.app)
 
 ## Getting started
 
@@ -21,8 +21,7 @@ Eleventy LibDoc is a starter project for [Eleventy][11ty] to craft slick web rel
         View performances
     </a>
 *   **Printable**<br>
-    Every page created with LibDoc can be printed. Try to print preview this page in PDF!<br>
-    <button type="button" class="btn mt-2" onclick="print()">print preview</button>
+    Every page created with LibDoc can be printed. Try to print preview this page in PDF!
 
 ## Configuration
 
