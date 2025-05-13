@@ -85,6 +85,15 @@ input[type="search"]::-webkit-search-results-decoration {
     -webkit-appearance:none;
 }
 
+/* MENU TOGGLE */
+#nav_small_devices:has(#nav_primary_checkbox:checked) ~ #nav_primary_container {
+    display: flex !important;
+}
+#nav_primary_checkbox:checked ~ label [class*="icon-"]::before {
+    content: '\e910';
+}
+
+/* SMOOTH PAGE TRANSITION (CHROME AND SAFARI ONLY) */
 @view-transition {
     navigation: auto;
 }
