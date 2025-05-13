@@ -74,8 +74,11 @@
 {%- if editThisPageRootUrl == false
     or editThisPageRootUrl == 'false'
     or pagePathUrl[1] == 'tags'
-    or pagePathUrl[1] == 'search'
-    or pagePathUrl[1] == libdocConfig.blogSlug -%}
+    or pagePathUrl[1] == 'search' -%}
+    {%- assign editThisPageRootUrl = '' -%}
+{%- endif -%}
+
+{%- if pagePathUrl[1] == libdocConfig.blogSlug and pagePathUrl[2] == null -%}
     {%- assign editThisPageRootUrl = '' -%}
 {%- endif -%}
 
