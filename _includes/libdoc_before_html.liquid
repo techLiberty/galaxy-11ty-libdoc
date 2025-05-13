@@ -6,6 +6,7 @@
 {%- assign pageAuthor = libdocConfig.author -%}
 {%- assign pageOgImageUrl = ogImageUrl | default: libdocConfig.ogImageUrl -%}
 {%- assign editThisPageRootUrl = libdocConfig.editThisPageRootUrl | default: '' -%}
+{%- assign editThisPageUrl = editThisPageRootUrl | append: page.inputPath | replace: "/./", "/" | replace: "./", "/" -%}
 
 {%- comment -%} {%- assign blogPathUrl = '/' | append: libdocConfig.blogSlug | append: '/' -%} {%- endcomment -%}
 {%- assign pagePathUrl = page.url | split: '/' -%}
