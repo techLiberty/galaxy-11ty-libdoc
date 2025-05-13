@@ -610,16 +610,17 @@ main table td code {
 /* QUOTES */
 main blockquote {
     position: relative;
-    background-color: var(--ita-colors-primary-200);
+    background: var(--ita-colors-neutral-100);
     color: var(--ita-colors-primary-900);
     padding: var(--ita-spacings-5) var(--ita-spacings-9);
     max-width: var(--libdoc-container-width);
     border-bottom-left-radius: 3em;
     border-top-right-radius: 3em;
-    border: var(--ita-spacings-1) solid var(--ita-colors-neutral-100);
+    border: 3px double var(--ita-colors-primary-300);
     font-family: var(--libdoc-font-family);
     font-size: var(--ita-fontSizes-7);
-    /* box-shadow: 0px 0px 5px inset var(--ita-colors-neutral-500), 0px 0px 5px var(--ita-colors-neutral-500); */
+    border-radius: 12px;
+    box-shadow: var(--libdoc-soft-shadow);
 }
 main blockquote::before {
     content: "❝";
@@ -639,7 +640,13 @@ main blockquote::after {
 }
 main blockquote * {
     font-variation-settings: "slnt" -15, "CASL" 1, "CRSV" 1;
-    /* text-shadow: none; */
+    letter-spacing: -0.01em;
+}
+main blockquote em {
+    font-variation-settings: "slnt" -15, "CASL" 1, "CRSV" 1, "wght" 500;
+}
+main blockquote strong {
+    font-variation-settings: "slnt" -15, "CASL" 1, "CRSV" 1, "wght" 700;
 }
 /* DEFINITION LISTS */
 main dl dt {
