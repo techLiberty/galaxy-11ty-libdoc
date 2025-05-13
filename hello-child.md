@@ -11,3 +11,5 @@ date: git Last Modified
 > Howdy! I am the page child of hello page.
 > 
 > ― **LibDoc**
+
+Let’s go back to [hello page](/hello-page.md "Go back to hello page").

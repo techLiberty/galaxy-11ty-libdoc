@@ -7,4 +7,4 @@ eleventyNavigation:
     key: Hello Page
 date: git Last Modified
 ---
-Howdy! I am the first page!
+Howdy! I am the first page! Let’s go to [child page](/hello-child.md "Go to hello child").
