@@ -959,7 +959,8 @@ main .__search-occurrence {
 }
 
 #nav_primary .nav_primary__anchor::before,
-.nav_primary .nav_primary__anchor::before {
+.nav_primary .nav_primary__anchor::before,
+#nav_primary_blog_link::before {
     content: '';
     display: flex;
     border-top: 1px dashed var(--ita-colors-neutral-500);
@@ -968,7 +969,8 @@ main .__search-occurrence {
     order: -2;
 }
 #nav_primary .nav_primary__anchor::after,
-.nav_primary .nav_primary__anchor::after {
+.nav_primary .nav_primary__anchor::after,
+#nav_primary_blog_link::after {
     content: '';
     display: flex;
     background-color: var(--ita-colors-primary-500);
