@@ -1164,7 +1164,6 @@ main .__search-occurrence {
         max-width: calc(calc(var(--ita-widths-content) + 2 * var(--ita-spacings-5)));
     }
     main blockquote {
-        border: var(--ita-spacings-5) solid var(--ita-colors-neutral-100);
         font-size: var(--ita-fontSizes-6);
         padding: var(--ita-spacings-5) var(--ita-spacings-7);
     }
