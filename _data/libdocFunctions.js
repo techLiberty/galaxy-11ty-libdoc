@@ -53,6 +53,29 @@ export default {
         }
     },
     filters: {
+        icon: async function(content) {
+            const splitContent = content.split(',');
+            let markup = '';
+            let isAnIcon = false;
+            icomoon.icons.forEach(function(iconData) {
+                if (iconData.properties.name == splitContent[0]) isAnIcon = true;
+            });
+            if (isAnIcon) {
+                const fontSizeParse = parseInt(splitContent[1]);
+                let dsFontSize = '';
+                if (!isNaN(fontSizeParse)) {
+                    if (fontSizeParse < 11 && fontSizeParse > 0) {
+                        dsFontSize = fontSizeParse;
+                    } else {
+                        console.log(`${splitContent[0]} is a valid icon but ${fontSizeParse} is not a valid icon size, icon size must be an integer from 1 to 10`)
+                    }
+                }
+                markup = `<span class="icon-${splitContent[0]} fs-${dsFontSize}"></span>`;
+            } else {
+                console.log(`${splitContent[0]} is not a valid icon, see https://eleventy-libdoc.netlify.app/core/assets/fonts/icomoon/demo.html`)
+            }
+            return markup;
+        },
         autoids: async function(content) {
             let i = 0;
             const anchorsIds = [];
@@ -194,7 +217,7 @@ export default {
             const w = libdocSystem.icomoonIconSize;
             let markup = `
                 <aside class="mt-10 mb-10" mt-7="xs" mb-7="xs">
-                    <ul class="d-flex jc-center fw-wrap gap-7 | p-0 | ls-none" rgap-10="sm,md">`;
+                    <ul class="d-flex fw-wrap gap-7 | p-0 | ls-none" rgap-10="sm,md">`;
             icomoon.icons.forEach(function(iconData) {
                 let pathsMarkup = '';
                 iconData.icon.paths.forEach(function(path) {
