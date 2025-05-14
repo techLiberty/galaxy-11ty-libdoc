@@ -270,6 +270,26 @@ export default {
         }
     },
     pairedShortcodes: {
+        alert: async function(content, type, title) {
+            const validTypes = ['info', 'warning', 'success', 'danger'];
+            let markup = '',
+                titleAttribute = ``,
+                typeClass = ``;
+            if (typeof title == 'string') {
+                titleAttribute = `data-title="${title}"`;
+            }
+            if (typeof type == 'string') {
+                if (validTypes.includes(type)) typeClass = `alert-${type}`;
+            }
+            markup = `
+                <aside class="widget widget-alert">
+                    <p  class="alert ${typeClass}" ${titleAttribute}>
+                        ${content}
+                    </p>
+                </aside>
+            `;
+            return markup;
+        },
         sandbox: async function(content, sandboxTitle) {
             const   code = libdocUtils.HTMLEncode(content.replace(/[\n\r]/, '')),
                     title = typeof sandboxTitle == `string` ? sandboxTitle : libdocMessages.sandbox[libdocConfig.lang],

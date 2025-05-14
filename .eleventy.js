@@ -38,6 +38,7 @@ export default function(eleventyConfig) {
     eleventyConfig.addShortcode("icomoon", libdocFunctions.shortcodes.icomoon);
     eleventyConfig.addPairedShortcode("sandbox", libdocFunctions.pairedShortcodes.sandbox);
     eleventyConfig.addPairedShortcode("sandboxFile", libdocFunctions.pairedShortcodes.sandboxFile);
+    eleventyConfig.addPairedShortcode("alert", libdocFunctions.pairedShortcodes.alert);
     // END SHORTCODES
 
     // START FILE COPY
