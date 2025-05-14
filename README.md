@@ -19,17 +19,14 @@ Eleventy LibDoc is a starter project for Eleventy to craft slick web related cod
 
 ## Key features
 
-*   **Accessibility**<br>
-    LibDoc was developed with accessibility awareness. 
-*   **Content focused**<br>
-    LibDoc is easy to install, use and deploy.
-*   **Performance**<br>
-    Low front-end dependencies and vanilla JS self-made components make LibDoc cross-browser compatibility and high-grade performances.<br>
-    <a  href="https://developers.google.com/speed/pagespeed/insights/?url={{ libdocSystem.productionUrl }}" target="_blank">
-        View performances
-    </a>
-*   **Printable**<br>
-    Every page created with LibDoc can be printed.
+*   **Accessibility** <br>LibDoc was developed with accessibility awareness. 
+*   **Content focused** <br>LibDoc is easy to install, use and deploy.
+*   **Performance** <br>Low front-end dependencies and vanilla JS self-made components make LibDoc cross-browser compatibility and good performances.<br><a href="https://developers.google.com/speed/pagespeed/insights/?url=eleventy-libdoc.netlify.app">View performances</a>
+*   **Fallback if no Javascript available** <br>LibDoc can work even without Javascript with reduced features.
+*   **Image transcoding** <br>LibDoc transcodes and resizes your source images into production ready formats.
+*   **Printable** <br>Every page created with LibDoc can be printed.
+*   **Slick code highlighting** <br>Display your code in a nice style and adjust which code languages you really use.
+*   **Sandboxes** <br>Showcase small demos or full HTML pages into a responsive dual pane.
 
 ## Configuration
 
@@ -70,7 +67,7 @@ Easily write documentation with Markdown and <abbr title="Hyper Text Markup Lang
 *   [Widgets](https://eleventy-libdoc.netlify.app/creating-content/widgets/)<br>
     Useful for advanced and specific usages.
     *   [Alerts](https://eleventy-libdoc.netlify.app/creating-content/widgets/alerts/)<br>
-        Simple paragraphs that displays informations to highlight.
+        Shortcodes and plain HTML that allows to display informations to highlight.
     *   [Buttons](https://eleventy-libdoc.netlify.app/creating-content/widgets/buttons/)<br>
         Form buttons and links to create Call To Actions.
     *   [Definition lists](https://eleventy-libdoc.netlify.app/creating-content/widgets/definition-lists/)<br>
@@ -81,6 +78,8 @@ Easily write documentation with Markdown and <abbr title="Hyper Text Markup Lang
         Code integration results of various content providers.
     *   [Icons](https://eleventy-libdoc.netlify.app/creating-content/widgets/icons/)<br>
         Available icons to use with the content.
+    *   [Icon cards](https://eleventy-libdoc.netlify.app/creating-content/widgets/icon-cards/)<br>
+        Easily highlight something important in a simple way with an icon, a main text and its description.
     *   [Images](https://eleventy-libdoc.netlify.app/creating-content/widgets/images/)<br>
         Ready to use HTML to highlight your images.
     *   [Sandboxes](https://eleventy-libdoc.netlify.app/creating-content/widgets/sandboxes/)<br>

@@ -10,6 +10,14 @@ date: git Last Modified
 ---
 > Howdy! I am the page child of hello page.
 > 
-> ― **LibDoc**
+> ― **Child**
 
-Let’s go back to [hello page](/hello-page.md "Go back to hello page").
+Let’s go back to [hello page](/hello-page.md "Go back to hello page") or go to [hello grandchild](/hello-grandchild.md "Go to hello grandchild page").
+
+```markdown
+> Howdy! I am the page child of hello page.
+> 
+> ― **Child**
+
+Let’s go back to [hello page](/hello-page.md "Go back to hello page") or go to [hello grandchild](/hello-grandchild.md "Go to hello grandchild page").
+```
