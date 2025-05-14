@@ -53,6 +53,38 @@ export default {
         }
     },
     filters: {
+        iconCard: async function(content) {
+            const splitContent = content.split('|');
+            let markup = '';
+            if (splitContent.length === 3) {
+                let isAnIcon = false,
+                    iconName = 'check-circle';
+                const   title = splitContent[1],
+                        description = splitContent[2];
+                icomoon.icons.forEach(function(iconData) {
+                    if (iconData.properties.name == splitContent[0]) {
+                        iconName = splitContent[0];
+                        isAnIcon = true;
+                    }
+                });
+                if (!isAnIcon) {
+                    console.log(`iconCard filter: ${splitContent[0]} is not a valid icon, default ${iconName} applied.`);
+                }
+                markup = `
+                    <aside class="widget widget-iconCard">
+                        <p class="d-flex gap-5 | p-5 m-0 | brad-3 bc-neutral-100 bwidth-1 bstyle-dashed bcolor-neutral-500">
+                            <span class="icon-${iconName} fs-10 | c-primary-500" fs-8="xs"></span>
+                            <span class="d-flex fd-column gap-1">
+                                <strong class="fvs-wght-700 fs-6">${title}</strong>
+                                <span>${description}</span>
+                            </span>
+                        </p>
+                    </aside>`;
+            } else {
+                console.log(`iconCard filter content: "${content}" wrong format, must specify 3 mandatory string fields {{ '<icon name>|<main text>|<description>' | iconCard }}`);
+            }
+            return markup;
+        },
         icon: async function(content) {
             const splitContent = content.split(',');
             let markup = '';
@@ -108,7 +140,7 @@ export default {
             try {
                 const url = new URL(src);
                 const content = `
-                    <aside>
+                    <aside class="widget widget-embed">
                         <iframe src="${url}"
                             frameborder="0"
                             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
@@ -199,7 +231,7 @@ export default {
             try {
                 const url = new URL(src);
                 const content = `
-                    <aside>
+                    <aside class="widget widget-embed">
                         <iframe src="${url}"
                             frameborder="0"
                             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
@@ -216,7 +248,9 @@ export default {
         icomoon: async function() {
             const w = libdocSystem.icomoonIconSize;
             let markup = `
-                <aside class="mt-10 mb-10" mt-7="xs" mb-7="xs">
+                <aside class="widget widget-icomoon | mt-10 mb-10"
+                    mt-7="xs"
+                    mb-7="xs">
                     <ul class="d-flex fw-wrap gap-7 | p-0 | ls-none" rgap-10="sm,md">`;
             icomoon.icons.forEach(function(iconData) {
                 let pathsMarkup = '';

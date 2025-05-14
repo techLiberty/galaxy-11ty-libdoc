@@ -25,6 +25,7 @@ export default function(eleventyConfig) {
     eleventyConfig.addAsyncFilter("dateString", libdocFunctions.filters.dateString);
     eleventyConfig.addAsyncFilter("toc", libdocFunctions.filters.toc);
     eleventyConfig.addAsyncFilter("icon", libdocFunctions.filters.icon);
+    eleventyConfig.addAsyncFilter("iconCard", libdocFunctions.filters.iconCard);
     // END FILTERS
 
     // START COLLECTIONS
