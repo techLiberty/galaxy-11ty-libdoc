@@ -1,6 +1,6 @@
 # Eleventy LibDoc
 
-[Eleventy LibDoc website](https://eleventy-libdoc.netlify.app/) | [11ty website](11ty)
+[Eleventy LibDoc website](https://eleventy-libdoc.netlify.app/) | [11ty website](https://www.11ty.dev)
 
 Eleventy LibDoc is a starter project for Eleventy to craft slick web related code documentation.
 
