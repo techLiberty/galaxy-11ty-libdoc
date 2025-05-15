@@ -6,7 +6,10 @@ Eleventy LibDoc is a starter project for Eleventy to craft slick web related cod
 
 [![Netlify Status](https://api.netlify.com/api/v1/badges/d1986dbf-2272-4614-8dec-c228ba4699ef/deploy-status)](https://app.netlify.com/sites/11ty-libdoc-blank/deploys)
 
-![screenshots](https://github.com/user-attachments/assets/cc6e7b1e-20d1-4249-a282-33d6eda7ae4a)
+![image](https://github.com/user-attachments/assets/8011e835-0d6d-404d-b068-5a9b42b6c07d)
+
+<img width="1082" alt="LibDoc-mockup-screenshots-phone-tablet-laptop" src="https://github.com/user-attachments/assets/af58a2d3-52df-4fdd-9285-80c0bd7d4659" />
+
 
 ## Getting started
 
