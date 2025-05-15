@@ -7,6 +7,8 @@ eleventyNavigation:
     key: Hello Grandchild
     parent: Hello Child
 date: git Last Modified
+tags:
+    - blockquote
 ---
 > Howdy! I am the page child of hello child.
 > 

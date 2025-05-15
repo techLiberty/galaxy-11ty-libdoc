@@ -5,7 +5,7 @@ layout: libdoc_page.liquid
 permalink: "{{ libdocConfig.blogSlug }}/hello-post/index.html"
 tags:
     - post
-    - hello-world
+    - open-graph-image
 date: git Last Modified
 ogImageUrl: https://images.weserv.nl/?url=https://raw.githubusercontent.com/olivier3lanc/photographies/master/paysages/hiver/foret_sapins_hiver_col_pre_img_4917_size_2560x1706.webp&w=1200&h=600&fit=cover&q=30&output=webp
 author: Olivier 3lanc
