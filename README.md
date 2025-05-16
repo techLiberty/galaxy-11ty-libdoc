@@ -26,6 +26,7 @@ Eleventy LibDoc is a starter project for Eleventy to craft slick web related cod
 * **Accessibility** <br>LibDoc was developed with accessibility awareness.
 * **Performance** <br>Low front-end dependencies and vanilla JS self-made components make LibDoc cross-browser compatibility and good performances. <a href="https://developers.google.com/speed/pagespeed/insights/?url=eleventy-libdoc.netlify.app" target="_blank">View performances</a>.
 * **Search** <br>Quickly get search results and easily navigate through search occurrences with a dedicated <abbr title="user Interface">UI</abbr>.
+* **Smart navigation** <br>On page change, the primary navigation menu keeps its position.
 * **Smart table of content** <br>In addition of a pure static table of content, LibDoc generates a floating <abbr title="Table of Content">TOC</abbr> always visible that also displays the current window scroll position.
 * **Fallback if no Javascript available** <br>LibDoc can work even without Javascript with reduced features.
 * **Image transcoding** <br>LibDoc transcodes and resizes your source images into production ready formats.
