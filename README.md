@@ -16,7 +16,7 @@ Eleventy LibDoc is a starter project for Eleventy to craft slick web related cod
 1. Clone or fork <https://github.com/ita-design-system/eleventy-libdoc>
 2. Run `npm install`
 3. Enter your own settings in `settings.json`. [Configuration](/content/configuration/index.md).
-4. Build `npx @11ty/eleventy`
+4. Build `npx @11ty/eleventy --serve` or `npx @11ty/eleventy` (if you already have your own web server).
 
 [View deployment of this repository](https://11ty-libdoc-blank.netlify.app)
 
@@ -26,6 +26,7 @@ Eleventy LibDoc is a starter project for Eleventy to craft slick web related cod
 * **Accessibility** <br>LibDoc was developed with accessibility awareness.
 * **Performance** <br>Low front-end dependencies and vanilla JS self-made components make LibDoc cross-browser compatibility and good performances. <a href="https://developers.google.com/speed/pagespeed/insights/?url=eleventy-libdoc.netlify.app" target="_blank">View performances</a>.
 * **Search** <br>Quickly get search results and easily navigate through search occurrences with a dedicated <abbr title="user Interface">UI</abbr>.
+* **Smart table of content** <br>In addition of a pure static table of content, LibDoc generates a floating <abbr title="Table of Content">TOC</abbr> always visible that also displays the current window scroll position.
 * **Fallback if no Javascript available** <br>LibDoc can work even without Javascript with reduced features.
 * **Image transcoding** <br>LibDoc transcodes and resizes your source images into production ready formats.
 * **Printable** <br>Every page created with LibDoc can be printed.
