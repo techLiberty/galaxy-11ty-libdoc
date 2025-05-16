@@ -285,6 +285,7 @@ const libdocUi = {
         _toggleFtocLargeDevices: function(evt) {
             if (libdocUi.el.ftocDetails.open) {
                 libdocUi.updateUserPreferences({FTOCNormallyOpened: true});
+                libdocUi.updateFtocList();
             } else {
                 libdocUi.updateUserPreferences({FTOCNormallyOpened: false});
             }
