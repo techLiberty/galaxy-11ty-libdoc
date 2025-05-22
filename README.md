@@ -8,7 +8,7 @@ Eleventy LibDoc is an easy to use and content focused starter project for [Eleve
 
 ![image](https://github.com/user-attachments/assets/ed2c2d53-5927-473f-852e-e9c8e98aaa5f)
 
-<img width="1082" alt="LibDoc-mockup-screenshots-phone-tablet-laptop" src="https://github.com/user-attachments/assets/af58a2d3-52df-4fdd-9285-80c0bd7d4659" />
+![image](https://github.com/user-attachments/assets/52fc521d-fb51-4174-8ab2-f6114af1abcc)
 
 
 ## Getting started
