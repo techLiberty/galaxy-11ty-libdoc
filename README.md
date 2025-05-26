@@ -37,6 +37,8 @@ Eleventy LibDoc is an easy to use and content focused starter project for [Eleve
 ## Documentation
 
 * [LibDoc’s homepage](https://eleventy-libdoc.netlify.app) <br>The website containing LibDocs’s presentation and comprehensive documentation.
+    * [Configuration](https://eleventy-libdoc.netlify.app/configuration/) <br>List and descriptions of every LibDoc parameter.
+    * [Creating content](https://eleventy-libdoc.netlify.app/creating-content/) <br>How LibDoc can display your content in multiple ways.
     * [Front matter](https://eleventy-libdoc.netlify.app/front-matter/) <br>Documentation of all front matter settings related to a LibDoc page.
     * [Primary navigation](https://eleventy-libdoc.netlify.app/primary-navigation/) <br>Detailed features of LibDoc’s primary navigation.
     * [SEO](https://eleventy-libdoc.netlify.app/configuration/seo/) <br>How LibDoc’s configuration and pages parameters are applied for Search Engine Optimization.
