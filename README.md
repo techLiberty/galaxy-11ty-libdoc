@@ -15,7 +15,7 @@ Eleventy LibDoc is an easy to use and content focused starter project for [Eleve
 
 1. Clone or fork <https://github.com/ita-design-system/eleventy-libdoc>
 2. Run `npm install`
-3. Enter your own settings in `settings.json`. [Configuration](/content/configuration/index.md).
+3. Enter your own settings in `settings.json`. [Configuration](https://eleventy-libdoc.netlify.app/configuration/).
 4. Build `npx @11ty/eleventy --serve` or `npx @11ty/eleventy` (if you already have your own web server).
 
 [View deployment of this repository](https://11ty-libdoc-blank.netlify.app)
