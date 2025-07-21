@@ -6,13 +6,15 @@ Eleventy LibDoc is an easy to use and content focused starter project for [Eleve
 
 [![Netlify Status](https://api.netlify.com/api/v1/badges/d1986dbf-2272-4614-8dec-c228ba4699ef/deploy-status)](https://app.netlify.com/sites/11ty-libdoc-blank/deploys)
 
+![LibDoc’s interface with both light and dark modes](https://github.com/user-attachments/assets/91e7eb6d-8089-40b7-94e4-4fd970073c8d)
+
 <img width="1471" height="625" alt="image" src="https://github.com/user-attachments/assets/9af60d6f-8d5b-463e-9570-b5a6e54a8515" />
 <img width="1461" height="617" alt="image" src="https://github.com/user-attachments/assets/f37bbe07-f65a-4a4f-acb1-6892ec202aac" />
 
 > [!NOTE]
 > Eleventy LibDoc is still under active development and therefore before reaching v1.0.0:
 > * Full backward compatibility is not guaranteed.
-> * Many feature are subject to change.
+> * Many features are subject to change.
 
 ## Getting started
 
