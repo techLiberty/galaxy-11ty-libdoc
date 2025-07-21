@@ -31,6 +31,7 @@ Eleventy LibDoc is an easy to use and content focused starter project for [Eleve
 * **Fallback if no Javascript available** <br>LibDoc can work even without Javascript with reduced features.
 * **Image transcoding** <br>LibDoc transcodes and resizes your source images into production ready formats.
 * **Printable** <br>Every page created with LibDoc can be printed.
+* **Light and dark modes** <br>LibDoc’s interface is available with both light and dark mode color schemes.
 * **Slick code highlighting** <br>Display your code in a nice style and adjust which code languages you really use.
 * **Sandboxes** <br>Showcase small demos or full HTML pages into a responsive dual pane.
 
