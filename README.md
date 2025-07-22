@@ -6,10 +6,15 @@ Eleventy LibDoc is an easy to use and content focused starter project for [Eleve
 
 [![Netlify Status](https://api.netlify.com/api/v1/badges/d1986dbf-2272-4614-8dec-c228ba4699ef/deploy-status)](https://app.netlify.com/sites/11ty-libdoc-blank/deploys)
 
-![image](https://github.com/user-attachments/assets/ed2c2d53-5927-473f-852e-e9c8e98aaa5f)
+![LibDoc’s interface with both light and dark modes](https://github.com/user-attachments/assets/91e7eb6d-8089-40b7-94e4-4fd970073c8d)
 
-![image](https://github.com/user-attachments/assets/52fc521d-fb51-4174-8ab2-f6114af1abcc)
+<img width="1471" height="625" alt="image" src="https://github.com/user-attachments/assets/9af60d6f-8d5b-463e-9570-b5a6e54a8515" />
+<img width="1461" height="617" alt="image" src="https://github.com/user-attachments/assets/f37bbe07-f65a-4a4f-acb1-6892ec202aac" />
 
+> [!NOTE]
+> Eleventy LibDoc is still under active development and therefore before reaching v1.0.0:
+> * Full backward compatibility is not guaranteed.
+> * Many features are subject to change.
 
 ## Getting started
 
@@ -31,6 +36,7 @@ Eleventy LibDoc is an easy to use and content focused starter project for [Eleve
 * **Fallback if no Javascript available** <br>LibDoc can work even without Javascript with reduced features.
 * **Image transcoding** <br>LibDoc transcodes and resizes your source images into production ready formats.
 * **Printable** <br>Every page created with LibDoc can be printed.
+* **Light and dark modes** <br>LibDoc’s interface is available with both light and dark mode color schemes.
 * **Slick code highlighting** <br>Display your code in a nice style and adjust which code languages you really use.
 * **Sandboxes** <br>Showcase small demos or full HTML pages into a responsive dual pane.
 
