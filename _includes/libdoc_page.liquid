@@ -262,7 +262,7 @@
             <header class="d-flex fd-column | pt-5 {% if pageUrlSplit[1] != 'tags' and pageUrlSplit[1] != libdocConfig.blogSlug %}pb-7{% endif %}">
                 <nav class="d-flex jc-space-between | pos-relative">
                     {% include 'libdoc_breadcrumb' %}
-                    <details class="">
+                    <details id="user_preferences_btn">
                         <summary class="d-flex | pos-relative | p-5 | fs-4 td-none | brad-4 bc-neutral-100 bwidth-1 bstyle-dashed bcolor-neutral-500 cur-pointer __hover-1 __soft-shadow"
                             title="Preferences">
                             <span class="icons">
@@ -377,6 +377,10 @@
                     </details>
                 {% endif %}
             </header>
+            <noscript>
+                {% assign noscriptAlert = libdocMessages.noscriptAlert[pageLang] %}
+                {% alert noscriptAlert %}
+            </noscript>
             {{ content | cleanup | autoids }}
             <footer class="minh-100vh">
                 <div class="pt-11 | blwidth-1 blstyle-dashed bcolor-neutral-500"></div>
