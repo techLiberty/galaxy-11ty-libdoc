@@ -72,6 +72,7 @@ body {
     font-style: normal;
     font-size: var(--ita-fontSizes-5);
     font-variation-settings: "slnt" 0, "CASL" 0, "CRSV" 0, "MONO" 0, "wght" 360;
+    letter-spacing: -0.01em;
 }
 html,
 .o-auto {
