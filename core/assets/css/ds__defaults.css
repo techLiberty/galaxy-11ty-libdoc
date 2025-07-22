@@ -864,7 +864,8 @@ input[type="radio"] ~ label::before {
     body {
         font-size: var(--ita-fontSizes-4);
     }
-    code {
+    code,
+    main > pre > code::before {
         font-size: var(--ita-fontSizes-2);
     }
     main > * {
@@ -947,7 +948,6 @@ input[type="radio"] ~ label::before {
     }
 }
 
-/* RESPONSIVE XS + SM */
 @media (min-width: 960px) and (max-width: 1440px) {
     body:not(.touch-device) #floating_toc__list {
         transition: opacity 300ms;
