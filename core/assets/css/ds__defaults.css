@@ -436,14 +436,14 @@ main > pre > code {
     box-shadow: var(--libdoc-long-shadow-alt);
 }
 main > pre > code::before {
-    content: attr(class);
+    content: attr(data-language-name);
     display: block;
     padding-bottom: var(--ita-spacings-2);
     margin-bottom: var(--ita-spacings-2);
     border-bottom-width: 1px;
     border-bottom-style: dashed;
-    font-size: var(--ita-fontSizes-2);
-    font-variation-settings: "wght" 400;
+    font-size: var(--ita-fontSizes-3);
+    font-variation-settings: "wght" 500;
 }
 /* TABLES */
 main > .table-wrapper + .table-wrapper {

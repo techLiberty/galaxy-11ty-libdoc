@@ -828,11 +828,7 @@ const libdocUi = {
             }
         }
     },
-    update: function() {
-        libdocUi.defaults.darkModeCssMedia = libdocUi.el.darkModeCssMetaLink.media;
-        libdocUi.setColorScheme(libdocUi.getUserPreferences().colorScheme);
-        libdocUi._currentScreenSizeName = libdocUi.getCurrentScreenSizeName();
-        hljs.highlightAll();
+    createCopyCodeOnCodeBlocks: function() {
         document.querySelectorAll('main>pre').forEach(function(elPre) {
             elPre.style.paddingTop = '0';
             const elCommands = elPre.querySelector('.copy_code_block');
@@ -849,9 +845,20 @@ const libdocUi = {
             }
             const elCode = elPre.querySelector('code');
             if (elCode !== null) {
-                if (!elCode.classList.contains('hljs')) elCode.classList.add('hljs');
+                const className = elCode.getAttribute('class');
+                if (className !== null) {
+                    const languageClassSplit = elCode.getAttribute('class').split(' ');
+                    if (languageClassSplit.length > 0) elCode.dataset.languageName = languageClassSplit[0].toString().replace('language-', '');
+                }
             }
         });
+    },
+    update: function() {
+        libdocUi.defaults.darkModeCssMedia = libdocUi.el.darkModeCssMetaLink.media;
+        libdocUi.setColorScheme(libdocUi.getUserPreferences().colorScheme);
+        libdocUi._currentScreenSizeName = libdocUi.getCurrentScreenSizeName();
+        hljs.highlightAll();
+        libdocUi.createCopyCodeOnCodeBlocks();
         libdocUi.createFloatingToc();
         libdocUi.createGoToTop();
         libdocUi.updateNavPrimary();
