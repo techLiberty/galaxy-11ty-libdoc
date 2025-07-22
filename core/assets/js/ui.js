@@ -3,6 +3,7 @@ const libdocUi = {
         localStorageIdentifier: 'eleventyLibdoc',
         colorSchemes: ['auto', 'light', 'dark'],
         darkModeCssFilePath: '/core/assets/css/ds__dark_mode.css',
+        supportedLanguagesJsonPath: '/core/assets/js/supported-languages.json',
         darkModeCssMedia: '',
         screenSizes: {
             xs: [0, 599],
@@ -828,30 +829,57 @@ const libdocUi = {
             }
         }
     },
+    getJson: async function(url) {
+        const response = await fetch(url);
+        const data = await response.json();
+        return data;
+    },
     createCopyCodeOnCodeBlocks: function() {
-        document.querySelectorAll('main>pre').forEach(function(elPre) {
-            elPre.style.paddingTop = '0';
-            const elCommands = elPre.querySelector('.copy_code_block');
-            if (elCommands === null) {
-                const commandBarMarkup = `<div class="d-flex jc-end | pos-relative">
-                        <button type="button"
-                            class="
-                            d-flex ai-center
-                            pt-5 pb-5 fvs-wght-400 fs-2 tt-uppercase
-                            bc-0 c-primary-900 b-0 cur-pointer
-                            copy_code_block">${libdocMessages.copyCode}</button>
-                    </div>`;
-                elPre.insertAdjacentHTML('afterbegin', commandBarMarkup);
-            }
-            const elCode = elPre.querySelector('code');
-            if (elCode !== null) {
-                const className = elCode.getAttribute('class');
-                if (className !== null) {
-                    const languageClassSplit = elCode.getAttribute('class').split(' ');
-                    if (languageClassSplit.length > 0) elCode.dataset.languageName = languageClassSplit[0].toString().replace('language-', '');
+        const elsPre = document.querySelectorAll('main>pre');
+        if (elsPre.length > 0) {
+            elsPre.forEach(function(elPre) {
+                elPre.style.paddingTop = '0';
+                const elCommands = elPre.querySelector('.copy_code_block');
+                if (elCommands === null) {
+                    const commandBarMarkup = `<div class="d-flex jc-end | pos-relative">
+                            <button type="button"
+                                class="
+                                d-flex ai-center
+                                pt-5 pb-5 fvs-wght-400 fs-2 tt-uppercase
+                                bc-0 c-primary-900 b-0 cur-pointer
+                                copy_code_block">${libdocMessages.copyCode}</button>
+                        </div>`;
+                    elPre.insertAdjacentHTML('afterbegin', commandBarMarkup);
                 }
+                const elCode = elPre.querySelector('code');
+                if (elCode !== null) {
+                    const className = elCode.getAttribute('class');
+                    if (className !== null) {
+                        const languageClassSplit = elCode.getAttribute('class').split(' ');
+                        if (languageClassSplit.length > 0) elCode.dataset.languageName = languageClassSplit[0].toString().replace('language-', '');
+                    }
+                }
+            });
+            // Adjust proper language name display
+            const languagesNamesArray = libdocUi.getJson(libdocUi.defaults.supportedLanguagesJsonPath);
+            try {
+                languagesNamesArray.then(languagesArray => {
+                    document.querySelectorAll('code[data-language-name]').forEach(function(elCode) {
+                        const languageAlias = elCode.dataset.languageName;
+                        let index = -1;
+                        languagesArray.forEach(function(lang, langIndex) {
+                            if (lang.includes(languageAlias)) index = langIndex;
+                        });
+                        if (index > -1) {
+                            const languageName = languagesArray[index].split('|')[1];
+                            elCode.dataset.languageName = languageName;
+                        }
+                    })
+                });
+            } catch (error) {
+                console.log(error);
             }
-        });
+        }
     },
     update: function() {
         libdocUi.defaults.darkModeCssMedia = libdocUi.el.darkModeCssMetaLink.media;
