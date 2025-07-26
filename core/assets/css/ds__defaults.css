@@ -83,7 +83,7 @@ button:disabled {
     cursor: default;
 }
 input:focus {
-    outline-width: 2px;
+    outline-width: 5px;
     outline-style: solid;
 }
 code {
