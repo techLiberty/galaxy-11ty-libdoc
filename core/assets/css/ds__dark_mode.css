@@ -161,7 +161,7 @@
     }
 
     /* AUTOCOMPLETE */
-    .auto-results-wrapper a.auto-link {
+    .auto-results-wrapper > li {
         background-color: var(--ita-colors-primary-100);
     }
 }

@@ -29,12 +29,7 @@ const fuzzy = {
                         return matches
                             .map((el) => {
                                 return `
-                                    <li>
-                                        <a  href="${el.item.url}"
-                                            class="auto-link">
-                                            ${el.item.title}
-                                        </a>
-                                    </li>`;
+                                    <li>${el.item.title} <span>${el.item.description}</span></li>`;
                             })
                             .join('');
                     },

@@ -8,6 +8,14 @@
         {
             "url": "https://github.com/ita-design-system/eleventy-libdoc",
             "text": "GitHub"
+        },
+        {
+            "url": "https://github.com/ita-design-system/eleventy-libdoc",
+            "text": "Codepen"
+        },
+        {
+            "url": "https://github.com/ita-design-system/eleventy-libdoc",
+            "text": "Linkedin"
         }
     ],
     "editThisPageRootUrl": "https://github.com/ita-design-system/eleventy-libdoc/blob/main"

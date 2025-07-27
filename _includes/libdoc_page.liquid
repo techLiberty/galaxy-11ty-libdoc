@@ -226,7 +226,7 @@
                         </li>
                     {% endif %}
                     {% if libdocConfig.customLinks.size > 0 %}
-                        <li class="d-flex ai-center fw-wrap gap-7 rgap-1 | pb-3 pl-4">
+                        <li class="d-flex ai-center fw-wrap gap-7 rgap-1 | pb-3 pl-5">
                             {% for item in libdocConfig.customLinks %}
                                 <a  href="{{ item.url }}"
                                     class="
@@ -279,8 +279,8 @@
             <header class="d-flex fd-column | pt-5 {% if pageUrlSplit[1] != 'tags' and pageUrlSplit[1] != libdocConfig.blogSlug %}pb-7{% endif %}">
                 <nav class="d-flex jc-space-between | pos-relative">
                     {% include 'libdoc_breadcrumb' %}
-                    <details id="user_preferences_btn">
-                        <summary class="d-flex | pos-relative | p-5 | fs-4 td-none | brad-4 bc-neutral-100 bwidth-1 bstyle-dashed bcolor-neutral-500 cur-pointer __hover-1 __soft-shadow"
+                    <details id="user_preferences">
+                        <summary class="d-flex | pos-relative z-2 | p-5 | fs-4 td-none | brad-4 bc-neutral-100 bwidth-1 bstyle-dashed bcolor-neutral-500 cur-pointer __hover-1 __soft-shadow"
                             title="Preferences">
                             <span class="icons">
                                 <span class="icon-faders | pos-absolute top-50 left-50 t-tY-50 t-tX-50"></span>
@@ -440,9 +440,7 @@
             hotkeys('s,ctrl+a,ctrl+b,r,f', function (event, handler){
                 switch (handler.key) {
                     case 's':
-                        const currentValue = fuzzy.el.searchInput.value;
-                        fuzzy.el.searchInput.focus();
-                        fuzzy.el.searchInput.value = currentValue;
+                        setTimeout(function() { fuzzy.el.searchInput.focus()},100)
                     break;
                     case 'ctrl+a': alert('you pressed ctrl+a!');
                     break;

@@ -10,6 +10,6 @@ a[href="/search/"],
 #nav_primary_header > li:has(form[action="/search/"]),
 #sd_floating_toc_toggle_btn,
 #sd_gtt_btn,
-#user_preferences_btn {
+#user_preferences {
     display: none;
 }

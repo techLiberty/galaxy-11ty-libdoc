@@ -155,6 +155,10 @@
         "en": "No result for query",
         "fr": "Aucun résultat pour la requête"
     },
+    "searchOccurrence": {
+        "en": "Occurrence search",
+        "fr": "Recherche d’occurrence"
+    },
     "searchOccurrencesCurrent": {
         "en": "Current search occurrence",
         "fr": "Occurrence actuelle"
@@ -169,11 +173,11 @@
     },
     "searchOccurrencesStop": {
         "en": "Stop search occurrences",
-        "fr": "Fermet la recherches d’occurrences"
+        "fr": "Fermer la recherche d’occurrences"
     },
     "searchPlaceholder": {
-        "en": "Enter text to search",
-        "fr": "Texte à rechercher"
+        "en": "Press 🆂 to search",
+        "fr": "Presser 🆂 pour rechercher"
     },
     "searchSubmit": {
         "en": "Submit search",
