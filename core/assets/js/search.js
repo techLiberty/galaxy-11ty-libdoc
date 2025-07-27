@@ -1,6 +1,10 @@
 
 const search = {
-    params: new URLSearchParams(location.search),
+    el: {
+        searchInput: document.querySelector('#searchInput'),
+        searchResults: document.querySelector('#searchResults'),
+        pageH1: document.querySelector('h1')
+    },
     decodeHtmlCharCodes: function(str) { 
         // https://stackoverflow.com/a/54346501
         return str.replace(/(&#(\d+);)/g, function(match, capture, charCode) {
@@ -27,7 +31,7 @@ const search = {
         return aRet.join('');
     },
     searchIndex: function(query) {
-        if (typeof search.searchIndexArray == 'object') {
+        if (typeof search.searchIndexArray == 'object' && search.searchIndexArray !== null) {
             let markup = '';
             search.searchIndexArray.forEach(function(item) {
                 query = search.sanitizeQuery(query);
@@ -50,14 +54,13 @@ const search = {
                     markup += search.renderSearchResult({url: resultUrl, title: item.title, summary: summary})
                 }
             });
-            const elTitle = document.querySelector('h1');
-            elTitle.innerHTML += `<mark class="fvs-wght-600 wb-break-all">${query}</mark>`;
+            search.el.pageH1.innerHTML += `<mark class="fvs-wght-600 wb-break-all">${query}</mark>`;
             if (markup == '') {
-                searchResults.innerHTML = `<li>${libdocMessages.searchResultsNoResultForQuery} <mark class="fvs-wght-600 wb-break-all">${query}</mark></li>`;
+                search.el.searchResults.innerHTML = `<li>${libdocMessages.searchResultsNoResultForQuery} <mark class="fvs-wght-600 wb-break-all">${query}</mark></li>`;
             } else {
-                searchResults.innerHTML = markup;
+                search.el.searchResults.innerHTML = markup;
             }
-            searchInput.value = query;
+            search.el.searchInput.value = query;
         }
     },
     renderSearchResult: function({url, title, summary}) {
@@ -73,22 +76,53 @@ const search = {
             </li>
         `;
     },
+    renderLoadingResults: function() {
+        const item = `
+            <li class="d-flex fd-column pb-5">
+                <a  href="#!">
+                    <span class="d-flex | p-2 | bc-primary-300 brad-3 | __anim-blink"></span>
+                </a>
+                <div class="d-flex | mt-3 p-1 | bc-neutral-300 brad-3 | __anim-blink"></div>
+                <div class="d-flex | mt-1 p-1 | bc-neutral-300 brad-3 | __anim-blink"></div>
+                <div class="d-flex | mt-1 p-1 | bc-neutral-300 brad-3 | __anim-blink"></div>
+            </li>`;
+        let markup = '';
+        for (let i = 0; i < 3; i++) markup += item;
+        return markup;
+    },
+    searchIndexArray: null,
+    getUrlSearchParams: function() {
+        return new URLSearchParams(location.search).get('search');
+    },
+    search: function(query) {
+        if (typeof query == 'string'
+            && search.searchIndexArray !== null
+            && typeof search.searchIndexArray == 'object') {
+            if (query.length > 0) {
+                query = search.sanitizeQuery(query);
+                search.searchIndex(query);
+            }
+        }
+    },
     update: function() {
-        // console.log(query)
-        fetch(libdocConfig.searchIndexUrl)
-            .then(response => response.json())
-            .then(searchIndexArray => {
-                // console.log(json);
-                search.searchIndexArray = searchIndexArray;
-                const query = search.params.get('search');
-                if (query !== null) {
-                    if (query.length > 0) search.searchIndex(query);
-                }
-            })
-            .catch(error => {
-                // Handle the error
-                console.log(error);
-            });
+        if (typeof libdocConfig.searchIndexUrl == 'string'
+            && search.el.searchInput !== null
+            && search.el.searchResults !== null
+            && search.el.pageH1 !== null
+        ) {
+            search.el.searchResults.innerHTML = search.renderLoadingResults();
+            fetch(libdocConfig.searchIndexUrl)
+                .then(response => response.json())
+                .then(searchIndexArray => {
+                    search.searchIndexArray = searchIndexArray;
+                    const query = search.getUrlSearchParams();
+                    if (query !== null) search.search(query);
+                })
+                .catch(error => {
+                    // Handle the error
+                    console.log(error);
+                });
+        }
     }
 }
 document.addEventListener('DOMContentLoaded', search.update);
