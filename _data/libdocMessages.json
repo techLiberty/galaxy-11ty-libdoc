@@ -194,6 +194,11 @@
 		"fr": "Aucun résultat pour la requête",
 		"it": "Nessun risultato per questa ricerca"
 	},
+    "searchOccurrence": {
+        "en": "Occurrence search",
+        "fr": "Recherche d’occurrence",
+		"it": "Ricerca di risultato"
+    },
 	"searchOccurrencesCurrent": {
 		"en": "Current search occurrence",
 		"fr": "Occurrence actuelle",
@@ -258,6 +263,11 @@
 		"en": "Top",
 		"fr": "Haut",
 		"it": "In cima"
+	},
+	"userPreferences": {
+		"en": "User preferences",
+		"fr": "Préférences utilisateur",
+		"it": "Preferenze dell'utente"
 	},
 	"width": {
 		"en": "Width",
