@@ -837,7 +837,7 @@ main .__search-occurrence {
     content: '';
     display: flex;
     width: 50%;
-    height: 30px;
+    height: 35px;
     position: absolute;
     top: 45px;
     left: 50%;

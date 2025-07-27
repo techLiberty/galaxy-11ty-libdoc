@@ -33,6 +33,7 @@
     box-shadow: var(--libdoc-soft-shadow);
     list-style: none;
     padding: 0;
+    margin: 0;
 }
 
 .auto-results-wrapper > ul > li {
