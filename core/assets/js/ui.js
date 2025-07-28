@@ -233,7 +233,7 @@ const libdocUi = {
     },
     handlers: {
         _colorSchemeClick: function(event) {
-            console.log(event.target.value)
+            // console.log(event.target.value)
             libdocUi.setColorScheme(event.target.value);
         },
         _touchStart: function(evt) {
