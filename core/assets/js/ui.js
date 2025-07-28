@@ -346,6 +346,9 @@ const libdocUi = {
             evt.target.dataset.title = evt.target.title;
             evt.target.removeEventListener('click', libdocUi.handlers._clickAbbr);
             evt.target.removeAttribute('title');
+        },
+        _DOMContentLoaded: function() {
+            libdocUi.initKeyShortcuts();
         }
     },
     fitSvgToItsContent: function(svgElement) {
@@ -891,6 +894,26 @@ const libdocUi = {
             });
         }
     },
+    initKeyShortcuts: function() {
+        if (typeof hotkeys == 'function') {
+            hotkeys('s', function (event, handler) {
+                // Set timeout to avoid shortcut letter to be typed into input field
+                if (handler.key == 's') setTimeout(function() { fuzzy.el.searchInput.focus()},100);
+            });
+        }
+    },
+    addExternalLinkIconIntoMainContent: function() {
+        libdocUi.el.main.querySelectorAll('main a[href^="https://"]').forEach(function(el) {
+            const link = new URL(el.href);
+            if (link.hostname != location.hostname) {
+                el.target = '_blank';
+                el.title = `${libdocMessages.open} ${el.href} ${libdocMessages.inANewTab.toLowerCase()}`;
+                if (link.hostname == libdocSystem.productionUrl) {
+                    el.classList.add('__external-link');
+                }
+            }
+        });
+    },
     update: function() {
         libdocUi.defaults.darkModeCssMedia = libdocUi.el.darkModeCssMetaLink.media;
         libdocUi.setColorScheme(libdocUi.getUserPreferences().colorScheme);
@@ -902,6 +925,7 @@ const libdocUi = {
         libdocUi.updateNavPrimary();
         libdocUi.updateFtocList();
         libdocUi.updateGTTBtns();
+        libdocUi.addExternalLinkIconIntoMainContent();
         libdocUi.el.navPrimaryCheckbox.addEventListener('change', libdocUi.handlers._navPrimaryCheckboxChange);
         window.addEventListener('resize', libdocUi.handlers._windowResize);
         window.addEventListener('load', libdocUi.handlers._windowLoad);
@@ -921,17 +945,6 @@ const libdocUi = {
         document.querySelectorAll('details[name="nav_primary"]').forEach(function(elDetail) {
             elDetail.addEventListener("toggle", libdocUi.handlers._toggleNavPrimaryAccordion);
         });
-
-        libdocUi.el.main.querySelectorAll('main a[href^="https://"]').forEach(function(el) {
-            const link = new URL(el.href);
-            if (link.hostname != location.hostname) {
-                el.target = '_blank';
-                el.title = `${libdocMessages.open} ${el.href} ${libdocMessages.inANewTab.toLowerCase()}`;
-                if (link.hostname == libdocSystem.productionUrl) {
-                    el.classList.add('__external-link');
-                }
-            }
-        });
         libdocUi.el.main.querySelectorAll('abbr[title]').forEach(function(el) {
             el.addEventListener('click', libdocUi.handlers._clickAbbr);
         });
@@ -941,7 +954,8 @@ const libdocUi = {
         document.body.addEventListener('touchstart', libdocUi.handlers._touchStart);
         libdocUi.el.inputsColorScheme.forEach(function(elInput) {
             elInput.addEventListener('click', libdocUi.handlers._colorSchemeClick);
-        })
+        });
+        document.addEventListener('DOMContentLoaded', libdocUi.handlers._DOMContentLoaded);
     }
 }
 libdocUi.update();
