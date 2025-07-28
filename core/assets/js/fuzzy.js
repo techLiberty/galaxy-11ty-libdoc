@@ -48,6 +48,7 @@ const fuzzy = {
             const fuzzyIndex = fuzzy.getJson(libdocConfig.fuzzyIndexUrl);
             fuzzyIndex.then(jsonFetch => {
                 fuzzy.indexItems = jsonFetch;
+                fuzzy.sanitizeIndex();
                 evt.target.removeEventListener('focus', fuzzy.handlers._focusInput);
                 // console.log(`event listener ${evt.target.id} removed and index OK`, fuzzy.indexItems);
                 fuzzy.initAutocompletes();
@@ -72,6 +73,29 @@ const fuzzy = {
         } catch (error) {
             console.log(error);
             return [];
+        }
+    },
+    sanitizeIndex: function() {
+        if (typeof fuzzy.indexItems !== null) {
+            fuzzy.indexItems.forEach(function(item) {
+                switch (item.title) {
+                    case './core/libdoc_blog.liquid':
+                        item.title = libdocConfig.blogTitle
+                        break;
+
+                    case './core/libdoc_tags.liquid':
+                        item.title = libdocMessages.tagsList;
+                        break;
+
+                    case './core/assets/fonts/icomoon/demo.html':
+                        item.title = '';
+                        item.url = '';
+                        break;
+                
+                    default:
+                        break;
+                }
+            })
         }
     },
     indexItems: null,

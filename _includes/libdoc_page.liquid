@@ -94,7 +94,8 @@
         }
         const libdocConfig = {
             searchIndexUrl: `{{ '/core/assets/js/search_index.json' | url }}`,
-            fuzzyIndexUrl: `{{ '/core/assets/js/fuzzy_index.json' | url }}`
+            fuzzyIndexUrl: `{{ '/core/assets/js/fuzzy_index.json' | url }}`,
+            blogTitle: `{{ libdocConfig.blogTitle }}`
         }
         const libdocSystem = {
             productionUrl: `{{ libdocSystem.productionUrl }}`

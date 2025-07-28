@@ -33,25 +33,28 @@ const search = {
     searchIndex: function(query) {
         if (typeof search.searchIndexArray == 'object' && search.searchIndexArray !== null) {
             let markup = '';
+            const itemTitleIgnoreFilter = ['./core/assets/fonts/icomoon/demo.html'];
             search.searchIndexArray.forEach(function(item) {
-                query = search.sanitizeQuery(query);
-                const   itemContent = `${item.content} ${item.title}`,
-                        content = search.decodeHtmlCharCodes(itemContent).toLowerCase(),
-                        queryLowered = query.toLowerCase(),
-                        queryLoweredEncoded = search.HTMLEncode(queryLowered),
-                        occurrenceIndex = content.indexOf(queryLowered),
-                        range = 200,
-                        resultUrl = `${item.url}?text=${encodeURIComponent(query)}`;
-                let lowIndex = occurrenceIndex - range,
-                    highIndex = occurrenceIndex + query.length + range;
-                if (lowIndex < 0) lowIndex = 0;
-                if (highIndex > content.length - 1) highIndex = content.length - 1;
-                let summary = content.slice(lowIndex, highIndex);
-                summary = search.HTMLEncode(summary);
-                summary = summary.replaceAll(queryLoweredEncoded, ` <mark class="fvs-wght-600 wb-break-all">${query}</mark> `);
-                if (resultUrl.indexOf('/tags/?') === 0) item.title = libdocMessages.tagsList;
-                if (content.indexOf(queryLowered) > -1) {
-                    markup += search.renderSearchResult({url: resultUrl, title: item.title, summary: summary})
+                if (!itemTitleIgnoreFilter.includes(item.title)) {
+                    query = search.sanitizeQuery(query);
+                    const   itemContent = `${item.content} ${item.title}`,
+                            content = search.decodeHtmlCharCodes(itemContent).toLowerCase(),
+                            queryLowered = query.toLowerCase(),
+                            queryLoweredEncoded = search.HTMLEncode(queryLowered),
+                            occurrenceIndex = content.indexOf(queryLowered),
+                            range = 200,
+                            resultUrl = `${item.url}?text=${encodeURIComponent(query)}`;
+                    let lowIndex = occurrenceIndex - range,
+                        highIndex = occurrenceIndex + query.length + range;
+                    if (lowIndex < 0) lowIndex = 0;
+                    if (highIndex > content.length - 1) highIndex = content.length - 1;
+                    let summary = content.slice(lowIndex, highIndex);
+                    summary = search.HTMLEncode(summary);
+                    summary = summary.replaceAll(queryLoweredEncoded, ` <mark class="fvs-wght-600 wb-break-all">${query}</mark> `);
+                    if (resultUrl.indexOf('/tags/?') === 0) item.title = libdocMessages.tagsList;
+                    if (content.indexOf(queryLowered) > -1) {
+                        markup += search.renderSearchResult({url: resultUrl, title: item.title, summary: summary})
+                    }
                 }
             });
             search.el.pageH1.innerHTML += `<mark class="fvs-wght-600 wb-break-all">${query}</mark>`;
@@ -102,6 +105,24 @@ const search = {
                 query = search.sanitizeQuery(query);
                 search.searchIndex(query);
             }
+        }
+    },
+    sanitizeIndex: function() {
+        if (typeof search.searchIndexArray !== null) {
+            search.searchIndexArray.forEach(function(item) {
+                switch (item.title) {
+                    case './core/libdoc_blog.liquid':
+                        item.title = libdocConfig.blogTitle
+                        break;
+
+                    case './core/libdoc_tags.liquid':
+                        item.title = libdocMessages.tagsList;
+                        break;
+                
+                    default:
+                        break;
+                }
+            })
         }
     },
     update: function() {
