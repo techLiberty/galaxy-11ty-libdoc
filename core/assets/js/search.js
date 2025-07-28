@@ -105,17 +105,17 @@ const search = {
         }
     },
     update: function() {
+        const query = search.getUrlSearchParams();
         if (typeof libdocConfig.searchIndexUrl == 'string'
             && search.el.searchInput !== null
             && search.el.searchResults !== null
             && search.el.pageH1 !== null
         ) {
-            search.el.searchResults.innerHTML = search.renderLoadingResults();
+            if (query !== null) search.el.searchResults.innerHTML = search.renderLoadingResults();
             fetch(libdocConfig.searchIndexUrl)
                 .then(response => response.json())
                 .then(searchIndexArray => {
                     search.searchIndexArray = searchIndexArray;
-                    const query = search.getUrlSearchParams();
                     if (query !== null) search.search(query);
                 })
                 .catch(error => {
