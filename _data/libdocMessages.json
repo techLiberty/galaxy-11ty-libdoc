@@ -116,7 +116,7 @@
 	},
 	"noscriptAlert": {
 		"en": "It seems that your browser JavaScript is disabled, LibDoc is set to fallback mode with reduced features.",
-		"fr": "Il semble que JavaScript soit désactivé de votre naviigateur, LibDoc est en mode restreint avec des fonctionnalités réduites.",
+		"fr": "Il semble que JavaScript soit désactivé de votre navigateur, LibDoc est en mode restreint avec des fonctionnalités réduites.",
 		"it": "Sembra che il tuo browser abbia JavaScript disattivato, LibDoc è impostato in modalità di riserva, con funzionalità ridotte."
 	},
 	"open": {
@@ -194,6 +194,11 @@
 		"fr": "Aucun résultat pour la requête",
 		"it": "Nessun risultato per questa ricerca"
 	},
+    "searchOccurrence": {
+        "en": "Occurrence search",
+        "fr": "Recherche d’occurrence",
+		"it": "Ricerca di risultato"
+    },
 	"searchOccurrencesCurrent": {
 		"en": "Current search occurrence",
 		"fr": "Occurrence actuelle",
@@ -214,11 +219,11 @@
 		"fr": "Fermet la recherches d’occurrences",
 		"it": "Ferma la ricerca"
 	},
-	"searchPlaceholder": {
-		"en": "Enter text to search",
-		"fr": "Texte à rechercher",
-		"it": "Testo da cercare"
-	},
+    "searchPlaceholder": {
+        "en": "Press 🆂 to search",
+        "fr": "Presser 🆂 pour rechercher",
+        "it": "Premere 🆂 per cercare"
+    },
 	"searchSubmit": {
 		"en": "Submit search",
 		"fr": "Lancer la recherche",
@@ -258,6 +263,11 @@
 		"en": "Top",
 		"fr": "Haut",
 		"it": "In cima"
+	},
+	"userPreferences": {
+		"en": "User preferences",
+		"fr": "Préférences utilisateur",
+		"it": "Preferenze dell'utente"
 	},
 	"width": {
 		"en": "Width",
