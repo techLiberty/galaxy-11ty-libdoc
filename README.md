@@ -30,7 +30,7 @@ Eleventy LibDoc is an easy to use and content focused starter project for [Eleve
 * **Content focused** <br>LibDoc is easy to install, deploy and use.
 * **Accessibility** <br>LibDoc was developed with accessibility awareness.
 * **Performance** <br>Low front-end dependencies and vanilla JS self-made components make LibDoc cross-browser compatibility and good performances. <a href="https://developers.google.com/speed/pagespeed/insights/?url=eleventy-libdoc.netlify.app" target="_blank">View performances</a>.
-* **Search** <br>Quickly get search results and easily navigate through search occurrences with a dedicated <abbr title="user Interface">UI</abbr>.
+* **Search** <br>Fuzzy and standard search modes. Keyboard shortcut 🆂 allows quick focus on search input field. Fuzzy search makes easy keyboard based navigation whereas standard search allows to find an exact match..
 * **Smart navigation** <br>On page change, the primary navigation menu keeps its position.
 * **Smart table of content** <br>In addition of a pure static table of content, LibDoc generates a floating <abbr title="Table of Content">TOC</abbr> always visible that also displays the current window scroll position.
 * **Fallback if no Javascript available** <br>LibDoc can work even without Javascript with reduced features.
