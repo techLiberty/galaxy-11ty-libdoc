@@ -28,8 +28,9 @@ const fuzzy = {
                     onResults: ({ matches }) => {
                         return matches
                             .map((el) => {
-                                return `
-                                    <li>${el.item.title} <span>${el.item.description}</span></li>`;
+                                let description = '';
+                                if (el.item.description.trim().length > 0) description = `<span>${el.item.description}</span>`;
+                                return `<li>${el.item.title} ${description}</li>`;
                             })
                             .join('');
                     },
@@ -48,7 +49,7 @@ const fuzzy = {
             fuzzyIndex.then(jsonFetch => {
                 fuzzy.indexItems = jsonFetch;
                 evt.target.removeEventListener('focus', fuzzy.handlers._focusInput);
-                console.log(`event listener ${evt.target.id} removed and index OK`, fuzzy.indexItems);
+                // console.log(`event listener ${evt.target.id} removed and index OK`, fuzzy.indexItems);
                 fuzzy.initAutocompletes();
             });
         }

@@ -8,11 +8,13 @@ eleventyExcludeFromCollections: true
         {%- assign itemUrlSplit = item.url | split: '/' -%}
         {%- assign hasWritten = false -%}
         {%- if pageUrlSplit[1] != itemUrlSplit[1] or item.url == '/' -%}
-            {%- if item.url != '/core/assets/fonts/icomoon/demo/' %}
+            {%- if item.url != '/core/assets/fonts/icomoon/demo/'
+                and item.inputPath != './core/libdoc_tags.liquid'
+                and item.inputPath != './core/libdoc_blog.liquid' %}
                 {
                     "url": "{{ item.url | url }}",
                     "title": "{{ item.data.title | default: item.data.eleventyNavigation.key | default: item.inputPath | escape }}",
-                    "description": "{{ item.data.description | strip_newlines | strip_html | escape | sanitizeJSON }} {{ item.data.tags | join: ' ' }}"
+                    "description": "{{ item.data.description | strip_newlines | strip_html | escape | sanitizeJSON }} {{ item.data.tags | join: ' ' | strip }}"
                 }
                 {%- assign hasWritten = true -%}
             {%- endif -%}
