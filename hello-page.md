@@ -5,7 +5,8 @@ layout: libdoc_page.liquid
 permalink: hello-page/index.html
 eleventyNavigation:
     key: Hello Page
-date: git Last Modified
+# date: Last Modified
+gitLastModified: true
 tags:
     - syntax-highlighting
 ---

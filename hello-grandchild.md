@@ -6,7 +6,8 @@ permalink: hello-page/hello-child/hello-grandchild/index.html
 eleventyNavigation:
     key: Hello Grandchild
     parent: Hello Child
-date: git Last Modified
+# date: Last Modified
+gitLastModified: true
 tags:
     - blockquote
 ---
