@@ -166,7 +166,7 @@ export default {
             }
             return tocMarkup;
         },
-        gitLastModified: async function(filePath) {
+        gitLastModifiedDate: async function(filePath) {
             // Run the git log command
             // https://jamesdoc.com/blog/2023/git-changelog-in-11ty/
             let fileHistory = childProcess

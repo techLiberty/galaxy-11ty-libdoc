@@ -3,8 +3,6 @@ title: Hello World!
 description: I am the home page of this project
 layout: libdoc_page.liquid
 permalink: index.html
-# date: Last Modified
-gitLastModified: true
 tags:
     - widgets
 ---
