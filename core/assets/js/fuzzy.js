@@ -85,7 +85,7 @@ const fuzzy = {
                     switch (item.title) {
                         case './core/libdoc_blog.liquid':
                             item.title = libdocConfig.blogTitle;
-                            item.description = libdocConfig.blogDescription;
+                            item.description = libdocConfig.blogDescription === 'false' ? '' : libdocConfig.blogDescription;
                             if (!libdocSystem.blogPostsCount) canBePushed = false;
                             break;
                         case './core/libdoc_tags.liquid':
