@@ -44,8 +44,8 @@ const fuzzy = {
         });
     },
     initIndex: function(evt) {
-        if (fuzzy.indexItems === null && typeof libdocConfig.fuzzyIndexUrl == 'string') {
-            const fuzzyIndex = fuzzy.getJson(libdocConfig.fuzzyIndexUrl);
+        if (fuzzy.indexItems === null && typeof libdocSystem.fuzzyIndexUrl == 'string') {
+            const fuzzyIndex = fuzzy.getJson(libdocSystem.fuzzyIndexUrl);
             fuzzyIndex.then(jsonFetch => {
                 fuzzy.indexItems = jsonFetch;
                 fuzzy.sanitizeIndex();
@@ -100,7 +100,7 @@ const fuzzy = {
     },
     indexItems: null,
     update: function() {
-        if (typeof Fuse == 'function' && typeof libdocConfig.searchIndexUrl == 'string') {
+        if (typeof Fuse == 'function' && typeof libdocSystem.searchIndexUrl == 'string') {
             if (fuzzy.el.searchInput !== null) {
                 fuzzy.el.searchInput.addEventListener('focus', fuzzy.handlers._focusInput);
             };
