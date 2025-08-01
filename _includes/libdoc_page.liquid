@@ -82,10 +82,6 @@
     <noscript>
         <link rel="stylesheet" href="/core/assets/css/noscript.css">
     </noscript>
-    {% comment %} <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.11.1/styles/nord.min.css"> {% endcomment %}
-    {% comment %} <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.11.1/styles/ir-black.min.css"> {% endcomment %}
-    {% comment %} <link rel="stylesheet" href="/assets/css/monokai-sublime.css"> {% endcomment %}
-    
     <script>
         const libdocMessages = {
             {% for key in libdocMessages %}
@@ -94,6 +90,7 @@
         }
         const libdocConfig = {
             blogTitle: `{{ libdocConfig.blogTitle }}`,
+            blogDescription: `{{ libdocConfig.blogDescription }}`,
             displayTagsListLink: {{ libdocConfig.displayTagsListLink }}
         }
         const libdocSystem = {

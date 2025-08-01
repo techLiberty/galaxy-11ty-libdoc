@@ -4,6 +4,7 @@
     "author": "John Doe",
     "faviconUrl": "/assets/myfavicon.png",
     "blogTitle": "Blog",
+    "blogDescription": "Here is the description of the blog part",
     "customLinks": [
         {
             "url": "https://github.com/ita-design-system/eleventy-libdoc",
