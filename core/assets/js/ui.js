@@ -953,8 +953,9 @@ const libdocUi = {
                     elLink.href = item.url;
                     elLink.innerHTML = item.text;
                     elLink.title = `${libdocMessages.open} ${item.text} ${libdocMessages.inANewTab}`;
+                    elLink.target = '_blank';
                     if (tempWidth > threshold) {
-                        elLink.setAttribute('class', 'd-flex ai-center gap-1 | pt-3 pb-3 p-5 | fvs-wght-700 fs-2 lsp-3 lh-1 tt-uppercase td-none | c-primary-600');
+                        elLink.setAttribute('class', 'd-flex ai-center gap-1 | pt-3 pb-3 p-5 | fvs-wght-700 fs-2 lsp-3 lh-1 tt-uppercase td-none ws-nowrap | c-primary-600');
                         menuItems.push(elLink);
                     } else {
                         elLink.setAttribute('class', item.classNames);
