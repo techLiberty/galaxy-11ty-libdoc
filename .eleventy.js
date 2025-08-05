@@ -3,14 +3,13 @@ import eleventyNavigationPlugin             from "@11ty/eleventy-navigation";
 import { InputPathToUrlTransformPlugin }    from "@11ty/eleventy";
 import { eleventyImageTransformPlugin }     from "@11ty/eleventy-img";
 import { EleventyHtmlBasePlugin }           from "@11ty/eleventy";
+import pluginRss                            from "@11ty/eleventy-plugin-rss";
 // END 11TY imports
 
 // START LibDoc imports
 import libdocConfig                         from "./_data/libdocConfig.js";
 import libdocFunctions                      from "./_data/libdocFunctions.js";
 // END LibDoc imports
-
-import pluginRss from "@11ty/eleventy-plugin-rss";
 
 export default function(eleventyConfig) {
     // START PLUGINS

@@ -11,16 +11,46 @@ eleventyExcludeFromCollections: true
     <updated>{{ collections.post | getNewestCollectionItemDate | dateToRfc3339 }}</updated>
     <id>{{ libdocConfig.productionUrl }}{{ page.url }}</id>
     <author>
-        <name>{{ libdocConfig.blogAuthor }}</name>
+        <name>
+            {%- if libdocConfig.blogAuthor == false -%}
+                11ty LibDoc
+            {%- else -%}
+                {{ libdocConfig.blogAuthor }}
+            {%- endif -%}
+        </name>
     </author>
     {%- for post in collections.post | reverse %}
         {%- set absolutePostUrl %}{{ libdocConfig.productionUrl }}{{ post.url }}{% endset %}
         <entry>
-            <title>{{ post.data.title }}</title>
+            <title>
+                {%- if post.data.title == '' -%}
+                    {{ post.inputPath }}
+                {%- else -%}
+                    {{ post.data.title }}
+                {%- endif -%}
+            </title>
             <link href="{{ absolutePostUrl }}" />
             <updated>{{ post.date | dateToRfc3339 }}</updated>
             <id>{{ absolutePostUrl }}</id>
-            <content type="html">{{ post.content | renderTransforms(post.data.page, libdocConfig.productionUrl) }}</content>
+            <author>
+                <name>
+                    {%- if post.data.author != false and post.data.author != '' and post.data.author != null -%}
+                        {{ post.data.author }}
+                    {%- else -%}
+                        {%- if libdocConfig.blogAuthor == false -%}
+                            11ty LibDoc
+                        {%- else -%}
+                            {{ libdocConfig.blogAuthor }}
+                        {%- endif -%}
+                    {%- endif -%}
+                </name>
+            </author>
+            <content type="html">
+                {% if post.data.ogImageUrl !== false and post.data.ogImageUrl != '' and post.data.ogImageUrl != null %}
+                    &lt;img src=&quot;{{ post.data.ogImageUrl }}&quot; alt=&quot;{{ post.data.title }}&quot;&gt;
+                {% endif %}
+                {{- post.content | renderTransforms(post.data.page, libdocConfig.productionUrl) -}}
+            </content>
         </entry>
     {%- endfor %}
 </feed>
