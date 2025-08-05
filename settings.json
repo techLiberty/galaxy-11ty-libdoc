@@ -5,28 +5,28 @@
     "faviconUrl": "/assets/myfavicon.png",
     "blogTitle": "Blog",
     "blogDescription": "Here is the description of the blog part",
+    "productionUrl": "https://eleventy-libdoc.netlify.app",
     "customLinks": [
+        {
+            "url": "/feed.xml",
+            "text": "Atom feed"
+        },
         {
             "url": "https://github.com/ita-design-system/eleventy-libdoc",
             "text": "GitHub"
         },
         {
-            "url": "https://github.com/ita-design-system/eleventy-libdoc",
-            "text": "Codepen"
+            "url": "#",
+            "text": "Link 1"
         },
         {
-            "url": "https://github.com/ita-design-system/eleventy-libdoc",
-            "text": "Linkedin1"
+            "url": "#",
+            "text": "Other link 2"
         },
         {
-            "url": "https://github.com/ita-design-system/eleventy-libdoc",
-            "text": "Linkedin2"
-        },
-        {
-            "url": "https://github.com/ita-design-system/eleventy-libdoc",
-            "text": "Linkedin3"
+            "url": "#",
+            "text": "Another link"
         }
     ],
-    "editThisPageRootUrl": "https://github.com/ita-design-system/eleventy-libdoc/blob/main",
-    "productionUrl": "https://develop--eleventy-libdoc.netlify.app"
+    "editThisPageRootUrl": "https://github.com/ita-design-system/eleventy-libdoc/blob/main"
 }
