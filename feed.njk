@@ -1,0 +1,26 @@
+---
+permalink: feed.xml
+eleventyExcludeFromCollections: true
+---
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="{{ libdocConfig.lang }}">
+    <title>{{ libdocConfig.siteTitle }}</title>
+    <subtitle>{{ libdocConfig.siteDescription }}</subtitle>
+    <link href="{{ permalink }}" rel="self" />
+    <link href="{{ libdocConfig.productionUrl }}{{ page.url }}" />
+    <updated>{{ collections.post | getNewestCollectionItemDate | dateToRfc3339 }}</updated>
+    <id>{{ libdocConfig.productionUrl }}{{ page.url }}</id>
+    <author>
+        <name>{{ libdocConfig.blogAuthor }}</name>
+    </author>
+    {%- for post in collections.post | reverse %}
+        {%- set absolutePostUrl %}{{ libdocConfig.productionUrl }}{{ post.url }}{% endset %}
+        <entry>
+            <title>{{ post.data.title }}</title>
+            <link href="{{ absolutePostUrl }}" />
+            <updated>{{ post.date | dateToRfc3339 }}</updated>
+            <id>{{ absolutePostUrl }}</id>
+            <content type="html">{{ post.content | renderTransforms(post.data.page, libdocConfig.productionUrl) }}</content>
+        </entry>
+    {%- endfor %}
+</feed>

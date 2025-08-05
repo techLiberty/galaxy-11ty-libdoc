@@ -19,5 +19,6 @@
             "text": "Linkedin"
         }
     ],
-    "editThisPageRootUrl": "https://github.com/ita-design-system/eleventy-libdoc/blob/main"
+    "editThisPageRootUrl": "https://github.com/ita-design-system/eleventy-libdoc/blob/main",
+    "productionUrl": "https://develop--eleventy-libdoc.netlify.app"
 }

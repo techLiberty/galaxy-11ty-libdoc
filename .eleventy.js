@@ -10,12 +10,15 @@ import libdocConfig                         from "./_data/libdocConfig.js";
 import libdocFunctions                      from "./_data/libdocFunctions.js";
 // END LibDoc imports
 
+import pluginRss from "@11ty/eleventy-plugin-rss";
+
 export default function(eleventyConfig) {
     // START PLUGINS
     eleventyConfig.addPlugin(EleventyHtmlBasePlugin);
     eleventyConfig.addPlugin(InputPathToUrlTransformPlugin);
     eleventyConfig.addPlugin(eleventyNavigationPlugin);
     eleventyConfig.addPlugin(eleventyImageTransformPlugin, libdocFunctions.pluginsParameters.eleventyImageTransform());
+    eleventyConfig.addPlugin(pluginRss);
     // END PLUGINS
 
     // START FILTERS
