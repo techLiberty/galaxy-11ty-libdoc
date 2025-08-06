@@ -5,18 +5,27 @@
     "faviconUrl": "/assets/myfavicon.png",
     "blogTitle": "Blog",
     "blogDescription": "Here is the description of the blog part",
+    "productionUrl": "https://eleventy-libdoc.netlify.app",
     "customLinks": [
+        {
+            "url": "/feed.xml",
+            "text": "Atom feed"
+        },
         {
             "url": "https://github.com/ita-design-system/eleventy-libdoc",
             "text": "GitHub"
         },
         {
-            "url": "https://github.com/ita-design-system/eleventy-libdoc",
-            "text": "Codepen"
+            "url": "#",
+            "text": "Bluesky"
         },
         {
-            "url": "https://github.com/ita-design-system/eleventy-libdoc",
-            "text": "Linkedin"
+            "url": "#",
+            "text": "LinkedIn"
+        },
+        {
+            "url": "#",
+            "text": "CodePen"
         }
     ],
     "editThisPageRootUrl": "https://github.com/ita-design-system/eleventy-libdoc/blob/main"
