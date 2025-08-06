@@ -39,6 +39,7 @@ Eleventy LibDoc is an easy to use and content focused starter project for [Eleve
 * **Light and dark modes** <br>LibDoc’s interface is available with both light and dark mode color schemes.
 * **Slick code highlighting** <br>Display your code in a nice style and adjust which code languages you really use.
 * **Sandboxes** <br>Showcase small demos or full HTML pages into a responsive dual pane.
+* **Atom feed** <br>The Atom feed allows visitors to subscribe to post blog content.
 
 ## Documentation
 
