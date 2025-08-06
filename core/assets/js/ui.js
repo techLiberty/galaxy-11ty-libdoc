@@ -321,10 +321,6 @@ const libdocUi = {
             libdocUi.updateFTOCBtns();
             libdocUi.updateGTTBtns();
         },
-        _navPrimaryCheckboxChangeOnce: function(evt) {
-            libdocUi.updateCustomLinks();
-            evt.target.removeEventListener('change', libdocUi.handlers._navPrimaryCheckboxChangeOnce);
-        },
         _searchSubmit: function(evt) {
             const elInput = evt.target.querySelector('input');
             if (elInput !== null) {
@@ -925,23 +921,21 @@ const libdocUi = {
         if (libdocUi.el.customLinks !== null && libdocUi.el.navPrimaryContainer !== null) {
             const   ctnWidth = libdocUi.el.navPrimaryContainer.clientWidth,
                     elsLinks = libdocUi.el.customLinks.querySelectorAll('a'),
-                    customLinksAreVisible = getComputedStyle(libdocUi.el.navPrimaryContainer).display == 'none' ? false : true;
-            if (elsLinks.length > 1 && customLinksAreVisible) {
-                if (libdocUi._updateCustomLinks === null) {
-                    libdocUi._updateCustomLinks = {
-                        itemsWidth: 0,
-                        items: []
-                    };
-                    elsLinks.forEach(function(elLink) {
-                        libdocUi._updateCustomLinks.items.push({
-                            url: elLink.href,
-                            text: elLink.innerHTML.trim(),
-                            classNames: elLink.getAttribute('class'),
-                            width: elLink.clientWidth
-                        });
-                        libdocUi._updateCustomLinks.itemsWidth += elLink.clientWidth;
+                    isLargeScreen = libdocUi.getCurrentScreenSizeName() == 'md' ? true : false;
+            if (elsLinks.length > 1 && isLargeScreen && libdocUi._updateCustomLinks === null) {
+                libdocUi._updateCustomLinks = {
+                    itemsWidth: 0,
+                    items: []
+                };
+                elsLinks.forEach(function(elLink) {
+                    libdocUi._updateCustomLinks.items.push({
+                        url: elLink.href,
+                        text: elLink.innerHTML.trim(),
+                        classNames: elLink.getAttribute('class'),
+                        width: elLink.clientWidth
                     });
-                }
+                    libdocUi._updateCustomLinks.itemsWidth += elLink.clientWidth;
+                });
                 libdocUi.el.customLinks.innerHTML = '';
                 let     tempWidth = 0;
                 const   menuItems = [],
@@ -966,7 +960,7 @@ const libdocUi = {
                     const   elDetails = document.createElement('details'),
                             elSummary = document.createElement('summary'),
                             elMenuItemsCtn = document.createElement('nav');
-                    elMenuItemsCtn.setAttribute('class', 'd-flex fd-column | pos-absolute right-0 | mr-3 | bc-neutral-100 bs-2 bwidth-1 bstyle-dashed bcolor-neutral-500 brad-2');
+                    elMenuItemsCtn.setAttribute('class', 'd-flex fd-column | pos-absolute right-0 | mr-3 | bc-neutral-100 bwidth-1 bstyle-dashed bcolor-neutral-500 brad-2 __soft-shadow');
                     elDetails.setAttribute('class', 'pos-absolute right-0');
                     elSummary.setAttribute('class', 'd-flex ai-center jc-end gap-1 | pt-2 pb-2 pl-4 pr-4 | lh-1 | cur-pointer c-primary-600');
                     elSummary.setAttribute('title', libdocMessages.otherCustomLinks);
@@ -998,7 +992,6 @@ const libdocUi = {
         libdocUi.addExternalLinkIconIntoMainContent();
         libdocUi.updateCustomLinks();
         libdocUi.el.navPrimaryCheckbox.addEventListener('change', libdocUi.handlers._navPrimaryCheckboxChange);
-        libdocUi.el.navPrimaryCheckbox.addEventListener('change', libdocUi.handlers._navPrimaryCheckboxChangeOnce);
         window.addEventListener('resize', libdocUi.handlers._windowResize);
         window.addEventListener('load', libdocUi.handlers._windowLoad);
         libdocUi.el.navPrimary.addEventListener('scroll', libdocUi.handlers._scrollNavPrimary);
