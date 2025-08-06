@@ -17,15 +17,15 @@
         },
         {
             "url": "#",
-            "text": "Link 1"
+            "text": "Bluesky"
         },
         {
             "url": "#",
-            "text": "Other link 2"
+            "text": "LinkedIn"
         },
         {
             "url": "#",
-            "text": "Another link"
+            "text": "CodePen"
         }
     ],
     "editThisPageRootUrl": "https://github.com/ita-design-system/eleventy-libdoc/blob/main"
