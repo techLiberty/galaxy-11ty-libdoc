@@ -1,4 +1,20 @@
-# Eleventy LibDoc
+# My Fork of eleventy-libdoc
+
+**Note**: This is a personal fork of [ita-design-system/eleventy-libdoc](https://github.com/ita-design-system/eleventy-libdoc) with modifications tailored to my specific use case. It is not intended for general use or as a replacement for the original project. Please refer to the original repository for the official version.
+
+## Purpose
+This fork adapts the Eleventy-based library documentation system for my personal project/environment. It may include changes that are specific to my needs and may not work as expected for other use cases.
+
+## Key Changes
+- Adapting layouts to my specific data needs.
+
+## Original Project
+The original `eleventy-libdoc` is a library documentation system built with Eleventy. All credit goes to the authors at [ita-design-system/eleventy-libdoc](https://github.com/ita-design-system/eleventy-libdoc). Check there for the latest updates and official documentation.
+
+## License
+The original repository specifies the ISC License in its `package.json`. Below is the ISC License text:
+ISC LicenseCopyright (c) 2023, ITA Design SystemPermission to use, copy, modify, and/or distribute this software for any purpose with or without fee is hereby granted, provided that the above copyright notice and this permission notice appear in all copies.THE SOFTWARE IS PROVIDED "AS IS" AND THE AUTHOR DISCLAIMS ALL WARRANTIES WITH REGARD TO THIS SOFTWARE INCLUDING ALL IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS. IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR ANY SPECIAL, DIRECT, INDIRECT, OR CONSEQUENTIAL DAMAGES OR ANY DAMAGES WHATSOEVER RESULTING FROM LOSS OF USE, DATA OR PROFITS, WHETHER IN AN ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS ACTION, ARISING OUT OF OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
+
 
 [Eleventy LibDoc website](https://eleventy-libdoc.netlify.app/) | [11ty website](11ty)
 
