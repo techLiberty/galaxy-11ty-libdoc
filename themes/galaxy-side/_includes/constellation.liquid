@@ -1,0 +1,10 @@
+---
+layout: libdoc_page.liquid
+---
+<h2>Stars in {{ title }}</h2>
+<ul>
+  {% for star in collections.stars | filterByConstellation: page.data.slug %}
+    <li><a href="{{ star.url }}">{{ star.data.title }}</a></li>
+  {% endfor %}
+</ul>
+{{ content }}

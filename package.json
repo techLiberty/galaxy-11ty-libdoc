@@ -1,9 +1,10 @@
 {
-  "name": "eleventy-libdoc",
-  "version": "0.10.0",
-  "description": "An Eleventy starter project to craft slick and responsive documentation",
+  "name": "galaxy-11ty-libdoc",
+  "version": "0.10.1",
+  "description": "An Eleventy project for My Galaxy",
   "main": "index.js",
   "scripts": {
+    "start": "npx @11ty/eleventy --serve",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],

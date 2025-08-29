@@ -2,7 +2,7 @@
 title: Hello World!
 description: I am the home page of this project
 layout: libdoc_page.liquid
-permalink: index.html
+permalink: hello.html
 tags:
     - widgets
 ---

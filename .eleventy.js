@@ -34,6 +34,15 @@ export default function(eleventyConfig) {
     // START COLLECTIONS
     eleventyConfig.addCollection("myTags", libdocFunctions.collections.myTags);
     eleventyConfig.addCollection("postsByDateDescending", libdocFunctions.collections.postsByDateDescending);
+    eleventyConfig.addCollection("constellations", function (collectionApi) {
+      return collectionApi.getFilteredByGlob("constellations/*.md");
+    });
+    eleventyConfig.addCollection("stars", function (collectionApi) {
+      return collectionApi.getFilteredByGlob("stars/**/*.md");
+    });
+    eleventyConfig.addFilter("filterByConstellation", (stars, slug) => {
+      return stars.filter(star => star.data.constellation === slug);
+    });
     // END COLLECTIONS
 
     // START SHORTCODES
@@ -48,13 +57,13 @@ export default function(eleventyConfig) {
     // END SHORTCODES
 
     // START FILE COPY
-	eleventyConfig.addPassthroughCopy("sandboxes");
+	  eleventyConfig.addPassthroughCopy("sandboxes");
     eleventyConfig.addPassthroughCopy("assets");
     eleventyConfig.addPassthroughCopy("core/assets");
     eleventyConfig.addPassthroughCopy("favicon.png");
     // END FILE COPY
     
     return {
-        pathPrefix: libdocConfig.htmlBasePathPrefix
+      pathPrefix: libdocConfig.htmlBasePathPrefix
     }
 };
