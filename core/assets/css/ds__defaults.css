@@ -796,6 +796,9 @@ main .__search-occurrence {
 #toc_main li {
     break-inside: avoid;
 }
+#toc_main li a {
+    text-decoration-color: var(--ita-colors-primary-300);
+}
 
 /* SANDBOX */
 .sandbox {
