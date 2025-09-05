@@ -708,8 +708,8 @@ main > aside > iframe {
 main .alert {
     font-variation-settings: "wght" 400, "slnt" 0, "CASL" 0, "CRSV" 0;
     padding: var(--ita-spacings-3) var(--ita-spacings-5);
-    border-left-style: solid;
-    border-left-width: 3px;
+    border-left-style: dashed;
+    border-left-width: 1px;
     font-size: var(--ita-fontSizes-4);
     letter-spacing: -0.01em;
     line-height: 1.6em;
@@ -722,7 +722,7 @@ main .alert[data-title]::before {
     text-transform: uppercase;
     font-size: var(--ita-fontSizes-3);
     padding-bottom: var(--ita-spacings-1);
-    border-bottom-style: solid;
+    border-bottom-style: dashed;
     border-bottom-width: 1px;
 }
 /* SEARCH OCCURRENCES */
