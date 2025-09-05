@@ -1042,6 +1042,7 @@ input[type="radio"] ~ label::before {
     #floating_toc_container,
     #toc_main,
     #sidebar,
+    #user_preferences,
     main h1 a,
     main h2 a,
     main h3 a,
