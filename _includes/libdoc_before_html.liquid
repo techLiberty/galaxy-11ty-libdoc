@@ -95,10 +95,9 @@
 
 {% comment %} header margin {% endcomment %}
 {%- assign headerMargin = 'mb-7' -%}
-{%- if pageUrlSplit[1] == 'tags' and pageUrlSplit[2] == null -%}
+{%- if pageUrlSplit[1] == 'tags' -%}
     {%- assign headerMargin = '' -%}
 {%- endif -%}
-{% comment %} {{pageUrlSplit[2] == null}}/{{pageUrlSplit[2] == null}} {% endcomment %}
 {%- if pageUrlSplit[1] == libdocConfig.blogSlug and pageUrlSplit[2] == null -%}
     {%- assign headerMargin = '' -%}
 {%- endif -%}
