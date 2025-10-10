@@ -4,7 +4,7 @@ description: Chris Miller
 layout: galaxy_family.liquid
 permalink: chris.html
 eleventyNavigation:
-    key: Chris Miller
+    key: Chris
     parent: Family
 ogImageUrl: /assets/images/chris.jpg
 tags:
@@ -13,6 +13,7 @@ tags:
 connections: 
   - family
   - mary
+  - brooks
 date: 2024-09-13T13:07:04
 publish_date: 2024-09-13T13:07:04
 update_date: 2024-09-13T13:07:04

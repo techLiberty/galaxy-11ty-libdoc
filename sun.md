@@ -3,6 +3,8 @@ title: Rene
 description: Rene's Main Galaxy
 layout: galaxy_sun.liquid
 permalink: index.html
+eleventyNavigation:
+    key: Rene
 ogImageUrl: /assets/images/rene.png
 tags:
     - sun

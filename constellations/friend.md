@@ -6,6 +6,7 @@ permalink: friend.html
 ogImageUrl: /assets/images/friend.png
 eleventyNavigation:
     key: Friend
+    parent: Rene
 tags:
     - constellation
 connections: 

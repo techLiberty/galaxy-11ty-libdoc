@@ -1,40 +1,33 @@
 ---
-title: Mary
-description: Mary Miller
+title: Brooks
+description: Brooks
 layout: galaxy_family.liquid
-permalink: mary.html
-ogImageUrl: /assets/images/mary.jpg
+permalink: brooks.html
 eleventyNavigation:
-    key: Mary
-    parent: Family
+    key: Brooks
+    parent: Chris
+ogImageUrl: /assets/images/chris.jpg
 tags:
     - family
     - post
 connections: 
   - family
   - chris
-subtitle: Mary Miller
-slug_title: mary
-date: git Last Modified
+date: 2024-09-13T13:07:04
 publish_date: 2024-09-13T13:07:04
 update_date: 2024-09-13T13:07:04
-firstname: Mary
-lastname: Miller
-relationship: Sister
-birthdate: 1969-12-15
-email: 
-phone: 208-462-7784
-phonetype: Cell
-street: 123 Evergreen Drive
+firstname: Brooks
+lastname: theDog
+relationship: pet
+birthdate: 1968-02-11
+street: 123 Meadow Lane
 street2: 
-city: Eden Prairie
-state: MN
-zipcode: 55120
+city: Green Bay
+state: WI
+zipcode: 53019
 ---
 
-# Lorem ipsum dolor 
-### sit amet for {{ slug_title }}
-Consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna
+Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna
 aliqua. Sit amet justo donec enim diam vulputate ut pharetra sit. Neque volutpat ac tincidunt vitae semper quis.
 Tincidunt nunc pulvinar sapien et ligula ullamcorper malesuada. Diam vulputate ut pharetra sit. Laoreet sit amet cursus
 sit amet dictum sit. [Tincidunt ornare](https://www.gitlab.com) massa eget egestas purus viverra accumsan in. Sed faucibus turpis in eu. Elit eget

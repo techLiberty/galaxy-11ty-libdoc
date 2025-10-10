@@ -6,6 +6,7 @@ permalink: family.html
 ogImageUrl: /assets/images/family.png
 eleventyNavigation:
     key: Family
+    parent: Rene
 tags:
     - constellation
 connections: 

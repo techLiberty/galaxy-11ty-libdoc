@@ -3,7 +3,7 @@ layout: galaxy_friend.liquid
 permalink: wayne.html
 ogImageUrl: /assets/images/wayne.jpg
 eleventyNavigation:
-    key: Wayne Smith
+    key: Wayne
     parent: Friend
 tags:
     - friend

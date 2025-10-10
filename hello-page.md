@@ -5,6 +5,7 @@ layout: libdoc_page.liquid
 permalink: hello-page/index.html
 eleventyNavigation:
     key: Hello Page
+    parent: Mary
 tags:
     - syntax-highlighting
 # date: 2024-01-01
