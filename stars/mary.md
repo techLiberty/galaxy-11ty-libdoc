@@ -1,5 +1,7 @@
 ---
-layout: galaxy_friend.liquid
+title: Mary
+description: Mary Miller
+layout: galaxy_family.liquid
 permalink: mary.html
 ogImageUrl: /assets/images/mary.jpg
 eleventyNavigation:
@@ -7,10 +9,10 @@ eleventyNavigation:
     parent: Family
 tags:
     - family
+    - post
 connections: 
   - family
   - chris
-title: Mary
 subtitle: Mary Miller
 slug_title: mary
 date: git Last Modified
@@ -30,7 +32,9 @@ state: MN
 zipcode: 55120
 ---
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna
+# Lorem ipsum dolor 
+### sit amet for {{ slug_title }}
+Consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna
 aliqua. Sit amet justo donec enim diam vulputate ut pharetra sit. Neque volutpat ac tincidunt vitae semper quis.
 Tincidunt nunc pulvinar sapien et ligula ullamcorper malesuada. Diam vulputate ut pharetra sit. Laoreet sit amet cursus
 sit amet dictum sit. [Tincidunt ornare](https://www.gitlab.com) massa eget egestas purus viverra accumsan in. Sed faucibus turpis in eu. Elit eget

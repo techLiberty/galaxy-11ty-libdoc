@@ -9,12 +9,11 @@ eleventyNavigation:
 ogImageUrl: /assets/images/chris.jpg
 tags:
     - family
+    - post
 connections: 
   - family
   - mary
-subtitle: Chris Miller
-slug_title: chris
-date: git Last Modified
+date: 2024-09-13T13:07:04
 publish_date: 2024-09-13T13:07:04
 update_date: 2024-09-13T13:07:04
 firstname: Chris

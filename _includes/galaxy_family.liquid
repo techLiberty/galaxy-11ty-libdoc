@@ -351,19 +351,58 @@
                       class="h-auto | brad-2 bc-primary-200">
                 {%- endif %}
 
-                {% if firstname or lastname or relationship or phone %}
-                <section class="custom-frontmatter-fields | pt-5 pb-5 pl-5">
-                    {% if firstname %}<p><strong>First Name:</strong> {{ firstname }}</p>{% endif %}
-                    {% if lastname %}<p><strong>Last Name:</strong> {{ lastname }}</p>{% endif %}
-                    {% if relationship %}<p><strong>Relationship:</strong> {{ relationship }}</p>{% endif %}
-                    {% if phone %}<p><strong>Phone:</strong> {{ phone }}</p>{% endif %}
-                </section>
+                {% if relationship or birthdate %}
+                  <section class="d-flex fd-column gap-2 | p-5 mt-3 mb-3 | brad-3 bwidth-1 bstyle-dashed bcolor-neutral-500" style="max-width: 400px;">
+                      <strong class="fs-4 mb-2">Personal Information:</strong>
+                      {% if relationship %}
+                        <div>
+                          <span class="fs-3 c-neutral-700">Relationship:</span>
+                          <span class="fs-4">{{ relationship }}</span>
+                        </div>
+                      {% endif %}
+                      {% if birthdate %}
+                        <div>
+                          <span class="fs-3 c-neutral-700">Birthdate:</span>
+                          <span class="fs-4">{{ birthdate | date: "%m/%d/%Y" }}</span>
+                        </div>
+                      {% endif %}
+                  </section>
                 {% endif %}
 
+                {% if email or phone %}
+                  <section class="d-flex fd-column gap-2 | p-5 mt-3 mb-3 | brad-3 bwidth-1 bstyle-dashed bcolor-neutral-500" style="max-width: 400px;">
+                      <strong class="fs-4 mb-2">Contact Information:</strong>
+                      {% if email %}
+                        <div>
+                          <span class="fs-3 c-neutral-700">Email:</span>
+                          <span class="fs-4">{{ email }}</span>
+                        </div>
+                      {% endif %}
+                      {% if phone %}
+                        <div>
+                          <span class="fs-3 c-neutral-700">Phone:</span>
+                          <span class="fs-4">{{ phone }} ({{ phonetype }})</span>
+                        </div>
+                      {% endif %}
+                  </section>
+                {% endif %}
+
+                {% if street or street2 or city or state or zipcode %}
+                  <section class="d-flex fd-column gap-2 | p-5 mt-3 mb-3 | brad-3 bwidth-1 bstyle-dashed bcolor-neutral-500" style="max-width: 400px;">
+                      <strong class="fs-4 mb-2">Address:</strong>
+                      {% if street %}<div>{{ street }}</div>{% endif %}
+                      {% if street2 %}<div>{{ street2 }}</div>{% endif %}
+                      <div>
+                          {% if city %}{{ city }}{% endif %}
+                          {% if state %}, {{ state }}{% endif %}
+                          {% if zipcode %} {{ zipcode }}{% endif %}
+                      </div>
+                  </section>
+                {% endif %}
 
                 {% if page.url != '/search/' %}
                     {% if tags.size > 0 %}
-                        <p  class="d-flex ai-center gap-2 | m-0 pr-2 | fvs-wght-400 fs-3 lsp-3 lh-3 | c-neutral-700 bc-primary-100"
+                        <p  class="d-flex ai-center gap-2 | m-0 pt-4 pr-2 | fvs-wght-400 fs-3 lsp-3 lh-3 | c-neutral-700 bc-primary-100"
                             fs-2="xs">
                             <span ws-nowrap="sm,md">
                                 Family:
