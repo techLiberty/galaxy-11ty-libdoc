@@ -29,6 +29,28 @@ export default function(eleventyConfig) {
     eleventyConfig.addAsyncFilter("toc", libdocFunctions.filters.toc);
     eleventyConfig.addAsyncFilter("sanitizeJSON", libdocFunctions.filters.sanitizeJson);
     eleventyConfig.addAsyncFilter("gitLastModifiedDate", libdocFunctions.filters.gitLastModifiedDate);
+    // Custom filter to limit navigation depth
+    eleventyConfig.addFilter("limitNavDepth", function(navTree, maxDepth = 2) {
+      // Remove the root node (Sun) and only show its direct children and their children
+      function prune(node, depth) {
+        if (!node || typeof node !== "object") return node;
+        if (depth >= maxDepth) {
+          if (Array.isArray(node.children)) {
+            node.children = [];
+          }
+        } else if (Array.isArray(node.children)) {
+          node.children = node.children.map(child => prune(child, depth + 1));
+        }
+        return node;
+      }
+      // If navTree is an array, find the root node (Sun)
+      let nodes = Array.isArray(navTree) ? navTree : [navTree];
+      // Find the root node (no parent)
+      let root = nodes.find(n => !n.parent);
+      if (!root || !Array.isArray(root.children)) return [];
+      // Return the pruned children of the root (Sun)
+      return root.children.map(child => prune(child, 1));
+    });
     // END FILTERS
 
     // START COLLECTIONS
