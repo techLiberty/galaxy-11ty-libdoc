@@ -2,12 +2,12 @@
 title: Rene
 description: Rene's Main Galaxy
 layout: galaxy_sun.liquid
-permalink: index.html
+permalink: rene.html
 eleventyNavigation:
     key: Rene
 ogImageUrl: /assets/images/rene.png
 tags:
-    - sun
+    - rene
 connections: 
   - Family
   - Friend
@@ -19,5 +19,5 @@ isEncrypted: true
 tocEnabled: true
 ---
 
-## Main Sun Sextion
+## Main Sun Section
 Welcome to Rene's galaxy! Here you will find information about the sun, its constellations, and stars.

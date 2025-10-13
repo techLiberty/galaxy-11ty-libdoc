@@ -10,7 +10,7 @@ eleventyNavigation:
 tags:
     - constellation
 connections: 
-  - sun
+  - rene
   - mary
   - chris
 date: 2025-05-15

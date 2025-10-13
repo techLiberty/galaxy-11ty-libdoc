@@ -10,7 +10,7 @@ eleventyNavigation:
 tags:
     - constellation
 connections: 
-  - sun
+  - rene
   - wayne
 date: 2025-05-16
 author: RSD
