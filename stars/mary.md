@@ -22,14 +22,16 @@ firstname: Mary
 lastname: Miller
 relationship: Sister
 birthdate: 1969-12-15
-email: 
-phone: 208-462-7784
-phonetype: Cell
-street: 123 Evergreen Drive
-street2: 
-city: Eden Prairie
-state: MN
-zipcode: 55120
+contact:
+  email: 
+  phone: 208-462-7784
+  phonetype: Cell
+address:
+  street: 123 Evergreen Drive
+  street2: 
+  city: Eden Prairie
+  state: MN
+  zipcode: 55120
 ---
 
 # Lorem ipsum dolor 

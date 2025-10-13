@@ -19,14 +19,16 @@ firstname: Wayne
 lastname: Smith
 relationship: Friend
 birthdate: 1963-11-25
-email: 
-phone: 288-342-5678
-phonetype: Cell
-street: 321 Woodlane Path
-street2: 
-city: Duluth
-state: MN
-zipcode: 55100
+contact:
+  email: 
+  phone: 288-342-5678
+  phonetype: Cell
+address:
+  street: 321 Woodlane Path
+  street2: 
+  city: Duluth
+  state: MN
+  zipcode: 55100
 published_by: RSD
 thumbnail: /assets/img/family/mary.jpg
 thumbnail_show_caption: true

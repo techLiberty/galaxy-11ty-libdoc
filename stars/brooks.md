@@ -20,11 +20,12 @@ firstname: Brooks
 lastname: theDog
 relationship: pet
 birthdate: 1968-02-11
-street: 123 Meadow Lane
-street2: 
-city: Green Bay
-state: WI
-zipcode: 53019
+address:
+  street: 123 Meadow Lane
+  street2: 
+  city: Green Bay
+  state: WI
+  zipcode: 53019
 ---
 
 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna

@@ -21,14 +21,16 @@ firstname: Chris
 lastname: Miller
 relationship: Brother
 birthdate: 1968-02-11
-email: cmiller@gmail.com
-phone: 612-676-4509
-phonetype: Cell
-street: 123 Meadow Lane
-street2: 
-city: Green Bay
-state: WI
-zipcode: 53019
+contact:
+  email: cmiller@gmail.com
+  phone: 612-676-4509
+  phonetype: Cell
+address:
+  street: 123 Meadow Lane
+  street2: 
+  city: Green Bay
+  state: WI
+  zipcode: 53019
 ---
 
 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna
