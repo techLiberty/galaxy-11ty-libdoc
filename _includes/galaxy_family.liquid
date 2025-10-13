@@ -369,33 +369,33 @@
                   </section>
                 {% endif %}
 
-                {% if email or phone %}
+                {% if contact.email or contact.phone %}
                   <section class="d-flex fd-column gap-2 | p-5 mt-3 mb-3 | brad-3 bwidth-1 bstyle-dashed bcolor-neutral-500" style="max-width: 400px;">
                       <strong class="fs-4 mb-2">Contact Information:</strong>
-                      {% if email %}
+                      {% if contact.email %}
                         <div>
                           <span class="fs-3 c-neutral-700">Email:</span>
-                          <span class="fs-4">{{ email }}</span>
+                          <span class="fs-4">{{ contact.email }}</span>
                         </div>
                       {% endif %}
-                      {% if phone %}
+                      {% if contact.phone %}
                         <div>
                           <span class="fs-3 c-neutral-700">Phone:</span>
-                          <span class="fs-4">{{ phone }} ({{ phonetype }})</span>
+                          <span class="fs-4">{{ contact.phone }} ({{ contact.phonetype }})</span>
                         </div>
                       {% endif %}
                   </section>
                 {% endif %}
 
-                {% if street or street2 or city or state or zipcode %}
+                {% if address.street or address.street2 or address.city or address.state or address.zipcode %}
                   <section class="d-flex fd-column gap-2 | p-5 mt-3 mb-3 | brad-3 bwidth-1 bstyle-dashed bcolor-neutral-500" style="max-width: 400px;">
                       <strong class="fs-4 mb-2">Address:</strong>
-                      {% if street %}<div>{{ street }}</div>{% endif %}
-                      {% if street2 %}<div>{{ street2 }}</div>{% endif %}
+                      {% if address.street %}<div>{{ address.street }}</div>{% endif %}
+                      {% if address.street2 %}<div>{{ address.street2 }}</div>{% endif %}
                       <div>
-                          {% if city %}{{ city }}{% endif %}
-                          {% if state %}, {{ state }}{% endif %}
-                          {% if zipcode %} {{ zipcode }}{% endif %}
+                          {% if address.city %}{{ address.city }}{% endif %}
+                          {% if address.state %}, {{ address.state }}{% endif %}
+                          {% if address.zipcode %} {{ address.zipcode }}{% endif %}
                       </div>
                   </section>
                 {% endif %}
