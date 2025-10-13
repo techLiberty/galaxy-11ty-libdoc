@@ -255,9 +255,9 @@
 		"it": "Lista dei tag"
 	},
 	"tagsListDescription": {
-		"en": "List of every tag available",
-		"fr": "Liste de l’ensemble des tags disponibles",
-		"it": "Lista di tutti i tag disponibili"
+		"en": "List of every tag (Star Family) available",
+		"fr": "Liste de l’ensemble des tags (Famille Star) disponibles",
+		"it": "Lista di tutti i tag (Famiglia Star) disponibili"
 	},
 	"toggleFloatingToc": {
 		"en": "Toggle floating Table of content",
