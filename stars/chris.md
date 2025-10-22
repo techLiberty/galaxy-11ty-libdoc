@@ -1,7 +1,7 @@
 ---
 title: Chris
 description: Chris Miller
-layout: galaxy_family.liquid
+layout: galaxy_template.liquid
 permalink: chris.html
 eleventyNavigation:
     key: Chris

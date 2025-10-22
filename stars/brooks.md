@@ -1,12 +1,12 @@
 ---
 title: Brooks
 description: Brooks
-layout: galaxy_family.liquid
+layout: galaxy_template.liquid
 permalink: brooks.html
 eleventyNavigation:
     key: Brooks
     parent: Chris
-ogImageUrl: /assets/images/chris.jpg
+ogImageUrl: /assets/images/brooks.jpg
 tags:
     - family
     - post
@@ -19,13 +19,6 @@ update_date: 2024-09-13T13:07:04
 firstname: Brooks
 lastname: theDog
 relationship: pet
-birthdate: 1968-02-11
-address:
-  street: 123 Meadow Lane
-  street2: 
-  city: Green Bay
-  state: WI
-  zipcode: 53019
 ---
 
 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna

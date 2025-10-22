@@ -1,7 +1,7 @@
 ---
 id: Family
 description: Constellation for family members
-layout: galaxy_family.liquid
+layout: galaxy_template.liquid
 permalink: family.html
 ogImageUrl: /assets/images/family.png
 eleventyNavigation:

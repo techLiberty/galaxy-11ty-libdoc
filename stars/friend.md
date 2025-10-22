@@ -1,7 +1,7 @@
 ---
 id: Friend
 description: Constellation for friends
-layout: galaxy_friend.liquid
+layout: galaxy_template.liquid
 permalink: friend.html
 ogImageUrl: /assets/images/friend.png
 eleventyNavigation:

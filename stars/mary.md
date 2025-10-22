@@ -1,7 +1,7 @@
 ---
 title: Mary
 description: Mary Miller
-layout: galaxy_family.liquid
+layout: galaxy_template.liquid
 permalink: mary.html
 ogImageUrl: /assets/images/mary.jpg
 eleventyNavigation:
@@ -27,7 +27,7 @@ contact:
   phone: 208-462-7784
   phonetype: Cell
 address:
-  street: 123 Evergreen Drive
+  street: 123 Fire Street
   street2: 
   city: Eden Prairie
   state: MN

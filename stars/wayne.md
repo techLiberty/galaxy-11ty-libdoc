@@ -1,5 +1,5 @@
 ---
-layout: galaxy_friend.liquid
+layout: galaxy_template.liquid
 permalink: wayne.html
 ogImageUrl: /assets/images/wayne.jpg
 eleventyNavigation:
