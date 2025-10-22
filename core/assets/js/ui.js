@@ -2,9 +2,9 @@ const libdocUi = {
     defaults: {
         localStorageIdentifier: 'eleventyLibdoc',
         colorSchemes: ['auto', 'light', 'dark'],
-        darkModeCssFilePath: libdocSystem?.darkModeCssFilePath || '/core/assets/css/ds__dark_mode.css',
-        supportedLanguagesJsonPath: libdocSystem?.supportedLanguagesJsonPath || '/core/assets/js/supported-languages.json',
-        icomoonSelectionJsonPath: libdocSystem?.icomoonSelectionJsonPath || '/core/assets/fonts/icomoon/selection.json',
+        darkModeCssFilePath: libdocSystem?.darkModeCssFilePath || 'core/assets/css/ds__dark_mode.css',
+        supportedLanguagesJsonPath: libdocSystem?.supportedLanguagesJsonPath || 'core/assets/js/supported-languages.json',
+        icomoonSelectionJsonPath: libdocSystem?.icomoonSelectionJsonPath || 'core/assets/fonts/icomoon/selection.json',
         darkModeCssMedia: '',
         screenSizes: {
             xs: [0, 599],

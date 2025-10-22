@@ -10,7 +10,16 @@
     <meta name="description" itemprop="description" content="{{ pageDescription }}">
     <meta name="application-name" content="{{ pageTitle }}">
     <meta name="author" content="{{ pageAuthor }}">
-    <link rel="icon" type="image/png" href="{{ libdocConfig.faviconUrl }}">
+    <!-- Favicon set dynamically to avoid EleventyHtmlBasePlugin doubling -->
+    <script>
+        (function() {
+            var link = document.createElement('link');
+            link.rel = 'icon';
+            link.type = 'image/png';
+            link.href = '{{ libdocConfig.htmlBasePathPrefix }}assets/myfavicon.png';
+            document.head.appendChild(link);
+        })();
+    </script>
     
     <!-- Microsoft -->
     <meta http-equiv="x-ua-compatible" content="ie=edge">
@@ -57,13 +66,13 @@
             font-family: Menlo, Consolas, Monaco, Adwaita Mono, Liberation Mono, Lucida Console, monospace;
         }
     </style>
-    <link rel="stylesheet" href="{{ '/core/assets/css/fonts.css' | url }}">
-    <link rel="stylesheet" href="{{ '/core/assets/css/ds.css' | url }}">
-    <link rel="stylesheet" href="{{ '/core/assets/css/ds__defaults.css' | url }}">
-    <link rel="stylesheet" href="{{ '/core/assets/css/ds__colors.css' | url }}">
-    <link rel="stylesheet" href="{{ '/core/assets/css/ds__dark_mode.css' | url }}" media="(prefers-color-scheme: dark)" id="libdoc_dark_mode_css">
-    <link rel="stylesheet" href="{{ '/core/assets/css/hljs/night-owl.css' | url }}">
-    <link rel="stylesheet" href="{{ '/core/assets/fonts/icomoon/style.css' | url }}">
+    <link rel="stylesheet" href="{{ settings.htmlBasePathPrefix | default: '' }}/core/assets/css/fonts.css">
+    <link rel="stylesheet" href="{{ settings.htmlBasePathPrefix | default: '' }}/core/assets/css/ds.css">
+    <link rel="stylesheet" href="{{ settings.htmlBasePathPrefix | default: '' }}/core/assets/css/ds__defaults.css">
+    <link rel="stylesheet" href="{{ settings.htmlBasePathPrefix | default: '' }}/core/assets/css/ds__colors.css">
+    <link rel="stylesheet" href="{{ settings.htmlBasePathPrefix | default: '' }}/core/assets/css/ds__dark_mode.css" media="(prefers-color-scheme: dark)" id="libdoc_dark_mode_css">
+    <link rel="stylesheet" href="{{ settings.htmlBasePathPrefix | default: '' }}/core/assets/css/hljs/night-owl.css">
+    <link rel="stylesheet" href="{{ settings.htmlBasePathPrefix | default: '' }}/core/assets/fonts/icomoon/style.css">
     <style>
         :root {
             --libdoc-image-background-color-light-mode: {{ libdocConfig.imgBgColorLightMode }};
@@ -80,7 +89,7 @@
         {% endif %}
     </style>
     <noscript>
-        <link rel="stylesheet" href="{{ '/core/assets/css/noscript.css' | url }}">
+        <link rel="stylesheet" href="{{ settings.htmlBasePathPrefix | default: '' }}/core/assets/css/noscript.css">
     </noscript>
     <script>
         const libdocMessages = {
@@ -94,10 +103,10 @@
             displayTagsListLink: {{ libdocConfig.displayTagsListLink }}
         }
         const libdocSystem = {
-            searchIndexUrl: `{{ '/core/assets/js/search_index.json' | url }}`,
-            fuzzyIndexUrl: `{{ '/core/assets/js/fuzzy_index.json' | url }}`,
-            productionUrl: `{{ libdocSystem.productionUrl }}`,
-            blogPostsCount: `{{ collections.post.size }}`
+            searchIndexUrl: "{{ libdocConfig.htmlBasePathPrefix }}core/assets/js/search_index.json",
+            fuzzyIndexUrl: "{{ libdocConfig.htmlBasePathPrefix }}core/assets/js/fuzzy_index.json",
+            productionUrl: "{{ libdocSystem.productionUrl }}",
+            blogPostsCount: "{{ collections.post.size }}"
         }
     </script>
 </head>
@@ -265,7 +274,7 @@
                 {% endif %}
 
                 {% if collections.myTags.size > 0 and libdocConfig.displayTagsListLink %}
-                    <a  href="/tags/"
+                    <a  href="{{ settings.htmlBasePathPrefix | default: '' }}/tags/"
                         id="nav_primary_blog_link"
                         {% if pageUrlSplit[1] == 'tags'%}
                             aria-current="page"
@@ -367,7 +376,7 @@
                         <nav class="d-flex gap-2 fw-wrap | pl-5 pt-3 pb-5 | blwidth-1 blstyle-dashed bcolor-neutral-500">
                             {% for tagName in tags %}
                                 {% if tagName != 'post' %}
-                                    <a  href="/tags/{{ tagName }}/"
+                                    <a  href="{{ settings.htmlBasePathPrefix | default: '' }}/tags/{{ tagName }}/"
                                         class="
                                         d-flex ai-center gap-1
                                         pl-2 pr-3 pt-1 pb-1
@@ -481,18 +490,18 @@
         </main>
     </div>
     
-    <script src="{{ '/core/assets/js/sandbox.js' | url }}"></script>
-    <script src="{{ '/core/assets/js/hljs/highlight.min.js' | url }}"></script>
+    <script src="{{ settings.htmlBasePathPrefix | default: '' }}/core/assets/js/sandbox.js"></script>
+    <script src="{{ settings.htmlBasePathPrefix | default: '' }}/core/assets/js/hljs/highlight.min.js"></script>
     {% for hljsLang in libdocConfig.hljsLanguages %}
-        <script src="{{ '/core/assets/js/hljs/languages/' | append: hljsLang | append: '.min.js' | url }}"></script>
+        <script src="{{ settings.htmlBasePathPrefix | default: '' }}/core/assets/js/hljs/languages/{{ hljsLang }}.min.js"></script>
     {% endfor %}
-    <script src="{{ '/core/assets/js/ui.js' | url }}"></script>
+    <script src="{{ settings.htmlBasePathPrefix | default: '' }}/core/assets/js/ui.js"></script>
     {% if libdocConfig.searchEnabled %}
-        <link rel="stylesheet" href="{{ '/core/assets/css/autocomplete.css' | url }}">
-        <script src="{{ '/core/assets/js/autocomplete.min.js' | url }}"></script>
-        <script src="{{ '/core/assets/js/fuse.js' | url }}"></script>
-        <script src="{{ '/core/assets/js/fuzzy.js' | url }}"></script>
-        <script src="{{ '/core/assets/js/hotkeys.min.js' | url }}"></script>
+        <link rel="stylesheet" href="{{ settings.htmlBasePathPrefix | default: '' }}/core/assets/css/autocomplete.css">
+        <script src="{{ settings.htmlBasePathPrefix | default: '' }}/core/assets/js/autocomplete.min.js"></script>
+        <script src="{{ settings.htmlBasePathPrefix | default: '' }}/core/assets/js/fuse.js"></script>
+        <script src="{{ settings.htmlBasePathPrefix | default: '' }}/core/assets/js/fuzzy.js"></script>
+        <script src="{{ settings.htmlBasePathPrefix | default: '' }}/core/assets/js/hotkeys.min.js"></script>
     {% endif  %}
 </body>
 </html>

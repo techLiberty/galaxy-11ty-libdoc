@@ -7,5 +7,6 @@
     "blogDescription": "Here are recent posts in My Galaxy",
     "productionUrl": "",
     "customLinks": [],
-    "editThisPageRootUrl": ""
+    "editThisPageRootUrl": "",
+    "htmlBasePathPrefix": "/Rene/"
 }

@@ -24,11 +24,18 @@ export default {
             // https://www.11ty.dev/docs/plugins/image/#more-configuration-options
             const   params = libdocSystem.pluginsParameters.eleventyImageTransform,
                     w = libdocSystem.widthContent;
+            
+            // Don't add base prefix here - EleventyHtmlBasePlugin handles it
+            const urlPath = '/img/';
+            
             return {
                 // output image formats
                 formats: params.formats,
                 useCache: params.useCache,
                 svgShortCircuit: params.svgShortCircuit,
+                // Configure for static file generation (not dynamic URLs)
+                outputDir: "./_site/img/",
+                urlPath: urlPath,
                 // output image widths
                 widths: [
                     w + 30,
