@@ -57,13 +57,13 @@
             font-family: Menlo, Consolas, Monaco, Adwaita Mono, Liberation Mono, Lucida Console, monospace;
         }
     </style>
-    <link rel="stylesheet" href="/core/assets/css/fonts.css">
-    <link rel="stylesheet" href="/core/assets/css/ds.css">
-    <link rel="stylesheet" href="/core/assets/css/ds__defaults.css">
-    <link rel="stylesheet" href="/core/assets/css/ds__colors.css">
-    <link rel="stylesheet" href="/core/assets/css/ds__dark_mode.css" media="(prefers-color-scheme: dark)" id="libdoc_dark_mode_css">
-    <link rel="stylesheet" href="/core/assets/css/hljs/night-owl.css">
-    <link rel="stylesheet" href="/core/assets/fonts/icomoon/style.css">
+    <link rel="stylesheet" href="{{ '/core/assets/css/fonts.css' | url }}">
+    <link rel="stylesheet" href="{{ '/core/assets/css/ds.css' | url }}">
+    <link rel="stylesheet" href="{{ '/core/assets/css/ds__defaults.css' | url }}">
+    <link rel="stylesheet" href="{{ '/core/assets/css/ds__colors.css' | url }}">
+    <link rel="stylesheet" href="{{ '/core/assets/css/ds__dark_mode.css' | url }}" media="(prefers-color-scheme: dark)" id="libdoc_dark_mode_css">
+    <link rel="stylesheet" href="{{ '/core/assets/css/hljs/night-owl.css' | url }}">
+    <link rel="stylesheet" href="{{ '/core/assets/fonts/icomoon/style.css' | url }}">
     <style>
         :root {
             --libdoc-image-background-color-light-mode: {{ libdocConfig.imgBgColorLightMode }};
@@ -80,7 +80,7 @@
         {% endif %}
     </style>
     <noscript>
-        <link rel="stylesheet" href="/core/assets/css/noscript.css">
+        <link rel="stylesheet" href="{{ '/core/assets/css/noscript.css' | url }}">
     </noscript>
     <script>
         const libdocMessages = {
@@ -481,18 +481,18 @@
         </main>
     </div>
     
-    <script src="/core/assets/js/sandbox.js"></script>
-    <script src="/core/assets/js/hljs/highlight.min.js"></script>
+    <script src="{{ '/core/assets/js/sandbox.js' | url }}"></script>
+    <script src="{{ '/core/assets/js/hljs/highlight.min.js' | url }}"></script>
     {% for hljsLang in libdocConfig.hljsLanguages %}
-        <script src="/core/assets/js/hljs/languages/{{ hljsLang }}.min.js"></script>
+        <script src="{{ '/core/assets/js/hljs/languages/' | append: hljsLang | append: '.min.js' | url }}"></script>
     {% endfor %}
-    <script src="/core/assets/js/ui.js"></script>
+    <script src="{{ '/core/assets/js/ui.js' | url }}"></script>
     {% if libdocConfig.searchEnabled %}
-        <link rel="stylesheet" href="/core/assets/css/autocomplete.css">
-        <script src="/core/assets/js/autocomplete.min.js"></script>
-        <script src="/core/assets/js/fuse.js"></script>
-        <script src="/core/assets/js/fuzzy.js"></script>
-        <script src="/core/assets/js/hotkeys.min.js"></script>
+        <link rel="stylesheet" href="{{ '/core/assets/css/autocomplete.css' | url }}">
+        <script src="{{ '/core/assets/js/autocomplete.min.js' | url }}"></script>
+        <script src="{{ '/core/assets/js/fuse.js' | url }}"></script>
+        <script src="{{ '/core/assets/js/fuzzy.js' | url }}"></script>
+        <script src="{{ '/core/assets/js/hotkeys.min.js' | url }}"></script>
     {% endif  %}
 </body>
 </html>

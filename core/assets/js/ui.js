@@ -2,8 +2,9 @@ const libdocUi = {
     defaults: {
         localStorageIdentifier: 'eleventyLibdoc',
         colorSchemes: ['auto', 'light', 'dark'],
-        darkModeCssFilePath: '/core/assets/css/ds__dark_mode.css',
-        supportedLanguagesJsonPath: '/core/assets/js/supported-languages.json',
+        darkModeCssFilePath: libdocSystem?.darkModeCssFilePath || '/core/assets/css/ds__dark_mode.css',
+        supportedLanguagesJsonPath: libdocSystem?.supportedLanguagesJsonPath || '/core/assets/js/supported-languages.json',
+        icomoonSelectionJsonPath: libdocSystem?.icomoonSelectionJsonPath || '/core/assets/fonts/icomoon/selection.json',
         darkModeCssMedia: '',
         screenSizes: {
             xs: [0, 599],
@@ -373,7 +374,7 @@ const libdocUi = {
         if (typeof id == 'string') {
             const elIconsContainer = document.getElementById(id);
             if (elIconsContainer !== null) {
-                fetch('/core/assets/fonts/icomoon/selection.json')
+                fetch(libdocUi.defaults.icomoonSelectionJsonPath)
                     .then(response => response.json())
                     .then(json => {
                         json.icons.forEach(function(iconData) {
